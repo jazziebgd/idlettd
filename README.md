@@ -36,7 +36,7 @@ Intro window will open when new game starts, containing some general info for th
 
 Upon loading a game saved __IdleTTD__ shows a window with idle balance report for player review.
 
-![Report window](../extra/images/report-small.png)
+![Report window](./extra/images/report-small.png)
 
 Once player confirms with the button, their bank balance gets updated.
 
@@ -52,7 +52,7 @@ When player saves the game with negative balance IdleTTD will warn them about lo
 
 If player haven't met one of prerequisites for IdleTTD, they will be informed accordingly.
 
-![Missing HQ window](../extra/images/missing-hq-small.png)
+![Missing HQ window](./extra/images/missing-hq-small.png)
 
 IdleTTD might open a window informing them about Company HQ being required, that they have no valid running vehicles etc.
 
@@ -64,7 +64,7 @@ IdleTTD might open a window informing them about Company HQ being required, that
 
 Player can review idle statistics at any moment by opening story book page for IdleTTD.
 
-![Idle statistics window](../extra/images/statistics-small.png)
+![Idle statistics window](./extra/images/statistics-small.png)
 
 ---
 
