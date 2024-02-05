@@ -1,0 +1,119 @@
+/** \mainpage IdleTTD game script
+
+\section intro_sec Introduction
+
+IdleTTD is a game script that converts _OpenTTD_ into an idle-like game without affecting core gameplay. Players can earn money even when the game is not running.
+
+\section usage_sec Usage
+
+\subsection install_subsec Installation
+Install __IdleTTD__ game script using OpenTTD interface or copy it to your OpenTTD `game` directory.
+
+
+\subsection config_sec Configuration
+
+Script can be configured using the OpenTTD interface for game scripts.
+\image html script-config-small.png "IdleTTD game script configuration"
+
+<CENTER>
+| Name                                          | Type / Range  | Default                | Description                               | Note |
+| --------------------------------------------- | :-----------: | :--------------------: | ----------------------------------------- | ---- |
+| `idle_multiplier`                             | 1 - 10        | __2__                             | Multiplier used to calculate idle balance | _Value is in percents._ |
+| `show_intro`                                  | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables intro popups          | _Does not affect idle report windows._ |
+| `show_news`                                   | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables idle balance news     |  |
+| `show_save_warning`                           | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables save warnings         |  |
+| `day_interval`                                | 1 - 7         | __2__                             | Days to wait after each script run        | _Intended for eventual performance tuning._ |
+| <CENTER>__Developer mode settings__<BR /><SMALL>Hidden by default, you need to <a href="https://wiki.openttd.org/en/Development/Script/Need%20To%20Know#logging-and-debug-panel" target="_blank">enable developer tools</a> in OpenTTD to see them.</SMALL></CENTER> |||||
+| `idle_enabled`                                | `bool`        | <I><CODE>_true_</CODE></I>        | Enables or disables entire script         | |
+| `show_story_debug`                            | `bool`        | <CODE>_false_</CODE>              | Enables or disables debug text on pages   | |
+| `ignore_hq`                                   | `bool`        | <CODE>_false_</CODE>              | Don't require HQ to start idling          | _Might alter the way script was intended to work, use with caution._ |
+| `log_level`                                   | 0-5           | __2__                             | Filters logs messages by level            | |
+</CENTER>
+
+\subsection run_subsec Running IdleTTD
+Set __IdleTTD__ as your active game script, configure it if needed and play the game.
+@note Script is made only for single player games, won't do anything in multiplayer mode.
+
+\subsubsection new_game_usage Starting a new game
+Intro window will open when new game starts, containing some general info for the player. Other than that, nothing changes in the gameplay until you build Company HQ, save and later load the game. Even the intro window itself can be disabled via script settings.
+
+
+\subsubsection saved_game_usage Loading a game saved with IdleTTD
+Upon loading a game saved __IdleTTD__ shows a window with idle balance report for player review.
+\image html report-small.png "Idle report window"
+Once player confirms with the button, their bank balance gets updated.
+
+---
+
+
+
+\subsubsection story_book_usage In-game usage
+Player can open closed IdleTTD story book page using the toolbar at any time. All story book pages expect report contain "Help" button that opens help screen with detailed information and help text about IdleTTD.
+
+When player saves the game with negative balance IdleTTD will warn them about losing money upon next game load.
+
+If player haven't met one of prerequisites for IdleTTD, they will be informed accordingly.
+\image html missing-hq-small.png "Missing HQ window"
+IdleTTD might open a window informing them about Company HQ being required, that they have no valid running vehicles etc.
+
+---
+
+
+
+
+Player can review idle statistics at any moment by opening story book page for IdleTTD.
+\image html statistics-small.png "Idle statistics window"
+
+---
+
+
+\section doc_sec Documentation
+All files, classes and members in the script are documented with Doxygen.
+
+You can dive right into the documentation by exploring <a href="annotated.html">class list</a> or <a href="annotated.html">file list</a> or check out main classes below.
+
+
+\subsection doc_classes Class docs
+Below are the links to main classes used by IdleTTD.
+
+\subsubsection doc_main MainClass
+GSController for IdleTTD game script. Initializes and/or loads necessary data and sets everything up. Runs script loop and passes game events along for handling.
+
+- [Class documentation](#MainClass)
+- [File documentation](main.nut)
+
+\subsubsection doc_story IdleStory
+Class that handles pretty much all of IdleTTD logic.
+- [Class documentation](#IdleStory)
+- [File documentation](IdleStory.nut)
+
+\subsubsection doc_pages IdlePages
+Class that handles IdleTTD story book page
+- [Class documentation](#IdlePages)
+- [File documentation](IdlePages.nut)
+
+\subsubsection doc_util IdleUtil
+Class that contains helper and utility methods
+- [Class documentation](#IdleUtil)
+- [File documentation](IdleUtil.nut)
+
+\subsubsection doc_logger Logger
+Class that handles everything related to logging
+- [Class documentation](#Logger)
+- [File documentation](Logger.nut)
+
+\section faq_sec FAQ
+
+\subsection faq_1 I started a game and nothing happened!
+You have to enable the intro in game script settings. If intro is disabled, seeing nothing is expected for new games.
+
+\subsection faq_2 I loaded a game and nothing happened!
+Make sure you have built a Company HQ and at have at least one vehicle running.
+
+\subsection faq_3 I can't close idle report window!
+Idle report window is meant to be closed by clicking the button within (applying idle balance change in the process). If you close it any other way it will just pop up again.
+
+\subsection faq_4 I loaded a game and IdleTTD took all my money away!
+Negative idle balance can happen if you lost money a year before game was saved.
+
+ */

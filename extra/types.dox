@@ -1,0 +1,154 @@
+/**
+    @file types.dox Contains quasi struct definitions that aren't used (squirrel has no structs). They are here just for resolving and documenting types in Doxygen.
+*/
+
+ /**
+    @struct GSConfig
+    @brief Configuration structure
+    @details Data structure definition for IdleTTD configuration
+
+    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+
+    @var GSConfig::WarnAfterCloseAttempts
+    @brief Report close attempt limit
+    @details Number of times report window will re-open before showing warning text.
+
+    @var GSConfig::ShowStatsAfterReport
+    @brief Close story book after accepting idle balance
+    @details False will show stats screen instead of closing story book
+
+    @var GSConfig::MinSleepTime
+    @brief Minimum sleep time for immediate next loop iteration
+    @details Smallest number of ticks that script loop can sleep for
+
+    @var GSConfig::ShortestSleepTime
+    @brief Shortest sleep time for initialization / starting
+    @details Very small number of ticks that script loop can sleep for
+
+    @var GSConfig::ShortSleepTime
+    @brief Short sleep time for listening to events
+    @details Small number of ticks that script loop can sleep for
+
+    @var GSConfig::MedSleepTime
+    @brief Medium sleep time for misc processing
+    @details Medium number of ticks that script loop can sleep for
+*/
+
+ struct GSConfig { 
+     int WarnAfterCloseAttempts;
+     bool ShowStatsAfterReport;
+
+     int MinSleepTime;
+     int ShortestSleepTime;
+     int ShortSleepTime;
+     int MedSleepTime;
+};
+
+/**
+    @struct VehicleTypeStatsItem
+    @brief Typedef for vehicle type stats
+    @details Typedef for vehicle stats for one vehicle type
+
+    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+
+    @var VehicleTypeStatsItem::count
+    @brief Total number of vehicles of given type
+    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type)
+
+    @var VehicleTypeStatsItem::idleBalance
+    @brief Total idle balance of all vehicles of given type in last year
+    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type)
+
+    @var VehicleTypeStatsItem::balance
+    @brief Total balance of all vehicles of given type in last year
+    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type)
+
+    @var VehicleTypeStatsItem::type
+    @brief Vehicles type ID
+    @details OpenTTD vehicle type ID
+*/
+
+ struct VehicleTypeStatsItem { 
+     int count;
+     int idleBalance;
+     int balance;
+     int type;
+};
+
+/**
+    @struct SummaryVehicleStats
+    @brief Typedef for summary vehicle stats object 
+    @details Summary stats for all vehicles of all types for last year
+
+    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+
+    @var SummaryVehicleStats::count
+    @brief Total number of vehicles
+    @details All types of vehicles are included
+
+    @var SummaryVehicleStats::idleBalance
+    @brief Total idle balance
+    @details All types of vehicles are included
+
+    @var SummaryVehicleStats::balance
+    @brief Total balance
+    @details All types of vehicles are included
+*/
+
+ struct SummaryVehicleStats { 
+     int count;
+     int idleBalance;
+     int balance;
+};
+
+/**
+    @struct ScriptSavedData
+    @brief Script saved data format
+    @details Format of the table that gets saved with games
+
+    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+
+    @var ScriptSavedData::PlayerCompanyID
+    @brief Company ID
+    @details Company ID of the player
+
+    @var ScriptSavedData::IdleStoryPageID
+    @brief Idle story page
+    @details Id of current idle story page
+
+    @var ScriptSavedData::LastActiveTime
+    @brief Last save time
+    @details Unix timestamp that stores exact save game time
+
+    @var ScriptSavedData::LastYearBalance
+    @brief Last year bank balance
+    @details Amount of money company earned or lost last year
+
+    @var ScriptSavedData::SecondToLastYearBalance
+    @brief Second to last year bank balance
+    @details Amount of money company earned or lost in second to last year
+
+    @var ScriptSavedData::PrevCurrentCash
+    @brief Company balance at the end of previous year
+    @details Amount of money company had at the beginning of the current year
+
+    @var ScriptSavedData::SavedScriptVersion
+    @brief Saved script version
+    @details IdleTTD version that game is being saved with
+*/
+
+ struct ScriptSavedData { 
+     int PlayerCompanyID;
+     int IdleStoryPageID;
+     int LastActiveTime;
+     int LastYearBalance;
+     int SecondToLastYearBalance;
+     int PrevCurrentCash;
+     int SavedScriptVersion;
+};
+
+/** @typedef Money
+@brief OpenTTD Money (signed int 64) 
+@details Custom type for OpenTTD Money type values
+*/
+typedef signed long long int Money;

@@ -1,0 +1,221 @@
+##plural 0
+
+STR_SPACE                                           :{NBSP}
+STR_EMPTY                                           :
+STR_COMMA                                           :,
+STR_COMMA_SPACE                                     :,{NBSP}
+STR_WORD_AND                                        :and
+STR_WORD_AND_SPACE                                  :{NBSP}and{NBSP}
+
+######## range for timeunits starts
+STR_NUMBER_OF_SECONDS                              :{ORANGE}{NUM}{SILVER} second{P "" s}
+STR_NUMBER_OF_MINUTES                              :{ORANGE}{NUM}{SILVER} minute{P "" s}
+STR_NUMBER_OF_HOURS                                :{ORANGE}{NUM}{SILVER} hour{P "" s}
+STR_NUMBER_OF_YEARS                                :{ORANGE}{NUM}{SILVER} year{P "" s}
+STR_NUMBER_OF_DAYS                                 :{ORANGE}{NUM}{SILVER} day{P "" s}
+######## range for timeunits ends
+
+######## range for multiplier labels starts
+STR_MULTIPLIER_LABEL_1 :0.1%
+STR_MULTIPLIER_LABEL_2 :0.2%
+STR_MULTIPLIER_LABEL_3 :0.3%
+STR_MULTIPLIER_LABEL_4 :0.4%
+STR_MULTIPLIER_LABEL_5 :0.5%
+STR_MULTIPLIER_LABEL_6 :0.6%
+STR_MULTIPLIER_LABEL_7 :0.7%
+STR_MULTIPLIER_LABEL_8 :0.8%
+STR_MULTIPLIER_LABEL_9 :0.9%
+STR_MULTIPLIER_LABEL_10 :1%
+######## range for multiplier labels ends
+
+STR_CURRENCY_POSITIVE                               :{GREEN}{CURRENCY_LONG}{SILVER}
+STR_CURRENCY_NEGATIVE                               :{RED}{CURRENCY_LONG}{SILVER}
+
+STR_REPORT_PAGE_NAME                 :IdleTTD
+
+
+
+STR_SCRIPT_NAME_GOLD :{LTBROWN}IdleTTD{SILVER}
+
+# $XXX [earned OR lost] in x days, x hours, x minutes and x seconds
+STR_EARN_IN_TIME :{STRING1}{SILVER}{STRING}{STRING7}
+
+# x days, x hours, x minutes and x seconds
+STR_DURATION_TEXT :{STRING1}{STRING}{STRING1}{STRING}{STRING1}{STRING}{STRING1}
+
+
+
+
+# labels for intro page
+STR_PAGE_TITLE_INTRO            :IdleTTD  |  Welcome
+STR_PAGE_TITLE_REPORT           :IdleTTD  |  Idle balance report
+STR_PAGE_TITLE_NOHQ             :IdleTTD  |  Company HQ missing
+STR_PAGE_TITLE_HELP             :IdleTTD  |  Help
+STR_PAGE_TITLE_STATS            :IdleTTD  |  Statistics
+STR_PAGE_TITLE_SAVE_WARNING     :IdleTTD  |  Saved with negative balance
+
+
+
+
+
+STR_BUTTON_TEXT_REFRESH         :{BLACK}{MONO_FONT}REFRESH{NORMAL_FONT}
+STR_BUTTON_TEXT_FIND_HQ         :{BLACK}{MONO_FONT}FIND COMPANY HQ{NORMAL_FONT}
+STR_BUTTON_TEXT_START           :{BLACK}{MONO_FONT}START{NORMAL_FONT}
+STR_BUTTON_TEXT_CLOSE           :{BLACK}{MONO_FONT}CLOSE{NORMAL_FONT}
+STR_BUTTON_TEXT_HELP            :{BLACK}{MONO_FONT}HELP{NORMAL_FONT}
+
+STR_BUTTON_APPLY_IDLE_BALANCE   :{WHITE}{MONO_FONT}{STRING} {CURRENCY_LONG}{NORMAL_FONT}
+STR_BUTTON_TEXT_RECEIVE         :RECEIVE
+STR_BUTTON_TEXT_PAY             :PAY
+
+
+
+
+
+
+STR_INTRO_TEXT      :{SILVER}Your company can work and earn money without your supervision, with help from {STRING} game script.{}{}Amount of passive income (or expenses) depends on profit/loss that company had last year, amount of time passed since saving and way you configured {STRING} game script before starting the game.{}{}You are {WHITE}required to build Company HQ{SILVER} before saving. Next time you load the game you'll see a report about idle performance of your company.{}
+STR_INTRO_NOTE      :{}{SILVER}{TINY_FONT}You can disable this intro window from opening on new game start via {YELLOW}game script settings{SILVER}.{NORMAL_FONT}
+
+
+
+
+
+
+
+
+# labels for idle report page
+
+STR_WELCOME_MAN :Welcome back
+STR_WELCOME_WOMAN :Welcome back
+STR_REPORT_TITLE :{BIG_FONT}{SILVER}{STRING}, {WHITE}{PRESIDENT_NAME}{SILVER}.{NORMAL_FONT}
+STR_REPORT_ABSENCE :{SILVER}You've been away for {STRING}.
+STR_REPORT_SUMMARY :{SILVER}Your company {WHITE}{COMPANY}{SILVER} and {STRING} has kept working at {GOLD}{STRING}{SILVER} capacity and in {STRING1}{STRING}{STRING1} that would've passed in the game {STRING}{CURRENCY_LONG}{SILVER} in total.
+
+
+STR_REPORT_AVERAGE                    :{SILVER}On average, each one of your {GOLD}{NUM}{SILVER} vehicle{P "" s} was {STRING} {STRING1} {STRING}.
+
+
+
+
+
+STR_REPORT_WAIT_WARNING                 :{YELLOW}{BIG_FONT}Attention{NORMAL_FONT}{}{WHITE}You won't be able to close this window until you click the button.
+
+
+STR_IDLE_REPORT_EARNED                          :earned {GREEN}
+STR_IDLE_REPORT_LOST                            :lost {RED}
+
+
+
+
+
+
+
+
+STR_NEWS_TITLE_POSITIVE :{BIG_FONT} {BLACK}You have received {CURRENCY_LONG} from {BLUE}IdleTTD {BLACK} {} {} {NORMAL_FONT}.
+STR_NEWS_TEXT_POSITIVE :We're happy to inform you that you received {BIG_FONT}{}{}{GREEN}{CURRENCY_LONG}{}{}{NORMAL_FONT}{BLACK}that {COMPANY} and IdleTTD made for you while you were away.
+
+STR_NEWS_TITLE_NEGATIVE :{BIG_FONT} {BLACK}You lost {CURRENCY_LONG}! {} {} {NORMAL_FONT}
+STR_NEWS_TEXT_NEGATIVE :Unfortunately, {BIG_FONT}{}{}{RED}{CURRENCY_LONG}{}{}{NORMAL_FONT}{BLACK}had been deducted from {COMPANY} while you were away.
+
+
+
+
+STR_NEWS_COMPLETE: {STRING1} {STRING2}
+
+
+
+# labels for missing hq screen
+
+STR_MISSING_HQ :{BIG_FONT}{RED}No HQ found{SILVER}{NORMAL_FONT}{}{}Don't forget to build {WHITE}Company HQ{SILVER} to activate idling with {STRING} game script.{}{}If you have built the HQ click the button below to update.
+
+
+
+
+# labels for help screen
+
+
+
+
+STR_HELP_PAGE_INTRO :{STRING} is game script intended for people who share the love script author has for both OpenTTD and idle games alike. It doesn't affect core gameplay at all, the magic happens while you're not playing the game.
+STR_HELP_PAGE_TEXT :{YELLOW}Info{}{SILVER}When you save your game, {STRING} will keep record of save date and time and how much money your company earned in the previous year. Later, when you load your saved game it will determine how much (in-game) time passed since saving. That value, along with your last year balance is all it needs to calculate your idle balance. It will then show you a report for you to review and confirm, before changing your bank balance.
+
+
+STR_HELP_PAGE_NOTES :{YELLOW}Notes{}{SILVER}{NBSP}{NBSP}-{NBSP}Your idle balance {WHITE}can be negative{SILVER} if, in the year prior to saving the game, your company had losses.{}{NBSP}{NBSP}-{NBSP}Report window {WHITE}can not be closed unless you apply idle balance{SILVER}.{}{NBSP}{NBSP}-{NBSP}The script requires {WHITE}Company HQ{SILVER} and {WHITE}one or more running vehicle{SILVER} of any type.{}{NBSP}{NBSP}-{NBSP}You'll have to play game for {WHITE}at least three years{SILVER} in order for {STRING} to have enough data to calculate idle balance.{}{}
+
+
+STR_HELP_PAGE_SETTINGS :{YELLOW}Settings{}{STRING} can be configured to suit player needs via game script settings in OpenTTD. Below is the list of all settings with short explanation about each one:{}{NBSP}{NBSP}{GOLD}Idle income multiplier {SILVER}({LTBLUE}{MONO_FONT}idle_multiplier{SILVER}){NORMAL_FONT}{}This setting affects your income balance. Setting can't be changed in-game.{}{NBSP}{NBSP}{GOLD}Show intro {SILVER}({LTBLUE}{MONO_FONT}show_intro{SILVER}){NORMAL_FONT}{}Enables or disables intro window for new games{}{NBSP}{NBSP}{GOLD}Show news {SILVER}({LTBLUE}{MONO_FONT}show_news{SILVER}){NORMAL_FONT}{}Controls whether news detailing latest idle balance are displayed when your bank account gets changed{}{NBSP}{NBSP}{GOLD}Day interval {SILVER}({LTBLUE}{MONO_FONT}day_interval{SILVER}){NORMAL_FONT}{}A performance-tuning setting that can help players with slower machines by pausing script loops for a number of in-game days.
+
+# labels for stats screen
+
+
+
+
+STR_STATS_GENERAL_INFO                                 :{YELLOW}Active session{SILVER}{TINY_FONT}{NBSP}{NBSP}{NBSP}*{NBSP}{NBSP}Values below are approximations.{NORMAL_FONT}{}{}If you were to save your game now, {STRING} and your employees in {WHITE}Company HQ{SILVER} would keep your {GOLD}{NUM}{SILVER} vehicle{P 1 "" s} running at {GOLD}{STRING}{SILVER} capacity and {STRING} {STRING3}.{}{STRING}
+STR_STATS_GENERAL_INFO_WILL_BE_EARNING :would be earning approximately{GREEN}
+STR_STATS_GENERAL_INFO_WILL_BE_LOSING :would be losing approximately{RED}
+STR_STATS_GENERAL_INFO_NO_VEHICLES               :{SILVER}Employees in {WHITE}Company HQ{SILVER} would keep your vehicles running at {GOLD}{STRING}{SILVER} capacity but you seem to have no running vehicles at the moment.
+
+STR_STATS_MINUS_NOTE    :{WHITE}It is not recommended to save game while you're having losses.
+
+STR_STATS_LAST_IDLE_SESSION_SUMMARY                           :{SILVER}Your company was {STRING} {STRING3} {STRING} {STRING1}{SILVER} while you were away last time.
+STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Previous session{}{SILVER}You were out for {STRING}.
+
+STR_TOTAL_POSITIVE :and made
+STR_TOTAL_NEGATIVE :and lost
+
+
+STR_STATS_LAST_IDLE_SESSION_SUMMARY_EARNING :earning 
+STR_STATS_LAST_IDLE_SESSION_SUMMARY_LOSING :losing 
+
+
+
+
+STR_SECTION_TITLE_VEHICLE_STATS  :{YELLOW}Vehicle statistics{SILVER}
+
+
+STR_VEHICLE_INFO_ROW :{STRING}{STRING1}, {STRING} {STRING3}.
+
+STR_VEHICLE_COUNT_RAIL :{GOLD}{TRAIN} {NUM}{SILVER} rail vehicle{P "" s} running
+STR_VEHICLE_COUNT_ROAD :{GOLD}{BUS} {NUM}{SILVER} road vehicle{P "" s} running
+STR_VEHICLE_COUNT_AIR :{GOLD}{PLANE} {NUM}{SILVER} aircraft{P "" s} running
+STR_VEHICLE_COUNT_WATER :{GOLD}{SHIP} {NUM}{SILVER} ship{P "" s} running
+
+
+STR_VEHICLE_INFO_ZERO_BALANCE                            :{WHITE}breaking even{SILVER}
+
+
+
+
+
+
+
+STR_VEHICLE_INFO_EARNING_BALANCE                         :earning
+STR_VEHICLE_INFO_LOSING_BALANCE                          :losing
+
+STR_PER_SECOND: per second
+STR_PER_MINUTE: each minute
+STR_PER_HOUR: every hour
+STR_PER_DAY: daily
+
+
+
+
+
+
+STR_REPORT_SAVE_WARNING :{}{YELLOW}WARNING!{}{WHITE}Looks like you saved a game while having losses in previous year. To avoid losing money when you load your game next time, keep playing and save when you end a year with positive balance.{}
+STR_SAVE_WARNING_TEXT :{SILVER}Seems like you recently saved a game while having losses in previous year.{}{}{}{WHITE}YOU WILL MOST PROBABLY LOSE MORE MONEY WHEN YOU LOAD THE GAME YOU SAVED!{}{}{}{SILVER}Most of the time, this is caused by one-time expenses like spending money on construction or new vehicles. Keep playing and save when you end a year with positive balance to avoid this.{}{}
+
+
+
+
+
+
+# developer labels
+STR_NAV_BUTTONS_TEXT                :{}{SILVER}Debug navigation buttons (developer)
+
+STR_NAV_BUTTON_INTRO                :Intro
+STR_NAV_BUTTON_NO_HQ                :No HQ
+STR_NAV_BUTTON_STATS                :Stats
+STR_NAV_BUTTON_REPORT               :Report
+STR_NAV_BUTTON_HELP                 :Help
+STR_NAV_BUTTON_SAVE_WARNING         :Save warning
