@@ -6,10 +6,11 @@ createdir:
 copysource:
 	cp -rf ./src/*.* ./build/
 	cp -rf ./src/lang ./build/
+	cp ./license.txt ./build/license.txt
 
 generatedocs:
 	doxygen
 
-clean: 
+clean:
 	rm -rf ./build
 	

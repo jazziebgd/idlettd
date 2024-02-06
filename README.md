@@ -8,17 +8,17 @@ IdleTTD is a game script that converts _OpenTTD_ into an idle-like game without 
 
 ### Installation
 
-Install __IdleTTD__ game script using OpenTTD interface or copy it to your OpenTTD `game` directory.
+Download __IdleTTD__ game script using OpenTTD online content interface.
 
 ### Setup
 
-| Name                 | Type / Range  | Default       | Description                               | Note |
-| -------------------- | :-----------: | :-----------: | ----------------------------------------- | ---- |
-| `idle_multiplier`    | 1 - 10        | __2__         | Multiplier used to calculate idle balance |  |
-| `show_intro`         | `bool`        | __true__      | Enables or disables intro popups          | _Does not affect other story windows._ |
-| `show_news`          | `bool`        | __true__      | Enables or disables idle balance news     |  |
-| `show_save_warning`  | `bool`        | __true__      | Enables or disables save warnings         |  |
-| `day_interval`       | 1 - 7         | __1__         | Days to wait before running again         | _For eventual performance tuning._ |
+| Name                  | Type / Range  | Default       | Description                               | Note |
+| --------------------- | :-----------: | :-----------: | ----------------------------------------- | ---- |
+| __idle_multiplier__   | 1 - 10        | __2__         | Multiplier used to calculate idle balance | _Integer value is multiplied by 0.001 (0.1%) to get actual value_ |
+| __show_intro__        | `bool`        | __true__      | Enables or disables intro popups          | _Does not affect other story windows._ |
+| __show_news__         | `bool`        | __true__      | Enables or disables idle balance news     |  |
+| __show_save_warning__ | `bool`        | __true__      | Enables or disables save warnings         |  |
+| __day_interval__      | 1 - 7         | __1__         | Days to wait before running again         | _For eventual performance tuning._ |
 
 ### Running IdleTTD
 
@@ -45,7 +45,8 @@ Once player confirms with the button, their bank balance gets updated.
 
 
 
-\subsubsection story_book_usage In-game usage
+### In-game usage
+
 Player can open closed IdleTTD story book page using the toolbar at any time. All story book pages expect report contain "Help" button that opens help screen with detailed information and help text about IdleTTD.
 
 When player saves the game with negative balance IdleTTD will warn them about losing money upon next game load.
@@ -73,6 +74,11 @@ Player can review idle statistics at any moment by opening story book page for I
 
 ## Support
 This script is provided 'as is', no guarantees whatsoever.
+
+#### Building IdleTTD locally
+
+Run `make` in root of the repository and then copy everything from `build` directory to your OpenTTD user directory under `game/IdleTTD`.
+
 
 ### FAQ
 

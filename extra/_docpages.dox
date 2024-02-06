@@ -18,7 +18,7 @@ Script can be configured using the OpenTTD interface for game scripts.
 <CENTER>
 | Name                                          | Type / Range  | Default                | Description                               | Note |
 | --------------------------------------------- | :-----------: | :--------------------: | ----------------------------------------- | ---- |
-| `idle_multiplier`                             | 1 - 10        | __2__                             | Multiplier used to calculate idle balance | _Value is in percents._ |
+| `idle_multiplier`                             | 1 - 10        | __2__                             | Multiplier used to calculate idle balance | _Integer value is multiplied by 0.001 (0.1%) to get actual value_ |
 | `show_intro`                                  | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables intro popups          | _Does not affect idle report windows._ |
 | `show_news`                                   | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables idle balance news     |  |
 | `show_save_warning`                           | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables save warnings         |  |
@@ -70,7 +70,7 @@ Player can review idle statistics at any moment by opening story book page for I
 \section doc_sec Documentation
 All files, classes and members in the script are documented with Doxygen.
 
-You can dive right into the documentation by exploring <a href="annotated.html">class list</a> or <a href="annotated.html">file list</a> or check out main classes below.
+You can dive right into the documentation by exploring <a href="annotated.html">class list</a> or <a href="files.html">file list</a> or check out main classes below.
 
 
 \subsection doc_classes Class docs

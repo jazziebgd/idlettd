@@ -74,7 +74,7 @@ PROJECT_ICON           =
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = "./build/docs"
+OUTPUT_DIRECTORY       = "./docs"
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create up to 4096
 # sub-directories (in 2 levels) under the output directory of each output format
@@ -1114,8 +1114,7 @@ INPUT_FILTER           =
 # need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
-FILTER_PATTERNS        = "*.nut=./tools/squirrel2doxygen/doxygen_squirrel_filter_mine.py"
-# FILTER_PATTERNS        = "*.nut=./tools/squirrel2doxygen/doxygen_squirrel_filter.py"
+FILTER_PATTERNS        = "*.nut=./extra/squirrel2doxygen/doxygen_squirrel_filter_ittd.py"
 
 # If the FILTER_SOURCE_FILES tag is set to YES, the input filter (if set using
 # INPUT_FILTER) will also be used to filter the input files that are used for
@@ -1123,7 +1122,6 @@ FILTER_PATTERNS        = "*.nut=./tools/squirrel2doxygen/doxygen_squirrel_filter
 # The default value is: NO.
 
 FILTER_SOURCE_FILES    = NO
-# FILTER_SOURCE_FILES    = YES
 
 # The FILTER_SOURCE_PATTERNS tag can be used to specify source filters per file
 # pattern. A pattern will override the setting for FILTER_PATTERN (if any) and
@@ -2432,7 +2430,6 @@ SKIP_FUNCTION_MACROS   = YES
 # run, you must also specify the path to the tagfile here.
 
 TAGFILES               =
-# TAGFILES               = GSApi=/Users/dino/prg/src/OpenTTD/src/build/docs/openttd_gs_api.tag
 
 # When a file name is specified after GENERATE_TAGFILE, doxygen will create a
 # tag file that is based on the input files it reads. See section "Linking to
