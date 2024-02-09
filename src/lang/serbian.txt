@@ -10,12 +10,6 @@ STR_WORD_AND_SPACE                                  :{NBSP}i{NBSP}
 
 STR_SCRIPT_NAME_GOLD :{LTBROWN}IdleTTD{SILVER}
 
-STR_NUMBER_OF_SECONDS                              :{ORANGE}{NUM}{SILVER} sekund{P u e i}
-STR_NUMBER_OF_MINUTES                              :{ORANGE}{NUM}{SILVER} minut{P "" a a}
-STR_NUMBER_OF_HOURS                                :{ORANGE}{NUM}{SILVER} sat{P "" a i}
-STR_NUMBER_OF_YEARS                                :{ORANGE}{NUM}{SILVER} godin{P u e a}
-STR_NUMBER_OF_DAYS                                 :{ORANGE}{NUM}{SILVER} dan{P "" a a}
-
 ######## range for multiplier labels starts
 STR_MULTIPLIER_LABEL_1 :0.1%
 STR_MULTIPLIER_LABEL_2 :0.2%
@@ -61,12 +55,18 @@ STR_BUTTON_TEXT_PAY                             :PLATI
 
 
 
-STR_EARN_IN_TIME :{STRING}{SILVER}{STRING}{STRING}
+STR_EARN_IN_TIME :{STRING}{SILVER}{STRING}
 
 
 
 
-STR_DURATION_TEXT :{STRING}{STRING}{STRING}{STRING}{STRING}{STRING}{STRING}
+STR_DURATION_HUMAN :{STRING}{STRING}
+
+STR_DURATION_TEXT_SECONDS                              :{ORANGE}{NUM}{SILVER} sekund{P u e i}{STRING}
+STR_DURATION_TEXT_MINUTES                              :{ORANGE}{NUM}{SILVER} minut{P "" a a}{STRING}
+STR_DURATION_TEXT_HOURS                                :{ORANGE}{NUM}{SILVER} sat{P "" a i}{STRING}
+STR_DURATION_TEXT_YEARS                                :{ORANGE}{NUM}{SILVER} godin{P u e a}{STRING}
+STR_DURATION_TEXT_DAYS                                 :{ORANGE}{NUM}{SILVER} dan{P "" a a}{STRING}
 
 
 
@@ -87,7 +87,7 @@ STR_WELCOME_MAN :Dobrodošao
 STR_WELCOME_WOMAN :Dobrodošla
 STR_REPORT_TITLE :{BIG_FONT}{SILVER}{STRING}, {WHITE}{PRESIDENT_NAME}{SILVER}.{NORMAL_FONT}
 STR_REPORT_ABSENCE :{SILVER}Bili ste odsutni {STRING}.
-STR_REPORT_SUMMARY :{WHITE}{COMPANY}{SILVER} je uz pomoć {STRING} nastavila rad sa {GOLD}{STRING}{SILVER} kapaciteta i za {STRING}{STRING}{STRING}, koliko je prošlo u igri. je {STRING}{CURRENCY_LONG}{SILVER}.
+STR_REPORT_SUMMARY :{WHITE}{COMPANY}{SILVER} je uz pomoć {STRING} nastavila rad sa {GOLD}{STRING}{SILVER} kapaciteta i za {STRING}{STRING}, koliko je prošlo u igri. je {STRING}{CURRENCY_LONG}{SILVER}.
 
 
 
@@ -157,7 +157,7 @@ STR_STATS_LAST_IDLE_SESSION_SUMMARY_LOSING :gubila
 
 STR_SECTION_TITLE_VEHICLE_STATS  :{YELLOW}Vozila{SILVER}
 
-STR_VEHICLE_INFO_ROW :{STRING}{STRING}{STRING} {STRING}.
+STR_VEHICLE_INFO_ROW :{STRING}{STRING}{STRING}.
 
 
 STR_VEHICLE_COUNT_RAIL :{GOLD}{TRAIN} {SILVER}Aktiv{P 0 "an je" "na su" "no je"} {GOLD}{NUM}{SILVER} voz{P "" a ova}
@@ -170,7 +170,7 @@ STR_VEHICLE_COUNT_WATER :{GOLD}{SHIP} {SILVER}Aktiv{P 0 "an je" "na su" "no je"}
 
 #STR_VEHICLE_INFO_BALANCE :{STRING} {CURRENCY_LONG}{SILVER} {STRING}.
 
-STR_VEHICLE_INFO_ZERO_BALANCE                            : {WHITE}bez pasivne zarade{SILVER}
+STR_VEHICLE_INFO_ZERO_BALANCE                            : {WHITE}bez pasivne zarade{STRING}{STRING}{STRING}{SILVER}
 
 
 

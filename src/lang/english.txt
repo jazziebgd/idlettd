@@ -7,14 +7,6 @@ STR_COMMA_SPACE                                     :,{NBSP}
 STR_WORD_AND                                        :and
 STR_WORD_AND_SPACE                                  :{NBSP}and{NBSP}
 
-######## range for timeunits starts
-STR_NUMBER_OF_SECONDS                              :{ORANGE}{NUM}{SILVER} second{P "" s}
-STR_NUMBER_OF_MINUTES                              :{ORANGE}{NUM}{SILVER} minute{P "" s}
-STR_NUMBER_OF_HOURS                                :{ORANGE}{NUM}{SILVER} hour{P "" s}
-STR_NUMBER_OF_YEARS                                :{ORANGE}{NUM}{SILVER} year{P "" s}
-STR_NUMBER_OF_DAYS                                 :{ORANGE}{NUM}{SILVER} day{P "" s}
-######## range for timeunits ends
-
 ######## range for multiplier labels starts
 STR_MULTIPLIER_LABEL_1 :0.1%
 STR_MULTIPLIER_LABEL_2 :0.2%
@@ -37,11 +29,17 @@ STR_REPORT_PAGE_NAME                 :IdleTTD
 
 STR_SCRIPT_NAME_GOLD :{LTBROWN}IdleTTD{SILVER}
 
-# $XXX [earned OR lost] in x days, x hours, x minutes and x seconds
-STR_EARN_IN_TIME :{STRING1}{SILVER}{STRING}{STRING7}
+# $XXX [earned OR lost] in x days, x hours, x minutes and x seconds (only two largest are used)
+STR_EARN_IN_TIME :{STRING1}{SILVER}{STRING}
 
 # x days, x hours, x minutes and x seconds
-STR_DURATION_TEXT :{STRING1}{STRING}{STRING1}{STRING}{STRING1}{STRING}{STRING1}
+STR_DURATION_HUMAN :{STRING2}{STRING2}
+
+STR_DURATION_TEXT_SECONDS                              :{ORANGE}{NUM}{SILVER} second{P "" s}{STRING}
+STR_DURATION_TEXT_MINUTES                              :{ORANGE}{NUM}{SILVER} minute{P "" s}{STRING}
+STR_DURATION_TEXT_HOURS                                :{ORANGE}{NUM}{SILVER} hour{P "" s}{STRING}
+STR_DURATION_TEXT_DAYS                                 :{ORANGE}{NUM}{SILVER} day{P "" s}{STRING}
+STR_DURATION_TEXT_YEARS                                :{ORANGE}{NUM}{SILVER} year{P "" s}{STRING}
 
 
 
@@ -88,8 +86,8 @@ STR_INTRO_NOTE      :{}{SILVER}{TINY_FONT}You can disable this intro window from
 STR_WELCOME_MAN :Welcome back
 STR_WELCOME_WOMAN :Welcome back
 STR_REPORT_TITLE :{BIG_FONT}{SILVER}{STRING}, {WHITE}{PRESIDENT_NAME}{SILVER}.{NORMAL_FONT}
-STR_REPORT_ABSENCE :{SILVER}You've been away for {STRING}.
-STR_REPORT_SUMMARY :{SILVER}Your company {WHITE}{COMPANY}{SILVER} and {STRING} has kept working at {GOLD}{STRING}{SILVER} capacity and in {STRING1}{STRING}{STRING1} that would've passed in the game {STRING}{CURRENCY_LONG}{SILVER} in total.
+STR_REPORT_ABSENCE :{SILVER}You've been away for {STRING6}.
+STR_REPORT_SUMMARY :{SILVER}Your company {WHITE}{COMPANY}{SILVER} and {STRING} has kept working at {GOLD}{STRING}{SILVER} capacity and in {STRING2}{STRING2} that would've passed in the game {STRING}{CURRENCY_LONG}{SILVER} in total.
 
 
 STR_REPORT_AVERAGE                    :{SILVER}On average, each one of your {GOLD}{NUM}{SILVER} vehicle{P "" s} was {STRING} {STRING1} {STRING}.
@@ -157,15 +155,15 @@ STR_STATS_GENERAL_INFO_NO_VEHICLES               :{SILVER}Employees in {WHITE}Co
 
 STR_STATS_MINUS_NOTE    :{WHITE}It is not recommended to save game while you're having losses.
 
-STR_STATS_LAST_IDLE_SESSION_SUMMARY                           :{SILVER}Your company was {STRING} {STRING3} {STRING} {STRING1}{SILVER} while you were away last time.
-STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Previous session{}{SILVER}You were out for {STRING}.
+STR_STATS_LAST_IDLE_SESSION_SUMMARY                           :{SILVER}Your company was {STRING} {STRING3} {STRING} {STRING1}{SILVER} while you were away.
+STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Previous session{}{SILVER}You were out for {STRING6}.
 
 STR_TOTAL_POSITIVE :and made
 STR_TOTAL_NEGATIVE :and lost
 
 
-STR_STATS_LAST_IDLE_SESSION_SUMMARY_EARNING :earning 
-STR_STATS_LAST_IDLE_SESSION_SUMMARY_LOSING :losing 
+STR_STATS_LAST_IDLE_SESSION_SUMMARY_EARNING :earning
+STR_STATS_LAST_IDLE_SESSION_SUMMARY_LOSING :losing
 
 
 
@@ -173,7 +171,7 @@ STR_STATS_LAST_IDLE_SESSION_SUMMARY_LOSING :losing
 STR_SECTION_TITLE_VEHICLE_STATS  :{YELLOW}Vehicle statistics{SILVER}
 
 
-STR_VEHICLE_INFO_ROW :{STRING}{STRING1}, {STRING} {STRING3}.
+STR_VEHICLE_INFO_ROW :{STRING1}, {STRING} {STRING3}.
 
 STR_VEHICLE_COUNT_RAIL :{GOLD}{TRAIN} {NUM}{SILVER} rail vehicle{P "" s} running
 STR_VEHICLE_COUNT_ROAD :{GOLD}{BUS} {NUM}{SILVER} road vehicle{P "" s} running
@@ -181,7 +179,7 @@ STR_VEHICLE_COUNT_AIR :{GOLD}{PLANE} {NUM}{SILVER} aircraft{P "" s} running
 STR_VEHICLE_COUNT_WATER :{GOLD}{SHIP} {NUM}{SILVER} ship{P "" s} running
 
 
-STR_VEHICLE_INFO_ZERO_BALANCE                            :{WHITE}breaking even{SILVER}
+STR_VEHICLE_INFO_ZERO_BALANCE                            :{WHITE}breaking even{STRING}{STRING}{STRING}{SILVER}
 
 
 

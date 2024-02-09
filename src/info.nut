@@ -6,19 +6,19 @@ require("version.nut");
 require("constants.nut");
 
 /**
-	@class FMainClass 
+	@class FMainClass
 	@brief IdleTTD game script info class - check out <a href="https://docs.openttd.org/gs-api/classGSInfo" target="_blank">GSInfo</a> superclass docs.
 	@details GSInfo instance for IdleTTD game script
 
-	
+
 */
 class FMainClass extends GSInfo {
 	/**
 		@brief Returns author name
 	 	@returns std::string containing game script author name
 	 */
-	function GetAuthor() { 
-		return "jazziettd"; 
+	function GetAuthor() {
+		return "jazziettd";
 	}
 	/**
 		@brief Returns game script name
@@ -64,7 +64,7 @@ class FMainClass extends GSInfo {
 		@brief Returns game script compatible API version
 		@returns std::string containing game script compatible API version
 	 */
-	function GetAPIVersion()	{ return "13"; }
+	function GetAPIVersion()	{ return "14"; }
 	/**
 		@brief Returns game script home page URL
 		@returns std::string containing game script home page URL
@@ -120,7 +120,7 @@ class FMainClass extends GSInfo {
 			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
 			flags = CONFIG_NONE | CONFIG_BOOLEAN
 		});
-		
+
 		AddSetting({
 			name = "day_interval",
 		 	// description = "Tune script performance by delaying each iteratn by",
@@ -182,7 +182,7 @@ class FMainClass extends GSInfo {
 			}
 		);
 
-		AddLabels("log_level", 
+		AddLabels("log_level",
 			{
 				_0 = "None",
 				_1 = "Error",
@@ -193,7 +193,7 @@ class FMainClass extends GSInfo {
 			}
 		);
 
-		
+
 	}
 }
 /**

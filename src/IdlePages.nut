@@ -1,5 +1,5 @@
 /**
-    @file IdlePages.nut Contains class IdlePages for IdleTTD 
+    @file IdlePages.nut Contains class IdlePages for IdleTTD
 */
 require("constants.nut");
 require("Logger.nut");
@@ -9,10 +9,10 @@ require("IdleUtil.nut");
     @class IdlePages
     @brief Handles story book pages for IdleTTD
     @details Renders and displays IdleTTS screens and keeps track of rendered elements (buttons) for click handling.
-*/ 
+*/
 class IdlePages {
 
-    /** 
+    /**
         @name State variables
         Properties below represent the state of the current IdleTTD session
         @{
@@ -32,7 +32,7 @@ class IdlePages {
         @details Although initially set to <a target="_blank" href="https://docs.openttd.org/gs-api/classGSCompany">GSCompany::COMPANY_INVALID</a>, this value gets populated in constructor so it can be regarded as always present.
 	*/
     PlayerCompanyID = GSCompany.COMPANY_INVALID;
-    
+
     /**
 	    @property IdleStoryPageID
 
@@ -62,8 +62,8 @@ class IdlePages {
     */
 
 
-    
-    /** 
+
+    /**
         @name Screens visible flags
         Keeps track of currently rendered screen
         @{
@@ -105,21 +105,21 @@ class IdlePages {
         @details Set to true when help screen is rendered to idle story page
     */
     HelpScreenVisible = false;
-    
+
     /**
 	    @property SaveWarningScreenVisible
         @brief   Save warning screen visibility flag
         @details Set to true when save warning screen is rendered to idle story page
     */
     SaveWarningScreenVisible = false;
-    
+
     /**
     @}
     */
 
 
 
-    /** 
+    /**
         @name Rendered element IDs
         References to story page elements (like button) ids, used to determine which button triggered a click event or update elements
         @{
@@ -223,7 +223,7 @@ class IdlePages {
     /**
         @brief Class constructor
         @details Initializes class instance. Expects both companyID and storyPageID to be valid.
-        
+
         @param companyID    `[GSCompany::CompanyID]` Player company ID
         @param storyPageID    `[GSStoryPage::StoryPageID]` Idle story book page ID
 
@@ -236,16 +236,16 @@ class IdlePages {
         this.IdleStoryPageID = storyPageID;
         this.SavedWithNegativeBalance = false;
         this.SaveWarningDisplayed = false;
-        
-        
+
+
         this.IdleReportVisible = false;
         this.IntroVisible = false;
         this.MissingHQScreenVisible = false;
         this.StatsScreenVisible = false;
         this.HelpScreenVisible = false;
         this.SaveWarningScreenVisible = false;
-        
-        
+
+
         this.SaveWarningElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.PreviousDurationElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.CloseReportWarningTextElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
@@ -255,20 +255,20 @@ class IdlePages {
         this.IdleReportButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.IntroButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.ShowHelpButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-        
+
         this._NavButtonIntroID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonNoHQID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonStatsID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonIdleReportID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonShowHelpID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonSaveWarningID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-        
-        
+
+
         this._ElementCount = 0;
     }
 
 
-    /** 
+    /**
         @name Base rendering functions
         These functions are base for rendering story book pages
         @{
@@ -280,7 +280,7 @@ class IdlePages {
 
         @param element GSText Text element to add
 
-        @returns int                                        Added element ID 
+        @returns int                                        Added element ID
         @retval -1                                          Failed adding element to the page
         @retval any_other_value                             Id of the element that was added to the page
     */
@@ -296,7 +296,7 @@ class IdlePages {
         @param customText           GSText Optional custom string for the button (default GSText.STR_NAV_BUTTON_STATS)
         @param buttonReference      StoryPageButtonFormatting Reference for customizing button styles
 
-        @returns int            New button ID 
+        @returns int            New button ID
         @retval -1              Failed adding element to the page
         @retval any_other_value Id of the element that was added to the page
     */
@@ -327,14 +327,14 @@ class IdlePages {
         }
         this.ResetScreenVisibleFlags();
         this.ResetElementIDReferences();
-        
+
     }
 
 
     /**
         @brief Resets all visible flags for all screens
 
-        @details Used before setting any of the flags to ensure that only one flag is active 
+        @details Used before setting any of the flags to ensure that only one flag is active
 
         @returns void
     */
@@ -345,7 +345,7 @@ class IdlePages {
         this.StatsScreenVisible = false;
         this.HelpScreenVisible = false;
         this.SaveWarningScreenVisible = false;
-        
+
         // additional flags indicating particular element states
         this.SaveWarningDisplayed = false;
     }
@@ -379,7 +379,7 @@ class IdlePages {
     */
 
 
-    /** 
+    /**
         @name Story book page rendering
         Members that are managing and rendering complete story book page screens
         @{
@@ -389,9 +389,9 @@ class IdlePages {
         @brief Shows idle report screen
 
         @details Clears idle story page, renders idle report elements with [this.RenderIdleReportScreen()](#RenderIdleReportScreen) and shows the page to the player. For details on idle report contents check out #RenderIdleReportScreen function.
-        
+
         @note This will set #IdleReportVisible flag to `true`, causing [MainClass.Start()](#MainClass.Start) `while` loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
-        
+
         @attention Idle report page is \em quasi-persistent. If player closes story book without clicking the button within, script will open idle report story book page again and keep doing it until player clicks the button on the page.
 
         @param idleBalance Idle balance to use
@@ -412,7 +412,7 @@ class IdlePages {
                 return this.ShowStatsScreen(vehicleSummary, allVehicleStats, idleBalance, inactiveSeconds, intLastYearBalance);
             }
             this.RenderIdleReportScreen(idleBalance, inactiveSeconds, vehicleSummary, allVehicleStats);
-            this._RenderDebugNavButtons();        
+            this._RenderDebugNavButtons();
             return IdleUtil.DisplayPage(this.IdleStoryPageID);
         }
         return false;
@@ -442,10 +442,10 @@ class IdlePages {
 
     /**
         @brief Shows intro screen
-        @details Clears story book page, sets new title, adds intro screen elements via [this.RenderIntroScreen()](#RenderIntroScreen) to it and then opens the story book window. 
+        @details Clears story book page, sets new title, adds intro screen elements via [this.RenderIntroScreen()](#RenderIntroScreen) to it and then opens the story book window.
 
         @note This will set #IntroVisible flag to `true`, causing [MainClass.Start()](#MainClass.Start) `while` loop to run faster than normal.
-        
+
         @returns bool
         @retval true    Story book page displayed successfully
         @retval false   Failed displaying story book page
@@ -456,15 +456,15 @@ class IdlePages {
         return IdleUtil.DisplayPage(this.IdleStoryPageID);
     }
 
-  
+
 
 
      /**
         @brief Shows help screen
-        @details Clears story book page, sets new title, adds help screen elements via [this.RenderHelpScreen()](#RenderHelpScreen) to it and then opens the story book window. 
+        @details Clears story book page, sets new title, adds help screen elements via [this.RenderHelpScreen()](#RenderHelpScreen) to it and then opens the story book window.
 
         @note This will set #HelpScreenVisible flag to `true`, causing [MainClass.Start()](#MainClass.Start) `while` loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
-        
+
         @returns bool
         @retval true    Story book page displayed successfully
         @retval false   Failed displaying story book page
@@ -498,7 +498,7 @@ class IdlePages {
         @details When player saves the game with negative balance show a warning notifying them of idle losses using elements via [this.RenderSaveWarningScreen()](#RenderSaveWarningScreen) is displayed.
 
         @note This will set #SaveWarningScreenVisible flag to `true`, causing [MainClass.Start()](#MainClass.Start) `while` loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
-        
+
         @returns bool
         @retval true    Story book page displayed successfully
         @retval false   Failed displaying story book page
@@ -514,7 +514,7 @@ class IdlePages {
         @details Adds idle report elements to story book page without showing the page itself so that [this.ShowIdleReportScreen()](#ShowIdleReportScreen) can display it.
 
         @note This will set #IdleReportVisible flag to `true`, causing [MainClass.Start()](#MainClass.Start) `while` loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
-        
+
         @attention Idle report page is \em quasi-persistent. If player closes story book without clicking the button within, script will open idle report story book page again and keep doing it until player clicks the button on the page.
 
         @param idleBalance Idle balance to use
@@ -534,11 +534,11 @@ class IdlePages {
         this.SaveWarningElementID = this.AddPageTextElement(GSText(GSText.STR_EMPTY));
         this.AddPageTextElement(GSText(GSText.STR_REPORT_ABSENCE, this.GetDurationText(inactiveSeconds)));
         this.AddPageTextElement(this.GetIdleReportTextElement(idleBalance, inactiveSeconds));
-       
+
         if (vehicleSummary != null && vehicleSummary.count > 1) {
             this.AddPageTextElement(this.GetVehicleAverageTextElement(idleBalance, inactiveSeconds, vehicleSummary));
         }
-        
+
         this.CloseReportWarningTextElementID = this.AddPageTextElement(GSText(GSText.STR_EMPTY));
         this.RenderIdleReportButton(idleBalance);
 
@@ -576,13 +576,13 @@ class IdlePages {
                     willEarn = GSText(GSText.STR_STATS_GENERAL_INFO_WILL_BE_LOSING);
                 }
                 local amountInTime = this.GetBalancePerTimeUnit(prognosedIdleBalance, secondsInGameYear, 2);
-                
+
                 local minusMessage = GSText(GSText.STR_EMPTY);
                 if (prognosedIdleBalance < 0) {
                     minusMessage = GSText(GSText.STR_STATS_MINUS_NOTE);
                 }
                 // this.AddPageTextElement(minusMessage);
-                
+
                 this.AddPageTextElement(GSText(GSText.STR_STATS_GENERAL_INFO, GSText(GSText.STR_SCRIPT_NAME_GOLD), totalVehicles, idleMultiplierLabel, willEarn, amountInTime, minusMessage));
 
                 if (allVehicleStats != null) {
@@ -602,11 +602,11 @@ class IdlePages {
             this.RenderCloseStoryBookButton();
             this.RenderHelpButton();
             this.RenderRefreshButton();
-            
+
             this._RenderDebugNavButtons();
             this.StatsScreenVisible = true;
         }
-        
+
     }
 
     /**
@@ -623,7 +623,7 @@ class IdlePages {
         local ButtonReference = GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_ORANGE, GSStoryPage.SPBF_NONE);
         this.IntroButtonID = this.AddNavButton(GSText(GSText.STR_BUTTON_TEXT_START), ButtonReference);
         this.RenderHelpButton();
-        
+
         this.AddPageTextElement(GSText(GSText.STR_INTRO_NOTE));
 
         this._RenderDebugNavButtons();
@@ -644,10 +644,10 @@ class IdlePages {
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_TEXT, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_NOTES, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_SETTINGS, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
-        
+
         this.RenderCloseStoryBookButton();
         this._RenderDebugNavButtons();
-        
+
         this.HelpScreenVisible = true
     }
 
@@ -663,7 +663,7 @@ class IdlePages {
     function RenderMissingHQScreen() {
         GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_NOHQ));
         this.AddPageTextElement(GSText(GSText.STR_MISSING_HQ, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
-        
+
         this.RenderRefreshButton(GSText(GSText.STR_BUTTON_TEXT_FIND_HQ));
         this.RenderCloseStoryBookButton();
         this.RenderHelpButton();
@@ -693,7 +693,7 @@ class IdlePages {
 
 
 
-    /** 
+    /**
         @name Partial rendering functions
         These functions render elements of relatively complex individual elements as partials for screens.
         @{
@@ -702,7 +702,7 @@ class IdlePages {
 
 
     /**
-        @brief Renders first paragraph of idle report 
+        @brief Renders first paragraph of idle report
         @details Calculates duration and balance and displays that information as a text paragraph on idle report screen using `GSText.STR_REPORT_SUMMARY` from lang files.
 
         @param idleBalance      Idle balance (amount of money player got or lost)
@@ -718,17 +718,19 @@ class IdlePages {
 
         local idleReportTextElement = GSText(GSText.STR_REPORT_SUMMARY);
 
-        local durationLabelYears = GSText(GSText.STR_EMPTY, 0);
-        local durationLabelYearDelimiter = GSText(GSText.STR_EMPTY);
-        local durationLabelDays = GSText(GSText.STR_EMPTY, 0);
+        local durationLabelYears = GSText(GSText.STR_EMPTY, 0, "");
+        local durationLabelDays = GSText(GSText.STR_EMPTY, 0, "");
         if (idleForYears > 0) {
-            durationLabelYears = GSText(GSText.STR_NUMBER_OF_YEARS, idleForYears);
+            durationLabelYears = GSText(GSText.STR_DURATION_TEXT_YEARS);
+            durationLabelYears.AddParam(idleForYears);
+            if (idleForDays > 0) {
+                durationLabelYears.AddParam(GSText(GSText.STR_WORD_AND_SPACE));
+            } else {
+                durationLabelYears.AddParam(GSText(GSText.STR_EMPTY));
+            }
         }
         if (idleForDays > 0) {
-            if (idleForYears > 0) {
-                durationLabelYearDelimiter = GSText(GSText.STR_WORD_AND_SPACE);
-            }
-            durationLabelDays = GSText(GSText.STR_NUMBER_OF_DAYS, idleForDays);
+            durationLabelDays = GSText(GSText.STR_DURATION_TEXT_DAYS, idleForDays, GSText(GSText.STR_EMPTY));
         }
 
         local balanceText1 = GSText(GSText.STR_IDLE_REPORT_EARNED, idleBalance);
@@ -744,7 +746,6 @@ class IdlePages {
         idleReportTextElement.AddParam(GSText(GSText.STR_SCRIPT_NAME_GOLD));
         idleReportTextElement.AddParam(idleMultiplierLabel);
         idleReportTextElement.AddParam(durationLabelYears);
-        idleReportTextElement.AddParam(durationLabelYearDelimiter);
         idleReportTextElement.AddParam(durationLabelDays);
         idleReportTextElement.AddParam(balanceText);
         idleReportTextElement.AddParam(idleBalance);
@@ -762,7 +763,7 @@ class IdlePages {
         @returns void
     */
     function RenderIdleReportButton(idleBalance = 0) {
-        local ButtonReference = null; 
+        local ButtonReference = null;
         local buttonText = GSText(GSText.STR_BUTTON_APPLY_IDLE_BALANCE);
         if (idleBalance < 0) {
             ButtonReference = GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_RED, GSStoryPage.SPBF_NONE);
@@ -823,7 +824,7 @@ class IdlePages {
 
     @param vehicleTypeStats SQTable Table with vehicle statistics for given type
 
-    @returns int            
+    @returns int
     @retval -1                  Error adding element to the page (GSStoryPage.STORY_PAGE_ELEMENT_INVALID)!
     @retval any_other_value     ID of new, successfully rendered, element.
     */
@@ -846,15 +847,15 @@ class IdlePages {
                 countText = GSText(GSText.STR_VEHICLE_COUNT_AIR, count);
             }
             vehicleStatsRow.AddParam(countText);
-            
+
             local secondsInGameYear = (365 * ::SecondsPerGameDay).tointeger();
             local perSecond = earned / secondsInGameYear;
-            
+
             local perDay = abs(((earned.tofloat() * ::SecondsInPeriod.DAY.tofloat()) / secondsInGameYear.tofloat()).tointeger());
-            
+
             if (perDay < 1) {
                 vehicleStatsRow.AddParam(GSText(GSText.STR_EMPTY));
-                vehicleStatsRow.AddParam(GSText(GSText.STR_VEHICLE_INFO_ZERO_BALANCE, 0, ""));
+                vehicleStatsRow.AddParam(GSText(GSText.STR_VEHICLE_INFO_ZERO_BALANCE, GSText(GSText.STR_EMPTY), GSText(GSText.STR_EMPTY), GSText(GSText.STR_EMPTY)));
             } else {
                 if (earned < 0) {
                     vehicleStatsRow.AddParam(GSText(GSText.STR_VEHICLE_INFO_LOSING_BALANCE));
@@ -873,7 +874,7 @@ class IdlePages {
     /**
     @brief Renders idle summary text elements
     @details Adds summary text elements that show total number of vehicles and their approximate earnings/losses per time unit (day, h, m, s)
-    
+
     @param totalAmount      Last session idle balance
     @param totalSeconds     TIme since last save game
 
@@ -881,7 +882,7 @@ class IdlePages {
     */
     function RenderLastIdleSummaryElements(totalAmount, totalSeconds) {
         if (totalSeconds > 0 && totalAmount != 0) {
-            local idleSummaryText = GSText(GSText.STR_STATS_LAST_IDLE_SESSION_SUMMARY); 
+            local idleSummaryText = GSText(GSText.STR_STATS_LAST_IDLE_SESSION_SUMMARY);
             local earnedTimeText = GSText(GSText.STR_EMPTY);
             local totalText = GSText(GSText.STR_TOTAL_POSITIVE);
             local amountText = GSText(GSText.STR_CURRENCY_POSITIVE, totalAmount);
@@ -994,7 +995,7 @@ class IdlePages {
         @brief Returns average per vehicle text
         @details Returns text with average balance per one vehicle in last eyear
 
-    
+
         @param totalAmount Total cash
         @param totalSeconds Total seconds
         @param vehicleSummary Summary of all vehicles
@@ -1042,7 +1043,7 @@ class IdlePages {
         }
     }
 
-   
+
 
     /**
         @brief Returns formatted duration text element
@@ -1062,66 +1063,85 @@ class IdlePages {
         remaining = remaining % ::SecondsInPeriod.MINUTE;
         local seconds = remaining;
 
-        local titleText = GSText(GSText.STR_DURATION_TEXT);
+        local titleText = GSText(GSText.STR_DURATION_HUMAN);
+
+        local daysParam = null;
+        local hoursParam = null;
+        local minutesParam = null;
+        local secondsParam = null;
+
+        local maxCount = 2;
+        local middleAdded = false;
 
         if (days > 0) {
-            titleText.AddParam(GSText(GSText.STR_NUMBER_OF_DAYS, days));
+            daysParam = GSText(GSText.STR_DURATION_TEXT_DAYS);
+            daysParam.AddParam(days);
+
             if (hours + minutes + seconds > 0) {
-                // append delimiter 
-                if (minutes + seconds == 0) {
-                    // hours are last, append "and" here as delimiter
-                    titleText.AddParam(GSText(GSText.STR_WORD_AND_SPACE));
-                } else {
-                    // either minutes or seconds follow, append comma here as delimiter
-                    titleText.AddParam(GSText(GSText.STR_COMMA_SPACE));
-                }
+                middleAdded = true;
+                daysParam.AddParam(GSText(GSText.STR_WORD_AND_SPACE));
             } else {
                 // days only, nothing to append as delimiter
-                titleText.AddParam(GSText(GSText.STR_EMPTY));
+                daysParam.AddParam(GSText(GSText.STR_EMPTY));
             }
-        } else {
-            // no days at all
-            titleText.AddParam(GSText(GSText.STR_EMPTY, 0));
-            // no delimiter to append
-            titleText.AddParam(GSText(GSText.STR_EMPTY));
         }
         if (hours > 0) {
-            titleText.AddParam(GSText(GSText.STR_NUMBER_OF_HOURS, hours));
+            hoursParam = GSText(GSText.STR_DURATION_TEXT_HOURS);
+            hoursParam.AddParam(hours);
             if (minutes + seconds > 0) {
-                // append delimiter 
-                if (seconds == 0) {
-                    // minutes are last, append "and" here as delimiter
-                    titleText.AddParam(GSText(GSText.STR_WORD_AND_SPACE));
+                if (!middleAdded) {
+                    hoursParam.AddParam(GSText(GSText.STR_WORD_AND_SPACE));
+                    middleAdded = true;
                 } else {
-                    // seconds follow, append comma here as delimiter
-                    titleText.AddParam(GSText(GSText.STR_COMMA_SPACE));
+                    hoursParam.AddParam(GSText(GSText.STR_EMPTY));
                 }
             } else {
                 // hours are last, nothing left to add
-                titleText.AddParam(GSText(GSText.STR_EMPTY));
+                hoursParam.AddParam(GSText(GSText.STR_EMPTY));
             }
-        } else {
-            // no hours at all
-            titleText.AddParam(GSText(GSText.STR_EMPTY, 0));
-            // no delimiter
-            titleText.AddParam(GSText(GSText.STR_EMPTY));
         }
 
         if (minutes > 0) {
-            titleText.AddParam(GSText(GSText.STR_NUMBER_OF_MINUTES, minutes));
+            minutesParam = GSText(GSText.STR_DURATION_TEXT_MINUTES);
+            minutesParam.AddParam(minutes);
             if (seconds > 0) {
-                titleText.AddParam(GSText(GSText.STR_WORD_AND_SPACE));
+                if (!middleAdded) {
+                    minutesParam.AddParam(GSText(GSText.STR_WORD_AND_SPACE));
+                    middleAdded = true;
+                } else {
+                    minutesParam.AddParam(GSText(GSText.STR_EMPTY));
+                }
             } else {
-                titleText.AddParam(GSText(GSText.STR_EMPTY));
+                minutesParam.AddParam(GSText(GSText.STR_EMPTY));
             }
-        } else {
-            titleText.AddParam(GSText(GSText.STR_EMPTY, 0));
-            titleText.AddParam(GSText(GSText.STR_EMPTY));
         }
         if (seconds > 0) {
-            titleText.AddParam(GSText(GSText.STR_NUMBER_OF_SECONDS, seconds));
-        } else {
-            titleText.AddParam(GSText(GSText.STR_EMPTY, 0));
+            secondsParam = GSText(GSText.STR_DURATION_TEXT_SECONDS);
+            secondsParam.AddParam(seconds);
+            secondsParam.AddParam(GSText(GSText.STR_EMPTY));
+        }
+        local count = 0;
+
+        if (daysParam != null) {
+            count++;
+            titleText.AddParam(daysParam);
+        }
+        if (hoursParam != null && count < maxCount) {
+            count++;
+            titleText.AddParam(hoursParam);
+        }
+        if (minutesParam != null && count < maxCount) {
+            count++;
+            titleText.AddParam(minutesParam);
+        }
+        if (secondsParam != null && count < maxCount) {
+            count++;
+            titleText.AddParam(secondsParam);
+        }
+        if (count < maxCount) {
+            for (local fill = count; fill < maxCount; fill++) {
+                titleText.AddParam(GSText(GSText.STR_EMPTY, 0, ""));
+            }
         }
         return titleText
 
@@ -1175,14 +1195,14 @@ class IdlePages {
     @returns int Id of balance text element
     */
     function GetBalancePerTimeUnit(totalAmount, totalSeconds, forceTimeUnit = 0, intMinTreshold = 1) {
-        local balanceInTimeUnitText = GSText(GSText.STR_EMPTY); 
+        local balanceInTimeUnitText = GSText(GSText.STR_EMPTY);
         local amount = 0;
         local newAmount = 0;
         local timeUnitString = GSText(GSText.STR_EMPTY);
         local unitPicked = 0;
 
         if (totalSeconds > 0) {
-            balanceInTimeUnitText = GSText(GSText.STR_EARN_IN_TIME);   
+            balanceInTimeUnitText = GSText(GSText.STR_EARN_IN_TIME);
             local perSecond = totalAmount.tofloat() / totalSeconds.tofloat();
             newAmount = perSecond;
             timeUnitString = GSText(GSText.STR_PER_SECOND);
@@ -1242,7 +1262,7 @@ class IdlePages {
     */
 
 
-    /** 
+    /**
         @name Utility / calculation functions
         Commonly used utility and calculation functions
         @{
@@ -1252,7 +1272,7 @@ class IdlePages {
     /**
         @brief Returns amount of cash calculated fer given period
         @details Calculates amount for given period based on yearly total amount
-        
+
         @param totalAmount  Yearly amount (in-game year)
         @param totalSeconds Number of real-time seconds in the period
         @param ratio        Ratio (seconds in period) to calculate
