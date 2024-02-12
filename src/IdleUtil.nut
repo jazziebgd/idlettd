@@ -1,5 +1,5 @@
 /**
- * @file IdleUtil.nut Contains class IdleUtil with IdleTTD static helper methods
+    @file IdleUtil.nut Contains class IdleUtil with IdleTTD static helper methods
 */
 
 /**
@@ -7,17 +7,17 @@
     @details Miscellaneous, utility and convenience static functions from this class are commonly used in IdleTTD.
 */ 
 class IdleUtil {
-
-
     /** 
         @name Static predefined members
         Values for which constants or enums won't do
 
         @{
     */
+
     /**
         @property AllVehicleTypes
         @hideinitializer
+        @static
 
         @brief   All vehicle types in OpenTTD
         @details An array of all vehicle type IDs in OpenTTD, convenient for iteration.
@@ -44,12 +44,12 @@ class IdleUtil {
     ];
  
     /**
-    @}
+        @}
     */
 
     /** 
-        @name Story book related funtions
-        Functions that manage and work with story book pages
+        @name General purpose story book funtions
+        Functions that handle story book pages on 'global' level (showing / closing etc.)
 
         @anchor util_storybook_functions
         @{
@@ -57,11 +57,12 @@ class IdleUtil {
 
     /**
         @brief Displays a story book page
-        @details Opens story book and displays story page with given ID, provided that the page is valid
+        @details Opens story book window and displays story page with given ID, provided that the page is valid
+        @static
         
-        @param storyPageID GSStoryPage::StoryPageID Idle story book page ID
+        @param storyPageID Idle story book page ID
         
-        @pre_param_story_page_valid{storyPageID}
+        \pre_param_story_page_valid{storyPageID}
         
         @returns bool
         @retval true    Story book page displayed
@@ -75,6 +76,7 @@ class IdleUtil {
     };
 
     /**
+        @static
         @brief Closes story book window
         @details Closes story book window (if there is one that is opened) for the company whose ID is passed as an argument
         
@@ -90,6 +92,7 @@ class IdleUtil {
 
 
     /**
+        @static
         @brief Sets idle story page date
         @details Every story page has a date in top left and this is helper function to set them. 
         
@@ -98,7 +101,7 @@ class IdleUtil {
         @param storyPageID    `[GSStoryPage::StoryPageID]` Idle story book page ID
         @param pageDate GSDate|null Optional instance of GSDate, defaults to current date if `null` is passed or argument is omitted.
 
-        @pre_param_story_page_valid{storyPageID}
+        \pre_param_story_page_valid{storyPageID}
 
         @return bool
         @retval true    Date successfully updated
@@ -131,6 +134,7 @@ class IdleUtil {
     */
 
     /**
+        @static
         @brief      Gives a list of all vehicles of given type
         @details    List of all valid and running vehicles belonging to the player (even those currently stopped at stations) filtered by optional vehicle type.
         
@@ -168,6 +172,7 @@ class IdleUtil {
 
 
     /**
+        @static
         @brief Renders vehicle type statistics row on story book page
         @details Creates, populates and adds story book page element for given vehicle type
 
@@ -208,6 +213,7 @@ class IdleUtil {
 
 
     /**
+        @static
         @brief Returns statistics for all vehicles
         @details Filters all running vehicles of given type for the company and returns data about them
 
@@ -244,6 +250,7 @@ class IdleUtil {
     */
 
     /** 
+        @static
         @brief Get company HQ tile index
         @details Returns tile index of company HQ if there is one
 
@@ -262,6 +269,7 @@ class IdleUtil {
 
 
     /**
+        @static
         @brief Check if company HQ is built.
         @details Checks if there is HQ __and__ if it is valid before returning the result.
         
@@ -280,6 +288,7 @@ class IdleUtil {
     }
 
     /**
+        @static
         @brief Returns label for event types
         @details Used for debugging
         
@@ -287,7 +296,7 @@ class IdleUtil {
         
         @return string
     */
-    function GetGSEventTypeName(intEventType) {
+    static function GetGSEventTypeName(intEventType) {
         local result = "";
         if (intEventType == GSEvent.ET_INVALID) {
             result = "ET_INVALID";
@@ -391,54 +400,14 @@ class IdleUtil {
         return result;
     }
 
-
     /**
-        @brief Returns amount of game time for input
-        @details Calculates in-game duration for given real-time seconds and returns a table with parsed data
-
-        @param totalSeconds integer  Total number of seconds that idle balance took to accumulate
-
-        @returns SQTable Table with durations
-    */
-    function GetInGameDurationFloatTable(totalSeconds) {
-        
-        local idleDays = ((totalSeconds * 33.33) / 74).tointeger();
-        local idleForYears = (idleDays / 365).tointeger();
-        local idleForDays = idleDays % 365;
-
-        local remaining = totalSeconds.tofloat();
-        local days = remaining / ::SecondsInPeriod.DAY;
-        remaining = remaining % ::SecondsInPeriod.DAY;
-        local hours = remaining / ::SecondsInPeriod.HOUR;
-        remaining = remaining % ::SecondsInPeriod.HOUR;
-        local minutes = remaining / ::SecondsInPeriod.MINUTE;
-        remaining = remaining % ::SecondsInPeriod.MINUTE;
-        local seconds = remaining;
-
-        local d = floor(days.tofloat()).tointeger();
-        local h = floor(hours.tofloat()).tointeger();
-        local m = floor(minutes.tofloat()).tointeger();
-        local s = floor(seconds.tofloat()).tointeger();
-
-        local durationTable = {
-            d = d,
-            h = h,
-            m = m,
-            s = s,
-            Values = [d, h, m, s],
-            FloatValues = [days, hours, minutes, seconds],
-            Input = totalSeconds,
-        };
-        return durationTable
-    }
-
-    /**
+        @static
         @brief Returns idle multiplier
         @details Returns float for applying to idle balance
 
         @returns float
     */
-    function GetIdleMultiplier() {
+    static function GetIdleMultiplier() {
         local setting = GSController.GetSetting("idle_multiplier").tofloat();
         local value = setting * 0.001;
         return value;
@@ -447,14 +416,18 @@ class IdleUtil {
 
 
     /**
+        @static
         @brief Returns true if current date corresponds to one of autosave dates.
         @details Depending on autosave setting, some dates are eligible as 'autosave' dates. This function returns true if current date corresponds to one of autosave dates based on game settings
+
+        @param date In-game date to check
 
         @returns bool
         @retval true    Current date is an autosave date
         @retval false   Current date is not an autosave date __or__ autosave is disabled altogether
+        @deprecated This method of autosave detection won't work properly starting with OpenTTD 14. In verision 14 autosave option has been changed to real-time minutes, it is no longer tied to in-game months. This function will be removed with the next script version.
     */
-    function IsAutosaveDate(date) {
+    static function IsAutosaveDate(date) {
         local asSetting = GSGameSettings.GetValue("gui.autosave");
         local isAuto = false;
         if (asSetting != 0) {
@@ -477,9 +450,6 @@ class IdleUtil {
                 } else if (asSetting == 3) {
                     isAuto = month == 7 || month == 1;
                 }
-            }
-            if (isAuto) {
-                GSLog.Warning("auto  " + day + "." + month);
             }
         }
         return isAuto;

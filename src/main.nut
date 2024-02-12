@@ -131,7 +131,7 @@ class MainClass extends GSController {
         this.IdleStoryInstance = null;
         this.SavedScriptVersion = 0;
         
-        this.SavedDate = 0;
+        this.SavedDate = null;
     }
     /// \publicsection
 
@@ -156,6 +156,7 @@ class MainClass extends GSController {
         @retval true  Script loop should be processed normally
     */
     function HandleEvents() {
+        local result = true;
         while (GSEventController.IsEventWaiting()) {
             local ev = GSEventController.GetNextEvent();
             local ev_type = ev.GetEventType();
@@ -165,18 +166,18 @@ class MainClass extends GSController {
                 if (GSStoryPage.IsValidStoryPage(pageId) && pageId == this.IdleStoryInstance.GetPageID()) {
                     local buttonId = event.GetElementID();
                     this.IdleStoryInstance.HandleButtonClick(buttonId, event);
-                    return false;
+                    result = false;
                 }
             } else if (ev_type == GSEvent.ET_COMPANY_NEW) {
                 local company_event = GSEventCompanyNew.Convert(ev);
                 local company_id = company_event.GetCompanyID();
                 if (this.PlayerCompanyID == GSCompany.COMPANY_INVALID && company_id != GSCompany.COMPANY_INVALID) {
                     this.PlayerCompanyID = company_id;
-                    return false;
+                    result = false;
                 }
             }
         }
-        return true;
+        return result;
     }
 
     /**
@@ -404,8 +405,8 @@ class MainClass extends GSController {
         @details Called just before #Start, used to restore saved IdleTTD data.
         @note Values for `PlayerCompanyID` and `IdleStoryPageId` are always present, other two can be uninitialized if game has been saved within first couple of years after start.
 
-        @param version 	integer 		Script version
-        @param tbl 		SquirrelTable 	Stored data
+        @param version 	integer 		    Script version
+        @param tbl 		ScriptSavedData 	Stored data
 
         @returns void
     */

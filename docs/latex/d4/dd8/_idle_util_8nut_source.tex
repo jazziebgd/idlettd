@@ -1,0 +1,300 @@
+\doxysection{Idle\+Util.\+nut}
+\hypertarget{_idle_util_8nut_source}{}\label{_idle_util_8nut_source}\index{IdleUtil.nut@{IdleUtil.nut}}
+\mbox{\hyperlink{_idle_util_8nut}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00009}\mbox{\hyperlink{class_idle_util}{00009}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_idle_util}{IdleUtil}}\ \{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00040}\mbox{\hyperlink{class_idle_util_a6afff2f145cc14defc320e120b82b022}{00040}}\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_idle_util_a6afff2f145cc14defc320e120b82b022}{AllVehicleTypes}}\ =\ [}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00041}00041\ \ \ \ \ \ \ \ \ GSVehicle.VT\_RAIL,}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00042}00042\ \ \ \ \ \ \ \ \ GSVehicle.VT\_ROAD,}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00043}00043\ \ \ \ \ \ \ \ \ GSVehicle.VT\_WATER,}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00044}00044\ \ \ \ \ \ \ \ \ GSVehicle.VT\_AIR,}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00045}00045\ \ \ \ \ ];}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00046}00046\ \ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00071}\mbox{\hyperlink{class_idle_util_aaa55835df833a36c9366343a7da95ea1}{00071}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_aaa55835df833a36c9366343a7da95ea1}{DisplayPage}}(\textcolor{keywordtype}{int}\ storyPageID)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GSStoryPage.IsValidStoryPage(storyPageID))\{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GSStoryPage.Show(storyPageID);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00074}00074\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00076}00076\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00086}\mbox{\hyperlink{class_idle_util_a782a786488f72c3b740ae6447e95a361}{00086}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_a782a786488f72c3b740ae6447e95a361}{CloseStoryBookWindow}}(\textcolor{keywordtype}{int}\ companyID)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GSWindow.IsOpen(GSWindow.WC\_STORY\_BOOK,\ companyID))\{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ GSWindow.Close(GSWindow.WC\_STORY\_BOOK,\ companyID);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00089}00089\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00090}00090\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00108}\mbox{\hyperlink{class_idle_util_a219a1c7cb7e17f85c09a7ab79790fd02}{00108}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_a219a1c7cb7e17f85c09a7ab79790fd02}{SetPageDate}}(\textcolor{keywordtype}{int}\ storyPageID,\ GSDate\ pageDate\ =\ null)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GSStoryPage.IsValidStoryPage(storyPageID))\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pageDate\ ==\ null)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pageDate\ =\ GSDate.GetCurrentDate();}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GSDate.IsValidDate(pageDate))\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GSStoryPage.SetDate(storyPageID,\ pageDate);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00116}00116\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00118}00118\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00148}\mbox{\hyperlink{class_idle_util_acf5f6becc1b441f5d04557f5bfb5265a}{00148}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_acf5f6becc1b441f5d04557f5bfb5265a}{GetRunningCompanyVehicles}}(\textcolor{keywordtype}{int}\ companyID,\ \textcolor{keywordtype}{int}\ vehicleType\ =\ null,\ \textcolor{keywordtype}{bool}\ boolOnlyRunning\ =\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00149}00149\ \ \ \ \ \ \ \ \ local\ items\ =\ GSList();}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00150}00150\ \ \ \ \ \ \ \ \ local\ vehicles\ =\ GSVehicleList();}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00151}00151\ \ \ \ \ \ \ \ \ local\ key\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00152}00152\ \ \ \ \ \ \ \ \ local\ resolvedID\ =\ GSCompany.ResolveCompanyID(companyID);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (resolvedID\ ==\ companyID)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (local\ vhc\ =\ vehicles.Begin();\ !vehicles.IsEnd();\ vhc\ =\ vehicles.Next())\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GSVehicle.IsValidVehicle(vhc)\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ (vehicleType\ ==\ null\ ||\ GSVehicle.GetVehicleType(vhc)\ ==\ vehicleType)\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ GSVehicle.GetOwner(vhc)\ ==\ resolvedID\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ (!boolOnlyRunning\ ||\ (GSVehicle.GetState(vhc)\ ==\ GSVehicle.VS\_RUNNING\ ||\ GSVehicle.GetState(vhc)\ ==\ GSVehicle.VS\_AT\_STATION))}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ key++;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items.AddItem(key,\ vhc);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00165}00165\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ items;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00167}00167\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00184}\mbox{\hyperlink{class_idle_util_aa7e0330a58e24d75d00627b05859d70d}{00184}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_aa7e0330a58e24d75d00627b05859d70d}{GetVehicleTypeStatsData}}(\textcolor{keywordtype}{int}\ companyID,\ \textcolor{keywordtype}{int}\ vehicleType)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00185}00185\ \ \ \ \ \ \ \ \ local\ multiplier\ =\ \mbox{\hyperlink{class_idle_util}{IdleUtil}}.\mbox{\hyperlink{class_idle_util_a7bc24330ac7d466e553d45a67a662f7f}{GetIdleMultiplier}}();}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00186}00186\ \ \ \ \ \ \ \ \ local\ vehicles\ =\ \mbox{\hyperlink{class_idle_util}{IdleUtil}}.\mbox{\hyperlink{class_idle_util_acf5f6becc1b441f5d04557f5bfb5265a}{GetRunningCompanyVehicles}}(companyID,\ vehicleType);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00187}00187\ \ \ \ \ \ \ \ \ local\ vtData\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ count\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ balance\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ idleBalance\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ vehicleType,}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00192}00192\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!vehicles.IsEmpty())\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ local\ vehicleCount\ =\ vehicles.Count();}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ local\ vehiclesEarnedLastYear\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (local\ vehicleIndex\ =\ vehicles.Begin();\ !vehicles.IsEnd();\ vehicleIndex\ =\ vehicles.Next())\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ local\ vehicle\ =\ vehicles.GetValue(vehicleIndex);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ local\ earnedLastYear\ =\ GSVehicle.GetProfitLastYear(vehicle);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vehiclesEarnedLastYear\ +=\ earnedLastYear}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ vtData.count\ =\ vehicleCount;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ vtData.balance\ =\ vehiclesEarnedLastYear;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ vtData.idleBalance\ =\ (multiplier\ *\ vehiclesEarnedLastYear);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00205}00205\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ vtData;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00207}00207\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00222}\mbox{\hyperlink{class_idle_util_a8e284207d10f0804a354b0a2d06b159a}{00222}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_a8e284207d10f0804a354b0a2d06b159a}{GetAllVehicleStatsData}}(\textcolor{keywordtype}{int}\ companyID)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00223}00223\ \ \ \ \ \ \ \ \ local\ results\ =\ [];}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (typeIndex,\ vehicleType\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_idle_util}{IdleUtil}}.\mbox{\hyperlink{class_idle_util_a6afff2f145cc14defc320e120b82b022}{AllVehicleTypes}})\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ results.push(\mbox{\hyperlink{class_idle_util}{IdleUtil}}.\mbox{\hyperlink{class_idle_util_aa7e0330a58e24d75d00627b05859d70d}{GetVehicleTypeStatsData}}(companyID,\ vehicleType));}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00226}00226\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ results;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00228}00228\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00260}\mbox{\hyperlink{class_idle_util_a6a19d5cc5857414f7f0b3bbf39c77542}{00260}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_a6a19d5cc5857414f7f0b3bbf39c77542}{GetHQTileIndex}}(\textcolor{keywordtype}{int}\ companyID)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GSCompany.GetCompanyHQ(companyID);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00262}00262\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00275}\mbox{\hyperlink{class_idle_util_a46334d3a8cc56a37c527b4af4702c304}{00275}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_a46334d3a8cc56a37c527b4af4702c304}{HasHQ}}(\textcolor{keywordtype}{int}\ companyID)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (GSController.GetSetting(\textcolor{stringliteral}{"{}ignore\_hq"{}}))\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00278}00278\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00279}00279\ \ \ \ \ \ \ \ \ local\ hasHQ\ =\ \mbox{\hyperlink{class_idle_util}{IdleUtil}}.\mbox{\hyperlink{class_idle_util_a6a19d5cc5857414f7f0b3bbf39c77542}{GetHQTileIndex}}(companyID)\ !=\ GSMap.TILE\_INVALID;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hasHQ;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00281}00281\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00291}\mbox{\hyperlink{class_idle_util_ab70a6d20696abba0b4a649b85f3764d3}{00291}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_ab70a6d20696abba0b4a649b85f3764d3}{GetGSEventTypeName}}(\textcolor{keywordtype}{int}\ intEventType)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00292}00292\ \ \ \ \ \ \ \ \ local\ result\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00293}00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_INVALID)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_INVALID"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00295}00295\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_TEST)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_TEST"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00298}00298\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00299}00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_SUBSIDY\_OFFER)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_SUBSIDY\_OFFER"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00301}00301\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00302}00302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_SUBSIDY\_OFFER\_EXPIRED)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_SUBSIDY\_OFFER\_EXPIRED"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00304}00304\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00305}00305\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_SUBSIDY\_AWARDED)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_SUBSIDY\_AWARDED"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00307}00307\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_SUBSIDY\_EXPIRED)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_SUBSIDY\_EXPIRED"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00310}00310\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00311}00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_ENGINE\_PREVIEW)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_ENGINE\_PREVIEW"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00313}00313\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00314}00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_COMPANY\_NEW)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_COMPANY\_NEW"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00316}00316\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00317}00317\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_COMPANY\_IN\_TROUBLE)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_COMPANY\_IN\_TROUBLE"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00319}00319\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_COMPANY\_ASK\_MERGER)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_COMPANY\_ASK\_MERGER"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00322}00322\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_COMPANY\_MERGER)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_COMPANY\_MERGER"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00325}00325\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_COMPANY\_BANKRUPT)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_COMPANY\_BANKRUPT"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00328}00328\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00329}00329\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_VEHICLE\_CRASHED)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_VEHICLE\_CRASHED"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00331}00331\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00332}00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_VEHICLE\_LOST)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_VEHICLE\_LOST"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00334}00334\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_VEHICLE\_WAITING\_IN\_DEPOT)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_VEHICLE\_WAITING\_IN\_DEPOT"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00337}00337\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_VEHICLE\_UNPROFITABLE)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_VEHICLE\_UNPROFITABLE"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00340}00340\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_INDUSTRY\_OPEN)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_INDUSTRY\_OPEN"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00343}00343\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00344}00344\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_INDUSTRY\_CLOSE)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_INDUSTRY\_CLOSE"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00346}00346\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_ENGINE\_AVAILABLE)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_ENGINE\_AVAILABLE"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00349}00349\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_STATION\_FIRST\_VEHICLE)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_STATION\_FIRST\_VEHICLE"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00352}00352\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_DISASTER\_ZEPPELINER\_CRASHED)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_DISASTER\_ZEPPELINER\_CRASHED"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00355}00355\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00356}00356\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_DISASTER\_ZEPPELINER\_CLEARED)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_DISASTER\_ZEPPELINER\_CLEARED"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00358}00358\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_TOWN\_FOUNDED)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_TOWN\_FOUNDED"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00361}00361\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_AIRCRAFT\_DEST\_TOO\_FAR)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_AIRCRAFT\_DEST\_TOO\_FAR"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00364}00364\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_ADMIN\_PORT)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_ADMIN\_PORT"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00367}00367\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00368}00368\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_WINDOW\_WIDGET\_CLICK)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_WINDOW\_WIDGET\_CLICK"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00370}00370\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00371}00371\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_GOAL\_QUESTION\_ANSWER)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_GOAL\_QUESTION\_ANSWER"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00373}00373\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00374}00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_EXCLUSIVE\_TRANSPORT\_RIGHTS)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_EXCLUSIVE\_TRANSPORT\_RIGHTS"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00376}00376\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00377}00377\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_ROAD\_RECONSTRUCTION)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_ROAD\_RECONSTRUCTION"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00379}00379\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_VEHICLE\_AUTOREPLACED)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_VEHICLE\_AUTOREPLACED"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00382}00382\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00383}00383\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_STORYPAGE\_BUTTON\_CLICK)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_STORYPAGE\_BUTTON\_CLICK"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00385}00385\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_STORYPAGE\_TILE\_SELECT)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_STORYPAGE\_TILE\_SELECT"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00388}00388\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00389}00389\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (intEventType\ ==\ GSEvent.ET\_STORYPAGE\_VEHICLE\_SELECT)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{stringliteral}{"{}ET\_STORYPAGE\_VEHICLE\_SELECT"{}};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00391}00391\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00392}00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00393}00393\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00396}00396\ \ \ \ \ \textcolor{comment}{//\ /**}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00397}00397\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ @brief\ Returns\ amount\ of\ game\ time\ for\ input}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00398}00398\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ @details\ Calculates\ in-\/game\ duration\ for\ given\ real-\/time\ seconds\ and\ returns\ a\ table\ with\ parsed\ data}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00400}00400\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ @param\ totalSeconds\ integer\ \ Total\ number\ of\ seconds\ that\ idle\ balance\ took\ to\ accumulate}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00402}00402\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ @returns\ SQTable\ Table\ with\ durations}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00403}00403\ \ \ \ \ \textcolor{comment}{//\ */}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00404}00404\ \ \ \ \ \textcolor{comment}{//\ static\ function\ GetInGameDurationFloatTable(totalSeconds)\ \{}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00405}00405\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00406}00406\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ idleDays\ =\ ((totalSeconds\ *\ 33.33)\ /\ 74).tointeger();}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00407}00407\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ idleForYears\ =\ (idleDays\ /\ 365).tointeger();}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00408}00408\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ idleForDays\ =\ idleDays\ \%\ 365;}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00410}00410\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ remaining\ =\ totalSeconds.tofloat();}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00411}00411\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ days\ =\ remaining\ /\ ::SecondsInPeriod.DAY;}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00412}00412\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ remaining\ =\ remaining\ \%\ ::SecondsInPeriod.DAY;}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00413}00413\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ hours\ =\ remaining\ /\ ::SecondsInPeriod.HOUR;}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00414}00414\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ remaining\ =\ remaining\ \%\ ::SecondsInPeriod.HOUR;}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00415}00415\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ minutes\ =\ remaining\ /\ ::SecondsInPeriod.MINUTE;}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00416}00416\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ remaining\ =\ remaining\ \%\ ::SecondsInPeriod.MINUTE;}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00417}00417\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ seconds\ =\ remaining;}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00419}00419\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ d\ =\ floor(days.tofloat()).tointeger();}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00420}00420\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ h\ =\ floor(hours.tofloat()).tointeger();}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00421}00421\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ m\ =\ floor(minutes.tofloat()).tointeger();}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00422}00422\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ s\ =\ floor(seconds.tofloat()).tointeger();}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00424}00424\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ local\ durationTable\ =\ \{}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00425}00425\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ d\ =\ d,}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00426}00426\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ h\ =\ h,}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00427}00427\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ m\ =\ m,}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00428}00428\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ s\ =\ s,}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00429}00429\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ Values\ =\ [d,\ h,\ m,\ s],}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00430}00430\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ FloatValues\ =\ [days,\ hours,\ minutes,\ seconds],}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00431}00431\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ Input\ =\ totalSeconds,}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00432}00432\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \};}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00433}00433\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ durationTable}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00434}00434\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00435}00435\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00442}\mbox{\hyperlink{class_idle_util_a7bc24330ac7d466e553d45a67a662f7f}{00442}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_a7bc24330ac7d466e553d45a67a662f7f}{GetIdleMultiplier}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00443}00443\ \ \ \ \ \ \ \ \ local\ setting\ =\ GSController.GetSetting(\textcolor{stringliteral}{"{}idle\_multiplier"{}}).tofloat();}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00444}00444\ \ \ \ \ \ \ \ \ local\ value\ =\ setting\ *\ 0.001;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00445}00445\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00446}00446\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00462}\mbox{\hyperlink{class_idle_util_a3b8c37a9fa296d4d7873388b03ecfdce}{00462}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_idle_util_a3b8c37a9fa296d4d7873388b03ecfdce}{IsAutosaveDate}}(GSDate\ date)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00463}00463\ \ \ \ \ \ \ \ \ local\ asSetting\ =\ GSGameSettings.GetValue(\textcolor{stringliteral}{"{}gui.autosave"{}});}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00464}00464\ \ \ \ \ \ \ \ \ local\ isAuto\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00465}00465\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (asSetting\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ local\ date\ =\ GSDate.GetCurrentDate();}}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ local\ day\ =\ GSDate.GetDayOfMonth(date);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ local\ year\ =\ GSDate.GetYear(date);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ local\ month\ =\ GSDate.GetMonth(date);}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (day\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (asSetting\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isAuto\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (asSetting\ ==\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ month\ ==\ 1}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||\ month\ ==\ 4}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||\ month\ ==\ 7}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||\ month\ ==\ 10}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isAuto\ ==\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (asSetting\ ==\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isAuto\ =\ month\ ==\ 7\ ||\ month\ ==\ 1;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00486}00486\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00487}00487\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ isAuto;}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00488}00488\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00489}00489\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00491}00491\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_idle_util_8nut_source_l00496}00496\ \};}
+
+\end{DoxyCode}

@@ -18,21 +18,19 @@
     @see [GSConfig](#GSConfig) for structure member docs.
     */
 ::ScriptConfig <- {
-/**
+    /**
         @var ScriptConfig::WarnAfterCloseAttempts
         @brief Report close attempt limit
         @details Number of times report window will re-open before showing warning text.
     */
     WarnAfterCloseAttempts = 2,
-    
-    KeepQuarterStats = 4,
 
     /**
         @var ScriptConfig::ShowStatsAfterReport
         @brief Close story book after accepting idle balance
         @details False will show stats screen instead of closing story book
     */
-    ShowStatsAfterReport = false,
+    ShowStatsAfterReport = true,
 
     /**
         @var ScriptConfig::MinSleepTime
@@ -62,12 +60,4 @@
         @details Medium number of ticks that script loop can sleep for
     */
     MedSleepTime = 33,
-
-    // KeepQuarterStats = 4,
-    // WarnAfterCloseAttempts = 2,    
-    // ShowStatsAfterReport = false,
-    // MinSleepTime = 1,
-    // ShortestSleepTime = 5,
-    // ShortSleepTime = 10,
-    // MedSleepTime = 33,
 };

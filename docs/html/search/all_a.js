@@ -7,7 +7,6 @@ var searchData=
   ['minute_4',['MINUTE',['../d0/d68/constants_8nut.html#aaa5657ea8a8ceb231fc8162205dc30bea26f8ff0cdd909ee179a0ed06adfc4a0b',1,'constants.nut']]],
   ['minversiontoload_5',['MinVersionToLoad',['../d9/df7/class_f_main_class.html#a54c47b9ef29bbdcfaf5a1d39424784c0',1,'FMainClass']]],
   ['missinghqscreenvisible_6',['MissingHQScreenVisible',['../da/db4/class_idle_pages.html#ae1a2fd9d4e5310a83d907e0d2b53acd5',1,'IdlePages']]],
-  ['money_7',['Money',['../db/db0/types_8dox.html#aa133571917efeca6e1444f2f80b8e806',1,'types.dox']]],
-  ['money_20away_8',['I loaded a game and IdleTTD took all my money away!',['../index.html#faq_4',1,'']]],
-  ['my_20money_20away_9',['I loaded a game and IdleTTD took all my money away!',['../index.html#faq_4',1,'']]]
+  ['money_20away_7',['I loaded a game and IdleTTD took all my money away!',['../index.html#faq_4',1,'']]],
+  ['my_20money_20away_8',['I loaded a game and IdleTTD took all my money away!',['../index.html#faq_4',1,'']]]
 ];

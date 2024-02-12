@@ -110,8 +110,8 @@ $(function(){initNavTree('d2/de2/class_idle_util.html','../../'); initResizable(
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Story book related funtions</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>Functions that manage and work with story book pages</p>
+<tr><td colspan="2"><div class="groupHeader">General purpose story book funtions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Functions that handle story book pages on 'global' level (showing / closing etc.)</p>
 <p><a class="anchor" id="util_storybook_functions"></a></p>
 </div></td></tr>
 <tr class="memitem:aaa55835df833a36c9366343a7da95ea1" id="r_aaa55835df833a36c9366343a7da95ea1"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa55835df833a36c9366343a7da95ea1">DisplayPage</a> (int storyPageID)</td></tr>
@@ -120,7 +120,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a782a786488f72c3b740ae6447e95a361" id="r_a782a786488f72c3b740ae6447e95a361"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a782a786488f72c3b740ae6447e95a361">CloseStoryBookWindow</a> (int companyID)</td></tr>
 <tr class="memdesc:a782a786488f72c3b740ae6447e95a361"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes story book window.  <br /></td></tr>
 <tr class="separator:a782a786488f72c3b740ae6447e95a361"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a219a1c7cb7e17f85c09a7ab79790fd02" id="r_a219a1c7cb7e17f85c09a7ab79790fd02"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a219a1c7cb7e17f85c09a7ab79790fd02">SetPageDate</a> (int storyPageID, GSDate pageDate=null)</td></tr>
+<tr class="memitem:a219a1c7cb7e17f85c09a7ab79790fd02" id="r_a219a1c7cb7e17f85c09a7ab79790fd02"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a219a1c7cb7e17f85c09a7ab79790fd02">SetPageDate</a> (int storyPageID, <a class="el" href="../../db/db0/types_8dox.html#a894bb6a868a7beda0bfd5e2f229f9e73">GSDate</a> pageDate=null)</td></tr>
 <tr class="memdesc:a219a1c7cb7e17f85c09a7ab79790fd02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets idle story page date.  <br /></td></tr>
 <tr class="separator:a219a1c7cb7e17f85c09a7ab79790fd02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Vehicle related funtions</div></td></tr>
@@ -136,6 +136,26 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a8e284207d10f0804a354b0a2d06b159a" id="r_a8e284207d10f0804a354b0a2d06b159a"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e284207d10f0804a354b0a2d06b159a">GetAllVehicleStatsData</a> (int companyID)</td></tr>
 <tr class="memdesc:a8e284207d10f0804a354b0a2d06b159a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns statistics for all vehicles.  <br /></td></tr>
 <tr class="separator:a8e284207d10f0804a354b0a2d06b159a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Miscellaneous functions</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Common misc convenience and helper functions <br  />
+</p>
+<p><a class="anchor" id="util_misc_functions"></a></p>
+</div></td></tr>
+<tr class="memitem:a6a19d5cc5857414f7f0b3bbf39c77542" id="r_a6a19d5cc5857414f7f0b3bbf39c77542"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a19d5cc5857414f7f0b3bbf39c77542">GetHQTileIndex</a> (int companyID)</td></tr>
+<tr class="memdesc:a6a19d5cc5857414f7f0b3bbf39c77542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get company HQ tile index.  <br /></td></tr>
+<tr class="separator:a6a19d5cc5857414f7f0b3bbf39c77542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46334d3a8cc56a37c527b4af4702c304" id="r_a46334d3a8cc56a37c527b4af4702c304"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46334d3a8cc56a37c527b4af4702c304">HasHQ</a> (int companyID)</td></tr>
+<tr class="memdesc:a46334d3a8cc56a37c527b4af4702c304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if company HQ is built.  <br /></td></tr>
+<tr class="separator:a46334d3a8cc56a37c527b4af4702c304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab70a6d20696abba0b4a649b85f3764d3" id="r_ab70a6d20696abba0b4a649b85f3764d3"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab70a6d20696abba0b4a649b85f3764d3">GetGSEventTypeName</a> (int intEventType)</td></tr>
+<tr class="memdesc:ab70a6d20696abba0b4a649b85f3764d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns label for event types.  <br /></td></tr>
+<tr class="separator:ab70a6d20696abba0b4a649b85f3764d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bc24330ac7d466e553d45a67a662f7f" id="r_a7bc24330ac7d466e553d45a67a662f7f"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bc24330ac7d466e553d45a67a662f7f">GetIdleMultiplier</a> ()</td></tr>
+<tr class="memdesc:a7bc24330ac7d466e553d45a67a662f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns idle multiplier.  <br /></td></tr>
+<tr class="separator:a7bc24330ac7d466e553d45a67a662f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b8c37a9fa296d4d7873388b03ecfdce" id="r_a3b8c37a9fa296d4d7873388b03ecfdce"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b8c37a9fa296d4d7873388b03ecfdce">IsAutosaveDate</a> (<a class="el" href="../../db/db0/types_8dox.html#a894bb6a868a7beda0bfd5e2f229f9e73">GSDate</a> date)</td></tr>
+<tr class="memdesc:a3b8c37a9fa296d4d7873388b03ecfdce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if current date corresponds to one of autosave dates.  <br /></td></tr>
+<tr class="separator:a3b8c37a9fa296d4d7873388b03ecfdce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -145,30 +165,6 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:a6afff2f145cc14defc320e120b82b022" id="r_a6afff2f145cc14defc320e120b82b022"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6afff2f145cc14defc320e120b82b022">AllVehicleTypes</a></td></tr>
 <tr class="memdesc:a6afff2f145cc14defc320e120b82b022"><td class="mdescLeft">&#160;</td><td class="mdescRight">All vehicle types in OpenTTD.  <br /></td></tr>
 <tr class="separator:a6afff2f145cc14defc320e120b82b022"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader">Miscellaneous functions</h2></td></tr>
-<tr><td class="ititle" colspan="2"><p>Common misc convenience and helper functions <br  />
-</p>
-<p><a class="anchor" id="util_misc_functions"></a></p>
-</td></tr>
-<tr class="memitem:a6a19d5cc5857414f7f0b3bbf39c77542" id="r_a6a19d5cc5857414f7f0b3bbf39c77542"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a19d5cc5857414f7f0b3bbf39c77542">GetHQTileIndex</a> (int companyID)</td></tr>
-<tr class="memdesc:a6a19d5cc5857414f7f0b3bbf39c77542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get company HQ tile index.  <br /></td></tr>
-<tr class="separator:a6a19d5cc5857414f7f0b3bbf39c77542"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46334d3a8cc56a37c527b4af4702c304" id="r_a46334d3a8cc56a37c527b4af4702c304"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46334d3a8cc56a37c527b4af4702c304">HasHQ</a> (int companyID)</td></tr>
-<tr class="memdesc:a46334d3a8cc56a37c527b4af4702c304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if company HQ is built.  <br /></td></tr>
-<tr class="separator:a46334d3a8cc56a37c527b4af4702c304"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51ba2ebe8b16a4517eb63d714ad2a63a" id="r_a51ba2ebe8b16a4517eb63d714ad2a63a"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51ba2ebe8b16a4517eb63d714ad2a63a">GetGSEventTypeName</a> (int intEventType)</td></tr>
-<tr class="memdesc:a51ba2ebe8b16a4517eb63d714ad2a63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns label for event types.  <br /></td></tr>
-<tr class="separator:a51ba2ebe8b16a4517eb63d714ad2a63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab71057f4fe505248e0bf998410e41476" id="r_ab71057f4fe505248e0bf998410e41476"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab71057f4fe505248e0bf998410e41476">GetInGameDurationFloatTable</a> (int totalSeconds)</td></tr>
-<tr class="memdesc:ab71057f4fe505248e0bf998410e41476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns amount of game time for input.  <br /></td></tr>
-<tr class="separator:ab71057f4fe505248e0bf998410e41476"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa50b8e3a66ecb8774719daefe92ec41" id="r_aaa50b8e3a66ecb8774719daefe92ec41"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa50b8e3a66ecb8774719daefe92ec41">GetIdleMultiplier</a> ()</td></tr>
-<tr class="memdesc:aaa50b8e3a66ecb8774719daefe92ec41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns idle multiplier.  <br /></td></tr>
-<tr class="separator:aaa50b8e3a66ecb8774719daefe92ec41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d2eb890e28183bfe7f414a80d0eb947" id="r_a9d2eb890e28183bfe7f414a80d0eb947"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d2eb890e28183bfe7f414a80d0eb947">IsAutosaveDate</a> (date)</td></tr>
-<tr class="memdesc:a9d2eb890e28183bfe7f414a80d0eb947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if current date corresponds to one of autosave dates.  <br /></td></tr>
-<tr class="separator:a9d2eb890e28183bfe7f414a80d0eb947"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class with various utility helper methods for IdleTTD with `static prop <a class="el" href="#vehicle_type_details">Vehicle types</a> and functions by group | <a class="el" href="#util_vehicle_functions">Vehicles</a> | <a class="el" href="#util_storybook_functions">Pages</a> | <a class="el" href="#util_misc_functions">Misc</a>. </p>
@@ -198,10 +194,10 @@ Static Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Displays a story book page. </p>
-<p>Opens story book and displays story page with given ID, provided that the page is valid</p>
+<p>Opens story book window and displays story page with given ID, provided that the page is valid</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">storyPageID</td><td>GSStoryPage::StoryPageID Idle story book page ID</td></tr>
+    <tr><td class="paramname">storyPageID</td><td>Idle story book page ID</td></tr>
   </table>
   </dd>
 </dl>
@@ -271,7 +267,7 @@ GSStoryPage.IsValidStoryPage(storyPageID) == true</dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">GSDate</td>          <td class="paramname"><span class="paramname"><em>pageDate</em><span class="paramdefsep"> = </span><span class="paramdefval">null</span></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="../../db/db0/types_8dox.html#a894bb6a868a7beda0bfd5e2f229f9e73">GSDate</a></td>          <td class="paramname"><span class="paramname"><em>pageDate</em><span class="paramdefsep"> = </span><span class="paramdefval">null</span></span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -530,19 +526,27 @@ companyID == GSCompany.ResolveCompanyID(companyID)</dd></dl>
 
 </div>
 </div>
-<a id="a51ba2ebe8b16a4517eb63d714ad2a63a" name="a51ba2ebe8b16a4517eb63d714ad2a63a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51ba2ebe8b16a4517eb63d714ad2a63a">&#9670;&#160;</a></span>GetGSEventTypeName()</h2>
+<a id="ab70a6d20696abba0b4a649b85f3764d3" name="ab70a6d20696abba0b4a649b85f3764d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab70a6d20696abba0b4a649b85f3764d3">&#9670;&#160;</a></span>GetGSEventTypeName()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">function IdleUtil::GetGSEventTypeName </td>
+          <td class="memname">static function IdleUtil::GetGSEventTypeName </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>intEventType</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Returns label for event types. </p>
@@ -557,46 +561,27 @@ companyID == GSCompany.ResolveCompanyID(companyID)</dd></dl>
 
 </div>
 </div>
-<a id="ab71057f4fe505248e0bf998410e41476" name="ab71057f4fe505248e0bf998410e41476"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab71057f4fe505248e0bf998410e41476">&#9670;&#160;</a></span>GetInGameDurationFloatTable()</h2>
+<a id="a7bc24330ac7d466e553d45a67a662f7f" name="a7bc24330ac7d466e553d45a67a662f7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bc24330ac7d466e553d45a67a662f7f">&#9670;&#160;</a></span>GetIdleMultiplier()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">function IdleUtil::GetInGameDurationFloatTable </td>
-          <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>totalSeconds</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns amount of game time for input. </p>
-<p>Calculates in-game duration for given real-time seconds and returns a table with parsed data</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">totalSeconds</td><td>integer Total number of seconds that idle balance took to accumulate</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>SQTable Table with durations </dd></dl>
-
-</div>
-</div>
-<a id="aaa50b8e3a66ecb8774719daefe92ec41" name="aaa50b8e3a66ecb8774719daefe92ec41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa50b8e3a66ecb8774719daefe92ec41">&#9670;&#160;</a></span>GetIdleMultiplier()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">function IdleUtil::GetIdleMultiplier </td>
+          <td class="memname">static function IdleUtil::GetIdleMultiplier </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Returns idle multiplier. </p>
@@ -605,23 +590,37 @@ companyID == GSCompany.ResolveCompanyID(companyID)</dd></dl>
 
 </div>
 </div>
-<a id="a9d2eb890e28183bfe7f414a80d0eb947" name="a9d2eb890e28183bfe7f414a80d0eb947"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d2eb890e28183bfe7f414a80d0eb947">&#9670;&#160;</a></span>IsAutosaveDate()</h2>
+<a id="a3b8c37a9fa296d4d7873388b03ecfdce" name="a3b8c37a9fa296d4d7873388b03ecfdce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b8c37a9fa296d4d7873388b03ecfdce">&#9670;&#160;</a></span>IsAutosaveDate()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">function IdleUtil::IsAutosaveDate </td>
+          <td class="memname">static function IdleUtil::IsAutosaveDate </td>
           <td>(</td>
-          <td class="paramtype">date</td>          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="../../db/db0/types_8dox.html#a894bb6a868a7beda0bfd5e2f229f9e73">GSDate</a></td>          <td class="paramname"><span class="paramname"><em>date</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Returns true if current date corresponds to one of autosave dates. </p>
 <p>Depending on autosave setting, some dates are eligible as 'autosave' dates. This function returns true if current date corresponds to one of autosave dates based on game settings</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">date</td><td>In-game date to check</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
@@ -630,6 +629,7 @@ companyID == GSCompany.ResolveCompanyID(companyID)</dd></dl>
   </table>
   </dd>
 </dl>
+<dl class="deprecated"><dt><b><a class="el" href="../../da/d58/deprecated.html#_deprecated000010">Deprecated</a></b></dt><dd>This method of autosave detection won't work properly starting with OpenTTD 14. In verision 14 autosave option has been changed to real-time minutes, it is no longer tied to in-game months. This function will be removed with the next script version. </dd></dl>
 
 </div>
 </div>

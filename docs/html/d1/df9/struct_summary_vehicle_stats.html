@@ -106,7 +106,7 @@ $(function(){initNavTree('d1/df9/struct_summary_vehicle_stats.html','../../'); i
 </div><!--header-->
 <div class="contents">
 
-<p>Typedef for summary vehicle stats object.  
+<p>[STRUCT] Summary vehicle stats object  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -118,13 +118,13 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:a6f8c44416ec420667fdbd0f31446d8d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total idle balance.  <br /></td></tr>
 <tr class="separator:a6f8c44416ec420667fdbd0f31446d8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23deadabcec63969b57ea0ac29173dd6" id="r_a23deadabcec63969b57ea0ac29173dd6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23deadabcec63969b57ea0ac29173dd6">balance</a></td></tr>
-<tr class="memdesc:a23deadabcec63969b57ea0ac29173dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total balance.  <br /></td></tr>
+<tr class="memdesc:a23deadabcec63969b57ea0ac29173dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total vehicle balance.  <br /></td></tr>
 <tr class="separator:a23deadabcec63969b57ea0ac29173dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Typedef for summary vehicle stats object. </p>
+<div class="textblock"><p>[STRUCT] Summary vehicle stats object </p>
 <p>Summary stats for all vehicles of all types for last year</p>
-<dl class="section note"><dt>Note</dt><dd>This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes. </dd></dl>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a5693a02e01631adcafbff436320d1fd3" name="a5693a02e01631adcafbff436320d1fd3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5693a02e01631adcafbff436320d1fd3">&#9670;&#160;</a></span>count</h2>
@@ -139,7 +139,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Total number of vehicles. </p>
-<p>All types of vehicles are included </p>
+<p>Total number of (running) vehicles that the company has </p>
 
 </div>
 </div>
@@ -156,7 +156,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Total idle balance. </p>
-<p>All types of vehicles are included </p>
+<p>Sum amount of money (profit - cost) that all running vehicles the company has would bring if they went idle for a year. In practice it is just the <a class="el" href="#a23deadabcec63969b57ea0ac29173dd6">SummaryVehicleStats::balance</a> multiplied by idle multiplier setting. </p>
 
 </div>
 </div>
@@ -172,8 +172,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Total balance. </p>
-<p>All types of vehicles are included </p>
+<p>Total vehicle balance. </p>
+<p>Sum amount of money (profit - cost) that all running vehicles the company has have earned last year. </p>
 
 </div>
 </div>

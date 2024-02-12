@@ -1,21 +1,22 @@
 /**
-    @file types.dox Contains quasi struct definitions that aren't used (squirrel has no structs). They are here just for resolving and documenting types in Doxygen.
+    @file types.dox Contains quasi struct and type definitions that aren't really used for anything other than resolving and documenting types in Doxygen.
+    
 */
 
  /**
     @struct GSConfig
-    @brief Configuration structure
+    @brief [STRUCT] Configuration structure
     @details Data structure definition for IdleTTD configuration
 
-    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+    @attention This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes.
 
     @var GSConfig::WarnAfterCloseAttempts
     @brief Report close attempt limit
     @details Number of times report window will re-open before showing warning text.
 
     @var GSConfig::ShowStatsAfterReport
-    @brief Close story book after accepting idle balance
-    @details False will show stats screen instead of closing story book
+    @brief Close (or don't) story book after accepting idle balance 
+    @details False will show stats screen instead of closing story book.
 
     @var GSConfig::MinSleepTime
     @brief Minimum sleep time for immediate next loop iteration
@@ -46,10 +47,10 @@
 
 /**
     @struct VehicleTypeStatsItem
-    @brief Typedef for vehicle type stats
-    @details Typedef for vehicle stats for one vehicle type
+    @brief [STRUCT] Vehicle type stats
+    @details Data structure used for vehicle stats of a particular vehicle type
 
-    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+    @attention This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes.
 
     @var VehicleTypeStatsItem::count
     @brief Total number of vehicles of given type
@@ -57,15 +58,15 @@
 
     @var VehicleTypeStatsItem::idleBalance
     @brief Total idle balance of all vehicles of given type in last year
-    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type)
+    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type). In practice it is just the [VehicleTypeStatsItem::balance](#VehicleTypeStatsItem.balance) multiplied by idle multiplier setting.
 
     @var VehicleTypeStatsItem::balance
     @brief Total balance of all vehicles of given type in last year
-    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type)
+    @details Value (_vehicles profit - vehicles cost_) stored here is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type).  Used to recalculate [VehicleTypeStatsItem::idleBalance](#VehicleTypeStatsItem.idleBalance) if needed.
 
     @var VehicleTypeStatsItem::type
-    @brief Vehicles type ID
-    @details OpenTTD vehicle type ID
+    @brief Vehicle type ID 
+    @details OpenTTD vehicle type ID, corresponding to `VehicleType` enum from <a target="_blank" href="https://docs.openttd.org/gs-api/classGSVehicle">GSVehicle</a> class provided by GS API.
 */
 
  struct VehicleTypeStatsItem { 
@@ -77,22 +78,22 @@
 
 /**
     @struct SummaryVehicleStats
-    @brief Typedef for summary vehicle stats object 
+    @brief [STRUCT] Summary vehicle stats object 
     @details Summary stats for all vehicles of all types for last year
 
-    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+    @attention This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes.
 
     @var SummaryVehicleStats::count
     @brief Total number of vehicles
-    @details All types of vehicles are included
+    @details Total number of (running) vehicles that the company has
 
     @var SummaryVehicleStats::idleBalance
     @brief Total idle balance
-    @details All types of vehicles are included
+    @details Sum amount of money (profit - cost) that all running vehicles the company has would bring if they went idle for a year. In practice it is just the [SummaryVehicleStats::balance](#SummaryVehicleStats.balance) multiplied by idle multiplier setting.
 
     @var SummaryVehicleStats::balance
-    @brief Total balance
-    @details All types of vehicles are included
+    @brief Total vehicle balance
+    @details Sum amount of money (profit - cost) that all running vehicles the company has have earned last year.
 */
 
  struct SummaryVehicleStats { 
@@ -103,10 +104,10 @@
 
 /**
     @struct ScriptSavedData
-    @brief Script saved data format
+    @brief [STRUCT] Script saved data format
     @details Format of the table that gets saved with games
 
-    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+    @attention This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes.
 
     @var ScriptSavedData::PlayerCompanyID
     @brief Company ID
@@ -114,7 +115,7 @@
 
     @var ScriptSavedData::IdleStoryPageID
     @brief Idle story page
-    @details Id of current idle story page
+    @details Id of company idle story page (it is created once, when game starts, gets saved with games and should be reused on load)
 
     @var ScriptSavedData::LastActiveTime
     @brief Last save time
@@ -147,8 +148,24 @@
      int SavedScriptVersion;
 };
 
-/** @typedef Money
-@brief OpenTTD Money (signed int 64) 
-@details Custom type for OpenTTD Money type values
+
+/** 
+    @typedef StoryPageButtonFormatting
+    @brief OpenTTD StoryPageButtonFormatting type. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSStoryPage">GSStoryPage.StoryPageButtonFormatting</a> for details.
+    @details Internal custom type reflecting the `StoryPageButtonFormatting` type from <a target="_blank" href="https://docs.openttd.org/gs-api/classGSStoryPage">GSStoryPage</a> class in OpenTTD GS API.
 */
-typedef signed long long int Money;
+typedef unknown StoryPageButtonFormatting;
+
+/** 
+    @typedef GSDate
+    @brief OpenTTD date. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSDate">GSDate.Date</a> for details.
+    @details Internal custom type representing the `GSDate.Date` type from <a target="_blank" href="https://docs.openttd.org/gs-api/classGSDate">GSDate</a> class in OpenTTD GS API.
+*/
+typedef unknown GSDate;
+
+/** 
+    @typedef GSText
+    @brief OpenTTD GSText instance. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSText">GSText</a> for details.
+    @details Internal custom type defining the instance of <a target="_blank" href="https://docs.openttd.org/gs-api/classGSText">GSText</a> class in OpenTTD GS API.
+*/
+typedef unknown GSText;

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['idlebalance_0',['idleBalance',['../d4/d7e/struct_vehicle_type_stats_item.html#aa3a124b199a181400e8e4bfbac38206d',1,'VehicleTypeStatsItem::idleBalance'],['../d1/df9/struct_summary_vehicle_stats.html#a6f8c44416ec420667fdbd0f31446d8d7',1,'SummaryVehicleStats::idleBalance']]],
-  ['idlebalance_1',['IdleBalance',['../d7/d13/class_idle_story.html#a343f1d94ad57bc0e6f00d9a34e6f3246',1,'IdleStory']]],
+  ['idlebalance_0',['IdleBalance',['../d7/d13/class_idle_story.html#a343f1d94ad57bc0e6f00d9a34e6f3246',1,'IdleStory']]],
+  ['idlebalance_1',['idleBalance',['../d4/d7e/struct_vehicle_type_stats_item.html#aa3a124b199a181400e8e4bfbac38206d',1,'VehicleTypeStatsItem::idleBalance'],['../d1/df9/struct_summary_vehicle_stats.html#a6f8c44416ec420667fdbd0f31446d8d7',1,'SummaryVehicleStats::idleBalance']]],
   ['idlepagesinstance_2',['IdlePagesInstance',['../d7/d13/class_idle_story.html#adb1c9b398e50477034f7b5e4c89a5589',1,'IdleStory']]],
   ['idlereportbuttonid_3',['IdleReportButtonID',['../da/db4/class_idle_pages.html#a1596bc567ea588f729c852988c7d80dc',1,'IdlePages']]],
   ['idlereportvisible_4',['IdleReportVisible',['../da/db4/class_idle_pages.html#a810f4f927fe5d4f28b741dfa93088535',1,'IdlePages']]],

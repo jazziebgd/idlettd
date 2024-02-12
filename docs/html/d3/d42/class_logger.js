@@ -1,9 +1,9 @@
 var class_logger =
 [
-    [ "Verbose", "d3/d42/class_logger.html#a3db59060a2f577bdfdc405d0df2e464b", null ],
-    [ "Debug", "d3/d42/class_logger.html#a77fd6cc7f1f8d30835a284cb74c93fd8", null ],
-    [ "Info", "d3/d42/class_logger.html#a495cdecfe946a495cb8841521936cb57", null ],
-    [ "Warning", "d3/d42/class_logger.html#a56190659d8a55f8ae065a89ed814a88b", null ],
-    [ "Error", "d3/d42/class_logger.html#ab8fb54de1ae0cf356cdad2df681467ec", null ],
-    [ "Table", "d3/d42/class_logger.html#a990cfe64eca0a74216f8edef4b36f312", null ]
+    [ "Verbose", "d3/d42/class_logger.html#a536ea22257a5819ca8d1f86a3f4851e1", null ],
+    [ "Debug", "d3/d42/class_logger.html#ad05f09b7a6ffcd181f681e0ae38a5b05", null ],
+    [ "Info", "d3/d42/class_logger.html#ae46ac80b5ec2683073cc34d4f125ee48", null ],
+    [ "Warning", "d3/d42/class_logger.html#ae942207af5ca8ab1ff17a88066fb3b5a", null ],
+    [ "Error", "d3/d42/class_logger.html#ae7f07bc4e2e2c929458a9d835f127395", null ],
+    [ "Table", "d3/d42/class_logger.html#aad5c43a07d616a3f08ec0c50dab445f4", null ]
 ];

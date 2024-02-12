@@ -8,9 +8,8 @@ var class_idle_util =
     [ "GetAllVehicleStatsData", "d2/de2/class_idle_util.html#a8e284207d10f0804a354b0a2d06b159a", null ],
     [ "GetHQTileIndex", "d2/de2/class_idle_util.html#a6a19d5cc5857414f7f0b3bbf39c77542", null ],
     [ "HasHQ", "d2/de2/class_idle_util.html#a46334d3a8cc56a37c527b4af4702c304", null ],
-    [ "GetGSEventTypeName", "d2/de2/class_idle_util.html#a51ba2ebe8b16a4517eb63d714ad2a63a", null ],
-    [ "GetInGameDurationFloatTable", "d2/de2/class_idle_util.html#ab71057f4fe505248e0bf998410e41476", null ],
-    [ "GetIdleMultiplier", "d2/de2/class_idle_util.html#aaa50b8e3a66ecb8774719daefe92ec41", null ],
-    [ "IsAutosaveDate", "d2/de2/class_idle_util.html#a9d2eb890e28183bfe7f414a80d0eb947", null ],
+    [ "GetGSEventTypeName", "d2/de2/class_idle_util.html#ab70a6d20696abba0b4a649b85f3764d3", null ],
+    [ "GetIdleMultiplier", "d2/de2/class_idle_util.html#a7bc24330ac7d466e553d45a67a662f7f", null ],
+    [ "IsAutosaveDate", "d2/de2/class_idle_util.html#a3b8c37a9fa296d4d7873388b03ecfdce", null ],
     [ "AllVehicleTypes", "d2/de2/class_idle_util.html#a6afff2f145cc14defc320e120b82b022", null ]
 ];

@@ -54,6 +54,7 @@ class IdlePages {
 	    @property SaveWarningDisplayed
         @brief   Flag indicating presence of save warning text
         @details If this is `true` then save warning element on report screen got populated with warning text. Used with #SaveWarningScreenVisible to determine if save warning is present in any form.
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
     */
     SaveWarningDisplayed = false;
 
@@ -110,6 +111,7 @@ class IdlePages {
 	    @property SaveWarningScreenVisible
         @brief   Save warning screen visibility flag
         @details Set to true when save warning screen is rendered to idle story page
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
     */
     SaveWarningScreenVisible = false;
 
@@ -129,6 +131,7 @@ class IdlePages {
 	    @property  SaveWarningElementID
 	    @brief Id of save warning text element
 	    @details When game is saved with negative balance and idle report is open this element shows warning text to players
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
 	*/
     SaveWarningElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
     /**
@@ -147,6 +150,7 @@ class IdlePages {
 	    @property  CloseSaveWarningButtonID
 	    @brief Id of button element that closes save warning screen
 	    @details Used internally to determine which button was pressed when handling clicks
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
 	*/
     CloseSaveWarningButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
     /**
@@ -214,6 +218,7 @@ class IdlePages {
 	    @property  _NavButtonSaveWarningID
 	    @brief Id of navigation button element for save warning screen
 	    @details Used for debugging / troubleshooting
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
 	*/
     _NavButtonSaveWarningID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
     /**
@@ -311,6 +316,8 @@ class IdlePages {
         @brief   Removes all contents from idle story book page
         @details Removes add idle story book page elements and resets all relevant internal state vars and references to their initial values.
 
+        \prethisstorypagevalid
+
         @param updateDate Passing `false` value means that story book page date won't be updated to current date.
 
         @returns void
@@ -405,15 +412,16 @@ class IdlePages {
         @retval false   Failed opening idle report story book page
     */
     function ShowIdleReportScreen(idleBalance = 0, inactiveSeconds = 0, vehicleSummary = null, allVehicleStats = null, intLastYearBalance = 0) {
-        this.ClearPage();
         local hasHQ = IdleUtil.HasHQ(this.PlayerCompanyID);
         if (hasHQ) {
             if (idleBalance == 0) {
                 return this.ShowStatsScreen(vehicleSummary, allVehicleStats, idleBalance, inactiveSeconds, intLastYearBalance);
             }
+            this.ClearPage();
             this.RenderIdleReportScreen(idleBalance, inactiveSeconds, vehicleSummary, allVehicleStats);
-            this._RenderDebugNavButtons();
             return IdleUtil.DisplayPage(this.IdleStoryPageID);
+        } else {
+            this.ShowMissingHQScreen();
         }
         return false;
     }
@@ -502,6 +510,8 @@ class IdlePages {
         @returns bool
         @retval true    Story book page displayed successfully
         @retval false   Failed displaying story book page
+
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
     */
     function ShowSaveWarningScreen() {
         this.ClearPage();
@@ -536,12 +546,15 @@ class IdlePages {
         this.AddPageTextElement(this.GetIdleReportTextElement(idleBalance, inactiveSeconds));
 
         if (vehicleSummary != null && vehicleSummary.count > 1) {
-            this.AddPageTextElement(this.GetVehicleAverageTextElement(idleBalance, inactiveSeconds, vehicleSummary));
+            local avgEl = this.GetVehicleAverageTextElement(idleBalance, inactiveSeconds, vehicleSummary);
+            if (avgEl != null) {
+                this.AddPageTextElement(avgEl);
+            }
         }
 
         this.CloseReportWarningTextElementID = this.AddPageTextElement(GSText(GSText.STR_EMPTY));
         this.RenderIdleReportButton(idleBalance);
-
+        this._RenderDebugNavButtons();
         this.IdleReportVisible = true;
     }
 
@@ -563,19 +576,19 @@ class IdlePages {
         if (!IdleUtil.HasHQ(this.PlayerCompanyID)) {
             return this.RenderMissingHQScreen();
         } else {
-            GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_STATS));
-            local secondsInGameYear = (365 * ::SecondsPerGameDay).tointeger();
-            local totalVehicles = vehicleSummary.count;
-            // local totalsVehiclesBalance = vehicleSummary.idleBalance;
             local idleMultiplier = IdleUtil.GetIdleMultiplier();
             local idleMultiplierLabel = this.GetIdleMultiplierLabel();
+            local secondsInGameYear = (365 * ::SecondsPerGameDay).tointeger();
+            local totalVehicles = vehicleSummary.count;
             local prognosedIdleBalance = (intLastYearBalance * idleMultiplier).tointeger();
+            
+            GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_STATS));
             if (totalVehicles > 0) {
                 local willEarn = GSText(GSText.STR_STATS_GENERAL_INFO_WILL_BE_EARNING);
                 if (prognosedIdleBalance < 0) {
                     willEarn = GSText(GSText.STR_STATS_GENERAL_INFO_WILL_BE_LOSING);
                 }
-                local amountInTime = this.GetBalancePerTimeUnit(prognosedIdleBalance, secondsInGameYear, 2);
+                local amountInTime = this.GetBalancePerTimeUnit(prognosedIdleBalance, secondsInGameYear, ::TimeUnits.TIME_UNIT_SECOND, 3);
 
                 local minusMessage = GSText(GSText.STR_EMPTY);
                 if (prognosedIdleBalance < 0) {
@@ -591,6 +604,7 @@ class IdlePages {
                         this.RenderVehicleTypeStats(typeStats);
                     }
                 }
+                this.RenderCloseStoryBookButton();
 
                 if (totalSeconds > 0 && totalAmount != 0) {
                     this.PreviousDurationElementID = this.AddPageTextElement(GSText(GSText.STR_STATS_LAST_IDLE_SESSION_TEXT, this.GetDurationText(totalSeconds)));
@@ -598,8 +612,8 @@ class IdlePages {
                 this.RenderLastIdleSummaryElements(totalAmount, totalSeconds);
             } else {
                 this.AddPageTextElement(GSText(GSText.STR_STATS_GENERAL_INFO_NO_VEHICLES, idleMultiplierLabel));
+                this.RenderCloseStoryBookButton();
             }
-            this.RenderCloseStoryBookButton();
             this.RenderHelpButton();
             this.RenderRefreshButton();
 
@@ -620,8 +634,9 @@ class IdlePages {
     function RenderIntroScreen() {
         GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_INTRO));
         this.AddPageTextElement(GSText(GSText.STR_INTRO_TEXT, GSText(GSText.STR_SCRIPT_NAME_GOLD), GSText(GSText.STR_SCRIPT_NAME_GOLD)));
-        local ButtonReference = GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_ORANGE, GSStoryPage.SPBF_NONE);
-        this.IntroButtonID = this.AddNavButton(GSText(GSText.STR_BUTTON_TEXT_START), ButtonReference);
+        // local ButtonReference = GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_ORANGE, GSStoryPage.SPBF_NONE);
+        // this.IntroButtonID = this.AddNavButton(GSText(GSText.STR_BUTTON_TEXT_START), ButtonReference);
+        this.IntroButtonID = this.AddNavButton(GSText(GSText.STR_BUTTON_TEXT_START));
         this.RenderHelpButton();
 
         this.AddPageTextElement(GSText(GSText.STR_INTRO_NOTE));
@@ -641,6 +656,7 @@ class IdlePages {
     function RenderHelpScreen() {
         GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_HELP));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_INTRO, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
+        this.RenderRefreshButton(GSText(GSText.STR_BUTTON_TEXT_STATS), GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_YELLOW, GSStoryPage.SPBF_NONE));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_TEXT, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_NOTES, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_SETTINGS, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
@@ -678,6 +694,8 @@ class IdlePages {
         @note This will set #SaveWarningScreenVisible flag to `true`, causing [MainClass.Start()](#MainClass.Start) `while` loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
 
         @returns void
+
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
     */
     function RenderSaveWarningScreen() {
         GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_SAVE_WARNING));
@@ -792,14 +810,20 @@ class IdlePages {
         @brief Renders refresh button with optional custom text
         @details Adds refresh button to story book page (used on idleReport and missing hq screens). Clicks are handled in [IdleStory.HandleButtonClick()](#IdleStory.HandleButtonClick) function.
 
+        @param customText           Optional custom string for the button (default GSText.STR_NAV_BUTTON_STATS)
+        @param buttonReference      Reference for customizing button styles
+
         @returns void
     */
-    function RenderRefreshButton(customText = "") {
-        if (customText == "") {
+    function RenderRefreshButton(customText = null, buttonReference = null) {
+        if (customText == null) {
             customText = GSText(GSText.STR_BUTTON_TEXT_REFRESH);
         }
-        this.AddPageTextElement(GSText(GSText.STR_EMPTY));
-        this.RefreshButtonID = this.AddNavButton(customText, GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_ORANGE, GSStoryPage.SPBF_NONE));
+        if (buttonReference == null) {
+            buttonReference = GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_ORANGE, GSStoryPage.SPBF_NONE);
+        }
+        // this.AddPageTextElement(GSText(GSText.STR_EMPTY));
+        this.RefreshButtonID = this.AddNavButton(customText, buttonReference);
     }
 
     /**
@@ -862,7 +886,7 @@ class IdlePages {
                 } else {
                     vehicleStatsRow.AddParam(GSText(GSText.STR_VEHICLE_INFO_EARNING_BALANCE));
                 }
-                local amountInTime = this.GetBalancePerTimeUnit(earned, secondsInGameYear, 0, 3);
+                local amountInTime = this.GetBalancePerTimeUnit(earned, secondsInGameYear, ::TimeUnits.TIME_UNIT_SECOND, 3);
                 vehicleStatsRow.AddParam(amountInTime);
             }
             // return GSStoryPage.STORY_PAGE_ELEMENT_INVALID != this.AddPageTextElement(vehicleStatsRow);
@@ -894,7 +918,7 @@ class IdlePages {
                     amountText = GSText(GSText.STR_CURRENCY_NEGATIVE, totalAmount);
                     totalText = GSText(GSText.STR_TOTAL_NEGATIVE);
                 }
-                local amountInTime = this.GetBalancePerTimeUnit(totalAmount, totalSeconds, 0, 3);
+                local amountInTime = this.GetBalancePerTimeUnit(totalAmount, totalSeconds, ::TimeUnits.TIME_UNIT_SECOND, 3);
                 idleSummaryText.AddParam(amountInTime); // string 1
                 idleSummaryText.AddParam(totalText);
                 idleSummaryText.AddParam(amountText);
@@ -928,6 +952,8 @@ class IdlePages {
         @brief Updates duration text
         @details If [this.PreviousDurationElementID](#PreviousDurationElementID) is valid its text gets updated with up-to-date formatted duration text (works as time ticker).
 
+        \prethisstorypagevalid
+
         @param intTotalSeconds Total duration seconds
 
         @return bool
@@ -935,7 +961,7 @@ class IdlePages {
         @retval false   Failed updating duration story page element
     */
     function UpdateDuration(intTotalSeconds) {
-        if (GSStoryPage.IsValidStoryPageElement(this.PreviousDurationElementID)) {
+        if (GSStoryPage.IsValidStoryPage(this.IdleStoryPageID) && GSStoryPage.IsValidStoryPageElement(this.PreviousDurationElementID)) {
             local durationText = this.GetDurationText(intTotalSeconds);
             return GSStoryPage.UpdateElement(this.PreviousDurationElementID, -1, GSText(GSText.STR_STATS_LAST_IDLE_SESSION_TEXT, durationText));
         }
@@ -947,6 +973,8 @@ class IdlePages {
         @brief Updates close warning text element
         @details Shows or hides text warning player about closing idle report window via button only.
 
+        \prethisstorypagevalid
+
         @param boolShowWarning Controls whether to show close warning or not
 
         @return bool
@@ -954,7 +982,7 @@ class IdlePages {
         @retval false   Failed updating close warning story page element
     */
     function UpdateReportCloseWarning(boolShowWarning = true) {
-        if (GSStoryPage.IsValidStoryPageElement(this.CloseReportWarningTextElementID)) {
+        if (GSStoryPage.IsValidStoryPage(this.IdleStoryPageID) && GSStoryPage.IsValidStoryPageElement(this.CloseReportWarningTextElementID)) {
             local text = GSText(GSText.STR_EMPTY);
             if (boolShowWarning) {
                 text = GSText(GSText.STR_REPORT_WAIT_WARNING);
@@ -969,14 +997,18 @@ class IdlePages {
         @brief Updates save warning element for reports
         @details Shows or hides text warning player about saving the game with negative balance
 
+        \prethisstorypagevalid
+        
         @param boolShowWarning Controls whether to show the save warning or not
 
         @return bool
         @retval true    Save warning story page element updated
         @retval false   Failed updating save warning story page element
+
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
     */
     function UpdateReportSaveWarning(boolShowWarning = true) {
-        if (GSStoryPage.IsValidStoryPageElement(this.SaveWarningElementID)) {
+        if (GSStoryPage.IsValidStoryPage(this.IdleStoryPageID) && GSStoryPage.IsValidStoryPageElement(this.SaveWarningElementID)) {
             local text = GSText(GSText.STR_EMPTY);
             if (boolShowWarning) {
                 text = GSText(GSText.STR_REPORT_SAVE_WARNING);
@@ -1000,16 +1032,21 @@ class IdlePages {
         @param totalSeconds Total seconds
         @param vehicleSummary Summary of all vehicles
 
-        @returns GSText Average balance per vehicle text element
+        @returns GSText Average balance per vehicle text element or null for none
     */
     function GetVehicleAverageTextElement(totalAmount, totalSeconds, vehicleSummary) {
         local totalVehicles = 0;
         if (vehicleSummary != null){
             totalVehicles = vehicleSummary.count;
         }
-        local averageText = GSText(GSText.STR_EMPTY, 0, "", "", 0, "");
-        if (totalVehicles > 1) {
-            averageText = GSText(GSText.STR_REPORT_AVERAGE);
+        // local averageText = GSText(GSText.STR_EMPTY, 0, "", "", 0, "");
+        local averageText = null;
+        if (totalVehicles > 1) { // more than one because average
+            // local vehicleCashPerSecond = (this.CashInPeriod(totalAmount, totalSeconds, ::SecondsInPeriod.DAY) / totalVehicles).tointeger();
+            // if (vehicleCashPerSecond == 0) {
+            //     return null;
+            // }
+            
 
 
             local timeUnitText = GSText(GSText.STR_PER_SECOND);
@@ -1025,19 +1062,22 @@ class IdlePages {
                 ratio = ::SecondsInPeriod.MINUTE;
             }
 
-
+            
             local cashInTime = (this.CashInPeriod(totalAmount, totalSeconds, ratio) / totalVehicles).tointeger();
-            local inTime = GSText(GSText.STR_CURRENCY_POSITIVE, cashInTime);
-
-            averageText.AddParam(totalVehicles);
-            if (totalAmount > 0) {
-                averageText.AddParam(GSText(GSText.STR_STATS_LAST_IDLE_SESSION_SUMMARY_EARNING));
-            } else {
-                inTime = GSText(GSText.STR_CURRENCY_NEGATIVE, cashInTime);
-                averageText.AddParam(GSText(GSText.STR_STATS_LAST_IDLE_SESSION_SUMMARY_LOSING));
+            if (cashInTime > 0) {
+                local inTime = GSText(GSText.STR_CURRENCY_POSITIVE, cashInTime);
+                averageText = GSText(GSText.STR_REPORT_AVERAGE);
+                averageText.AddParam(totalVehicles);
+                if (totalAmount > 0) {
+                    averageText.AddParam(GSText(GSText.STR_STATS_LAST_IDLE_SESSION_SUMMARY_EARNING));
+                } else {
+                    inTime = GSText(GSText.STR_CURRENCY_NEGATIVE, cashInTime);
+                    averageText.AddParam(GSText(GSText.STR_STATS_LAST_IDLE_SESSION_SUMMARY_LOSING));
+                }
+                averageText.AddParam(inTime);
+                averageText.AddParam(timeUnitText);
             }
-            averageText.AddParam(inTime);
-            averageText.AddParam(timeUnitText);
+            
             return averageText;
             // this.AddPageTextElement(averageText);
         }
@@ -1194,7 +1234,7 @@ class IdlePages {
 
     @returns int Id of balance text element
     */
-    function GetBalancePerTimeUnit(totalAmount, totalSeconds, forceTimeUnit = 0, intMinTreshold = 1) {
+    function GetBalancePerTimeUnit(totalAmount, totalSeconds, forceTimeUnit = ::TimeUnits.TIME_UNIT_SECOND, intMinTreshold = 1) {
         local balanceInTimeUnitText = GSText(GSText.STR_EMPTY);
         local amount = 0;
         local newAmount = 0;

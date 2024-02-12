@@ -1,0 +1,464 @@
+\doxysection{Idle\+Util Class Reference}
+\hypertarget{class_idle_util}{}\label{class_idle_util}\index{IdleUtil@{IdleUtil}}
+
+
+Class with various utility helper methods for Idle\+TTD with \`{}static prop \doxylink{class_idle_util_vehicle_type_details}{Vehicle types} and functions by group \texorpdfstring{$\vert$}{|} \doxylink{class_idle_util_util_vehicle_functions}{Vehicles} \texorpdfstring{$\vert$}{|} \doxylink{class_idle_util_util_storybook_functions}{Pages} \texorpdfstring{$\vert$}{|} \doxylink{class_idle_util_util_misc_functions}{Misc}.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{Indent}\textbf{ General purpose story book funtions}\par
+{\em Functions that handle story book pages on \textquotesingle{}global\textquotesingle{} level (showing / closing etc.)
+
+\label{class_idle_util_util_storybook_functions}%
+\Hypertarget{class_idle_util_util_storybook_functions}%
+}\begin{DoxyCompactItemize}
+\item 
+static function \mbox{\hyperlink{class_idle_util_aaa55835df833a36c9366343a7da95ea1}{Display\+Page}} (int story\+Page\+ID)
+\begin{DoxyCompactList}\small\item\em Displays a story book page. \end{DoxyCompactList}\item 
+static function \mbox{\hyperlink{class_idle_util_a782a786488f72c3b740ae6447e95a361}{Close\+Story\+Book\+Window}} (int company\+ID)
+\begin{DoxyCompactList}\small\item\em Closes story book window. \end{DoxyCompactList}\item 
+static function \mbox{\hyperlink{class_idle_util_a219a1c7cb7e17f85c09a7ab79790fd02}{Set\+Page\+Date}} (int story\+Page\+ID, GSDate page\+Date=null)
+\begin{DoxyCompactList}\small\item\em Sets idle story page date. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Vehicle related funtions}\par
+{\em Functions that calculate vehicle statistics and retrieve unfiltered or filtered lists od company vehicles
+
+\label{class_idle_util_util_vehicle_functions}%
+\Hypertarget{class_idle_util_util_vehicle_functions}%
+}\begin{DoxyCompactItemize}
+\item 
+static function \mbox{\hyperlink{class_idle_util_acf5f6becc1b441f5d04557f5bfb5265a}{Get\+Running\+Company\+Vehicles}} (int company\+ID, int vehicle\+Type=null, bool bool\+Only\+Running=true)
+\begin{DoxyCompactList}\small\item\em Gives a list of all vehicles of given type. \end{DoxyCompactList}\item 
+static function \mbox{\hyperlink{class_idle_util_aa7e0330a58e24d75d00627b05859d70d}{Get\+Vehicle\+Type\+Stats\+Data}} (int company\+ID, int vehicle\+Type)
+\begin{DoxyCompactList}\small\item\em Renders vehicle type statistics row on story book page. \end{DoxyCompactList}\item 
+static function \mbox{\hyperlink{class_idle_util_a8e284207d10f0804a354b0a2d06b159a}{Get\+All\+Vehicle\+Stats\+Data}} (int company\+ID)
+\begin{DoxyCompactList}\small\item\em Returns statistics for all vehicles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Miscellaneous functions}\par
+{\em Common misc convenience and helper functions ~\newline
+
+
+\label{class_idle_util_util_misc_functions}%
+\Hypertarget{class_idle_util_util_misc_functions}%
+}\begin{DoxyCompactItemize}
+\item 
+static function \mbox{\hyperlink{class_idle_util_a6a19d5cc5857414f7f0b3bbf39c77542}{Get\+HQTile\+Index}} (int company\+ID)
+\begin{DoxyCompactList}\small\item\em Get company HQ tile index. \end{DoxyCompactList}\item 
+static function \mbox{\hyperlink{class_idle_util_a46334d3a8cc56a37c527b4af4702c304}{Has\+HQ}} (int company\+ID)
+\begin{DoxyCompactList}\small\item\em Check if company HQ is built. \end{DoxyCompactList}\item 
+static function \mbox{\hyperlink{class_idle_util_ab70a6d20696abba0b4a649b85f3764d3}{Get\+GSEvent\+Type\+Name}} (int int\+Event\+Type)
+\begin{DoxyCompactList}\small\item\em Returns label for event types. \end{DoxyCompactList}\item 
+static function \mbox{\hyperlink{class_idle_util_a7bc24330ac7d466e553d45a67a662f7f}{Get\+Idle\+Multiplier}} ()
+\begin{DoxyCompactList}\small\item\em Returns idle multiplier. \end{DoxyCompactList}\item 
+static function \mbox{\hyperlink{class_idle_util_a3b8c37a9fa296d4d7873388b03ecfdce}{Is\+Autosave\+Date}} (GSDate date)
+\begin{DoxyCompactList}\small\item\em Returns true if current date corresponds to one of autosave dates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Static Public Attributes}
+\begin{Indent}\textbf{ Static predefined members}\par
+{\em Values for which constants or enums won\textquotesingle{}t do }\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_idle_util_a6afff2f145cc14defc320e120b82b022}{All\+Vehicle\+Types}}
+\begin{DoxyCompactList}\small\item\em All vehicle types in Open\+TTD. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Class with various utility helper methods for Idle\+TTD with \`{}static prop \doxylink{class_idle_util_vehicle_type_details}{Vehicle types} and functions by group \texorpdfstring{$\vert$}{|} \doxylink{class_idle_util_util_vehicle_functions}{Vehicles} \texorpdfstring{$\vert$}{|} \doxylink{class_idle_util_util_storybook_functions}{Pages} \texorpdfstring{$\vert$}{|} \doxylink{class_idle_util_util_misc_functions}{Misc}. 
+
+Miscellaneous, utility and convenience static functions from this class are commonly used in Idle\+TTD. 
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00009}{9}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_idle_util_aaa55835df833a36c9366343a7da95ea1}\label{class_idle_util_aaa55835df833a36c9366343a7da95ea1} 
+\index{IdleUtil@{IdleUtil}!DisplayPage@{DisplayPage}}
+\index{DisplayPage@{DisplayPage}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{DisplayPage()}{DisplayPage()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Display\+Page (\begin{DoxyParamCaption}\item[{int}]{story\+Page\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Displays a story book page. 
+
+Opens story book window and displays story page with given ID, provided that the page is valid
+
+
+\begin{DoxyParams}{Parameters}
+{\em story\+Page\+ID} & Idle story book page ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Valid story page ID}} 
+
+GSStory\+Page.\+Is\+Valid\+Story\+Page(story\+Page\+ID) == true
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Story book page displayed \\
+\hline
+{\em false} & Failed displaying story book page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00071}{71}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_a782a786488f72c3b740ae6447e95a361}\label{class_idle_util_a782a786488f72c3b740ae6447e95a361} 
+\index{IdleUtil@{IdleUtil}!CloseStoryBookWindow@{CloseStoryBookWindow}}
+\index{CloseStoryBookWindow@{CloseStoryBookWindow}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{CloseStoryBookWindow()}{CloseStoryBookWindow()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Close\+Story\+Book\+Window (\begin{DoxyParamCaption}\item[{int}]{company\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Closes story book window. 
+
+Closes story book window (if there is one that is opened) for the company whose ID is passed as an argument
+
+
+\begin{DoxyParams}{Parameters}
+{\em company\+ID} & Player company ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00086}{86}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_a219a1c7cb7e17f85c09a7ab79790fd02}\label{class_idle_util_a219a1c7cb7e17f85c09a7ab79790fd02} 
+\index{IdleUtil@{IdleUtil}!SetPageDate@{SetPageDate}}
+\index{SetPageDate@{SetPageDate}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{SetPageDate()}{SetPageDate()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Set\+Page\+Date (\begin{DoxyParamCaption}\item[{int}]{story\+Page\+ID,  }\item[{GSDate}]{page\+Date = {\ttfamily null} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets idle story page date. 
+
+Every story page has a date in top left and this is helper function to set them.
+
+If no arguments are passed to the function current in-\/game date is used by default.
+
+
+\begin{DoxyParams}{Parameters}
+{\em story\+Page\+ID} & {\ttfamily \mbox{[}GSStory\+Page\+::\+Story\+Page\+ID\mbox{]}} Idle story book page ID \\
+\hline
+{\em page\+Date} & GSDate\texorpdfstring{$\vert$}{|}null Optional instance of GSDate, defaults to current date if {\ttfamily null} is passed or argument is omitted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Valid story page ID}} 
+
+GSStory\+Page.\+Is\+Valid\+Story\+Page(story\+Page\+ID) == true
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Date successfully updated \\
+\hline
+{\em false} & Date update failed \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00108}{108}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_acf5f6becc1b441f5d04557f5bfb5265a}\label{class_idle_util_acf5f6becc1b441f5d04557f5bfb5265a} 
+\index{IdleUtil@{IdleUtil}!GetRunningCompanyVehicles@{GetRunningCompanyVehicles}}
+\index{GetRunningCompanyVehicles@{GetRunningCompanyVehicles}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{GetRunningCompanyVehicles()}{GetRunningCompanyVehicles()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Get\+Running\+Company\+Vehicles (\begin{DoxyParamCaption}\item[{int}]{company\+ID,  }\item[{int}]{vehicle\+Type = {\ttfamily null},  }\item[{bool}]{bool\+Only\+Running = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gives a list of all vehicles of given type. 
+
+List of all valid and running vehicles belonging to the player (even those currently stopped at stations) filtered by optional vehicle type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em company\+ID} & Player company ID \\
+\hline
+{\em vehicle\+Type} & Vehicle type ID \\
+\hline
+{\em bool\+Only\+Running} & Filter running vehicles only (default {\ttfamily true})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Valid company ID}} 
+
+company\+ID == GSCompany.\+Resolve\+Company\+ID(company\+ID)
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+GSList A list of company-\/owned valid vehicles
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+static property \doxylink{class_idle_util_a6afff2f145cc14defc320e120b82b022}{Idle\+Util\+::All\+Vehicle\+Types} for details on {\ttfamily vehicle\+Type} param values. 
+\end{DoxySeeAlso}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00148}{148}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_aa7e0330a58e24d75d00627b05859d70d}\label{class_idle_util_aa7e0330a58e24d75d00627b05859d70d} 
+\index{IdleUtil@{IdleUtil}!GetVehicleTypeStatsData@{GetVehicleTypeStatsData}}
+\index{GetVehicleTypeStatsData@{GetVehicleTypeStatsData}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{GetVehicleTypeStatsData()}{GetVehicleTypeStatsData()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Get\+Vehicle\+Type\+Stats\+Data (\begin{DoxyParamCaption}\item[{int}]{company\+ID,  }\item[{int}]{vehicle\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Renders vehicle type statistics row on story book page. 
+
+Creates, populates and adds story book page element for given vehicle type
+
+
+\begin{DoxyParams}{Parameters}
+{\em company\+ID} & Player company ID \\
+\hline
+{\em vehicle\+Type} & Vehicle type ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Valid company ID}} 
+
+company\+ID == GSCompany.\+Resolve\+Company\+ID(company\+ID)
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Element added to story book page \\
+\hline
+{\em false} & Failed adding element to story book page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00184}{184}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_a8e284207d10f0804a354b0a2d06b159a}\label{class_idle_util_a8e284207d10f0804a354b0a2d06b159a} 
+\index{IdleUtil@{IdleUtil}!GetAllVehicleStatsData@{GetAllVehicleStatsData}}
+\index{GetAllVehicleStatsData@{GetAllVehicleStatsData}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{GetAllVehicleStatsData()}{GetAllVehicleStatsData()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Get\+All\+Vehicle\+Stats\+Data (\begin{DoxyParamCaption}\item[{int}]{company\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns statistics for all vehicles. 
+
+Filters all running vehicles of given type for the company and returns data about them
+
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Valid company ID}} 
+
+company\+ID == GSCompany.\+Resolve\+Company\+ID(company\+ID)
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em company\+ID} & Player company ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array An array of vehicle stats tables 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00222}{222}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_a6a19d5cc5857414f7f0b3bbf39c77542}\label{class_idle_util_a6a19d5cc5857414f7f0b3bbf39c77542} 
+\index{IdleUtil@{IdleUtil}!GetHQTileIndex@{GetHQTileIndex}}
+\index{GetHQTileIndex@{GetHQTileIndex}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{GetHQTileIndex()}{GetHQTileIndex()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Get\+HQTile\+Index (\begin{DoxyParamCaption}\item[{int}]{company\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get company HQ tile index. 
+
+Returns tile index of company HQ if there is one
+
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Valid company ID}} 
+
+company\+ID == GSCompany.\+Resolve\+Company\+ID(company\+ID)
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em company\+ID} & Player company ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em GSMap\+::\+TILE\+\_\+\+INVALID} & There is no Company HQ \\
+\hline
+{\em n$>$=0} & Company HQ tile index \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00260}{260}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_a46334d3a8cc56a37c527b4af4702c304}\label{class_idle_util_a46334d3a8cc56a37c527b4af4702c304} 
+\index{IdleUtil@{IdleUtil}!HasHQ@{HasHQ}}
+\index{HasHQ@{HasHQ}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{HasHQ()}{HasHQ()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Has\+HQ (\begin{DoxyParamCaption}\item[{int}]{company\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if company HQ is built. 
+
+Checks if there is HQ {\bfseries{and}} if it is valid before returning the result.
+
+
+\begin{DoxyParams}{Parameters}
+{\em company\+ID} & Player company ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Company HQ has been built \\
+\hline
+{\em false} & There is no Company HQ \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00275}{275}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_ab70a6d20696abba0b4a649b85f3764d3}\label{class_idle_util_ab70a6d20696abba0b4a649b85f3764d3} 
+\index{IdleUtil@{IdleUtil}!GetGSEventTypeName@{GetGSEventTypeName}}
+\index{GetGSEventTypeName@{GetGSEventTypeName}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{GetGSEventTypeName()}{GetGSEventTypeName()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Get\+GSEvent\+Type\+Name (\begin{DoxyParamCaption}\item[{int}]{int\+Event\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns label for event types. 
+
+Used for debugging
+
+
+\begin{DoxyParams}{Parameters}
+{\em int\+Event\+Type} & Event type id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00291}{291}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_a7bc24330ac7d466e553d45a67a662f7f}\label{class_idle_util_a7bc24330ac7d466e553d45a67a662f7f} 
+\index{IdleUtil@{IdleUtil}!GetIdleMultiplier@{GetIdleMultiplier}}
+\index{GetIdleMultiplier@{GetIdleMultiplier}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{GetIdleMultiplier()}{GetIdleMultiplier()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Get\+Idle\+Multiplier (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns idle multiplier. 
+
+Returns float for applying to idle balance
+
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00442}{442}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+\Hypertarget{class_idle_util_a3b8c37a9fa296d4d7873388b03ecfdce}\label{class_idle_util_a3b8c37a9fa296d4d7873388b03ecfdce} 
+\index{IdleUtil@{IdleUtil}!IsAutosaveDate@{IsAutosaveDate}}
+\index{IsAutosaveDate@{IsAutosaveDate}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{IsAutosaveDate()}{IsAutosaveDate()}}
+{\footnotesize\ttfamily static function Idle\+Util\+::\+Is\+Autosave\+Date (\begin{DoxyParamCaption}\item[{GSDate}]{date }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if current date corresponds to one of autosave dates. 
+
+Depending on autosave setting, some dates are eligible as \textquotesingle{}autosave\textquotesingle{} dates. This function returns true if current date corresponds to one of autosave dates based on game settings
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & In-\/game date to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000001}{Deprecated}}]This method of autosave detection won\textquotesingle{}t work properly starting with Open\+TTD 14. In verision 14 autosave option has been changed to real-\/time minutes, it is no longer tied to in-\/game months.\end{DoxyRefDesc}
+
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Current date is an autosave date \\
+\hline
+{\em false} & Current date is not an autosave date {\bfseries{or}} autosave is disabled altogether \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00462}{462}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_idle_util_a6afff2f145cc14defc320e120b82b022}\label{class_idle_util_a6afff2f145cc14defc320e120b82b022} 
+\index{IdleUtil@{IdleUtil}!AllVehicleTypes@{AllVehicleTypes}}
+\index{AllVehicleTypes@{AllVehicleTypes}!IdleUtil@{IdleUtil}}
+\doxysubsubsection{\texorpdfstring{AllVehicleTypes}{AllVehicleTypes}}
+{\footnotesize\ttfamily Idle\+Util\+::\+All\+Vehicle\+Types\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+All vehicle types in Open\+TTD. 
+
+An array of all vehicle type IDs in Open\+TTD, convenient for iteration.
+
+Check out \href{https://docs.openttd.org/gs-api/classGSVehicle}{\texttt{ GSVehicle class documentation}} for enum that is referenced.
+
+\label{class_idle_util_vehicle_type_details}%
+\Hypertarget{class_idle_util_vehicle_type_details}%
+ {\bfseries{Vehicle type details}} \tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Index   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Reference   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Value \textonesuperior{}   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Index   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Reference   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Value \textonesuperior{}   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+\PBS\centering 0   &{\ttfamily GSVehicle.\+VT\+\_\+\+RAIL}   &\PBS\centering 0   &Rail vehicles    \\\cline{1-4}
+\PBS\centering 1   &{\ttfamily GSVehicle.\+VT\+\_\+\+ROAD}   &\PBS\centering 1   &Road vehicles    \\\cline{1-4}
+\PBS\centering 2   &{\ttfamily GSVehicle.\+VT\+\_\+\+WATER}   &\PBS\centering 2   &Ships    \\\cline{1-4}
+\PBS\centering 3   &{\ttfamily GSVehicle.\+VT\+\_\+\+AIR}   &\PBS\centering 3   &Airplanes   \\\cline{1-4}
+\end{longtabu}
+
+
+\begin{quote}
+\textonesuperior{} {\bfseries{Values are just for reference and might change.}} \end{quote}
+
+
+Definition at line \mbox{\hyperlink{_idle_util_8nut_source_l00040}{40}} of file \mbox{\hyperlink{_idle_util_8nut_source}{Idle\+Util.\+nut}}.
+

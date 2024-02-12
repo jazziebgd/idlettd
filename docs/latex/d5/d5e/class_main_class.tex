@@ -1,0 +1,346 @@
+\doxysection{Main\+Class Class Reference}
+\hypertarget{class_main_class}{}\label{class_main_class}\index{MainClass@{MainClass}}
+
+
+Idle\+TTD GSController instance.  
+
+
+Inheritance diagram for Main\+Class\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{d5/d5e/class_main_class}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{Indent}\textbf{ Idle\+TTD functions}\par
+{\em These functions might be called from main {\ttfamily while} loop in \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Start}, depending on game state. }\begin{DoxyCompactItemize}
+\item 
+function \mbox{\hyperlink{class_main_class_a23e740b91ea3e75b77cbf6fb1e951920}{Handle\+Events}} ()
+\begin{DoxyCompactList}\small\item\em Function that processes all game events. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_main_class_a3bc9410032f9d978855912406205960b}{Start\+Idle}} ()
+\begin{DoxyCompactList}\small\item\em Starts up Idle\+TTD game script for current game session. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Script controller lifecycle}\par
+{\em These functions are called by Open\+TTD and are part of game script lifecycle }\begin{DoxyCompactItemize}
+\item 
+function \mbox{\hyperlink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Start}} ()
+\begin{DoxyCompactList}\small\item\em Script "{}main thread"{} start. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_main_class_ae0e9d0082e541fe9cf17562f2c99d8d2}{Save}} ()
+\begin{DoxyCompactList}\small\item\em Stores script data with saves game. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_main_class_a181b21da25f355a260072bec6a7b5074}{Load}} (int version, \mbox{\hyperlink{struct_script_saved_data}{Script\+Saved\+Data}} tbl)
+\begin{DoxyCompactList}\small\item\em Restores saved script data on game load. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_main_class_a2a01f879c7889cde73e69012e767b012}{Upgrade\+Script\+Version}} (int from\+Version, int to\+Version)
+\begin{DoxyCompactList}\small\item\em Upgrades data stored in saved games that ran an older version of Idle\+TTD. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Public Attributes}
+\begin{Indent}\textbf{ Persistent members}\par
+{\em These members are used to store \doxylink{struct_script_saved_data}{Script\+Saved\+Data} with game save and are restored on load. They remain persistent through game sessopms. }\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_main_class_a5dc1eb4d9435029b2e315379b4a6926c}{Player\+Company\+ID}} = GSCompany.\+COMPANY\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Company ID of the player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_main_class_af0587e00680f9966d50f61afcada10e0}{Idle\+Story\+Page\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Idle story page ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_main_class_ab74a4cf8bfcbf7394eeb7d99302fe13d}{Last\+Active\+Time}} = 0
+\begin{DoxyCompactList}\small\item\em Time of the latest game save. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_main_class_a2694001a6a53d1407844a3e951a7a04a}{Last\+Year\+Balance}} = 0
+\begin{DoxyCompactList}\small\item\em How much money did company lose or earn last year. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_main_class_acbc9ab915d1481eed03c0d0dce005be7}{Prev\+Current\+Cash}} = 0
+\begin{DoxyCompactList}\small\item\em Company cash in previous year. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_main_class_a9c744a97dafe10920645814a092e687a}{Second\+To\+Last\+Year\+Balance}} = 0
+\begin{DoxyCompactList}\small\item\em How much money did company lose or earn in the second to last year. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_main_class_a1bf866ad06cf3a80b876c583c5b1c945}{Saved\+Script\+Version}} = 0
+\begin{DoxyCompactList}\small\item\em Version of the script in saved game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Idle\+TTD GSController instance. 
+
+Idle\+TTD game script controller class that runs script main loop. Waits for valid company id first to set up an instance of \doxylink{class_idle_story}{Idle\+Story} 
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00016}{16}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_main_class_a23e740b91ea3e75b77cbf6fb1e951920}\label{class_main_class_a23e740b91ea3e75b77cbf6fb1e951920} 
+\index{MainClass@{MainClass}!HandleEvents@{HandleEvents}}
+\index{HandleEvents@{HandleEvents}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{HandleEvents()}{HandleEvents()}}
+{\footnotesize\ttfamily function Main\+Class\+::\+Handle\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Function that processes all game events. 
+
+Iterates through eventual waiting events from \href{https://docs.openttd.org/gs-api/classGSEventController}{\texttt{ GSEvent\+Controller}} and handles them if needed. Two types of events are handled in Idle\+TTD\+:
+\begin{DoxyItemize}
+\item Function first awaits for event with type \href{https://docs.openttd.org/gs-api/classGSEvent}{\texttt{ GSEvent.\+ET\+\_\+\+COMPANY\+\_\+\+NEW}} and valid company id to set required property \doxylink{class_main_class_a5dc1eb4d9435029b2e315379b4a6926c}{this.Player\+Company\+ID}.
+\item Function will pass click events of type \href{https://docs.openttd.org/gs-api/classGSEvent}{\texttt{ GSEvent.\+ET\+\_\+\+STORYPAGE\+\_\+\+BUTTON\+\_\+\+CLICK}} originating from idle story boook page to \doxylink{class_idle_story_a747985d06b5102dc5ed52b01846e5163}{Idle\+Story.Handle\+Button\+Click()} for handling.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em false} & Script should skip next loop iteration in order for game to react faster to state changes, clicks etc. \\
+\hline
+{\em true} & Script loop should be processed normally \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00158}{158}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_a3bc9410032f9d978855912406205960b}\label{class_main_class_a3bc9410032f9d978855912406205960b} 
+\index{MainClass@{MainClass}!StartIdle@{StartIdle}}
+\index{StartIdle@{StartIdle}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{StartIdle()}{StartIdle()}}
+{\footnotesize\ttfamily function Main\+Class\+::\+Start\+Idle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts up Idle\+TTD game script for current game session. 
+
+Sets up game script data and idle story book page. Shows story book page with intro (based on settings) when new game starts or with idle report when save game is loaded.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00189}{189}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}\label{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7} 
+\index{MainClass@{MainClass}!Start@{Start}}
+\index{Start@{Start}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily function Main\+Class\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Script "{}main thread"{} start. 
+
+This function is called by Open\+TTD upon starting new or loading saved game with Idle\+TTD enabled.
+
+Function will first set up everything\+:
+
+
+\begin{DoxyEnumerate}
+\item Wait for valid company
+\item initialize Idle\+TTD
+\begin{DoxyItemize}
+\item If game was loaded, apply saved data
+\item If new game was started initialize defaults data
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+and then start running its standard tick loop.
+
+\begin{DoxyAttention}{Attention}
+Open\+TTD will consider that script had crashed if this function ever returns. The {\ttfamily while} loop in this function should never stop iterating.
+\end{DoxyAttention}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00227}{227}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_ae0e9d0082e541fe9cf17562f2c99d8d2}\label{class_main_class_ae0e9d0082e541fe9cf17562f2c99d8d2} 
+\index{MainClass@{MainClass}!Save@{Save}}
+\index{Save@{Save}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{Save()}{Save()}}
+{\footnotesize\ttfamily function Main\+Class\+::\+Save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Stores script data with saves game. 
+
+Prepares data desribing current game script state and returns it for storing in saves games.
+
+Returned data is a table in the format defined by \doxylink{struct_script_saved_data}{Script\+Saved\+Data}.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily Player\+Company\+ID} Id of current company
+\item {\ttfamily Idle\+Story\+Page\+ID} Id of current idle story page
+\item {\ttfamily Last\+Active\+Time} Unix timestamp that stores exact save game time
+\item {\ttfamily Last\+Year\+Balance} Amount of money company earned or lost last year
+\item {\ttfamily Second\+To\+Last\+Year\+Balance} Amount of money company earned or lost in second to last year
+\item {\ttfamily Prev\+Current\+Cash} Amount of money company had at the beginning of current year
+\item {\ttfamily Saved\+Script\+Version} Idle\+TTD version that game is being saved with
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Function sets Saved\+Date property that is used when determining whether the save was autosave or manual one.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_script_saved_data}{Script\+Saved\+Data} Script state data for saving 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00365}{365}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_a181b21da25f355a260072bec6a7b5074}\label{class_main_class_a181b21da25f355a260072bec6a7b5074} 
+\index{MainClass@{MainClass}!Load@{Load}}
+\index{Load@{Load}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{Load()}{Load()}}
+{\footnotesize\ttfamily function Main\+Class\+::\+Load (\begin{DoxyParamCaption}\item[{int}]{version,  }\item[{\mbox{\hyperlink{struct_script_saved_data}{Script\+Saved\+Data}}}]{tbl }\end{DoxyParamCaption})}
+
+
+
+Restores saved script data on game load. 
+
+Called just before \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Start}, used to restore saved Idle\+TTD data. \begin{DoxyNote}{Note}
+Values for {\ttfamily Player\+Company\+ID} and {\ttfamily Idle\+Story\+Page\+Id} are always present, other two can be uninitialized if game has been saved within first couple of years after start.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em version} & integer Script version \\
+\hline
+{\em tbl} & \doxylink{struct_script_saved_data}{Script\+Saved\+Data} Stored data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00413}{413}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_a2a01f879c7889cde73e69012e767b012}\label{class_main_class_a2a01f879c7889cde73e69012e767b012} 
+\index{MainClass@{MainClass}!UpgradeScriptVersion@{UpgradeScriptVersion}}
+\index{UpgradeScriptVersion@{UpgradeScriptVersion}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{UpgradeScriptVersion()}{UpgradeScriptVersion()}}
+{\footnotesize\ttfamily function Main\+Class\+::\+Upgrade\+Script\+Version (\begin{DoxyParamCaption}\item[{int}]{from\+Version,  }\item[{int}]{to\+Version }\end{DoxyParamCaption})}
+
+
+
+Upgrades data stored in saved games that ran an older version of Idle\+TTD. 
+
+Currently it doesn\textquotesingle{}t do pretty much anything. Function is called as soon as \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{this.Start()} starts executing. This is the place to reconcile (future eventual) differences across different script versions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em from\+Version} & integer Version to upgrade from (script version from the saved game) \\
+\hline
+{\em to\+Version} & integer Version to upgrade to (latest game script version)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Data upgraded to new version successfully \\
+\hline
+{\em false} & Failed upgrading data to new script version \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00455}{455}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_main_class_a5dc1eb4d9435029b2e315379b4a6926c}\label{class_main_class_a5dc1eb4d9435029b2e315379b4a6926c} 
+\index{MainClass@{MainClass}!PlayerCompanyID@{PlayerCompanyID}}
+\index{PlayerCompanyID@{PlayerCompanyID}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{PlayerCompanyID}{PlayerCompanyID}}
+{\footnotesize\ttfamily Main\+Class\+::\+Player\+Company\+ID = GSCompany.\+COMPANY\+\_\+\+INVALID}
+
+
+
+Company ID of the player. 
+
+Although initially set to GSCompany.\+COMPANY\+\_\+\+INVALID, this value gets populated in first couple of ticks in \doxylink{class_main_class_a23e740b91ea3e75b77cbf6fb1e951920}{Handle\+Events} function. 
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00029}{29}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_af0587e00680f9966d50f61afcada10e0}\label{class_main_class_af0587e00680f9966d50f61afcada10e0} 
+\index{MainClass@{MainClass}!IdleStoryPageID@{IdleStoryPageID}}
+\index{IdleStoryPageID@{IdleStoryPageID}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{IdleStoryPageID}{IdleStoryPageID}}
+{\footnotesize\ttfamily Main\+Class\+::\+Idle\+Story\+Page\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+INVALID}
+
+
+
+Idle story page ID. 
+
+Temporary internal storage for company ids loaded with saved games 
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00035}{35}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_ab74a4cf8bfcbf7394eeb7d99302fe13d}\label{class_main_class_ab74a4cf8bfcbf7394eeb7d99302fe13d} 
+\index{MainClass@{MainClass}!LastActiveTime@{LastActiveTime}}
+\index{LastActiveTime@{LastActiveTime}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{LastActiveTime}{LastActiveTime}}
+{\footnotesize\ttfamily Main\+Class\+::\+Last\+Active\+Time = 0}
+
+
+
+Time of the latest game save. 
+
+Unix timestamp that keeps track when the game was saved last time 
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00042}{42}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_a2694001a6a53d1407844a3e951a7a04a}\label{class_main_class_a2694001a6a53d1407844a3e951a7a04a} 
+\index{MainClass@{MainClass}!LastYearBalance@{LastYearBalance}}
+\index{LastYearBalance@{LastYearBalance}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{LastYearBalance}{LastYearBalance}}
+{\footnotesize\ttfamily Main\+Class\+::\+Last\+Year\+Balance = 0}
+
+
+
+How much money did company lose or earn last year. 
+
+Value that keeps track of last year balance changes 
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00048}{48}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_acbc9ab915d1481eed03c0d0dce005be7}\label{class_main_class_acbc9ab915d1481eed03c0d0dce005be7} 
+\index{MainClass@{MainClass}!PrevCurrentCash@{PrevCurrentCash}}
+\index{PrevCurrentCash@{PrevCurrentCash}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{PrevCurrentCash}{PrevCurrentCash}}
+{\footnotesize\ttfamily Main\+Class\+::\+Prev\+Current\+Cash = 0}
+
+
+
+Company cash in previous year. 
+
+How much money did company have at the start of current year 
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00055}{55}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_a9c744a97dafe10920645814a092e687a}\label{class_main_class_a9c744a97dafe10920645814a092e687a} 
+\index{MainClass@{MainClass}!SecondToLastYearBalance@{SecondToLastYearBalance}}
+\index{SecondToLastYearBalance@{SecondToLastYearBalance}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{SecondToLastYearBalance}{SecondToLastYearBalance}}
+{\footnotesize\ttfamily Main\+Class\+::\+Second\+To\+Last\+Year\+Balance = 0}
+
+
+
+How much money did company lose or earn in the second to last year. 
+
+Value that keeps track of second to last year balance changes 
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00062}{62}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+
+\Hypertarget{class_main_class_a1bf866ad06cf3a80b876c583c5b1c945}\label{class_main_class_a1bf866ad06cf3a80b876c583c5b1c945} 
+\index{MainClass@{MainClass}!SavedScriptVersion@{SavedScriptVersion}}
+\index{SavedScriptVersion@{SavedScriptVersion}!MainClass@{MainClass}}
+\doxysubsubsection{\texorpdfstring{SavedScriptVersion}{SavedScriptVersion}}
+{\footnotesize\ttfamily Main\+Class\+::\+Saved\+Script\+Version = 0}
+
+
+
+Version of the script in saved game. 
+
+Version of the game script that is being loaded with saved game 
+
+Definition at line \mbox{\hyperlink{main_8nut_source_l00069}{69}} of file \mbox{\hyperlink{main_8nut_source}{main.\+nut}}.
+

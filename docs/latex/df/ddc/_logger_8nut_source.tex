@@ -1,0 +1,121 @@
+\doxysection{Logger.\+nut}
+\hypertarget{_logger_8nut_source}{}\label{_logger_8nut_source}\index{Logger.nut@{Logger.nut}}
+\mbox{\hyperlink{_logger_8nut}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{constants_8nut}{constants.nut}}"{}});}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00013}\mbox{\hyperlink{class_logger}{00013}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_logger}{Logger}}\ \{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{static}\ \ \ \_NestedPrependString\ =\ \textcolor{stringliteral}{"{}\ \ .\ \ "{}};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00032}00032\ \ \ \ \ \textcolor{keyword}{static}\ \ \ function\ \_CanLog(\textcolor{keywordtype}{int}\ logLevel\ =\ \mbox{\hyperlink{constants_8nut_ad28c7b0f63def160057028c0eec9128a}{ScriptLogLevels}}.LOG\_LEVEL\_NONE)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00033}00033\ \ \ \ \ \ \ \ \ local\ LogLevelSetting\ =\ GSController.GetSetting(\textcolor{stringliteral}{"{}log\_level"{}});}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (LogLevelSetting\ >=\ logLevel)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00036}00036\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00038}00038\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00053}\mbox{\hyperlink{class_logger_a3db59060a2f577bdfdc405d0df2e464b}{00053}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_logger_a3db59060a2f577bdfdc405d0df2e464b}{Verbose}}(std::string\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_logger}{Logger}}.\_CanLog(\mbox{\hyperlink{constants_8nut_ad28c7b0f63def160057028c0eec9128a}{ScriptLogLevels}}.LOG\_LEVEL\_VERBOSE))\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ GSLog.Info(message);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00056}00056\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00057}00057\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00068}\mbox{\hyperlink{class_logger_a77fd6cc7f1f8d30835a284cb74c93fd8}{00068}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_logger_a77fd6cc7f1f8d30835a284cb74c93fd8}{Debug}}(std::string\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_logger}{Logger}}.\_CanLog(\mbox{\hyperlink{constants_8nut_ad28c7b0f63def160057028c0eec9128a}{ScriptLogLevels}}.LOG\_LEVEL\_DEBUG))\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ GSLog.Info(message);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00071}00071\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00072}00072\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00083}\mbox{\hyperlink{class_logger_a495cdecfe946a495cb8841521936cb57}{00083}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_logger_a495cdecfe946a495cb8841521936cb57}{Info}}(std::string\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_logger}{Logger}}.\_CanLog(\mbox{\hyperlink{constants_8nut_ad28c7b0f63def160057028c0eec9128a}{ScriptLogLevels}}.LOG\_LEVEL\_INFO))\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ GSLog.Info(message);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00086}00086\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00087}00087\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00098}\mbox{\hyperlink{class_logger_a56190659d8a55f8ae065a89ed814a88b}{00098}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_logger_a56190659d8a55f8ae065a89ed814a88b}{Warning}}(std::string\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_logger}{Logger}}.\_CanLog(\mbox{\hyperlink{constants_8nut_ad28c7b0f63def160057028c0eec9128a}{ScriptLogLevels}}.LOG\_LEVEL\_WARNING))\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ GSLog.Warning(message);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00101}00101\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00102}00102\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00113}\mbox{\hyperlink{class_logger_ab8fb54de1ae0cf356cdad2df681467ec}{00113}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_logger_ab8fb54de1ae0cf356cdad2df681467ec}{Error}}(std::string\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_logger}{Logger}}.\_CanLog(\mbox{\hyperlink{constants_8nut_ad28c7b0f63def160057028c0eec9128a}{ScriptLogLevels}}.LOG\_LEVEL\_ERROR))\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ GSLog.Error(message);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00116}00116\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00117}00117\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00118}00118\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00129}00129\ \ \ \ \ \textcolor{keyword}{static}\ \ \ function\ \_Log(\textcolor{keywordtype}{int}\ logLevel,\ std::string\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_logger}{Logger}}.\_CanLog(logLevel))\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logLevel\ ==\ \mbox{\hyperlink{constants_8nut_ad28c7b0f63def160057028c0eec9128a}{ScriptLogLevels}}.LOG\_LEVEL\_ERROR)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GSLog.Error(message);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (logLevel\ ==\ \mbox{\hyperlink{constants_8nut_ad28c7b0f63def160057028c0eec9128a}{ScriptLogLevels}}.LOG\_LEVEL\_WARNING)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GSLog.Warning(message);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \textcolor{keywordflow}{else}\ \ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GSLog.Info(message);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00138}00138\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00139}00139\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00154}\mbox{\hyperlink{class_logger_a990cfe64eca0a74216f8edef4b36f312}{00154}}\ \ \ \ \ \textcolor{keyword}{static}\ function\ \mbox{\hyperlink{class_logger_a990cfe64eca0a74216f8edef4b36f312}{Table}}(SQTable\ tableToLog,\ std::string\ tableIdentifier,\ \textcolor{keywordtype}{int}\ logLevel,\ std::string\ prependText=null,\ \textcolor{keywordtype}{bool}\ skipIdentifer\ =\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_logger}{Logger}}.\_CanLog(logLevel))\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prependText\ ==\ null)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prependText\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!skipIdentifer)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GSLog.Info("{}"{});}}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_Log(logLevel,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!tableIdentifier)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tableIdentifier\ =\ \textcolor{stringliteral}{"{}TABLE"{}};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GSLog.Info("{}||||||||||||||\ "{}\ +\ tableIdentifier\ +\ "{}\ START\ ||||||||||||||"{});}}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_Log(logLevel,\ \textcolor{stringliteral}{"{}||||||||||||||\ "{}}\ +\ tableIdentifier\ +\ \textcolor{stringliteral}{"{}\ START\ ||||||||||||||"{}});}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(key,\ value\ \textcolor{keywordflow}{in}\ tableToLog)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_LogTableMember(key,\ value,\ logLevel,\ prependText\ +\ \mbox{\hyperlink{class_logger}{Logger}}.\_NestedPrependString);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!skipIdentifer)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_Log(logLevel,\ \textcolor{stringliteral}{"{}==============\ "{}}\ +\ tableIdentifier\ +\ \textcolor{stringliteral}{"{}\ END\ =============="{}});}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_Log(logLevel,\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00175}00175\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00176}00176\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00190}00190\ \ \ \ \ \textcolor{keyword}{static}\ \ \ function\ \_LogTableMember(std::string\ memberKey,\ std::string\ memberValue,\ \textcolor{keywordtype}{int}\ logLevel,\ std::string\ prependText)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_logger}{Logger}}.\_CanLog(logLevel))\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ local\ formatted\ =\ memberValue}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!prependText)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prependText\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (typeof\ memberValue\ ==\ \textcolor{stringliteral}{"{}array"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ local\ arraySize\ =\ memberValue.len();}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ formatted\ =\ \textcolor{stringliteral}{"{}\_\_array["{}}\ +\ arraySize\ +\ \textcolor{stringliteral}{"{}]\_\_"{}};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ local\ msg\ =\ prependText\ +\ memberKey\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ formatted;}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_Log(logLevel,\ msg);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (local\ index\ =\ 0;\ index\ <\ arraySize;\ index++)\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_LogTableMember(memberKey\ +\ \textcolor{stringliteral}{"{}["{}}\ +\ index\ +\ \textcolor{stringliteral}{"{}]"{}},\ memberValue[index],\ logLevel,\ prependText\ +\ \mbox{\hyperlink{class_logger}{Logger}}.\_NestedPrependString);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (typeof\ memberValue\ ==\ \textcolor{stringliteral}{"{}table"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ local\ tableSize\ =\ memberValue.len();}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ formatted\ =\ \textcolor{stringliteral}{"{}\_\_table["{}}\ +\ tableSize\ +\ \textcolor{stringliteral}{"{}]\_\_"{}};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ local\ msg\ =\ prependText\ +\ memberKey\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ formatted;}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_Log(logLevel,\ msg);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\mbox{\hyperlink{class_logger_a990cfe64eca0a74216f8edef4b36f312}{Table}}(memberValue,\ memberKey,\ logLevel,\ prependText,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (typeof\ memberValue\ ==\ \textcolor{stringliteral}{"{}function"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ formatted\ =\ \textcolor{stringliteral}{"{}\_\_function\_\_"{}};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ local\ msg\ =\ prependText\ +\ memberKey\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ formatted;}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_Log(logLevel,\ msg);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \};\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ local\ msg\ =\ prependText\ +\ memberKey\ +\ \textcolor{stringliteral}{"{}:\ "{}}\ +\ formatted;}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_logger}{Logger}}.\_Log(logLevel,\ msg);}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00221}00221\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00222}00222\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_logger_8nut_source_l00223}00223\ \};}
+
+\end{DoxyCode}

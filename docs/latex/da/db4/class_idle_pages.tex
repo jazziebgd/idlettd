@@ -1,0 +1,1372 @@
+\doxysection{Idle\+Pages Class Reference}
+\hypertarget{class_idle_pages}{}\label{class_idle_pages}\index{IdlePages@{IdlePages}}
+
+
+Handles story book pages for Idle\+TTD.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constructor \mbox{\hyperlink{class_idle_pages_ae4b64a780762db0fd943be65a31e3585}{Idle\+Pages}} (int company\+ID, int story\+Page\+ID)
+\begin{DoxyCompactList}\small\item\em Class constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Base rendering functions}\par
+{\em These functions are base for rendering story book pages }\begin{DoxyCompactItemize}
+\item 
+function \mbox{\hyperlink{class_idle_pages_ac3db34c0989ec6ebeae6c19e1f8f0b88}{Add\+Page\+Text\+Element}} (GSText element)
+\begin{DoxyCompactList}\small\item\em Adds story book page text element to current page. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_aee892dd5384d940cb6fc619d5e4e4ac2}{Add\+Nav\+Button}} (std\+::string custom\+Text, Story\+Page\+Button\+Formatting button\+Reference=null)
+\begin{DoxyCompactList}\small\item\em Renders story page push button. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a4d916ee9f3197061309b0c57a2ad856f}{Clear\+Page}} (bool update\+Date=true)
+\begin{DoxyCompactList}\small\item\em Removes all contents from idle story book page. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a9835697de4fcea5722513aa75b4bb674}{Reset\+Screen\+Visible\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Resets all visible flags for all screens. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_adf8ffd56eae0e0f46b866105f77eff9d}{Reset\+Element\+IDReferences}} ()
+\begin{DoxyCompactList}\small\item\em Resets all element and button ids. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Story book page rendering}\par
+{\em Members that are managing and rendering complete story book page screens }\begin{DoxyCompactItemize}
+\item 
+function \mbox{\hyperlink{class_idle_pages_a95d7f4e8350713bafbd44a153ad5c9b9}{Show\+Idle\+Report\+Screen}} (int idle\+Balance=0, int inactive\+Seconds=0, \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} vehicle\+Summary=null, std\+::array$<$ \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} $>$ all\+Vehicle\+Stats=null, int int\+Last\+Year\+Balance=0)
+\begin{DoxyCompactList}\small\item\em Shows idle report screen. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_aed0b5efd40481d9b3f12128d2f34e827}{Show\+Stats\+Screen}} (\mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} vehicle\+Summary, std\+::array$<$ \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} $>$ all\+Vehicle\+Stats, int total\+Amount, int total\+Seconds, int int\+Last\+Year\+Balance)
+\begin{DoxyCompactList}\small\item\em Shows stats screen. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_afc85a72f0f1dd7806186daef8cd1d7c0}{Show\+Intro\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Shows intro screen. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_abfe2fae5b22f6fd91ea86046e1b786e2}{Show\+Help\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Shows help screen. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a625df30f10e0a7257a4f9e0f5f4dc371}{Show\+Missing\+HQScreen}} ()
+\begin{DoxyCompactList}\small\item\em Shows missing HQ screen. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a7eb273acce2ae0b37cb85ab77be8f78a}{Show\+Save\+Warning\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Shows save warning screen. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a372120a9b702a358ac1f7b5f2e98869e}{Render\+Idle\+Report\+Screen}} (int idle\+Balance, int inactive\+Seconds, \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} vehicle\+Summary=null, std\+::array$<$ \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} $>$ all\+Vehicle\+Stats=null)
+\begin{DoxyCompactList}\small\item\em Renders idle report screen. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a0631c47910518f768f2956a4e37d36be}{Render\+Stats\+Screen}} (\mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} vehicle\+Summary, std\+::array$<$ \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} $>$ all\+Vehicle\+Stats, int total\+Amount, int total\+Seconds, int int\+Last\+Year\+Balance)
+\begin{DoxyCompactList}\small\item\em Renders stats screen. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a8e8e65b72a27b78136ebd59db8f49e44}{Render\+Intro\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Adds intro screen elements to story page and updates the title. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_ac2e08ee04c929128085275d16610d730}{Render\+Help\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Adds help screen elements to story page and updates the title. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a14bf3020b9fd5e670cd5fb86a0fbb212}{Render\+Missing\+HQScreen}} ()
+\begin{DoxyCompactList}\small\item\em Adds missing HQ screen elements to story page and updates the title. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a3d87801af0b66fdbe5d86288b016322a}{Render\+Save\+Warning\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em Adds save warning svreen elements to story page and updates the title. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Utility / calculation functions}\par
+{\em Commonly used utility and calculation functions }\begin{DoxyCompactItemize}
+\item 
+function \mbox{\hyperlink{class_idle_pages_a555df524aae8d29c7231a8e733116262}{Cash\+In\+Period}} (int total\+Amount, int total\+Seconds, int ratio=\mbox{\hyperlink{constants_8nut_aaa5657ea8a8ceb231fc8162205dc30bea7cb36ff0a80f238d5b987d9250d369e3}{\+::\+Seconds\+In\+Period.\+SECOND}})
+\begin{DoxyCompactList}\small\item\em Returns amount of cash calculated fer given period. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Public Attributes}
+\begin{Indent}\textbf{ Screens visible flags}\par
+{\em Keeps track of currently rendered screen }\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_idle_pages_a810f4f927fe5d4f28b741dfa93088535}{Idle\+Report\+Visible}} = false
+\begin{DoxyCompactList}\small\item\em Idle report visibility flag. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a88ccabdb20dfc0231681da58ebcf3f85}{Intro\+Visible}} = false
+\begin{DoxyCompactList}\small\item\em Intro visibility flag. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_ae1a2fd9d4e5310a83d907e0d2b53acd5}{Missing\+HQScreen\+Visible}} = false
+\begin{DoxyCompactList}\small\item\em No\+HQ screen visibility flag. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_ad240fd4f034540b3bdf85234c97fe6ac}{Stats\+Screen\+Visible}} = false
+\begin{DoxyCompactList}\small\item\em Stats screen visibility flag. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_ac1876eef8e3400468c6c6ddcc6a5e575}{Help\+Screen\+Visible}} = false
+\begin{DoxyCompactList}\small\item\em Help screen visibility flag. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a9af850f6eae64cb9ed62972003674e3b}{Save\+Warning\+Screen\+Visible}} = false
+\begin{DoxyCompactList}\small\item\em Save warning screen visibility flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{State variables}
+Properties below represent the state of the current Idle\+TTD session \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_idle_pages_aa50f81ccf3a67d75b848dcb3ba813364}{Player\+Company\+ID}} = GSCompany.\+COMPANY\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Player company ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a353e4c21bd81dfca9a2d7dc4a80146be}{Idle\+Story\+Page\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Idle story book page ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a28effa2da96ced0b4b7a63b780936519}{Saved\+With\+Negative\+Balance}} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating player saved the game with negative balance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a4ba07ad8b0cd3e59c7bc10f07172c2b8}{Save\+Warning\+Displayed}} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating presence of save warning text. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Rendered element IDs}
+References to story page elements (like button) ids, used to determine which button triggered a click event or update elements \begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_idle_pages_af397ed932d14fe76976f74a7b0d24ad6}{Save\+Warning\+Element\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of save warning text element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_af787039a4b1e6ab82378f3eee36901f5}{Previous\+Duration\+Element\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of button element that refreshes story book page stats. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a3d5327034b0a7bdb5621f7b50f57dac4}{Close\+Report\+Warning\+Text\+Element\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of button element that refreshes story book page stats. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_ae79c077d76d1bd5db8d45bf11fceb31f}{Close\+Save\+Warning\+Button\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of button element that closes save warning screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_af61dd0d5d7608497b0ae792abea32633}{Refresh\+Button\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of button element that refreshes story book page stats. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a8af3af9bfd77a2bae55c71f853560193}{Close\+Button\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of button element that closes idle story book. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a1596bc567ea588f729c852988c7d80dc}{Idle\+Report\+Button\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of button element on idle report screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a71b1d874953900b57ba1d6e7c0a97105}{Intro\+Button\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of button element on intro screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_idle_pages_a2001a5f69aaeab796e612817ede68206}{Show\+Help\+Button\+ID}} = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID
+\begin{DoxyCompactList}\small\item\em Id of help button element that leads to help screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Partial rendering functions}
+These functions render elements of relatively complex individual elements as partials for screens. \begin{DoxyCompactItemize}
+\item 
+function \mbox{\hyperlink{class_idle_pages_afeca354b091f6d47ee287fe723a5d2f3}{Get\+Idle\+Report\+Text\+Element}} (int idle\+Balance, int inactive\+Seconds)
+\begin{DoxyCompactList}\small\item\em Renders first paragraph of idle report. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a5871670e00c4b7bdd4bd9d7d543d4a1a}{Render\+Idle\+Report\+Button}} (int idle\+Balance=0)
+\begin{DoxyCompactList}\small\item\em Renders idle report button. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_ac8b2a6af5c5b9a9cfc202c380267288e}{Render\+Help\+Button}} ()
+\begin{DoxyCompactList}\small\item\em Renders help button. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_ab7c186221e2fcd21d3ad6af853382bd3}{Render\+Refresh\+Button}} (std\+::string custom\+Text=null, Story\+Page\+Button\+Formatting button\+Reference=null)
+\begin{DoxyCompactList}\small\item\em Renders refresh button with optional custom text. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a81b3cf15590fd4d6a09aaacd32aebe8c}{Render\+Close\+Story\+Book\+Button}} ()
+\begin{DoxyCompactList}\small\item\em Renders close button. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a7b8ba6426eaca4eec09a77ecbafd8093}{Render\+Vehicle\+Type\+Stats}} (int vehicle\+Type\+Stats=null)
+\begin{DoxyCompactList}\small\item\em Renders vehicle type statistics row on story book page. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a9ddf2be6c2a58137051a29b989da4ee3}{Render\+Last\+Idle\+Summary\+Elements}} (int total\+Amount, int total\+Seconds)
+\begin{DoxyCompactList}\small\item\em Renders idle summary text elements. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_ad6803d7b1ae37cb896a007084391c8ed}{Update\+Duration}} (int int\+Total\+Seconds)
+\begin{DoxyCompactList}\small\item\em Updates duration text. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a8492fbcda758eb4fe9225a4d40b193e1}{Update\+Report\+Close\+Warning}} (bool bool\+Show\+Warning=true)
+\begin{DoxyCompactList}\small\item\em Updates close warning text element. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a045f543ab74ea4dc7153fa53d9f17e58}{Update\+Report\+Save\+Warning}} (bool bool\+Show\+Warning=true)
+\begin{DoxyCompactList}\small\item\em Updates save warning element for reports. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a35aaa4d6cc3fdb23a4318189aa642466}{Get\+Vehicle\+Average\+Text\+Element}} (int total\+Amount, int total\+Seconds, \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} vehicle\+Summary)
+\begin{DoxyCompactList}\small\item\em Returns average per vehicle text. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a7b4d15274e72344585988dc1e68e7aaa}{Get\+Duration\+Text}} (int inactive\+Seconds)
+\begin{DoxyCompactList}\small\item\em Returns formatted duration text element. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a3f0e4eee851a64ddd598fbab2664a765}{Get\+Idle\+Multiplier\+Label}} ()
+\begin{DoxyCompactList}\small\item\em Returns idle multiplier string label. \end{DoxyCompactList}\item 
+function \mbox{\hyperlink{class_idle_pages_a8548a008645e4c1e929e1777789f2a1c}{Get\+Balance\+Per\+Time\+Unit}} (int total\+Amount, int total\+Seconds, int force\+Time\+Unit=\mbox{\hyperlink{constants_8nut_a0423d00e0eb199de523a92031b5a1107a606c2f5aed97644a86d6c0d3a36f0861}{\+::\+Time\+Units.\+TIME\+\_\+\+UNIT\+\_\+\+SECOND}}, int int\+Min\+Treshold=1)
+\begin{DoxyCompactList}\small\item\em Returns STRING3 (string1 string string7 = "{}earning / losing"{}, "{}\$\+XXX"{} "{}x hours, y min etc..."{}"{}) showing amount per time unit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles story book pages for Idle\+TTD. 
+
+Renders and displays Idle\+TTS screens and keeps track of rendered elements (buttons) for click handling. 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00013}{13}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_idle_pages_ae4b64a780762db0fd943be65a31e3585}\label{class_idle_pages_ae4b64a780762db0fd943be65a31e3585} 
+\index{IdlePages@{IdlePages}!IdlePages@{IdlePages}}
+\index{IdlePages@{IdlePages}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{IdlePages()}{IdlePages()}}
+{\footnotesize\ttfamily constructor Idle\+Pages\+::\+Idle\+Pages (\begin{DoxyParamCaption}\item[{int}]{company\+ID,  }\item[{int}]{story\+Page\+ID }\end{DoxyParamCaption})}
+
+
+
+Class constructor. 
+
+Initializes class instance. Expects both company\+ID and story\+Page\+ID to be valid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em company\+ID} & {\ttfamily \mbox{[}GSCompany\+::\+Company\+ID\mbox{]}} Player company ID \\
+\hline
+{\em story\+Page\+ID} & {\ttfamily \mbox{[}GSStory\+Page\+::\+Story\+Page\+ID\mbox{]}} Idle story book page ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Valid company ID}} 
+
+company\+ID == GSCompany.\+Resolve\+Company\+ID(company\+ID) 
+
+{\bfseries{Valid story page ID}} 
+
+GSStory\+Page.\+Is\+Valid\+Story\+Page(story\+Page\+ID) == true 
+\end{DoxyPrecond}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00234}{234}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_idle_pages_ac3db34c0989ec6ebeae6c19e1f8f0b88}\label{class_idle_pages_ac3db34c0989ec6ebeae6c19e1f8f0b88} 
+\index{IdlePages@{IdlePages}!AddPageTextElement@{AddPageTextElement}}
+\index{AddPageTextElement@{AddPageTextElement}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{AddPageTextElement()}{AddPageTextElement()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Add\+Page\+Text\+Element (\begin{DoxyParamCaption}\item[{GSText}]{element }\end{DoxyParamCaption})}
+
+
+
+Adds story book page text element to current page. 
+
+Helper function that automatically ensures unique element ids for all text elements added through it.
+
+
+\begin{DoxyParams}{Parameters}
+{\em element} & GSText Text element to add\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Added element ID 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & Failed adding element to the page \\
+\hline
+{\em any\+\_\+other\+\_\+value} & Id of the element that was added to the page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00287}{287}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_aee892dd5384d940cb6fc619d5e4e4ac2}\label{class_idle_pages_aee892dd5384d940cb6fc619d5e4e4ac2} 
+\index{IdlePages@{IdlePages}!AddNavButton@{AddNavButton}}
+\index{AddNavButton@{AddNavButton}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{AddNavButton()}{AddNavButton()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Add\+Nav\+Button (\begin{DoxyParamCaption}\item[{std\+::string}]{custom\+Text,  }\item[{Story\+Page\+Button\+Formatting}]{button\+Reference = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Renders story page push button. 
+
+Adds push button to story book page with custom text and/or button reference
+
+
+\begin{DoxyParams}{Parameters}
+{\em custom\+Text} & GSText Optional custom string for the button (default GSText.\+STR\+\_\+\+NAV\+\_\+\+BUTTON\+\_\+\+STATS) \\
+\hline
+{\em button\+Reference} & Story\+Page\+Button\+Formatting Reference for customizing button styles\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int New button ID 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & Failed adding element to the page \\
+\hline
+{\em any\+\_\+other\+\_\+value} & Id of the element that was added to the page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00303}{303}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a4d916ee9f3197061309b0c57a2ad856f}\label{class_idle_pages_a4d916ee9f3197061309b0c57a2ad856f} 
+\index{IdlePages@{IdlePages}!ClearPage@{ClearPage}}
+\index{ClearPage@{ClearPage}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ClearPage()}{ClearPage()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Clear\+Page (\begin{DoxyParamCaption}\item[{bool}]{update\+Date = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Removes all contents from idle story book page. 
+
+Removes add idle story book page elements and resets all relevant internal state vars and references to their initial values.
+
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Local story page ID valid}} 
+
+GSStory\+Page.\+Is\+Valid\+Story\+Page({\ttfamily this.\+Idle\+Story\+Page\+ID}) == {\ttfamily true}
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em update\+Date} & Passing {\ttfamily false} value means that story book page date won\textquotesingle{}t be updated to current date.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00320}{320}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a9835697de4fcea5722513aa75b4bb674}\label{class_idle_pages_a9835697de4fcea5722513aa75b4bb674} 
+\index{IdlePages@{IdlePages}!ResetScreenVisibleFlags@{ResetScreenVisibleFlags}}
+\index{ResetScreenVisibleFlags@{ResetScreenVisibleFlags}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ResetScreenVisibleFlags()}{ResetScreenVisibleFlags()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Reset\+Screen\+Visible\+Flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets all visible flags for all screens. 
+
+Used before setting any of the flags to ensure that only one flag is active
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00343}{343}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_adf8ffd56eae0e0f46b866105f77eff9d}\label{class_idle_pages_adf8ffd56eae0e0f46b866105f77eff9d} 
+\index{IdlePages@{IdlePages}!ResetElementIDReferences@{ResetElementIDReferences}}
+\index{ResetElementIDReferences@{ResetElementIDReferences}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ResetElementIDReferences()}{ResetElementIDReferences()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Reset\+Element\+IDReferences (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets all element and button ids. 
+
+Used before rendering any screen to ensure that element references are up-\/to-\/date
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00361}{361}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a95d7f4e8350713bafbd44a153ad5c9b9}\label{class_idle_pages_a95d7f4e8350713bafbd44a153ad5c9b9} 
+\index{IdlePages@{IdlePages}!ShowIdleReportScreen@{ShowIdleReportScreen}}
+\index{ShowIdleReportScreen@{ShowIdleReportScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ShowIdleReportScreen()}{ShowIdleReportScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Show\+Idle\+Report\+Screen (\begin{DoxyParamCaption}\item[{int}]{idle\+Balance = {\ttfamily 0},  }\item[{int}]{inactive\+Seconds = {\ttfamily 0},  }\item[{\mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}}}]{vehicle\+Summary = {\ttfamily null},  }\item[{std\+::array$<$ \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} $>$}]{all\+Vehicle\+Stats = {\ttfamily null},  }\item[{int}]{int\+Last\+Year\+Balance = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Shows idle report screen. 
+
+Clears idle story page, renders idle report elements with \doxylink{class_idle_pages_a372120a9b702a358ac1f7b5f2e98869e}{this.Render\+Idle\+Report\+Screen()} and shows the page to the player. For details on idle report contents check out \doxylink{class_idle_pages_a372120a9b702a358ac1f7b5f2e98869e}{Render\+Idle\+Report\+Screen} function.
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_a810f4f927fe5d4f28b741dfa93088535}{Idle\+Report\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+\begin{DoxyAttention}{Attention}
+Idle report page is {\itshape quasi-\/persistent}. If player closes story book without clicking the button within, script will open idle report story book page again and keep doing it until player clicks the button on the page.
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em idle\+Balance} & Idle balance to use \\
+\hline
+{\em inactive\+Seconds} & Inactive idle seconds \\
+\hline
+{\em vehicle\+Summary} & Summary of all vehicles \\
+\hline
+{\em all\+Vehicle\+Stats} & An array of vehicle stats for all vehicle types \\
+\hline
+{\em int\+Last\+Year\+Balance} & Last year balance for calculations\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Idle report story book page is displayed \\
+\hline
+{\em false} & Failed opening idle report story book page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00409}{409}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_aed0b5efd40481d9b3f12128d2f34e827}\label{class_idle_pages_aed0b5efd40481d9b3f12128d2f34e827} 
+\index{IdlePages@{IdlePages}!ShowStatsScreen@{ShowStatsScreen}}
+\index{ShowStatsScreen@{ShowStatsScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ShowStatsScreen()}{ShowStatsScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Show\+Stats\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}}}]{vehicle\+Summary,  }\item[{std\+::array$<$ \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} $>$}]{all\+Vehicle\+Stats,  }\item[{int}]{total\+Amount,  }\item[{int}]{total\+Seconds,  }\item[{int}]{int\+Last\+Year\+Balance }\end{DoxyParamCaption})}
+
+
+
+Shows stats screen. 
+
+Clears story book page, sets new title, adds stats elements with \doxylink{class_idle_pages_a0631c47910518f768f2956a4e37d36be}{this.Render\+Stats\+Screen()} to it and then opens the story book window
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_ad240fd4f034540b3bdf85234c97fe6ac}{Stats\+Screen\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle\+Summary} & Summary of all vehicles \\
+\hline
+{\em all\+Vehicle\+Stats} & An array of vehicle stats for all vehicle types \\
+\hline
+{\em total\+Amount} & Last session idle balance \\
+\hline
+{\em total\+Seconds} & TIme since last save game \\
+\hline
+{\em int\+Last\+Year\+Balance} & Money earned / lost last year\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Story book page displayed successfully \\
+\hline
+{\em false} & Failed displaying story book page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00440}{440}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_afc85a72f0f1dd7806186daef8cd1d7c0}\label{class_idle_pages_afc85a72f0f1dd7806186daef8cd1d7c0} 
+\index{IdlePages@{IdlePages}!ShowIntroScreen@{ShowIntroScreen}}
+\index{ShowIntroScreen@{ShowIntroScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ShowIntroScreen()}{ShowIntroScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Show\+Intro\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shows intro screen. 
+
+Clears story book page, sets new title, adds intro screen elements via \doxylink{class_idle_pages_a8e8e65b72a27b78136ebd59db8f49e44}{this.Render\+Intro\+Screen()} to it and then opens the story book window.
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_a88ccabdb20dfc0231681da58ebcf3f85}{Intro\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run faster than normal.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Story book page displayed successfully \\
+\hline
+{\em false} & Failed displaying story book page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00456}{456}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_abfe2fae5b22f6fd91ea86046e1b786e2}\label{class_idle_pages_abfe2fae5b22f6fd91ea86046e1b786e2} 
+\index{IdlePages@{IdlePages}!ShowHelpScreen@{ShowHelpScreen}}
+\index{ShowHelpScreen@{ShowHelpScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ShowHelpScreen()}{ShowHelpScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Show\+Help\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shows help screen. 
+
+Clears story book page, sets new title, adds help screen elements via \doxylink{class_idle_pages_ac2e08ee04c929128085275d16610d730}{this.Render\+Help\+Screen()} to it and then opens the story book window.
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_ac1876eef8e3400468c6c6ddcc6a5e575}{Help\+Screen\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Story book page displayed successfully \\
+\hline
+{\em false} & Failed displaying story book page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00475}{475}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a625df30f10e0a7257a4f9e0f5f4dc371}\label{class_idle_pages_a625df30f10e0a7257a4f9e0f5f4dc371} 
+\index{IdlePages@{IdlePages}!ShowMissingHQScreen@{ShowMissingHQScreen}}
+\index{ShowMissingHQScreen@{ShowMissingHQScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ShowMissingHQScreen()}{ShowMissingHQScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Show\+Missing\+HQScreen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shows missing HQ screen. 
+
+Clears story book page, sets new title, adds missing HQ elements via \doxylink{class_idle_pages_a14bf3020b9fd5e670cd5fb86a0fbb212}{this.Render\+Missing\+HQScreen()} to it and then opens the story book window
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_ae1a2fd9d4e5310a83d907e0d2b53acd5}{Missing\+HQScreen\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Story book page displayed successfully \\
+\hline
+{\em false} & Failed displaying story book page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00493}{493}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a7eb273acce2ae0b37cb85ab77be8f78a}\label{class_idle_pages_a7eb273acce2ae0b37cb85ab77be8f78a} 
+\index{IdlePages@{IdlePages}!ShowSaveWarningScreen@{ShowSaveWarningScreen}}
+\index{ShowSaveWarningScreen@{ShowSaveWarningScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ShowSaveWarningScreen()}{ShowSaveWarningScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Show\+Save\+Warning\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shows save warning screen. 
+
+When player saves the game with negative balance show a warning notifying them of idle losses using elements via \doxylink{class_idle_pages_a3d87801af0b66fdbe5d86288b016322a}{this.Render\+Save\+Warning\+Screen()} is displayed.
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_a9af850f6eae64cb9ed62972003674e3b}{Save\+Warning\+Screen\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Story book page displayed successfully \\
+\hline
+{\em false} & Failed displaying story book page \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00509}{509}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a372120a9b702a358ac1f7b5f2e98869e}\label{class_idle_pages_a372120a9b702a358ac1f7b5f2e98869e} 
+\index{IdlePages@{IdlePages}!RenderIdleReportScreen@{RenderIdleReportScreen}}
+\index{RenderIdleReportScreen@{RenderIdleReportScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderIdleReportScreen()}{RenderIdleReportScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Idle\+Report\+Screen (\begin{DoxyParamCaption}\item[{int}]{idle\+Balance,  }\item[{int}]{inactive\+Seconds,  }\item[{\mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}}}]{vehicle\+Summary = {\ttfamily null},  }\item[{std\+::array$<$ \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} $>$}]{all\+Vehicle\+Stats = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Renders idle report screen. 
+
+Adds idle report elements to story book page without showing the page itself so that \doxylink{class_idle_pages_a95d7f4e8350713bafbd44a153ad5c9b9}{this.Show\+Idle\+Report\+Screen()} can display it.
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_a810f4f927fe5d4f28b741dfa93088535}{Idle\+Report\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+\begin{DoxyAttention}{Attention}
+Idle report page is {\itshape quasi-\/persistent}. If player closes story book without clicking the button within, script will open idle report story book page again and keep doing it until player clicks the button on the page.
+\end{DoxyAttention}
+
+\begin{DoxyParams}{Parameters}
+{\em idle\+Balance} & Idle balance to use \\
+\hline
+{\em inactive\+Seconds} & Idle balance to use \\
+\hline
+{\em vehicle\+Summary} & Summary of all vehicles \\
+\hline
+{\em all\+Vehicle\+Stats} & An array of vehicle stats for all vehicle types\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00530}{530}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a0631c47910518f768f2956a4e37d36be}\label{class_idle_pages_a0631c47910518f768f2956a4e37d36be} 
+\index{IdlePages@{IdlePages}!RenderStatsScreen@{RenderStatsScreen}}
+\index{RenderStatsScreen@{RenderStatsScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderStatsScreen()}{RenderStatsScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Stats\+Screen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}}}]{vehicle\+Summary,  }\item[{std\+::array$<$ \mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}} $>$}]{all\+Vehicle\+Stats,  }\item[{int}]{total\+Amount,  }\item[{int}]{total\+Seconds,  }\item[{int}]{int\+Last\+Year\+Balance }\end{DoxyParamCaption})}
+
+
+
+Renders stats screen. 
+
+Adds stats elements to story book page so that \doxylink{class_idle_pages_aed0b5efd40481d9b3f12128d2f34e827}{this.Show\+Stats\+Screen()} has something to show
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_ad240fd4f034540b3bdf85234c97fe6ac}{Stats\+Screen\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle\+Summary} & Summary of all vehicles \\
+\hline
+{\em all\+Vehicle\+Stats} & An array of vehicle stats for all vehicle types \\
+\hline
+{\em total\+Amount} & Last session idle balance \\
+\hline
+{\em total\+Seconds} & TIme since last save game \\
+\hline
+{\em int\+Last\+Year\+Balance} & Money earned / lost last year\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00568}{568}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a8e8e65b72a27b78136ebd59db8f49e44}\label{class_idle_pages_a8e8e65b72a27b78136ebd59db8f49e44} 
+\index{IdlePages@{IdlePages}!RenderIntroScreen@{RenderIntroScreen}}
+\index{RenderIntroScreen@{RenderIntroScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderIntroScreen()}{RenderIntroScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Intro\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Adds intro screen elements to story page and updates the title. 
+
+Adds intro screen elements to story book page so that \doxylink{class_idle_pages_afc85a72f0f1dd7806186daef8cd1d7c0}{this.Show\+Intro\+Screen()} has something to show
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_a88ccabdb20dfc0231681da58ebcf3f85}{Intro\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run faster than normal.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00627}{627}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_ac2e08ee04c929128085275d16610d730}\label{class_idle_pages_ac2e08ee04c929128085275d16610d730} 
+\index{IdlePages@{IdlePages}!RenderHelpScreen@{RenderHelpScreen}}
+\index{RenderHelpScreen@{RenderHelpScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderHelpScreen()}{RenderHelpScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Help\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Adds help screen elements to story page and updates the title. 
+
+Adds help screen elements to story book page so that \doxylink{class_idle_pages_abfe2fae5b22f6fd91ea86046e1b786e2}{this.Show\+Help\+Screen()} has something to show
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_ac1876eef8e3400468c6c6ddcc6a5e575}{Help\+Screen\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run faster than normal.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00649}{649}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a14bf3020b9fd5e670cd5fb86a0fbb212}\label{class_idle_pages_a14bf3020b9fd5e670cd5fb86a0fbb212} 
+\index{IdlePages@{IdlePages}!RenderMissingHQScreen@{RenderMissingHQScreen}}
+\index{RenderMissingHQScreen@{RenderMissingHQScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderMissingHQScreen()}{RenderMissingHQScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Missing\+HQScreen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Adds missing HQ screen elements to story page and updates the title. 
+
+Adds missing HQ screen elements to story book page so that \doxylink{class_idle_pages_a625df30f10e0a7257a4f9e0f5f4dc371}{this.Show\+Missing\+HQScreen()} has something to show.
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_ae1a2fd9d4e5310a83d907e0d2b53acd5}{Missing\+HQScreen\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00672}{672}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a3d87801af0b66fdbe5d86288b016322a}\label{class_idle_pages_a3d87801af0b66fdbe5d86288b016322a} 
+\index{IdlePages@{IdlePages}!RenderSaveWarningScreen@{RenderSaveWarningScreen}}
+\index{RenderSaveWarningScreen@{RenderSaveWarningScreen}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderSaveWarningScreen()}{RenderSaveWarningScreen()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Save\+Warning\+Screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Adds save warning svreen elements to story page and updates the title. 
+
+Adds save warning screen elements to story book page so that \doxylink{class_idle_pages_a7eb273acce2ae0b37cb85ab77be8f78a}{this.Show\+Save\+Warning\+Screen()} has something to show.
+
+\begin{DoxyNote}{Note}
+This will set \doxylink{class_idle_pages_a9af850f6eae64cb9ed62972003674e3b}{Save\+Warning\+Screen\+Visible} flag to {\ttfamily true}, causing \doxylink{class_main_class_aa67f6b04db7ba147cbefcde69e1b9cb7}{Main\+Class.Start()} {\ttfamily while} loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00691}{691}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_afeca354b091f6d47ee287fe723a5d2f3}\label{class_idle_pages_afeca354b091f6d47ee287fe723a5d2f3} 
+\index{IdlePages@{IdlePages}!GetIdleReportTextElement@{GetIdleReportTextElement}}
+\index{GetIdleReportTextElement@{GetIdleReportTextElement}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{GetIdleReportTextElement()}{GetIdleReportTextElement()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Get\+Idle\+Report\+Text\+Element (\begin{DoxyParamCaption}\item[{int}]{idle\+Balance,  }\item[{int}]{inactive\+Seconds }\end{DoxyParamCaption})}
+
+
+
+Renders first paragraph of idle report. 
+
+Calculates duration and balance and displays that information as a text paragraph on idle report screen using {\ttfamily GSText.\+STR\+\_\+\+REPORT\+\_\+\+SUMMARY} from lang files.
+
+
+\begin{DoxyParams}{Parameters}
+{\em idle\+Balance} & Idle balance (amount of money player got or lost) \\
+\hline
+{\em inactive\+Seconds} & Total number of seconds that idle balance took to accumulate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GSText Page story text element with data applied 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00722}{722}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a5871670e00c4b7bdd4bd9d7d543d4a1a}\label{class_idle_pages_a5871670e00c4b7bdd4bd9d7d543d4a1a} 
+\index{IdlePages@{IdlePages}!RenderIdleReportButton@{RenderIdleReportButton}}
+\index{RenderIdleReportButton@{RenderIdleReportButton}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderIdleReportButton()}{RenderIdleReportButton()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Idle\+Report\+Button (\begin{DoxyParamCaption}\item[{int}]{idle\+Balance = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Renders idle report button. 
+
+Adds idle report button (collect \$\$\$) with appropriate styling / colors to (idle report) story book page. Clicks are handled in \doxylink{class_idle_story_a747985d06b5102dc5ed52b01846e5163}{Idle\+Story.Handle\+Button\+Click()} function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em idle\+Balance} & Idle balance to use in button text\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00774}{774}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_ac8b2a6af5c5b9a9cfc202c380267288e}\label{class_idle_pages_ac8b2a6af5c5b9a9cfc202c380267288e} 
+\index{IdlePages@{IdlePages}!RenderHelpButton@{RenderHelpButton}}
+\index{RenderHelpButton@{RenderHelpButton}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderHelpButton()}{RenderHelpButton()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Help\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Renders help button. 
+
+Adds help button to story book pages. Clicks are handled in \doxylink{class_idle_story_a747985d06b5102dc5ed52b01846e5163}{Idle\+Story.Handle\+Button\+Click()} function.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00796}{796}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_ab7c186221e2fcd21d3ad6af853382bd3}\label{class_idle_pages_ab7c186221e2fcd21d3ad6af853382bd3} 
+\index{IdlePages@{IdlePages}!RenderRefreshButton@{RenderRefreshButton}}
+\index{RenderRefreshButton@{RenderRefreshButton}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderRefreshButton()}{RenderRefreshButton()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Refresh\+Button (\begin{DoxyParamCaption}\item[{std\+::string}]{custom\+Text = {\ttfamily null},  }\item[{Story\+Page\+Button\+Formatting}]{button\+Reference = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Renders refresh button with optional custom text. 
+
+Adds refresh button to story book page (used on idle\+Report and missing hq screens). Clicks are handled in \doxylink{class_idle_story_a747985d06b5102dc5ed52b01846e5163}{Idle\+Story.Handle\+Button\+Click()} function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em custom\+Text} & Optional custom string for the button (default GSText.\+STR\+\_\+\+NAV\+\_\+\+BUTTON\+\_\+\+STATS) \\
+\hline
+{\em button\+Reference} & Reference for customizing button styles\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00809}{809}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a81b3cf15590fd4d6a09aaacd32aebe8c}\label{class_idle_pages_a81b3cf15590fd4d6a09aaacd32aebe8c} 
+\index{IdlePages@{IdlePages}!RenderCloseStoryBookButton@{RenderCloseStoryBookButton}}
+\index{RenderCloseStoryBookButton@{RenderCloseStoryBookButton}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderCloseStoryBookButton()}{RenderCloseStoryBookButton()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Close\+Story\+Book\+Button (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Renders close button. 
+
+Adds close button to story book pages. Clicks are handled in \doxylink{class_idle_story_a747985d06b5102dc5ed52b01846e5163}{Idle\+Story.Handle\+Button\+Click()} function.
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00826}{826}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a7b8ba6426eaca4eec09a77ecbafd8093}\label{class_idle_pages_a7b8ba6426eaca4eec09a77ecbafd8093} 
+\index{IdlePages@{IdlePages}!RenderVehicleTypeStats@{RenderVehicleTypeStats}}
+\index{RenderVehicleTypeStats@{RenderVehicleTypeStats}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderVehicleTypeStats()}{RenderVehicleTypeStats()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Vehicle\+Type\+Stats (\begin{DoxyParamCaption}\item[{int}]{vehicle\+Type\+Stats = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Renders vehicle type statistics row on story book page. 
+
+Creates, populates and adds story book page element for given vehicle type
+
+Sample result texts\+: \begin{quote}
+6 ships running, earning \$2 per second \end{quote}
+
+
+\begin{quote}
+1 rail vehicle running, losing \$123 every hour \end{quote}
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle\+Type\+Stats} & SQTable Table with vehicle statistics for given type\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & Error adding element to the page (GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID)! \\
+\hline
+{\em any\+\_\+other\+\_\+value} & ID of new, successfully rendered, element. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00846}{846}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a9ddf2be6c2a58137051a29b989da4ee3}\label{class_idle_pages_a9ddf2be6c2a58137051a29b989da4ee3} 
+\index{IdlePages@{IdlePages}!RenderLastIdleSummaryElements@{RenderLastIdleSummaryElements}}
+\index{RenderLastIdleSummaryElements@{RenderLastIdleSummaryElements}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RenderLastIdleSummaryElements()}{RenderLastIdleSummaryElements()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Render\+Last\+Idle\+Summary\+Elements (\begin{DoxyParamCaption}\item[{int}]{total\+Amount,  }\item[{int}]{total\+Seconds }\end{DoxyParamCaption})}
+
+
+
+Renders idle summary text elements. 
+
+Adds summary text elements that show total number of vehicles and their approximate earnings/losses per time unit (day, h, m, s)
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\+Amount} & Last session idle balance \\
+\hline
+{\em total\+Seconds} & TIme since last save game\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00898}{898}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_ad6803d7b1ae37cb896a007084391c8ed}\label{class_idle_pages_ad6803d7b1ae37cb896a007084391c8ed} 
+\index{IdlePages@{IdlePages}!UpdateDuration@{UpdateDuration}}
+\index{UpdateDuration@{UpdateDuration}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{UpdateDuration()}{UpdateDuration()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Update\+Duration (\begin{DoxyParamCaption}\item[{int}]{int\+Total\+Seconds }\end{DoxyParamCaption})}
+
+
+
+Updates duration text. 
+
+If \doxylink{class_idle_pages_af787039a4b1e6ab82378f3eee36901f5}{this.Previous\+Duration\+Element\+ID} is valid its text gets updated with up-\/to-\/date formatted duration text (works as time ticker).
+
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Local story page ID valid}} 
+
+GSStory\+Page.\+Is\+Valid\+Story\+Page({\ttfamily this.\+Idle\+Story\+Page\+ID}) == {\ttfamily true}
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em int\+Total\+Seconds} & Total duration seconds\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Duration story page element updated \\
+\hline
+{\em false} & Failed updating duration story page element \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00954}{954}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a8492fbcda758eb4fe9225a4d40b193e1}\label{class_idle_pages_a8492fbcda758eb4fe9225a4d40b193e1} 
+\index{IdlePages@{IdlePages}!UpdateReportCloseWarning@{UpdateReportCloseWarning}}
+\index{UpdateReportCloseWarning@{UpdateReportCloseWarning}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{UpdateReportCloseWarning()}{UpdateReportCloseWarning()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Update\+Report\+Close\+Warning (\begin{DoxyParamCaption}\item[{bool}]{bool\+Show\+Warning = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Updates close warning text element. 
+
+Shows or hides text warning player about closing idle report window via button only.
+
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Local story page ID valid}} 
+
+GSStory\+Page.\+Is\+Valid\+Story\+Page({\ttfamily this.\+Idle\+Story\+Page\+ID}) == {\ttfamily true}
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em bool\+Show\+Warning} & Controls whether to show close warning or not\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Close warning story page element updated \\
+\hline
+{\em false} & Failed updating close warning story page element \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00975}{975}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a045f543ab74ea4dc7153fa53d9f17e58}\label{class_idle_pages_a045f543ab74ea4dc7153fa53d9f17e58} 
+\index{IdlePages@{IdlePages}!UpdateReportSaveWarning@{UpdateReportSaveWarning}}
+\index{UpdateReportSaveWarning@{UpdateReportSaveWarning}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{UpdateReportSaveWarning()}{UpdateReportSaveWarning()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Update\+Report\+Save\+Warning (\begin{DoxyParamCaption}\item[{bool}]{bool\+Show\+Warning = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Updates save warning element for reports. 
+
+Shows or hides text warning player about saving the game with negative balance
+
+\begin{DoxyPrecond}{Precondition}
+{\bfseries{Local story page ID valid}} 
+
+GSStory\+Page.\+Is\+Valid\+Story\+Page({\ttfamily this.\+Idle\+Story\+Page\+ID}) == {\ttfamily true}
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em bool\+Show\+Warning} & Controls whether to show the save warning or not\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Save warning story page element updated \\
+\hline
+{\em false} & Failed updating save warning story page element \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00999}{999}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a35aaa4d6cc3fdb23a4318189aa642466}\label{class_idle_pages_a35aaa4d6cc3fdb23a4318189aa642466} 
+\index{IdlePages@{IdlePages}!GetVehicleAverageTextElement@{GetVehicleAverageTextElement}}
+\index{GetVehicleAverageTextElement@{GetVehicleAverageTextElement}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{GetVehicleAverageTextElement()}{GetVehicleAverageTextElement()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Get\+Vehicle\+Average\+Text\+Element (\begin{DoxyParamCaption}\item[{int}]{total\+Amount,  }\item[{int}]{total\+Seconds,  }\item[{\mbox{\hyperlink{struct_summary_vehicle_stats}{Summary\+Vehicle\+Stats}}}]{vehicle\+Summary }\end{DoxyParamCaption})}
+
+
+
+Returns average per vehicle text. 
+
+Returns text with average balance per one vehicle in last eyear
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\+Amount} & Total cash \\
+\hline
+{\em total\+Seconds} & Total seconds \\
+\hline
+{\em vehicle\+Summary} & Summary of all vehicles\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GSText Average balance per vehicle text element or null for none 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l01026}{1026}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a7b4d15274e72344585988dc1e68e7aaa}\label{class_idle_pages_a7b4d15274e72344585988dc1e68e7aaa} 
+\index{IdlePages@{IdlePages}!GetDurationText@{GetDurationText}}
+\index{GetDurationText@{GetDurationText}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{GetDurationText()}{GetDurationText()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Get\+Duration\+Text (\begin{DoxyParamCaption}\item[{int}]{inactive\+Seconds }\end{DoxyParamCaption})}
+
+
+
+Returns formatted duration text element. 
+
+Populates STR\+\_\+\+DURATION\+\_\+\+TEXT with data and returns it as STRING with 0-\/11 parametars. Always should be the last \{STRING\} variable.
+
+
+\begin{DoxyParams}{Parameters}
+{\em inactive\+Seconds} & Total seconds to show duration for\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+GSText Text element with formatted duration 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l01085}{1085}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a3f0e4eee851a64ddd598fbab2664a765}\label{class_idle_pages_a3f0e4eee851a64ddd598fbab2664a765} 
+\index{IdlePages@{IdlePages}!GetIdleMultiplierLabel@{GetIdleMultiplierLabel}}
+\index{GetIdleMultiplierLabel@{GetIdleMultiplierLabel}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{GetIdleMultiplierLabel()}{GetIdleMultiplierLabel()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Get\+Idle\+Multiplier\+Label (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns idle multiplier string label. 
+
+Returns string for adding as param to text elements
+
+\begin{DoxyReturn}{Returns}
+GSText String representation of idle multiplier (with \textquotesingle{}\textquotesingle{} appended) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l01186}{1186}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a8548a008645e4c1e929e1777789f2a1c}\label{class_idle_pages_a8548a008645e4c1e929e1777789f2a1c} 
+\index{IdlePages@{IdlePages}!GetBalancePerTimeUnit@{GetBalancePerTimeUnit}}
+\index{GetBalancePerTimeUnit@{GetBalancePerTimeUnit}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{GetBalancePerTimeUnit()}{GetBalancePerTimeUnit()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Get\+Balance\+Per\+Time\+Unit (\begin{DoxyParamCaption}\item[{int}]{total\+Amount,  }\item[{int}]{total\+Seconds,  }\item[{int}]{force\+Time\+Unit = {\ttfamily \mbox{\hyperlink{constants_8nut_a0423d00e0eb199de523a92031b5a1107a606c2f5aed97644a86d6c0d3a36f0861}{\+::\+Time\+Units.\+TIME\+\_\+\+UNIT\+\_\+\+SECOND}}},  }\item[{int}]{int\+Min\+Treshold = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Returns STRING3 (string1 string string7 = "{}earning / losing"{}, "{}\$\+XXX"{} "{}x hours, y min etc..."{}"{}) showing amount per time unit. 
+
+Renders text element with amount of money in given period
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\+Amount} & Gross balance change across a period \\
+\hline
+{\em total\+Seconds} & Number of real-\/time seconds passed in period od time \\
+\hline
+{\em force\+Time\+Unit} & Force time unit index (1 = minute, 2 = hour, 3 = day) \\
+\hline
+{\em int\+Min\+Treshold} & Minimum treshold -\/ values below this will cause next (longer) time unit to be picked\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Id of balance text element 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l01226}{1226}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a555df524aae8d29c7231a8e733116262}\label{class_idle_pages_a555df524aae8d29c7231a8e733116262} 
+\index{IdlePages@{IdlePages}!CashInPeriod@{CashInPeriod}}
+\index{CashInPeriod@{CashInPeriod}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{CashInPeriod()}{CashInPeriod()}}
+{\footnotesize\ttfamily function Idle\+Pages\+::\+Cash\+In\+Period (\begin{DoxyParamCaption}\item[{int}]{total\+Amount,  }\item[{int}]{total\+Seconds,  }\item[{int}]{ratio = {\ttfamily \mbox{\hyperlink{constants_8nut_aaa5657ea8a8ceb231fc8162205dc30bea7cb36ff0a80f238d5b987d9250d369e3}{\+::\+Seconds\+In\+Period.\+SECOND}}} }\end{DoxyParamCaption})}
+
+
+
+Returns amount of cash calculated fer given period. 
+
+Calculates amount for given period based on yearly total amount
+
+
+\begin{DoxyParams}{Parameters}
+{\em total\+Amount} & Yearly amount (in-\/game year) \\
+\hline
+{\em total\+Seconds} & Number of real-\/time seconds in the period \\
+\hline
+{\em ratio} & Ratio (seconds in period) to calculate\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float Amount per period 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l01311}{1311}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_idle_pages_aa50f81ccf3a67d75b848dcb3ba813364}\label{class_idle_pages_aa50f81ccf3a67d75b848dcb3ba813364} 
+\index{IdlePages@{IdlePages}!PlayerCompanyID@{PlayerCompanyID}}
+\index{PlayerCompanyID@{PlayerCompanyID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{PlayerCompanyID}{PlayerCompanyID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Player\+Company\+ID = GSCompany.\+COMPANY\+\_\+\+INVALID}
+
+
+
+Player company ID. 
+
+Although initially set to \href{https://docs.openttd.org/gs-api/classGSCompany}{\texttt{ GSCompany\+::\+COMPANY\+\_\+\+INVALID}}, this value gets populated in constructor so it can be regarded as always present. 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00034}{34}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a353e4c21bd81dfca9a2d7dc4a80146be}\label{class_idle_pages_a353e4c21bd81dfca9a2d7dc4a80146be} 
+\index{IdlePages@{IdlePages}!IdleStoryPageID@{IdleStoryPageID}}
+\index{IdleStoryPageID@{IdleStoryPageID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{IdleStoryPageID}{IdleStoryPageID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Idle\+Story\+Page\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+INVALID}
+
+
+
+Idle story book page ID. 
+
+Set to \href{https://docs.openttd.org/gs-api/classGSStoryPage}{\texttt{ GSStory\+Page}}.STORY\+\_\+\+PAGE\+\_\+\+INVALID by, gets created when new game starts and saved to be re-\/used on game load. \begin{DoxyNote}{Note}
+Although this property is public and accesible from outside it shouldn\textquotesingle{}t be changed directly, \doxylink{class_idle_story_a58fce52265f3b1a7669058a2d6d7f542}{Idle\+Story.Get\+Page\+ID()} should be used instead. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00043}{43}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a28effa2da96ced0b4b7a63b780936519}\label{class_idle_pages_a28effa2da96ced0b4b7a63b780936519} 
+\index{IdlePages@{IdlePages}!SavedWithNegativeBalance@{SavedWithNegativeBalance}}
+\index{SavedWithNegativeBalance@{SavedWithNegativeBalance}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{SavedWithNegativeBalance}{SavedWithNegativeBalance}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Saved\+With\+Negative\+Balance = false}
+
+
+
+Flag indicating player saved the game with negative balance. 
+
+Setting this to {\ttfamily true} will result in opening story book page with save warning screen 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00051}{51}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a4ba07ad8b0cd3e59c7bc10f07172c2b8}\label{class_idle_pages_a4ba07ad8b0cd3e59c7bc10f07172c2b8} 
+\index{IdlePages@{IdlePages}!SaveWarningDisplayed@{SaveWarningDisplayed}}
+\index{SaveWarningDisplayed@{SaveWarningDisplayed}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{SaveWarningDisplayed}{SaveWarningDisplayed}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Save\+Warning\+Displayed = false}
+
+
+
+Flag indicating presence of save warning text. 
+
+If this is {\ttfamily true} then save warning element on report screen got populated with warning text. Used with \doxylink{class_idle_pages_a9af850f6eae64cb9ed62972003674e3b}{Save\+Warning\+Screen\+Visible} to determine if save warning is present in any form. 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00058}{58}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a810f4f927fe5d4f28b741dfa93088535}\label{class_idle_pages_a810f4f927fe5d4f28b741dfa93088535} 
+\index{IdlePages@{IdlePages}!IdleReportVisible@{IdleReportVisible}}
+\index{IdleReportVisible@{IdleReportVisible}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{IdleReportVisible}{IdleReportVisible}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Idle\+Report\+Visible = false}
+
+
+
+Idle report visibility flag. 
+
+If user action (clicking the button on idle report story book page) is required this will be set to {\ttfamily true} \begin{DoxyAttention}{Attention}
+Setting this to {\ttfamily true} will result in script taking as much resources as it can, possibly hampering the perfrmance. 
+\end{DoxyAttention}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00078}{78}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a88ccabdb20dfc0231681da58ebcf3f85}\label{class_idle_pages_a88ccabdb20dfc0231681da58ebcf3f85} 
+\index{IdlePages@{IdlePages}!IntroVisible@{IntroVisible}}
+\index{IntroVisible@{IntroVisible}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{IntroVisible}{IntroVisible}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Intro\+Visible = false}
+
+
+
+Intro visibility flag. 
+
+Set to true to speed up handling button click (only if idle story book page is also visible). \begin{DoxyNote}{Note}
+If story book window is open {\ttfamily true} value here will result in script taking as much resources as it can, possibly hampering the perfrmance. Closing the story book window (without clicking on the button within) returns script performance to normal but won\textquotesingle{}t reset the value to {\ttfamily false}. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00086}{86}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_ae1a2fd9d4e5310a83d907e0d2b53acd5}\label{class_idle_pages_ae1a2fd9d4e5310a83d907e0d2b53acd5} 
+\index{IdlePages@{IdlePages}!MissingHQScreenVisible@{MissingHQScreenVisible}}
+\index{MissingHQScreenVisible@{MissingHQScreenVisible}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{MissingHQScreenVisible}{MissingHQScreenVisible}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Missing\+HQScreen\+Visible = false}
+
+
+
+No\+HQ screen visibility flag. 
+
+Set to true when no hq screen is rendered to idle story page 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00093}{93}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_ad240fd4f034540b3bdf85234c97fe6ac}\label{class_idle_pages_ad240fd4f034540b3bdf85234c97fe6ac} 
+\index{IdlePages@{IdlePages}!StatsScreenVisible@{StatsScreenVisible}}
+\index{StatsScreenVisible@{StatsScreenVisible}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{StatsScreenVisible}{StatsScreenVisible}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Stats\+Screen\+Visible = false}
+
+
+
+Stats screen visibility flag. 
+
+Set to true when stats screen is rendered to idle story page 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00100}{100}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_ac1876eef8e3400468c6c6ddcc6a5e575}\label{class_idle_pages_ac1876eef8e3400468c6c6ddcc6a5e575} 
+\index{IdlePages@{IdlePages}!HelpScreenVisible@{HelpScreenVisible}}
+\index{HelpScreenVisible@{HelpScreenVisible}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{HelpScreenVisible}{HelpScreenVisible}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Help\+Screen\+Visible = false}
+
+
+
+Help screen visibility flag. 
+
+Set to true when help screen is rendered to idle story page 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00107}{107}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a9af850f6eae64cb9ed62972003674e3b}\label{class_idle_pages_a9af850f6eae64cb9ed62972003674e3b} 
+\index{IdlePages@{IdlePages}!SaveWarningScreenVisible@{SaveWarningScreenVisible}}
+\index{SaveWarningScreenVisible@{SaveWarningScreenVisible}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{SaveWarningScreenVisible}{SaveWarningScreenVisible}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Save\+Warning\+Screen\+Visible = false}
+
+
+
+Save warning screen visibility flag. 
+
+Set to true when save warning screen is rendered to idle story page 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00114}{114}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_af397ed932d14fe76976f74a7b0d24ad6}\label{class_idle_pages_af397ed932d14fe76976f74a7b0d24ad6} 
+\index{IdlePages@{IdlePages}!SaveWarningElementID@{SaveWarningElementID}}
+\index{SaveWarningElementID@{SaveWarningElementID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{SaveWarningElementID}{SaveWarningElementID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Save\+Warning\+Element\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of save warning text element. 
+
+When game is saved with negative balance and idle report is open this element shows warning text to players 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00133}{133}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_af787039a4b1e6ab82378f3eee36901f5}\label{class_idle_pages_af787039a4b1e6ab82378f3eee36901f5} 
+\index{IdlePages@{IdlePages}!PreviousDurationElementID@{PreviousDurationElementID}}
+\index{PreviousDurationElementID@{PreviousDurationElementID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{PreviousDurationElementID}{PreviousDurationElementID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Previous\+Duration\+Element\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of button element that refreshes story book page stats. 
+
+Used internally to determine which button was pressed when handling clicks 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00139}{139}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a3d5327034b0a7bdb5621f7b50f57dac4}\label{class_idle_pages_a3d5327034b0a7bdb5621f7b50f57dac4} 
+\index{IdlePages@{IdlePages}!CloseReportWarningTextElementID@{CloseReportWarningTextElementID}}
+\index{CloseReportWarningTextElementID@{CloseReportWarningTextElementID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{CloseReportWarningTextElementID}{CloseReportWarningTextElementID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Close\+Report\+Warning\+Text\+Element\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of button element that refreshes story book page stats. 
+
+Used internally to determine which button was pressed when handling clicks 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00145}{145}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_ae79c077d76d1bd5db8d45bf11fceb31f}\label{class_idle_pages_ae79c077d76d1bd5db8d45bf11fceb31f} 
+\index{IdlePages@{IdlePages}!CloseSaveWarningButtonID@{CloseSaveWarningButtonID}}
+\index{CloseSaveWarningButtonID@{CloseSaveWarningButtonID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{CloseSaveWarningButtonID}{CloseSaveWarningButtonID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Close\+Save\+Warning\+Button\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of button element that closes save warning screen. 
+
+Used internally to determine which button was pressed when handling clicks 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00151}{151}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_af61dd0d5d7608497b0ae792abea32633}\label{class_idle_pages_af61dd0d5d7608497b0ae792abea32633} 
+\index{IdlePages@{IdlePages}!RefreshButtonID@{RefreshButtonID}}
+\index{RefreshButtonID@{RefreshButtonID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{RefreshButtonID}{RefreshButtonID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Refresh\+Button\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of button element that refreshes story book page stats. 
+
+Used internally to determine which button was pressed when handling clicks 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00157}{157}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a8af3af9bfd77a2bae55c71f853560193}\label{class_idle_pages_a8af3af9bfd77a2bae55c71f853560193} 
+\index{IdlePages@{IdlePages}!CloseButtonID@{CloseButtonID}}
+\index{CloseButtonID@{CloseButtonID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{CloseButtonID}{CloseButtonID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Close\+Button\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of button element that closes idle story book. 
+
+Used internally to determine which button was pressed when handling clicks 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00163}{163}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a1596bc567ea588f729c852988c7d80dc}\label{class_idle_pages_a1596bc567ea588f729c852988c7d80dc} 
+\index{IdlePages@{IdlePages}!IdleReportButtonID@{IdleReportButtonID}}
+\index{IdleReportButtonID@{IdleReportButtonID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{IdleReportButtonID}{IdleReportButtonID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Idle\+Report\+Button\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of button element on idle report screen. 
+
+Used internally to determine which button was pressed when handling clicks 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00169}{169}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a71b1d874953900b57ba1d6e7c0a97105}\label{class_idle_pages_a71b1d874953900b57ba1d6e7c0a97105} 
+\index{IdlePages@{IdlePages}!IntroButtonID@{IntroButtonID}}
+\index{IntroButtonID@{IntroButtonID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{IntroButtonID}{IntroButtonID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Intro\+Button\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of button element on intro screen. 
+
+Used internally to determine which button was pressed when handling clicks 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00175}{175}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+
+\Hypertarget{class_idle_pages_a2001a5f69aaeab796e612817ede68206}\label{class_idle_pages_a2001a5f69aaeab796e612817ede68206} 
+\index{IdlePages@{IdlePages}!ShowHelpButtonID@{ShowHelpButtonID}}
+\index{ShowHelpButtonID@{ShowHelpButtonID}!IdlePages@{IdlePages}}
+\doxysubsubsection{\texorpdfstring{ShowHelpButtonID}{ShowHelpButtonID}}
+{\footnotesize\ttfamily Idle\+Pages\+::\+Show\+Help\+Button\+ID = GSStory\+Page.\+STORY\+\_\+\+PAGE\+\_\+\+ELEMENT\+\_\+\+INVALID}
+
+
+
+Id of help button element that leads to help screen. 
+
+Used internally to determine which button was pressed when handling clicks 
+
+Definition at line \mbox{\hyperlink{_idle_pages_8nut_source_l00181}{181}} of file \mbox{\hyperlink{_idle_pages_8nut_source}{Idle\+Pages.\+nut}}.
+

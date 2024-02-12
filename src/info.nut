@@ -36,7 +36,8 @@ class FMainClass extends GSInfo {
 	 */
 	function GetVersion()		{ return SELF_VERSION; }
 	/**
-		@brief Returns minimum game script version that can be loaded
+		@brief Returns minimum game script version that can be loaded (relies on #ScriptMinVersionToLoad from constants.nut file)
+
 		@returns int Min game script version
 	 */
 	function MinVersionToLoad()		{ return ::ScriptMinVersionToLoad; }
@@ -44,7 +45,7 @@ class FMainClass extends GSInfo {
 		@brief Returns game script last update date
 		@returns std::string containing game script last update date
 	 */
-	function GetDate()			{ return "2023-01-28"; }
+	function GetDate()			{ return ::ScriptLastUpdateDate; }
 	/**
 		@brief Checks if script is developer only
 		@returns bool
@@ -64,7 +65,7 @@ class FMainClass extends GSInfo {
 		@brief Returns game script compatible API version
 		@returns std::string containing game script compatible API version
 	 */
-	function GetAPIVersion()	{ return "14"; }
+	function GetAPIVersion()	{ return "13"; }
 	/**
 		@brief Returns game script home page URL
 		@returns std::string containing game script home page URL

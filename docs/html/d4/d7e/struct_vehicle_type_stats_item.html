@@ -106,7 +106,7 @@ $(function(){initNavTree('d4/d7e/struct_vehicle_type_stats_item.html','../../');
 </div><!--header-->
 <div class="contents">
 
-<p>Typedef for vehicle type stats.  
+<p>[STRUCT] Vehicle type stats  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -121,13 +121,13 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:ad126cff458ae5513731d30c13ddcc832"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total balance of all vehicles of given type in last year.  <br /></td></tr>
 <tr class="separator:ad126cff458ae5513731d30c13ddcc832"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a087253c987657bdb6f16ae470641eb" id="r_a3a087253c987657bdb6f16ae470641eb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a087253c987657bdb6f16ae470641eb">type</a></td></tr>
-<tr class="memdesc:a3a087253c987657bdb6f16ae470641eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vehicles type ID.  <br /></td></tr>
+<tr class="memdesc:a3a087253c987657bdb6f16ae470641eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vehicle type ID.  <br /></td></tr>
 <tr class="separator:a3a087253c987657bdb6f16ae470641eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Typedef for vehicle type stats. </p>
-<p>Typedef for vehicle stats for one vehicle type</p>
-<dl class="section note"><dt>Note</dt><dd>This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes. </dd></dl>
+<div class="textblock"><p>[STRUCT] Vehicle type stats </p>
+<p>Data structure used for vehicle stats of a particular vehicle type</p>
+<dl class="section attention"><dt>Attention</dt><dd>This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes. </dd></dl>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a314592d5030ba5989eff12d731109bb8" name="a314592d5030ba5989eff12d731109bb8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a314592d5030ba5989eff12d731109bb8">&#9670;&#160;</a></span>count</h2>
@@ -159,7 +159,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Total idle balance of all vehicles of given type in last year. </p>
-<p>Value is for a particular vehicle type only, defined in <a class="el" href="#a3a087253c987657bdb6f16ae470641eb">VehicleTypeStatsItem::type</a> </p>
+<p>Value is for a particular vehicle type only, defined in <a class="el" href="#a3a087253c987657bdb6f16ae470641eb">VehicleTypeStatsItem::type</a>. In practice it is just the <a class="el" href="#ad126cff458ae5513731d30c13ddcc832">VehicleTypeStatsItem::balance</a> multiplied by idle multiplier setting. </p>
 
 </div>
 </div>
@@ -176,7 +176,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Total balance of all vehicles of given type in last year. </p>
-<p>Value is for a particular vehicle type only, defined in <a class="el" href="#a3a087253c987657bdb6f16ae470641eb">VehicleTypeStatsItem::type</a> </p>
+<p>Value (<em>vehicles profit - vehicles cost</em>) stored here is for a particular vehicle type only, defined in <a class="el" href="#a3a087253c987657bdb6f16ae470641eb">VehicleTypeStatsItem::type</a>. Used to recalculate <a class="el" href="#aa3a124b199a181400e8e4bfbac38206d">VehicleTypeStatsItem::idleBalance</a> if needed. </p>
 
 </div>
 </div>
@@ -192,8 +192,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Vehicles type ID. </p>
-<p>OpenTTD vehicle type ID </p>
+<p>Vehicle type ID. </p>
+<p>OpenTTD vehicle type ID, corresponding to <code>VehicleType</code> enum from <a href="https://docs.openttd.org/gs-api/classGSVehicle" target="_blank">GSVehicle</a> class provided by GS API. </p>
 
 </div>
 </div>

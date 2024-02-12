@@ -6,10 +6,14 @@ require("Logger.nut");
 require("IdleUtil.nut");
 require("IdlePages.nut");
 
+require("../extra/ttd/StationUtil.nut");
+require("../extra/ttd/TownHelper.nut");
+require("../extra/ttd/IntersectionHelper.nut");
+
 /**
     @class IdleStory
     @brief Class that contains main IdleTTD code.
-    @details Once created and started in <a target="_blank" href="https://docs.openttd.org/gs-api/classGSController">GSController</a>.Start(), internally tracks all data and handles all relevant button click events.
+    @details Once created and started in MainClass.Start(), internally tracks all data and handles all relevant button click events.
 */ 
 class IdleStory {
     
@@ -60,7 +64,7 @@ class IdleStory {
     /**
 	    @property _LastActiveTime
         @brief Last session timestamp
-	    @details Unix timestamp that keeps track when the game was saved last time
+	    @details Unix timestamp that keeps track when the game was saved last time. Used to determine `lastActiveSeconds`.
 	*/
 	_LastActiveTime = 0;
 
@@ -252,10 +256,7 @@ class IdleStory {
         if (!IdleUtil.HasHQ(this.PlayerCompanyID) && this.IdlePagesInstance != null) {
             if (this._LastActiveTime == 0) { // new game
                 if (GSController.GetSetting("show_intro")) {
-                        this.IdlePagesInstance.ShowIntroScreen();
-                } else {
-                    this.IdlePagesInstance.RenderMissingHQScreen();
-                    Logger.Debug("Skipping intro due to game script settings.");
+                    this.IdlePagesInstance.ShowIntroScreen();
                 }
             } else { // loaded game without HQ built
                 this.IdlePagesInstance.ShowMissingHQScreen();
@@ -276,6 +277,12 @@ class IdleStory {
         @returns void
     */
     function runIdleLoop() {
+        if (::_EnableCheats) {
+            StationUtil.Process(this.PlayerCompanyID);
+            TownHelper.Process(this.PlayerCompanyID);
+            IntersectionHelper.Process(this.PlayerCompanyID);
+        }
+
         local date = GSDate.GetCurrentDate();
         if (GSDate.IsValidDate(date)) {
             local month = GSDate.GetMonth(date);
@@ -374,19 +381,30 @@ class IdleStory {
                 this.IdlePagesInstance.ShowIntroScreen();
             }  else if (buttonId == this.IdlePagesInstance._NavButtonSaveWarningID) {
                 Logger.Debug("Handling (dev) nav save warning button click.");
-                this.IdlePagesInstance.ShowSaveWarningScreen();
+                this.ShowSaveWarningScreen();
             }  else if (buttonId == this.IdlePagesInstance._NavButtonShowHelpID) {
                 Logger.Debug("Handling (dev) nav help button click.");
                 this.IdlePagesInstance.ShowHelpScreen();
             }
         }
     }
+    /**
+        @} 
+    */
+
+
+    /** 
+        @name Functions that manage story book pages
+        These functions prepare data and call IdlePages instance to manage story book page screens
+        @{
+    */
+
 
     /**
-        @brief Guaranteed to return valid current idle story page ID
-        @details Makes sure there is a valid idle story page and returns its ID as <a href="https://docs.openttd.org/gs-api/classGSStoryPage" target="_blank">GSStoryPage.StoryPageID</a>.
+        @brief Guaranteed to return (creates it if needed) valid current idle story page ID
+        @details Makes sure there is a valid idle story page or creates it if there isn't and then returns its ID as <a href="https://docs.openttd.org/gs-api/classGSStoryPage" target="_blank">GSStoryPage.StoryPageID</a>.
 
-        \pre_resolved_company_valid{this.PlayerCompanyID}
+        \prethiscompanyvalid
 
         @returns GSStoryPageID Idle story page ID
     */
@@ -407,22 +425,13 @@ class IdleStory {
         }
         return this.IdleStoryPageID;
     }
-    /**
-        @} 
-    */
-
-
-    /** 
-        @name Functions that manage story book pages
-        These functions prepare data and call IdlePages instance to manage story book page screens
-        @{
-    */
 
     /**
-        @brief Shows idle report screen
+        @brief Shows idle report screen for given idle balance value
 
-        @details Calculats idle balance and calls [ShowIdleReportScreen()](#IdlePages.ShowIdleReportScreen) on [this.IdlePagesInstance](#IdlePagesInstance) to show idle report screen on idle story book page.
-        @note Idle report page is \em quasi-persistent. If player closes story book without clicking the button within, script will open idle report story book page again and keep doing it until player clicks the button on the page.
+        @attention Idle report page is \em quasi-persistent. If player closes story book without clicking the button within, script will open idle report story book page again and scroll main viewport so that Company HQ is in the center. Script will keep doing it again and again, until player clicks the button on the page.
+        
+        @details Calls [ShowIdleReportScreen()](#IdlePages.ShowIdleReportScreen) on [this.IdlePagesInstance](#IdlePagesInstance) to show idle report screen on idle story book page.
 
         @param intNewIdleBalance New idle balance
 
@@ -433,11 +442,13 @@ class IdleStory {
     function ShowIdleReport(intNewIdleBalance = 0) {
         if (intNewIdleBalance != 0) {
             this.IdleBalance = intNewIdleBalance;
+        } else {
+            Logger.Warning("Idle report triggered with zero idle balance and " + this._LastInactiveSeconds + " inactive seconds.");
         }
         local vehicleSummary = this.GetSummaryVehicleStats();
         local vehicleTypeStats = this.GetAllVehicleTypeStats();
         this.ScrollToCompanyHQ();
-        return this.IdlePagesInstance.ShowIdleReportScreen(this.IdleBalance, this._LastInactiveSeconds, vehicleSummary, vehicleTypeStats, this._LastYearBalance);
+        return this.IdlePagesInstance.ShowIdleReportScreen(intNewIdleBalance, this._LastInactiveSeconds, vehicleSummary, vehicleTypeStats, this._LastYearBalance);
     }
 
     /**
@@ -461,6 +472,8 @@ class IdleStory {
         @returns bool
         @retval true    Story book page displayed successfully
         @retval false   Failed displaying story book page
+
+        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
     */
     function ShowSaveWarningScreen() {
         if (!this._SaveWarningViewed && this.IdlePagesInstance != null) {
@@ -530,46 +543,46 @@ class IdleStory {
 
 
     /** 
-        @name Utility functions
-        Common utility and helper functions that are too specific for util class
+        @name News management functions
+        Functions that show and manage in-game news
         @{
     */
-
+    
     /**
-        @brief Enters company mode
+        @brief      Displays news about idle balance
+        @details    If script settings allow, creates and displays a news story about account balance changes caused by IdleTTD
 
-        @details Enters company mode and keeps local reference #companyMode to leave it later using #LeaveCompanyMode() function.
+        @param balanceChange Amount of money added or removed from company bank account
 
-        Uses `GSCompanyMode`, see <a target="_blank" href="https://docs.openttd.org/gs-api/classGSCompanyMode">NoGO API documentation</a> for reference (_link will open a new window/tab_) .
-
-        @return boolean
-        @retval true		Entered company mode successfully
-        @retval false	Failed entering company mode
+        @return bool
+        @retval true    News created successfully
+        @retval false   Failed creating news
     */
-    function EnterCompanyMode() {
-        if (this.companyMode == null) {
-        if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID) {
-            this.companyMode = GSCompanyMode(this.PlayerCompanyID);
+    function ShowIdleBalanceNews(balanceChange) {
+        if (GSController.GetSetting("show_news") && balanceChange != 0){
+            local newsTitle = GSText(GSText.STR_NEWS_TITLE_POSITIVE, balanceChange);
+            local newsSecondParagraph = GSText(GSText.STR_NEWS_TEXT_POSITIVE, balanceChange, this.PlayerCompanyID);
+            if (balanceChange < 0) {
+                
+                newsTitle = GSText(GSText.STR_NEWS_TITLE_NEGATIVE, balanceChange);
+                newsSecondParagraph = GSText(GSText.STR_NEWS_TEXT_NEGATIVE, balanceChange, this.PlayerCompanyID);
+            }
+            local news = GSText(GSText.STR_NEWS_COMPLETE, newsTitle, newsSecondParagraph);
+            return GSNews.Create(GSNews.NT_GENERAL, news, this.PlayerCompanyID, GSNews.NR_NONE, -1);
         }
-    }
-    return this.companyMode != null;
+        return false
     }
 
     /**
-        @brief Leaves company mode
-
-        @details Leaves company mode, resetting local reference #companyMode that was set in #EnterCompanyMode() function.
-
-        @return boolean
-        @retval true		Left company mode successfully
-        @retval false	Failed leaving company mode
+        @}
     */
-    function LeaveCompanyMode() {
-    if (this.companyMode != null) {
-        this.companyMode = null;
-    }
-    return this.companyMode == null;
-    }
+
+
+    /** 
+        @name Company and stats members
+        Functions that calculate stats and perform company related tasks
+        @{
+    */
 
     /**
         @brief Stores last year balance
@@ -617,9 +630,9 @@ class IdleStory {
     }
 
     /**
-        @brief Returns bank balance for player
+        @brief Returns current bank balance for players company
 
-        @details Can include loans
+        @details Determines total amount of money that players company currently has. By default takes loan amount into consideration too, but that can be changed via args passed to the function.
 
         @param boolIgnoreLoan Ignore loan
         @returns int Cash balance
@@ -642,8 +655,9 @@ class IdleStory {
         @brief Changes company bank balance
         @details Adds (or subtracts) balanceChange amount from company bank balance. Creates news with details if balance change was successful.
 
-        \prebase
-        @pre argument `balanceChange != 0`
+        \prethiscompanyvalid
+        @pre __Argument precondition__
+        @pre _balanceChange_ __!=__ `0`
 
         @param balanceChange Amount to add or subtract from company bank balance
 
@@ -662,30 +676,6 @@ class IdleStory {
         return false;
     }
 
-    /**
-        @brief      Displays news about idle balance
-        @details    If script settings allow, creates and displays a news story about account balance changes caused by IdleTTD
-
-        @param balanceChange Amount of money added or removed from company bank account
-
-        @return bool
-        @retval true    News created successfully
-        @retval false   Failed creating news
-    */
-    function ShowIdleBalanceNews(balanceChange) {
-        if (GSController.GetSetting("show_news") && balanceChange != 0){
-            local newsTitle = GSText(GSText.STR_NEWS_TITLE_POSITIVE, balanceChange);
-            local newsSecondParagraph = GSText(GSText.STR_NEWS_TEXT_POSITIVE, balanceChange, this.PlayerCompanyID);
-            if (balanceChange < 0) {
-                
-                newsTitle = GSText(GSText.STR_NEWS_TITLE_NEGATIVE, balanceChange);
-                newsSecondParagraph = GSText(GSText.STR_NEWS_TEXT_NEGATIVE, balanceChange, this.PlayerCompanyID);
-            }
-            local news = GSText(GSText.STR_NEWS_COMPLETE, newsTitle, newsSecondParagraph);
-            return GSNews.Create(GSNews.NT_GENERAL, news, this.PlayerCompanyID, GSNews.NR_NONE, -1);
-        }
-        return false
-    }
 
     /**
         @brief Scrolls to HQ
@@ -704,7 +694,14 @@ class IdleStory {
         @brief Returns summary stats for all vehicles
         @details Iterates through all vehicle types and summarizes stats (count, balance, idleBalance) for them. Values are per in-game year
 
+        <!-- 
+            \pre_resolved_company_valid{this.PlayerCompanyID}
+        -->
+        
+        \prebase
+
         @param force Force refreshing cached stats
+
 
         @returns SQTable Summary stats table
     */
@@ -722,9 +719,11 @@ class IdleStory {
         @brief Returns vehicle stats grouped by type
         @details Iterates through all vehicle types and summarizes stats (count, balance, idleBalance) for them (per type). Values are per in-game year.
 
+        \prebase
+
         @param force Force refreshing cached stats
 
-        @returns array An array of vehicle summary tables
+        @returns std::array<#VehicleTypeStatsItem, 4> An array of summary tables for all four vehicle types
     */
     function GetAllVehicleTypeStats(force = false) {
         if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID) {
@@ -757,6 +756,53 @@ class IdleStory {
         }
         return null;
     }
+    /**
+        @}
+    */
+
+
+    /** 
+        @name Utility members
+        Common utility and helper functions that are too specific for util class
+        @{
+    */
+
+    /**
+        @brief Enters company mode
+
+        @details Enters company mode and keeps local reference #companyMode to leave it later using #LeaveCompanyMode() function.
+
+        Uses `GSCompanyMode`, see <a target="_blank" href="https://docs.openttd.org/gs-api/classGSCompanyMode">NoGO API documentation</a> for reference (_link will open a new window/tab_) .
+
+        @return boolean
+        @retval true		Entered company mode successfully
+        @retval false	Failed entering company mode
+    */
+    function EnterCompanyMode() {
+        if (this.companyMode == null) {
+            if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID) {
+                this.companyMode = GSCompanyMode(this.PlayerCompanyID);
+            }
+        }
+        return this.companyMode != null;
+    }
+
+    /**
+        @brief Leaves company mode
+
+        @details Leaves company mode, resetting local reference #companyMode that was set in #EnterCompanyMode() function.
+
+        @return boolean
+        @retval true		Left company mode successfully
+        @retval false	Failed leaving company mode
+    */
+    function LeaveCompanyMode() {
+        if (this.companyMode != null) {
+            this.companyMode = null;
+        }
+        return this.companyMode == null;
+    }
+
 
     /**
         @brief Refreshes vehicle stats cache

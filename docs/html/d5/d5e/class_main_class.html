@@ -144,7 +144,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Persistent members</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These members are used to store <a class="el" href="../../da/d55/struct_script_saved_data.html" title="Script saved data format.">ScriptSavedData</a> with game save and are restored on load. They remain persistent through game sessopms. </p>
+<tr><td colspan="2"><div class="groupText"><p>These members are used to store <a class="el" href="../../da/d55/struct_script_saved_data.html" title="[STRUCT] Script saved data format">ScriptSavedData</a> with game save and are restored on load. They remain persistent through game sessopms. </p>
 </div></td></tr>
 <tr class="memitem:a5dc1eb4d9435029b2e315379b4a6926c" id="r_a5dc1eb4d9435029b2e315379b4a6926c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dc1eb4d9435029b2e315379b4a6926c">PlayerCompanyID</a> = GSCompany.COMPANY_INVALID</td></tr>
 <tr class="memdesc:a5dc1eb4d9435029b2e315379b4a6926c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Company ID of the player.  <br /></td></tr>
@@ -273,7 +273,7 @@ Public Attributes</h2></td></tr>
 
 <p>Stores script data with saves game. </p>
 <p>Prepares data desribing current game script state and returns it for storing in saves games.</p>
-<p>Returned data is a table in the format defined by <a class="el" href="../../da/d55/struct_script_saved_data.html" title="Script saved data format.">ScriptSavedData</a>.</p>
+<p>Returned data is a table in the format defined by <a class="el" href="../../da/d55/struct_script_saved_data.html" title="[STRUCT] Script saved data format">ScriptSavedData</a>.</p>
 <ul>
 <li><code>PlayerCompanyID</code> Id of current company</li>
 <li><code>IdleStoryPageID</code> Id of current idle story page</li>
@@ -284,7 +284,7 @@ Public Attributes</h2></td></tr>
 <li><code>SavedScriptVersion</code> IdleTTD version that game is being saved with</li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>Function sets SavedDate property that is used when determining whether the save was autosave or manual one.</dd></dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../da/d55/struct_script_saved_data.html" title="Script saved data format.">ScriptSavedData</a> Script state data for saving </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../da/d55/struct_script_saved_data.html" title="[STRUCT] Script saved data format">ScriptSavedData</a> Script state data for saving </dd></dl>
 
 </div>
 </div>
@@ -312,7 +312,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">version</td><td>integer Script version </td></tr>
-    <tr><td class="paramname">tbl</td><td>SquirrelTable Stored data</td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="../../da/d55/struct_script_saved_data.html" title="[STRUCT] Script saved data format">ScriptSavedData</a> Stored data</td></tr>
   </table>
   </dd>
 </dl>
