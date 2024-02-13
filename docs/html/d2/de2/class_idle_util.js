@@ -10,6 +10,5 @@ var class_idle_util =
     [ "HasHQ", "d2/de2/class_idle_util.html#a46334d3a8cc56a37c527b4af4702c304", null ],
     [ "GetGSEventTypeName", "d2/de2/class_idle_util.html#ab70a6d20696abba0b4a649b85f3764d3", null ],
     [ "GetIdleMultiplier", "d2/de2/class_idle_util.html#a7bc24330ac7d466e553d45a67a662f7f", null ],
-    [ "IsAutosaveDate", "d2/de2/class_idle_util.html#a3b8c37a9fa296d4d7873388b03ecfdce", null ],
     [ "AllVehicleTypes", "d2/de2/class_idle_util.html#a6afff2f145cc14defc320e120b82b022", null ]
 ];

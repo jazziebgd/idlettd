@@ -169,3 +169,10 @@ typedef unknown GSDate;
     @details Internal custom type defining the instance of <a target="_blank" href="https://docs.openttd.org/gs-api/classGSText">GSText</a> class in OpenTTD GS API.
 */
 typedef unknown GSText;
+
+/** 
+    @typedef GSEventStoryPageButtonClick
+    @brief OpenTTD GSEventStoryPageButtonClick instance. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSEventStoryPageButtonClick">GSEventStoryPageButtonClick</a> for details.
+    @details Internal custom type defining the instance of <a target="_blank" href="https://docs.openttd.org/gs-api/classGSEventStoryPageButtonClick">GSEventStoryPageButtonClick</a> class in OpenTTD GS API.
+*/
+typedef unknown GSEventStoryPageButtonClick;

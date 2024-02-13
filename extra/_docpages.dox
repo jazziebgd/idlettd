@@ -21,7 +21,6 @@ Script can be configured using the OpenTTD interface for game scripts.
 | `idle_multiplier`                             | 1 - 10        | __2__                             | Multiplier used to calculate idle balance | _Integer value is multiplied by 0.001 (0.1%) to get actual value_ |
 | `show_intro`                                  | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables intro popups          | _Does not affect idle report windows._ |
 | `show_news`                                   | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables idle balance news     |  |
-| `show_save_warning`                           | `bool`        | <I><CODE>__true__</CODE></I>      | Enables or disables save warnings         |  |
 | `day_interval`                                | 1 - 7         | __2__                             | Days to wait after each script run        | _Intended for eventual performance tuning._ |
 | <CENTER>__Developer mode settings__<BR /><SMALL>Hidden by default, you need to <a href="https://wiki.openttd.org/en/Development/Script/Need%20To%20Know#logging-and-debug-panel" target="_blank">enable developer tools</a> in OpenTTD to see them.</SMALL></CENTER> |||||
 | `idle_enabled`                                | `bool`        | <I><CODE>_true_</CODE></I>        | Enables or disables entire script         | |

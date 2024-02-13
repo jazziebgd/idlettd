@@ -34,7 +34,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">IdleTTD<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">IdleTTD<span id="projectnumber">&#160;2.0.0</span>
    </div>
    <div id="projectbrief">IdleTTD - a gamescript for OpenTTD</div>
   </td>
@@ -153,9 +153,6 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a7bc24330ac7d466e553d45a67a662f7f" id="r_a7bc24330ac7d466e553d45a67a662f7f"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bc24330ac7d466e553d45a67a662f7f">GetIdleMultiplier</a> ()</td></tr>
 <tr class="memdesc:a7bc24330ac7d466e553d45a67a662f7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns idle multiplier.  <br /></td></tr>
 <tr class="separator:a7bc24330ac7d466e553d45a67a662f7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b8c37a9fa296d4d7873388b03ecfdce" id="r_a3b8c37a9fa296d4d7873388b03ecfdce"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b8c37a9fa296d4d7873388b03ecfdce">IsAutosaveDate</a> (<a class="el" href="../../db/db0/types_8dox.html#a894bb6a868a7beda0bfd5e2f229f9e73">GSDate</a> date)</td></tr>
-<tr class="memdesc:a3b8c37a9fa296d4d7873388b03ecfdce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if current date corresponds to one of autosave dates.  <br /></td></tr>
-<tr class="separator:a3b8c37a9fa296d4d7873388b03ecfdce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -587,49 +584,6 @@ companyID == GSCompany.ResolveCompanyID(companyID)</dd></dl>
 <p>Returns idle multiplier. </p>
 <p>Returns float for applying to idle balance</p>
 <dl class="section return"><dt>Returns</dt><dd>float </dd></dl>
-
-</div>
-</div>
-<a id="a3b8c37a9fa296d4d7873388b03ecfdce" name="a3b8c37a9fa296d4d7873388b03ecfdce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b8c37a9fa296d4d7873388b03ecfdce">&#9670;&#160;</a></span>IsAutosaveDate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static function IdleUtil::IsAutosaveDate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/db0/types_8dox.html#a894bb6a868a7beda0bfd5e2f229f9e73">GSDate</a></td>          <td class="paramname"><span class="paramname"><em>date</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns true if current date corresponds to one of autosave dates. </p>
-<p>Depending on autosave setting, some dates are eligible as 'autosave' dates. This function returns true if current date corresponds to one of autosave dates based on game settings</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">date</td><td>In-game date to check</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
-<dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">true</td><td>Current date is an autosave date </td></tr>
-    <tr><td class="paramname">false</td><td>Current date is not an autosave date <b>or</b> autosave is disabled altogether </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="deprecated"><dt><b><a class="el" href="../../da/d58/deprecated.html#_deprecated000010">Deprecated</a></b></dt><dd>This method of autosave detection won't work properly starting with OpenTTD 14. In verision 14 autosave option has been changed to real-time minutes, it is no longer tied to in-game months. This function will be removed with the next script version. </dd></dl>
 
 </div>
 </div>

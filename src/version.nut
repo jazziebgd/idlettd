@@ -12,4 +12,4 @@
     @var SELF_VERSION
     @brief Game script version
 */
-SELF_VERSION <- 1;
+SELF_VERSION <- 2;

@@ -65,7 +65,7 @@ class FMainClass extends GSInfo {
 		@brief Returns game script compatible API version
 		@returns std::string containing game script compatible API version
 	 */
-	function GetAPIVersion()	{ return "13"; }
+	function GetAPIVersion()	{ return "14"; }
 	/**
 		@brief Returns game script home page URL
 		@returns std::string containing game script home page URL
@@ -112,12 +112,6 @@ class FMainClass extends GSInfo {
 		AddSetting({
 			name = "show_news",
 			description = "Show news when bank account gets updated",
-			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
-			flags = CONFIG_NONE | CONFIG_BOOLEAN
-		});
-		AddSetting({
-			name = "show_save_warning",
-			description = "Show warning when saving with losses",
 			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
 			flags = CONFIG_NONE | CONFIG_BOOLEAN
 		});

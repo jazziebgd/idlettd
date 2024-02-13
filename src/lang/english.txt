@@ -50,7 +50,6 @@ STR_PAGE_TITLE_REPORT           :IdleTTD  |  Idle balance report
 STR_PAGE_TITLE_NOHQ             :IdleTTD  |  Company HQ missing
 STR_PAGE_TITLE_HELP             :IdleTTD  |  Help
 STR_PAGE_TITLE_STATS            :IdleTTD  |  Statistics
-STR_PAGE_TITLE_SAVE_WARNING     :IdleTTD  |  Saved with negative balance
 
 
 
@@ -201,9 +200,6 @@ STR_PER_DAY: daily
 
 
 
-STR_REPORT_SAVE_WARNING :{}{YELLOW}WARNING!{}{WHITE}Looks like you saved a game while having losses in previous year. To avoid losing money when you load your game next time, keep playing and save when you end a year with positive balance.{}
-STR_SAVE_WARNING_TEXT :{SILVER}Seems like you recently saved a game while having losses in previous year.{}{}{}{WHITE}YOU WILL MOST PROBABLY LOSE MORE MONEY WHEN YOU LOAD THE GAME YOU SAVED!{}{}{}{SILVER}Most of the time, this is caused by one-time expenses like spending money on construction or new vehicles. Keep playing and save when you end a year with positive balance to avoid this.{}{}
-
 
 
 
@@ -217,4 +213,3 @@ STR_NAV_BUTTON_NO_HQ                :No HQ
 STR_NAV_BUTTON_STATS                :Stats
 STR_NAV_BUTTON_REPORT               :Report
 STR_NAV_BUTTON_HELP                 :Help
-STR_NAV_BUTTON_SAVE_WARNING         :Save warning

@@ -413,51 +413,6 @@ class IdleUtil {
         return value;
     }
 
-
-
-    /**
-        @static
-        @brief Returns true if current date corresponds to one of autosave dates.
-        @details Depending on autosave setting, some dates are eligible as 'autosave' dates. This function returns true if current date corresponds to one of autosave dates based on game settings
-
-        @param date In-game date to check
-
-        @returns bool
-        @retval true    Current date is an autosave date
-        @retval false   Current date is not an autosave date __or__ autosave is disabled altogether
-        @deprecated This method of autosave detection won't work properly starting with OpenTTD 14. In verision 14 autosave option has been changed to real-time minutes, it is no longer tied to in-game months. This function will be removed with the next script version.
-    */
-    static function IsAutosaveDate(date) {
-        local asSetting = GSGameSettings.GetValue("gui.autosave");
-        local isAuto = false;
-        if (asSetting != 0) {
-            // local date = GSDate.GetCurrentDate();
-            local day = GSDate.GetDayOfMonth(date);
-            local year = GSDate.GetYear(date);
-            local month = GSDate.GetMonth(date);
-            if (day == 1) {
-                if (asSetting == 1) {
-                    isAuto = true;
-                } else if (asSetting == 2) {
-                    if (
-                        month == 1
-                        || month == 4
-                        || month == 7
-                        || month == 10
-                    ) {
-                        isAuto == true;
-                    }
-                } else if (asSetting == 3) {
-                    isAuto = month == 7 || month == 1;
-                }
-            }
-        }
-        return isAuto;
-    }
-
-
-
-
     /**
         @}
     */

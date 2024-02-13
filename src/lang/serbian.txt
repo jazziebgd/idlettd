@@ -50,7 +50,6 @@ STR_PAGE_TITLE_REPORT           :IdleTTD | Izveštaj o pasivnoj zaradi
 STR_PAGE_TITLE_NOHQ             :IdleTTD | Nemate upravnu zgradu
 STR_PAGE_TITLE_HELP             :IdleTTD | Pomoć
 STR_PAGE_TITLE_STATS            :IdleTTD | Statistika
-STR_PAGE_TITLE_SAVE_WARNING     :IdleTTD  | Igra snimljena sa gubicima
 
 
 
@@ -201,9 +200,6 @@ STR_PER_DAY: dnevno
 
 
 
-STR_REPORT_SAVE_WARNING :{}{YELLOW}Pažnja!{}{WHITE}Deluje da ste snimili poziciju sa gubicima u prošloj godini. Da ne biste izgubili novac kada učitate poziciju, igrajte igru i snimite kada završite godinu u plusu.{}
-STR_SAVE_WARNING_TEXT :{SILVER}Deluje da ste snimili poziciju a da ste u prošloj godini imali gubitak.{}{}{}{WHITE}IZGUBIĆETE NOVAC KADA UČITATE POZICIJU SLEDEĆI PUT!{}{}{}{SILVER}U najvećem broju slučajeva uzrok gubitaka su jednokratni troškovi poput gradnje infrastrukture ili kupovine novih vozila. Nastavite sa igranjem pa snimite poziciju kada završite godinu u plusu da biste izbegli gubitke pri učitavanju.{}{}
-
 
 
 
@@ -217,4 +213,3 @@ STR_NAV_BUTTON_NO_HQ                :No HQ
 STR_NAV_BUTTON_STATS                :Stats
 STR_NAV_BUTTON_REPORT               :Report
 STR_NAV_BUTTON_HELP                 :Help
-STR_NAV_BUTTON_SAVE_WARNING         :Save warning

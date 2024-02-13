@@ -130,7 +130,4 @@ ScriptMinVersionToLoad <- 1;
 
     This value is used by and returned from (FMainClass.GetDate())[#FMainClass.GetDate] function.
 */
-ScriptLastUpdateDate <- "2023-01-28";
-
-
-_EnableCheats <- true;
+ScriptLastUpdateDate <- "2024-02-13";

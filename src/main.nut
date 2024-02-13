@@ -100,13 +100,6 @@ class MainClass extends GSController {
     IdleStoryInstance = null;
 
     /**
-        @property SavedDate
-        @brief In-game date of the last save
-        @details Used to determine type of save (manual / auto)
-    */
-    SavedDate = null;
-
-    /**
         @property _CloseAttempts
         @brief Number of times report got reopened
         @details Number of times user tried to close report without accepting idle balance, prompting it to reopen
@@ -131,7 +124,6 @@ class MainClass extends GSController {
         this.IdleStoryInstance = null;
         this.SavedScriptVersion = 0;
         
-        this.SavedDate = null;
     }
     /// \publicsection
 
@@ -255,33 +247,11 @@ class MainClass extends GSController {
                                     }
                                 }
 
-                                if (this.SavedDate != null) {
-                                    local date = this.SavedDate;
-                                    this.SavedDate = null;
-                                    if (GSController.GetSetting("show_save_warning")) {
-                                        if (this.IdleStoryInstance != null && this.IdleStoryInstance.IdlePagesInstance != null && this.IdleStoryInstance._LastYearBalance < 0) {
-                                            if (IdleUtil.HasHQ(this.PlayerCompanyID)) {
-                                                local isAuto = IdleUtil.IsAutosaveDate(date);
-                                                if (!isAuto) {
-                                                    Logger.Debug("Negative balance detected on save, setting the flag.");
-                                                    this.IdleStoryInstance.IdlePagesInstance.SavedWithNegativeBalance = true;
-                                                    this.IdleStoryInstance._SaveWarningViewed = false;
-                                                } else {
-                                                    Logger.Debug("Negative balance detected on save but not setting the flag due to possible autosave.");
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
                                 sleep_ticks = dayInterval;
                             }
                             if (this.IdleStoryInstance != null && this.IdleStoryInstance.IdlePagesInstance != null) {
                                 local hasReport = this.IdleStoryInstance.IsIdleReportVisible();
                                 local idlePageOpen = this.IdleStoryInstance.IsAnyScreenOpen();
-                                
-                                local saveWarningVisible = this.IdleStoryInstance.IsSaveWarningScreenVisible();
-                                local saveTextDisplayed = this.IdleStoryInstance.IsSaveWarningTextDisplayed();
-                                local showSaveWarning = this.IdleStoryInstance.GameSavedWithNegativeBalance();
                                 
                                 if (hasReport) {
                                     this.IdleStoryInstance.ScrollToCompanyHQ();
@@ -289,35 +259,16 @@ class MainClass extends GSController {
 
                                 if (idlePageOpen) {
                                     sleep_ticks = ::ScriptConfig.ShortestSleepTime;
-                                    if (!hasReport) {
-                                        sleep_ticks = ::ScriptConfig.ShortSleepTime;
-                                        if (showSaveWarning && !saveWarningVisible) {
-                                            Logger.Debug("Rendering save warning screen");
-                                            this.IdleStoryInstance.ShowSaveWarningScreen();
-                                        }
-                                    } else {
-                                        if (showSaveWarning && !saveTextDisplayed) {
-                                            Logger.Debug("Showing report save warning text");
-                                            this.IdleStoryInstance.UpdateReportSaveWarning(true);
-                                        }
-                                    }
                                 } else {
                                     if (hasReport) {
                                         this._CloseAttempts = this._CloseAttempts + 1;
                                         if (this._CloseAttempts == ::ScriptConfig.WarnAfterCloseAttempts) {
                                             this.IdleStoryInstance.UpdateReportCloseWarning(true);
                                         }
-                                        if (showSaveWarning && !saveTextDisplayed) {
-                                            Logger.Debug("Adding report save warning text");
-                                            this.IdleStoryInstance.UpdateReportSaveWarning(true);
-                                        }
                                         Logger.Debug("Reopening idle report story book page window.");
                                         IdleUtil.DisplayPage(this.IdleStoryInstance.IdleStoryPageID);
                                         GSController.Sleep(::ScriptConfig.MinSleepTime);
                                         continue;
-                                    } else if (showSaveWarning && !saveWarningVisible) {
-                                        Logger.Debug("Showing save warning screen");
-                                        this.IdleStoryInstance.ShowSaveWarningScreen();
                                     }
                                         
                                 }
@@ -358,14 +309,10 @@ class MainClass extends GSController {
         - `PrevCurrentCash` 		        Amount of money company had at the beginning of current year
         - `SavedScriptVersion` 				IdleTTD version that game is being saved with
 
-        @note Function sets SavedDate property that is used when determining whether the save was autosave or manual one.
-
         @returns ScriptSavedData Script state data for saving
     */
     function Save() {
-        local date = GSDate.GetCurrentDate();
         local lastActiveTime = GSDate.GetSystemTime();
-        this.SavedDate = date;
         local pageId = this.IdleStoryPageID;
         local lastYearBalance = 0;
         local currentCash = 0;
@@ -373,8 +320,8 @@ class MainClass extends GSController {
 
         if (this.IdleStoryInstance != null) {
             pageId = this.IdleStoryInstance.GetPageID();
-            lastYearBalance = this.IdleStoryInstance._LastYearBalance;
-            secondToLastYearBalance = this.IdleStoryInstance._SecondToLastYearBalance;
+            lastYearBalance = this.IdleStoryInstance.LastYearBalance;
+            secondToLastYearBalance = this.IdleStoryInstance.SecondToLastYearBalance;
             currentCash = this.IdleStoryInstance.CurrentCash;
             /* 
                 prevent players from overriding previous idle balances by saving and reloading the game

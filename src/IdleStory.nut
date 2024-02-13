@@ -6,22 +6,15 @@ require("Logger.nut");
 require("IdleUtil.nut");
 require("IdlePages.nut");
 
-require("../extra/ttd/StationUtil.nut");
-require("../extra/ttd/TownHelper.nut");
-require("../extra/ttd/IntersectionHelper.nut");
-
+// require("../extra/ttd/Shortcuts.nut");
 /**
     @class IdleStory
     @brief Class that contains main IdleTTD code.
     @details Once created and started in MainClass.Start(), internally tracks all data and handles all relevant button click events.
 */ 
 class IdleStory {
-    
-
-
-
     /** 
-        @name State variables
+        @name Game state variables
         Properties below represent the state of the current IdleTTD session
         @{
     */
@@ -39,7 +32,7 @@ class IdleStory {
 
 	    @brief   Idle story book page ID
 	    @details Set to <a href="https://docs.openttd.org/gs-api/classGSStoryPage" target="_blank">GSStoryPage</a>.STORY_PAGE_INVALID by, gets created when new game starts and saved to be re-used on game load.
-        @note Although this property is public and accesible from outside it shouldn't be changed directly, [this.GetPageID()](#GetPageID)  should be used instead.
+        @note While this property is accesible it shouldn't be updated directly from outside, [this.GetPageID()](#GetPageID) should be used to set it automatically instead.
 	*/
     IdleStoryPageID = GSStoryPage.STORY_PAGE_INVALID;
     
@@ -47,54 +40,56 @@ class IdleStory {
 	    @property IdleBalance
 
 	    @brief Latest idle balance
-	    @details Amount of money that player receives (or loses) upon loading saved game. This is basically last year balance multiplied by percent value derived from @ref config_sec "idle_multiplier" game setting.
+	    @details Temporary value that is set on load and unset by changing bank balance right away.
+        
+        Amount of money (basically #LastYearBalance multiplied by percent value derived from @ref config_sec "idle_multiplier" game setting) that player receives (or loses) upon loading saved game. At any other time it is expected to be 0.
 
-        Value from this property is used when changing player bank balance, and is always reset to 0 afterwards.
+        
 	*/
     IdleBalance = 0;
     
     /**
-	    @property _LastIdleBalance
+	    @property LastIdleBalance
 
 	    @brief Previous idle balance
-	    @details Amount of idle monay that company earned or lost upon last game load, stored in saves (and restored on load) via GSController
+	    @details Amount of (idle) money that company earned or lost upon last game load, stored in saved games and restored on load in #MainClass.
 	*/
-    _LastIdleBalance = 0;
+    LastIdleBalance = 0;
 
     /**
-	    @property _LastActiveTime
+	    @property LastActiveTime
         @brief Last session timestamp
 	    @details Unix timestamp that keeps track when the game was saved last time. Used to determine `lastActiveSeconds`.
 	*/
-	_LastActiveTime = 0;
+	LastActiveTime = 0;
 
     /**
-	    @property _LastYearBalance
+	    @property LastYearBalance
 	    @brief Used for idle income caclulation
 	    @details Balance that company had at the beggining of the year.
 	*/
-    _LastYearBalance = 0;
+    LastYearBalance = 0;
 
     /**
-	    @property _SecondToLastYearBalance
+	    @property SecondToLastYearBalance
 	    @brief Used for idle income caclulation
 	    @details Balance that company had at the beggining of the previous year.
 	*/
-    _SecondToLastYearBalance = 0;
+    SecondToLastYearBalance = 0;
 
     /**
-	    @property _LastSessionYearlyBalance
+	    @property LastSessionYearlyBalance
 	    @brief Yearly balance from last session
 	    @details Balance that was used to calculate idle balance at the start of the session
 	*/
-    _LastSessionYearlyBalance = 0;
+    LastSessionYearlyBalance = 0;
     
     /**
-	    @property _LastInactiveSeconds
+	    @property LastInactiveSeconds
 	    @brief Used for stats screen
 	    @details Amount of seconds that passed since last save
 	*/
-	_LastInactiveSeconds = 0;
+	LastInactiveSeconds = 0;
 
     /**
 	    @property CurrentCash
@@ -107,7 +102,7 @@ class IdleStory {
 	    @property PreviousMonth
 	    @brief Latest in-game month detected
 
-        @details Used internally to detect new year and recalculate last year balance
+        @details Used internally to detect new year and recalculate balances for previous year
 	*/
 	PreviousMonth = -1;
 
@@ -120,13 +115,6 @@ class IdleStory {
 	companyMode = null;
 
 
-    /**
-	    @property _SaveWarningViewed
-        @brief Player saw warning message
-	
-        @details Internally used in order to avoid reopening warning screen once closed
-	*/
-    _SaveWarningViewed = false;
     /**
         @}
     */
@@ -194,16 +182,15 @@ class IdleStory {
     constructor(companyID, storyPageID = GSStoryPage.STORY_PAGE_INVALID) {
         this.PlayerCompanyID = companyID;
         this.IdleStoryPageID = storyPageID;
-        this._SaveWarningViewed = false;
         this.companyMode = null;
         
 		this.PreviousMonth = -1;
         this.CurrentCash = 0;
         this.IdleBalance = 0;
-        this._LastIdleBalance = 0;
-        this._LastYearBalance = 0;
-        this._LastInactiveSeconds = 0;
-        this._LastActiveTime = 0;
+        this.LastIdleBalance = 0;
+        this.LastYearBalance = 0;
+        this.LastInactiveSeconds = 0;
+        this.LastActiveTime = 0;
 
         this._CachedAllVehicleStats = [];
         this._CachedSummaryVehicleStats = {
@@ -226,9 +213,9 @@ class IdleStory {
         @brief Initializes game session
         @details Called when all argument values are either loaded from saved game or set to default values (zeros) for new games. Shows idle report / missing hq / intro screen as needed.
 
-        @param lastActiveTime Saved game timestamp, stored locally as #_LastActiveTime
-        @param lastYearBalance Saved last year balance, stored locally as #_LastYearBalance
-        @param secondToLastYearBalance Saved second to last year balance, stored locally as #_SecondToLastYearBalance
+        @param lastActiveTime Saved game timestamp, stored locally as #LastActiveTime
+        @param lastYearBalance Saved last year balance, stored locally as #LastYearBalance
+        @param secondToLastYearBalance Saved second to last year balance, stored locally as #SecondToLastYearBalance
         @param intCurrentCash Amount of money (minus loan) that company had at the end of the last (complete) year
 
         @returns void
@@ -242,19 +229,19 @@ class IdleStory {
         if (lastYearBalance != 0) {
             this.SetLastYearBalance(lastYearBalance);
         }
-        this._LastActiveTime = lastActiveTime;
+        this.LastActiveTime = lastActiveTime;
         this.CurrentCash = intCurrentCash;
-        if (lastActiveTime > 0) {
+        if (lastActiveTime == 0) { // new game
+            this.SetLastInactiveSeconds(0);
+            this.LastSessionYearlyBalance = 0;
+        } else { // saved game
             local currentTime = GSDate.GetSystemTime();
             local inactiveSeconds = (currentTime - lastActiveTime).tointeger();
             this.SetLastInactiveSeconds(inactiveSeconds);
-            this._LastSessionYearlyBalance = lastYearBalance;
-        } else {
-            this.SetLastInactiveSeconds(0);
-            this._LastSessionYearlyBalance = 0;
+            this.LastSessionYearlyBalance = lastYearBalance;
         }
         if (!IdleUtil.HasHQ(this.PlayerCompanyID) && this.IdlePagesInstance != null) {
-            if (this._LastActiveTime == 0) { // new game
+            if (this.LastActiveTime == 0) { // new game
                 if (GSController.GetSetting("show_intro")) {
                     this.IdlePagesInstance.ShowIntroScreen();
                 }
@@ -277,13 +264,8 @@ class IdleStory {
         @returns void
     */
     function runIdleLoop() {
-        if (::_EnableCheats) {
-            StationUtil.Process(this.PlayerCompanyID);
-            TownHelper.Process(this.PlayerCompanyID);
-            IntersectionHelper.Process(this.PlayerCompanyID);
-        }
-
         local date = GSDate.GetCurrentDate();
+        // Shortcuts.Process(this.PlayerCompanyID);
         if (GSDate.IsValidDate(date)) {
             local month = GSDate.GetMonth(date);
             local day = GSDate.GetDayOfMonth(date);
@@ -296,14 +278,12 @@ class IdleStory {
                     if (prevCash != 0) {
                         Logger.Table({newCash = newCash, prevCash = prevCash, newBalance = newBalance}, "Updated yearly balance", ::ScriptLogLevels.LOG_LEVEL_DEBUG);
                         this.SetLastYearBalance(newBalance);
-                        if (this.IdlePagesInstance.StatsScreenVisible) {
-                            Logger.Verbose("Updating stats screen");
+                        if (this.IsAnyScreenOpen() && this.IdlePagesInstance.StatsScreenVisible) {
+                            Logger.Verbose("Refreshing stats screen");
                             this.CacheVehicleStats(true);
                             this.IdlePagesInstance.ClearPage();
                             this.RenderStatsScreen();
                         }
-                    } else {
-
                     }
                 }
                 this.PreviousMonth = month;
@@ -328,9 +308,8 @@ class IdleStory {
             if (buttonId == this.IdlePagesInstance.IdleReportButtonID) {
                 Logger.Debug("Handling idle report button click.");
                 if (this.ChangeBankBalance(this.IdleBalance)) {
-                    this._LastIdleBalance = this.IdleBalance;
+                    this.LastIdleBalance = this.IdleBalance;
                     this.IdleBalance = 0;
-                    this._SaveWarningViewed = true;
 
                     if (!::ScriptConfig.ShowStatsAfterReport) {
                         IdleUtil.CloseStoryBookWindow(this.PlayerCompanyID);
@@ -351,13 +330,6 @@ class IdleStory {
             } else if (buttonId == this.IdlePagesInstance.ShowHelpButtonID) {
                 Logger.Debug("Handling help button click.");
                 this.IdlePagesInstance.ShowHelpScreen();
-            } else if (buttonId == this.IdlePagesInstance.CloseSaveWarningButtonID) {
-                Logger.Debug("Handling close save warning button click.");
-                this._SaveWarningViewed = true;
-                this.IdlePagesInstance.SavedWithNegativeBalance = false;
-                IdleUtil.CloseStoryBookWindow(this.PlayerCompanyID);
-                this.IdlePagesInstance.ClearPage();
-                this.RenderStatsScreen();
             } else if (buttonId == this.IdlePagesInstance.IntroButtonID) {
                 Logger.Debug("Handling intro button click.");
                 IdleUtil.CloseStoryBookWindow(this.PlayerCompanyID);
@@ -379,9 +351,6 @@ class IdleStory {
             }  else if (buttonId == this.IdlePagesInstance._NavButtonIntroID) {
                 Logger.Debug("Handling (dev) nav intro button click.");
                 this.IdlePagesInstance.ShowIntroScreen();
-            }  else if (buttonId == this.IdlePagesInstance._NavButtonSaveWarningID) {
-                Logger.Debug("Handling (dev) nav save warning button click.");
-                this.ShowSaveWarningScreen();
             }  else if (buttonId == this.IdlePagesInstance._NavButtonShowHelpID) {
                 Logger.Debug("Handling (dev) nav help button click.");
                 this.IdlePagesInstance.ShowHelpScreen();
@@ -406,7 +375,7 @@ class IdleStory {
 
         \prethiscompanyvalid
 
-        @returns GSStoryPageID Idle story page ID
+        @returns int Idle story page ID
     */
     function GetPageID() {
         if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID) {
@@ -443,12 +412,12 @@ class IdleStory {
         if (intNewIdleBalance != 0) {
             this.IdleBalance = intNewIdleBalance;
         } else {
-            Logger.Warning("Idle report triggered with zero idle balance and " + this._LastInactiveSeconds + " inactive seconds.");
+            Logger.Warning("Idle report triggered with zero idle balance and " + this.LastInactiveSeconds + " inactive seconds.");
         }
         local vehicleSummary = this.GetSummaryVehicleStats();
         local vehicleTypeStats = this.GetAllVehicleTypeStats();
         this.ScrollToCompanyHQ();
-        return this.IdlePagesInstance.ShowIdleReportScreen(intNewIdleBalance, this._LastInactiveSeconds, vehicleSummary, vehicleTypeStats, this._LastYearBalance);
+        return this.IdlePagesInstance.ShowIdleReportScreen(intNewIdleBalance, this.LastInactiveSeconds, vehicleSummary, vehicleTypeStats, this.LastYearBalance);
     }
 
     /**
@@ -462,25 +431,7 @@ class IdleStory {
     function ShowStatsScreen() {
         local vehicleSummary = this.GetSummaryVehicleStats();
         local allVehicleStats = this.GetAllVehicleTypeStats();
-        return this.IdlePagesInstance.ShowStatsScreen(vehicleSummary, allVehicleStats, this._LastIdleBalance, this._LastInactiveSeconds, this._LastYearBalance);
-    }
-
-    /**
-        @brief Shows save warning screen
-        @details When player saves the game with negative balance show a warning notifying them of idle losses
-        
-        @returns bool
-        @retval true    Story book page displayed successfully
-        @retval false   Failed displaying story book page
-
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-    */
-    function ShowSaveWarningScreen() {
-        if (!this._SaveWarningViewed && this.IdlePagesInstance != null) {
-            this._SaveWarningViewed = true;
-            return this.IdlePagesInstance.ShowSaveWarningScreen();
-        }
-        return false;
+        return this.IdlePagesInstance.ShowStatsScreen(vehicleSummary, allVehicleStats, this.LastIdleBalance, this.LastInactiveSeconds, this.LastYearBalance);
     }
 
     /**
@@ -492,7 +443,7 @@ class IdleStory {
     function RenderStatsScreen() {
         local vehicleSummary = this.GetSummaryVehicleStats();
         local allVehicleStats = this.GetAllVehicleTypeStats();
-        this.IdlePagesInstance.RenderStatsScreen(vehicleSummary, allVehicleStats, this._LastIdleBalance, this._LastInactiveSeconds, this._LastYearBalance);
+        this.IdlePagesInstance.RenderStatsScreen(vehicleSummary, allVehicleStats, this.LastIdleBalance, this.LastInactiveSeconds, this.LastYearBalance);
     }
 
     
@@ -506,7 +457,7 @@ class IdleStory {
     */
     function UpdateDuration() {
         local currentTime = GSDate.GetSystemTime();
-        local inactiveSeconds = (currentTime - this._LastActiveTime).tointeger();
+        local inactiveSeconds = (currentTime - this.LastActiveTime).tointeger();
         return this.IdlePagesInstance.UpdateDuration(inactiveSeconds);
     }
 
@@ -525,19 +476,6 @@ class IdleStory {
     }
 
     /**
-        @brief Updates save warning element on idle report screen
-        @details Shows or hides text warning player about saving the game with negative balance
-
-        @param boolShowWarning Controls whether to show save warning or not
-
-        @return bool
-        @retval true    Save warning story page element updated
-        @retval false   Failed updating save warning story page element
-    */
-    function UpdateReportSaveWarning(boolShowWarning = true) {
-        return this.IdlePagesInstance.UpdateReportSaveWarning(boolShowWarning);
-    }
-    /**
         @}
     */
 
@@ -552,20 +490,20 @@ class IdleStory {
         @brief      Displays news about idle balance
         @details    If script settings allow, creates and displays a news story about account balance changes caused by IdleTTD
 
-        @param balanceChange Amount of money added or removed from company bank account
+        @param intBalanceChange Amount of money added or removed from company bank account
 
         @return bool
         @retval true    News created successfully
         @retval false   Failed creating news
     */
-    function ShowIdleBalanceNews(balanceChange) {
-        if (GSController.GetSetting("show_news") && balanceChange != 0){
-            local newsTitle = GSText(GSText.STR_NEWS_TITLE_POSITIVE, balanceChange);
-            local newsSecondParagraph = GSText(GSText.STR_NEWS_TEXT_POSITIVE, balanceChange, this.PlayerCompanyID);
-            if (balanceChange < 0) {
+    function ShowIdleBalanceNews(intBalanceChange) {
+        if (GSController.GetSetting("show_news") && intBalanceChange != 0){
+            local newsTitle = GSText(GSText.STR_NEWS_TITLE_POSITIVE, intBalanceChange);
+            local newsSecondParagraph = GSText(GSText.STR_NEWS_TEXT_POSITIVE, intBalanceChange, this.PlayerCompanyID);
+            if (intBalanceChange < 0) {
                 
-                newsTitle = GSText(GSText.STR_NEWS_TITLE_NEGATIVE, balanceChange);
-                newsSecondParagraph = GSText(GSText.STR_NEWS_TEXT_NEGATIVE, balanceChange, this.PlayerCompanyID);
+                newsTitle = GSText(GSText.STR_NEWS_TITLE_NEGATIVE, intBalanceChange);
+                newsSecondParagraph = GSText(GSText.STR_NEWS_TEXT_NEGATIVE, intBalanceChange, this.PlayerCompanyID);
             }
             local news = GSText(GSText.STR_NEWS_COMPLETE, newsTitle, newsSecondParagraph);
             return GSNews.Create(GSNews.NT_GENERAL, news, this.PlayerCompanyID, GSNews.NR_NONE, -1);
@@ -579,36 +517,36 @@ class IdleStory {
 
 
     /** 
-        @name Company and stats members
-        Functions that calculate stats and perform company related tasks
+        @name Company, money and stats functions
+        Functions that calculate balance, update stats and perform other similar tasks
         @{
     */
 
     /**
         @brief Stores last year balance
-        @details Updates _SecondToLastYearBalance with previous value of _LastYearBalance before setting _LastYearBalance to new value
+        @details Updates SecondToLastYearBalance with previous value of LastYearBalance before setting LastYearBalance to new value
 
-        @param value New balance
+        @param intNewLastYearBalance New balance
 
         @returns void
     */
-    function SetLastYearBalance(value = 0) {
-        if (this._LastYearBalance != 0) {
-            this._SecondToLastYearBalance = this._LastYearBalance;
+    function SetLastYearBalance(intNewLastYearBalance = 0) {
+        if (this.LastYearBalance != 0) {
+            this.SecondToLastYearBalance = this.LastYearBalance;
         }
-        this._LastYearBalance = value;
+        this.LastYearBalance = intNewLastYearBalance;
     }
 
     /**
         @brief Stores last inactive seconds 
-        @details Based on _LastActiveTime, this value is stored for using in strings and calculations
+        @details Based on LastActiveTime, this value is stored for using in strings and calculations
 
-        @param value New value
+        @param intNewLastInactiveSeconds New value
 
         @returns void
     */
-    function SetLastInactiveSeconds(value = 0) {
-        this._LastInactiveSeconds = value;
+    function SetLastInactiveSeconds(intNewLastInactiveSeconds = 0) {
+        this.LastInactiveSeconds = intNewLastInactiveSeconds;
     }
 
     /**
@@ -620,12 +558,12 @@ class IdleStory {
     function CalculateIdleBalance() {
         local idleMultiplier = IdleUtil.GetIdleMultiplier();
         local currentTime = GSDate.GetSystemTime();
-        local inactiveSeconds = (currentTime - this._LastActiveTime).tointeger();
+        local inactiveSeconds = (currentTime - this.LastActiveTime).tointeger();
         this.SetLastInactiveSeconds(inactiveSeconds);
 
         // local passedDays = ((inactiveSeconds * 33.33) / 74).tointeger();
         local passedDays = (floor(inactiveSeconds.tofloat() / ::SecondsPerGameDay.tofloat())).tointeger();
-        local idleBalance = (((this._LastYearBalance / 365.0) * passedDays) * idleMultiplier).tointeger();
+        local idleBalance = (((this.LastYearBalance / 365.0) * passedDays) * idleMultiplier).tointeger();
         return idleBalance;
     }
 
@@ -633,6 +571,8 @@ class IdleStory {
         @brief Returns current bank balance for players company
 
         @details Determines total amount of money that players company currently has. By default takes loan amount into consideration too, but that can be changed via args passed to the function.
+
+        @note Calling this implies entering (and exiting) company mode within.
 
         @param boolIgnoreLoan Ignore loan
         @returns int Cash balance
@@ -653,23 +593,23 @@ class IdleStory {
 
     /**
         @brief Changes company bank balance
-        @details Adds (or subtracts) balanceChange amount from company bank balance. Creates news with details if balance change was successful.
+        @details Adds (or subtracts) intBalanceChange amount from company bank balance. Creates news with details if balance change was successful.
 
         \prethiscompanyvalid
         @pre __Argument precondition__
-        @pre _balanceChange_ __!=__ `0`
+        @pre _intBalanceChange_ __!=__ `0`
 
-        @param balanceChange Amount to add or subtract from company bank balance
+        @param intBalanceChange Amount to add or subtract from company bank balance
 
         @return bool
         @retval true    Balance changed successfully
         @retval false   Balance change failed
     */
-    function ChangeBankBalance(balanceChange = 0) {
-        if (balanceChange != 0 && this.PlayerCompanyID != GSCompany.COMPANY_INVALID) {
-            if (GSCompany.ChangeBankBalance(this.PlayerCompanyID, balanceChange, GSCompany.EXPENSES_OTHER, IdleUtil.GetHQTileIndex(this.PlayerCompanyID))) {
-                Logger.Info("Bank balance changed by idle balance amount " + balanceChange);
-                this.ShowIdleBalanceNews(balanceChange);
+    function ChangeBankBalance(intBalanceChange = 0) {
+        if (intBalanceChange != 0 && this.PlayerCompanyID != GSCompany.COMPANY_INVALID) {
+            if (GSCompany.ChangeBankBalance(this.PlayerCompanyID, intBalanceChange, GSCompany.EXPENSES_OTHER, IdleUtil.GetHQTileIndex(this.PlayerCompanyID))) {
+                Logger.Info("Bank balance changed by idle balance amount " + intBalanceChange);
+                this.ShowIdleBalanceNews(intBalanceChange);
                 return true;
             }
         }
@@ -694,20 +634,16 @@ class IdleStory {
         @brief Returns summary stats for all vehicles
         @details Iterates through all vehicle types and summarizes stats (count, balance, idleBalance) for them. Values are per in-game year
 
-        <!-- 
-            \pre_resolved_company_valid{this.PlayerCompanyID}
-        -->
-        
         \prebase
 
-        @param force Force refreshing cached stats
+        @param boolForce Force refreshing cached stats
 
 
         @returns SQTable Summary stats table
     */
-    function GetSummaryVehicleStats(force = false) {
+    function GetSummaryVehicleStats(boolForce = false) {
         if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID) {
-            if (force == true || this._CachedAllVehicleStats.len() == 0) {
+            if (boolForce == true || this._CachedAllVehicleStats.len() == 0) {
                 this.CacheVehicleStats(true);
             }
         }
@@ -721,13 +657,13 @@ class IdleStory {
 
         \prebase
 
-        @param force Force refreshing cached stats
+        @param boolForce Force refreshing cached stats
 
         @returns std::array<#VehicleTypeStatsItem, 4> An array of summary tables for all four vehicle types
     */
-    function GetAllVehicleTypeStats(force = false) {
+    function GetAllVehicleTypeStats(boolForce = false) {
         if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID) {
-            if (force == true || this._CachedAllVehicleStats.len() == 0) {
+            if (boolForce == true || this._CachedAllVehicleStats.len() == 0) {
                 this.CacheVehicleStats(true);
             }
         }
@@ -739,13 +675,13 @@ class IdleStory {
         @details Iterates through all vehicles of the same type and summarizes stats (count, balance, idleBalance) for them. Values are per in-game year
 
         @param vehicleType `GSVehicle::VehicleType` Vehicle type ID
-        @param force Force refreshing cached stats
+        @param boolForce Force refreshing cached stats
 
         @returns SQTable Summary stats table (or null)
     */
-    function GetVehicleTypeStats(vehicleType, force = false) {
+    function GetVehicleTypeStats(vehicleType, boolForce = false) {
         if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID) {
-            if (force == true || this._CachedAllVehicleStats.len() == 0) {
+            if (boolForce == true || this._CachedAllVehicleStats.len() == 0) {
                 this.CacheVehicleStats(true);
             }
             foreach (index, value in this._CachedAllVehicleStats) {
@@ -808,14 +744,14 @@ class IdleStory {
         @brief Refreshes vehicle stats cache
         @details Retrieves fresh values for all stats and updates cache.
 
-        @param force Force refreshing cached stats
+        @param boolForce Force refreshing cached stats
 
         @returns void
     */
-    function CacheVehicleStats(force = false) {
+    function CacheVehicleStats(boolForce = false) {
         if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID) {
             local typeCount = IdleUtil.AllVehicleTypes.len();
-            if (force == true || this._CachedAllVehicleStats.len() < typeCount) {
+            if (boolForce == true || this._CachedAllVehicleStats.len() < typeCount) {
                 this._CachedAllVehicleStats = IdleUtil.GetAllVehicleStatsData(this.PlayerCompanyID);
             }
         } else {
@@ -854,51 +790,6 @@ class IdleStory {
     }
 
     /**
-        @brief Check if save warning screen is visible
-        @details If save warning is rendered returns true, even if story book window is closed
-
-        @return bool
-        @retval true Save warning screen is rendered
-        @retval false Save warning screen is not rendered
-    */
-    function IsSaveWarningScreenVisible() {
-        if (this.IdlePagesInstance != null) {
-            return this.IdlePagesInstance.SaveWarningScreenVisible;
-        }
-        return false;
-    }
-
-    /**
-        @brief Check if save warning text is added to report
-        @details If save warning text is added to report screen (and report screen is rendered) returns true
-
-        @return bool
-        @retval true Warning text is added to report screen and report screen is rendered
-        @retval false Warning text is not added to report screen or report screen is not rendered
-    */
-    function IsSaveWarningTextDisplayed() {
-        if (this.IdlePagesInstance != null) {
-            return this.IdlePagesInstance.IdleReportVisible && this.IdlePagesInstance.SaveWarningDisplayed;
-        }
-        return false;
-    }
-
-    /**
-        @brief Check if game was saved with negative balance
-        @details This function determines if game was saved while having lost money in previous year. We need to inform the player if that's the case.
-
-        @return bool
-        @retval true Game was saved with negative balance and no warning was displayed
-        @retval false Game was saved with positive balance __or__ it was saved with positive balance but the warning was/is already displayed to players
-    */
-    function GameSavedWithNegativeBalance() {
-        if (this.IdlePagesInstance != null) {
-            return this.IdlePagesInstance.SavedWithNegativeBalance;
-        }
-        return false;
-    }
-
-    /**
         @brief          Check if anything is visible
         @details        Check if story book window is open and that any of the screens is rendered
 
@@ -914,8 +805,7 @@ class IdleStory {
                     || this.IdlePagesInstance.IntroVisible == true
                     || this.IdlePagesInstance.MissingHQScreenVisible == true
                     || this.IdlePagesInstance.StatsScreenVisible == true
-                    || this.IdlePagesInstance.HelpScreenVisible == true
-                    || this.IdlePagesInstance.SaveWarningScreenVisible == true;
+                    || this.IdlePagesInstance.HelpScreenVisible == true;
             }
         }
         return false;

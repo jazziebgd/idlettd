@@ -43,22 +43,6 @@ class IdlePages {
     IdleStoryPageID = GSStoryPage.STORY_PAGE_INVALID;
 
     /**
-	    @property SavedWithNegativeBalance
-	    @brief Flag indicating player saved the game with negative balance
-
-        @details Setting this to `true` will result in opening story book page with save warning screen
-	*/
-    SavedWithNegativeBalance = false;
-
-     /**
-	    @property SaveWarningDisplayed
-        @brief   Flag indicating presence of save warning text
-        @details If this is `true` then save warning element on report screen got populated with warning text. Used with #SaveWarningScreenVisible to determine if save warning is present in any form.
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-    */
-    SaveWarningDisplayed = false;
-
-    /**
     @}
     */
 
@@ -108,14 +92,6 @@ class IdlePages {
     HelpScreenVisible = false;
 
     /**
-	    @property SaveWarningScreenVisible
-        @brief   Save warning screen visibility flag
-        @details Set to true when save warning screen is rendered to idle story page
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-    */
-    SaveWarningScreenVisible = false;
-
-    /**
     @}
     */
 
@@ -128,13 +104,6 @@ class IdlePages {
     */
 
     /**
-	    @property  SaveWarningElementID
-	    @brief Id of save warning text element
-	    @details When game is saved with negative balance and idle report is open this element shows warning text to players
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-	*/
-    SaveWarningElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-    /**
 	    @property  PreviousDurationElementID
 	    @brief Id of button element that refreshes story book page stats
 	    @details Used internally to determine which button was pressed when handling clicks
@@ -146,13 +115,7 @@ class IdlePages {
 	    @details Used internally to determine which button was pressed when handling clicks
 	*/
     CloseReportWarningTextElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-    /**
-	    @property  CloseSaveWarningButtonID
-	    @brief Id of button element that closes save warning screen
-	    @details Used internally to determine which button was pressed when handling clicks
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-	*/
-    CloseSaveWarningButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
+    
     /**
 	    @property  RefreshButtonID
 	    @brief Id of button element that refreshes story book page stats
@@ -214,13 +177,7 @@ class IdlePages {
 	    @details Used for debugging / troubleshooting
 	*/
     _NavButtonShowHelpID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-    /**
-	    @property  _NavButtonSaveWarningID
-	    @brief Id of navigation button element for save warning screen
-	    @details Used for debugging / troubleshooting
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-	*/
-    _NavButtonSaveWarningID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
+    
     /**
         @}
     */
@@ -239,8 +196,6 @@ class IdlePages {
     constructor(companyID, storyPageID) {
         this.PlayerCompanyID = companyID;
         this.IdleStoryPageID = storyPageID;
-        this.SavedWithNegativeBalance = false;
-        this.SaveWarningDisplayed = false;
 
 
         this.IdleReportVisible = false;
@@ -248,14 +203,11 @@ class IdlePages {
         this.MissingHQScreenVisible = false;
         this.StatsScreenVisible = false;
         this.HelpScreenVisible = false;
-        this.SaveWarningScreenVisible = false;
 
 
-        this.SaveWarningElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.PreviousDurationElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.CloseReportWarningTextElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.RefreshButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-        this.CloseSaveWarningButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.CloseButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.IdleReportButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.IntroButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
@@ -266,7 +218,6 @@ class IdlePages {
         this._NavButtonStatsID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonIdleReportID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonShowHelpID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-        this._NavButtonSaveWarningID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
 
 
         this._ElementCount = 0;
@@ -351,10 +302,6 @@ class IdlePages {
         this.MissingHQScreenVisible = false;
         this.StatsScreenVisible = false;
         this.HelpScreenVisible = false;
-        this.SaveWarningScreenVisible = false;
-
-        // additional flags indicating particular element states
-        this.SaveWarningDisplayed = false;
     }
 
     /**
@@ -364,10 +311,8 @@ class IdlePages {
         @returns void
     */
     function ResetElementIDReferences() {
-        this.SaveWarningElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.PreviousDurationElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.CloseReportWarningTextElementID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-        this.CloseSaveWarningButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.RefreshButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.CloseButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this.IntroButtonID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
@@ -379,7 +324,6 @@ class IdlePages {
         this._NavButtonStatsID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonIdleReportID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
         this._NavButtonShowHelpID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
-        this._NavButtonSaveWarningID = GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
     }
     /**
         @}
@@ -501,24 +445,7 @@ class IdlePages {
         return IdleUtil.DisplayPage(this.IdleStoryPageID);
     }
 
-    /**
-        @brief Shows save warning screen
-        @details When player saves the game with negative balance show a warning notifying them of idle losses using elements via [this.RenderSaveWarningScreen()](#RenderSaveWarningScreen) is displayed.
-
-        @note This will set #SaveWarningScreenVisible flag to `true`, causing [MainClass.Start()](#MainClass.Start) `while` loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
-
-        @returns bool
-        @retval true    Story book page displayed successfully
-        @retval false   Failed displaying story book page
-
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-    */
-    function ShowSaveWarningScreen() {
-        this.ClearPage();
-        this.RenderSaveWarningScreen();
-        return IdleUtil.DisplayPage(this.IdleStoryPageID);
-    }
-
+    
     /**
         @brief Renders idle report screen
         @details Adds idle report elements to story book page without showing the page itself so that [this.ShowIdleReportScreen()](#ShowIdleReportScreen) can display it.
@@ -541,7 +468,6 @@ class IdlePages {
             welcomeText = GSText(GSText.STR_WELCOME_WOMAN);
         }
         this.AddPageTextElement(GSText(GSText.STR_REPORT_TITLE, welcomeText, this.PlayerCompanyID));
-        this.SaveWarningElementID = this.AddPageTextElement(GSText(GSText.STR_EMPTY));
         this.AddPageTextElement(GSText(GSText.STR_REPORT_ABSENCE, this.GetDurationText(inactiveSeconds)));
         this.AddPageTextElement(this.GetIdleReportTextElement(idleBalance, inactiveSeconds));
 
@@ -594,7 +520,6 @@ class IdlePages {
                 if (prognosedIdleBalance < 0) {
                     minusMessage = GSText(GSText.STR_STATS_MINUS_NOTE);
                 }
-                // this.AddPageTextElement(minusMessage);
 
                 this.AddPageTextElement(GSText(GSText.STR_STATS_GENERAL_INFO, GSText(GSText.STR_SCRIPT_NAME_GOLD), totalVehicles, idleMultiplierLabel, willEarn, amountInTime, minusMessage));
 
@@ -634,8 +559,6 @@ class IdlePages {
     function RenderIntroScreen() {
         GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_INTRO));
         this.AddPageTextElement(GSText(GSText.STR_INTRO_TEXT, GSText(GSText.STR_SCRIPT_NAME_GOLD), GSText(GSText.STR_SCRIPT_NAME_GOLD)));
-        // local ButtonReference = GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_ORANGE, GSStoryPage.SPBF_NONE);
-        // this.IntroButtonID = this.AddNavButton(GSText(GSText.STR_BUTTON_TEXT_START), ButtonReference);
         this.IntroButtonID = this.AddNavButton(GSText(GSText.STR_BUTTON_TEXT_START));
         this.RenderHelpButton();
 
@@ -687,24 +610,7 @@ class IdlePages {
         this.MissingHQScreenVisible = true;
     }
 
-     /**
-        @brief Adds save warning svreen elements to story page and updates the title
-        @details Adds save warning screen elements to story book page so that [this.ShowSaveWarningScreen()](#ShowSaveWarningScreen) has something to show.
-
-        @note This will set #SaveWarningScreenVisible flag to `true`, causing [MainClass.Start()](#MainClass.Start) `while` loop to run a lot more often than normal. It might slow the game down but ensures that script react promptly to clicks and other player actions.
-
-        @returns void
-
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-    */
-    function RenderSaveWarningScreen() {
-        GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_SAVE_WARNING));
-        this.AddPageTextElement(GSText(GSText.STR_SAVE_WARNING_TEXT));
-        this.CloseSaveWarningButtonID = this.AddNavButton(GSText(GSText.STR_BUTTON_TEXT_CLOSE));
-        this._RenderDebugNavButtons();
-        this.SaveWarningScreenVisible = true;
-        this.SaveWarningDisplayed = true;
-    }
+    
     /**
         @}
     */
@@ -822,7 +728,6 @@ class IdlePages {
         if (buttonReference == null) {
             buttonReference = GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_ORANGE, GSStoryPage.SPBF_NONE);
         }
-        // this.AddPageTextElement(GSText(GSText.STR_EMPTY));
         this.RefreshButtonID = this.AddNavButton(customText, buttonReference);
     }
 
@@ -889,7 +794,6 @@ class IdlePages {
                 local amountInTime = this.GetBalancePerTimeUnit(earned, secondsInGameYear, ::TimeUnits.TIME_UNIT_SECOND, 3);
                 vehicleStatsRow.AddParam(amountInTime);
             }
-            // return GSStoryPage.STORY_PAGE_ELEMENT_INVALID != this.AddPageTextElement(vehicleStatsRow);
             return this.AddPageTextElement(vehicleStatsRow);
         }
         return GSStoryPage.STORY_PAGE_ELEMENT_INVALID;
@@ -919,7 +823,7 @@ class IdlePages {
                     totalText = GSText(GSText.STR_TOTAL_NEGATIVE);
                 }
                 local amountInTime = this.GetBalancePerTimeUnit(totalAmount, totalSeconds, ::TimeUnits.TIME_UNIT_SECOND, 3);
-                idleSummaryText.AddParam(amountInTime); // string 1
+                idleSummaryText.AddParam(amountInTime);
                 idleSummaryText.AddParam(totalText);
                 idleSummaryText.AddParam(amountText);
                 this.AddPageTextElement(idleSummaryText);
@@ -941,7 +845,6 @@ class IdlePages {
             this._NavButtonNoHQID = this.AddNavButton(GSText(GSText.STR_NAV_BUTTON_NO_HQ), ButtonReference1);
             this._NavButtonIdleReportID = this.AddNavButton(GSText(GSText.STR_NAV_BUTTON_REPORT), ButtonReference1);
             this._NavButtonShowHelpID = this.AddNavButton(GSText(GSText.STR_NAV_BUTTON_HELP), ButtonReference1);
-            this._NavButtonSaveWarningID = this.AddNavButton(GSText(GSText.STR_NAV_BUTTON_SAVE_WARNING), ButtonReference1);
         }
     }
 
@@ -992,37 +895,6 @@ class IdlePages {
         return false;
     }
 
-
-    /**
-        @brief Updates save warning element for reports
-        @details Shows or hides text warning player about saving the game with negative balance
-
-        \prethisstorypagevalid
-        
-        @param boolShowWarning Controls whether to show the save warning or not
-
-        @return bool
-        @retval true    Save warning story page element updated
-        @retval false   Failed updating save warning story page element
-
-        @deprecated OpenTTD 14 changed its autosave mechanism. This function will be removed with the next script version.
-    */
-    function UpdateReportSaveWarning(boolShowWarning = true) {
-        if (GSStoryPage.IsValidStoryPage(this.IdleStoryPageID) && GSStoryPage.IsValidStoryPageElement(this.SaveWarningElementID)) {
-            local text = GSText(GSText.STR_EMPTY);
-            if (boolShowWarning) {
-                text = GSText(GSText.STR_REPORT_SAVE_WARNING);
-            }
-            if (GSStoryPage.UpdateElement(this.SaveWarningElementID, -1, text)){
-                this.SaveWarningDisplayed = boolShowWarning;
-                return true;
-            }
-        }
-        return false
-    }
-
-
-
     /**
         @brief Returns average per vehicle text
         @details Returns text with average balance per one vehicle in last eyear
@@ -1039,13 +911,8 @@ class IdlePages {
         if (vehicleSummary != null){
             totalVehicles = vehicleSummary.count;
         }
-        // local averageText = GSText(GSText.STR_EMPTY, 0, "", "", 0, "");
         local averageText = null;
         if (totalVehicles > 1) { // more than one because average
-            // local vehicleCashPerSecond = (this.CashInPeriod(totalAmount, totalSeconds, ::SecondsInPeriod.DAY) / totalVehicles).tointeger();
-            // if (vehicleCashPerSecond == 0) {
-            //     return null;
-            // }
             
 
 

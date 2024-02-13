@@ -26,7 +26,6 @@ var NAVTREE =
 [
   [ "IdleTTD", "index.html", [
     [ "IdleTTD game script", "index.html", "index" ],
-    [ "Deprecated List", "da/d58/deprecated.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],

@@ -5,8 +5,8 @@ var searchData=
   ['i_20loaded_20a_20game_20and_20nothing_20happened_2',['I loaded a game and nothing happened!',['../index.html#faq_2',1,'']]],
   ['i_20started_20a_20game_20and_20nothing_20happened_3',['I started a game and nothing happened!',['../index.html#faq_1',1,'']]],
   ['idle_20report_20window_4',['I can&apos;t close idle report window!',['../index.html#faq_3',1,'']]],
-  ['idlebalance_5',['IdleBalance',['../d7/d13/class_idle_story.html#a343f1d94ad57bc0e6f00d9a34e6f3246',1,'IdleStory']]],
-  ['idlebalance_6',['idleBalance',['../d4/d7e/struct_vehicle_type_stats_item.html#aa3a124b199a181400e8e4bfbac38206d',1,'VehicleTypeStatsItem::idleBalance'],['../d1/df9/struct_summary_vehicle_stats.html#a6f8c44416ec420667fdbd0f31446d8d7',1,'SummaryVehicleStats::idleBalance']]],
+  ['idlebalance_5',['idleBalance',['../d4/d7e/struct_vehicle_type_stats_item.html#aa3a124b199a181400e8e4bfbac38206d',1,'VehicleTypeStatsItem::idleBalance'],['../d1/df9/struct_summary_vehicle_stats.html#a6f8c44416ec420667fdbd0f31446d8d7',1,'SummaryVehicleStats::idleBalance']]],
+  ['idlebalance_6',['IdleBalance',['../d7/d13/class_idle_story.html#a343f1d94ad57bc0e6f00d9a34e6f3246',1,'IdleStory']]],
   ['idlepages_7',['IdlePages',['../da/db4/class_idle_pages.html',1,'IdlePages'],['../da/db4/class_idle_pages.html#ae4b64a780762db0fd943be65a31e3585',1,'IdlePages::IdlePages()'],['../index.html#doc_pages',1,'IdlePages']]],
   ['idlepages_2enut_8',['IdlePages.nut',['../d8/d58/_idle_pages_8nut.html',1,'']]],
   ['idlepagesinstance_9',['IdlePagesInstance',['../d7/d13/class_idle_story.html#adb1c9b398e50477034f7b5e4c89a5589',1,'IdleStory']]],
@@ -29,9 +29,6 @@ var searchData=
   ['introduction_26',['Introduction',['../index.html#intro_sec',1,'']]],
   ['introvisible_27',['IntroVisible',['../da/db4/class_idle_pages.html#a88ccabdb20dfc0231681da58ebcf3f85',1,'IdlePages']]],
   ['isanyscreenopen_28',['IsAnyScreenOpen',['../d7/d13/class_idle_story.html#a4a84dc1198fd1131a1c193a52c30ced2',1,'IdleStory']]],
-  ['isautosavedate_29',['IsAutosaveDate',['../d2/de2/class_idle_util.html#a3b8c37a9fa296d4d7873388b03ecfdce',1,'IdleUtil']]],
-  ['isdeveloperonly_30',['IsDeveloperOnly',['../d9/df7/class_f_main_class.html#a256c4c02769b76d9abd6a6553e4a6442',1,'FMainClass']]],
-  ['isidlereportvisible_31',['IsIdleReportVisible',['../d7/d13/class_idle_story.html#aeb29563c3ce66f4f2ed0d73aea35404a',1,'IdleStory']]],
-  ['issavewarningscreenvisible_32',['IsSaveWarningScreenVisible',['../d7/d13/class_idle_story.html#ad9f8742608871086c9bbeb6a1bbb525d',1,'IdleStory']]],
-  ['issavewarningtextdisplayed_33',['IsSaveWarningTextDisplayed',['../d7/d13/class_idle_story.html#a624cde95da757d9c703c6b2e3755cbcb',1,'IdleStory']]]
+  ['isdeveloperonly_29',['IsDeveloperOnly',['../d9/df7/class_f_main_class.html#a256c4c02769b76d9abd6a6553e4a6442',1,'FMainClass']]],
+  ['isidlereportvisible_30',['IsIdleReportVisible',['../d7/d13/class_idle_story.html#aeb29563c3ce66f4f2ed0d73aea35404a',1,'IdleStory']]]
 ];
