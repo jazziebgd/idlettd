@@ -112,13 +112,22 @@ enum TimeUnits {
 */
 SecondsPerGameDay <- 2.22;
 
+
+/**
+    @var TicksPerGameDay
+    @hideinitializer
+    @brief Number (integer) of ticks per one game day
+    @details Predefined value (74) that represents a ratio between game ticks and one game day.
+*/
+TicksPerGameDay <- 74;
+
 /**
     @var ScriptMinVersionToLoad
     @hideinitializer
     @brief      Minimum script version to load
     @details    Script versions get stored in save games and upon loading the game, stored value is checked against this value.
 
-    This value is returned from <a href="https://docs.openttd.org/gs-api/classGSInfo#a44f99f7837e3fcbb863faebef07589b6" target="_blank">GSInfo::MinVersionToLoad</a> in IdleTTD game script info file.
+    This value is returned from FMainClass.MinVersionToLoad() in IdleTTD game script info.nut file.
 */
 ScriptMinVersionToLoad <- 1;
 
@@ -130,4 +139,4 @@ ScriptMinVersionToLoad <- 1;
 
     This value is used by and returned from (FMainClass.GetDate())[#FMainClass.GetDate] function.
 */
-ScriptLastUpdateDate <- "2024-02-13";
+ScriptLastUpdateDate <- "2024-02-15";

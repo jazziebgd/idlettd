@@ -428,7 +428,7 @@ this.PlayerCompanyID != GSCompany.COMPANY_INVALID</dd></dl>
 
 <p>Shows idle report screen for given idle balance value. </p>
 <dl class="section attention"><dt>Attention</dt><dd>Idle report page is <em>quasi-persistent</em>. If player closes story book without clicking the button within, script will open idle report story book page again and scroll main viewport so that Company HQ is in the center. Script will keep doing it again and again, until player clicks the button on the page.</dd></dl>
-<p>Calls <a class="el" href="../../da/db4/class_idle_pages.html#aca95f834bbd2d3997c2b14c43c11715f">ShowIdleReportScreen()</a> on <a class="el" href="#adb1c9b398e50477034f7b5e4c89a5589">this.IdlePagesInstance</a> to show idle report screen on idle story book page.</p>
+<p>Calls <a class="el" href="../../da/db4/class_idle_pages.html#a4435288e196cecf3d85b0f6725bb2ba1">ShowIdleReportScreen()</a> on <a class="el" href="#adb1c9b398e50477034f7b5e4c89a5589">this.IdlePagesInstance</a> to show idle report screen on idle story book page.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">intNewIdleBalance</td><td>New idle balance</td></tr>
@@ -462,7 +462,7 @@ this.PlayerCompanyID != GSCompany.COMPANY_INVALID</dd></dl>
 </div><div class="memdoc">
 
 <p>Shows stats screen. </p>
-<p>Prepares required data and calls <a class="el" href="../../da/db4/class_idle_pages.html#a66edd812b84cbee00328ace1e0d4710a">ShowStatsScreen()</a> on <a class="el" href="#adb1c9b398e50477034f7b5e4c89a5589">this.IdlePagesInstance</a> to show stats screen.</p>
+<p>Prepares required data and calls <a class="el" href="../../da/db4/class_idle_pages.html#af01f81672dc35dd0edd1e871f1e6dd3c">ShowStatsScreen()</a> on <a class="el" href="#adb1c9b398e50477034f7b5e4c89a5589">this.IdlePagesInstance</a> to show stats screen.</p>
 <dl class="section return"><dt>Returns</dt><dd>bool </dd></dl>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
@@ -490,7 +490,7 @@ this.PlayerCompanyID != GSCompany.COMPANY_INVALID</dd></dl>
 </div><div class="memdoc">
 
 <p>Renders stats screen. </p>
-<p>Prepares required data and calls <a class="el" href="../../da/db4/class_idle_pages.html#afa85e0f25cb6e326429ec88fa6cb7aaf">RenderStatsScreen()</a> on <a class="el" href="#adb1c9b398e50477034f7b5e4c89a5589">this.IdlePagesInstance</a> to render stats screen without opening story book page.</p>
+<p>Prepares required data and calls <a class="el" href="../../da/db4/class_idle_pages.html#a937fbee811665036c9d2536c8954a372">RenderStatsScreen()</a> on <a class="el" href="#adb1c9b398e50477034f7b5e4c89a5589">this.IdlePagesInstance</a> to render stats screen without opening story book page.</p>
 <dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
@@ -816,7 +816,7 @@ GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID</dd></d
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::array&lt;<a class="el" href="../../d4/d7e/struct_vehicle_type_stats_item.html" title="[STRUCT] Vehicle type stats">VehicleTypeStatsItem</a>, 4&gt; An array of summary tables for all four vehicle types </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>array&lt; StructVehicleTypeStatsItem, 4 &gt; An array of summary tables for all four vehicle types </dd></dl>
 
 </div>
 </div>

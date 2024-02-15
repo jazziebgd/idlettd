@@ -274,15 +274,16 @@ class IdlePages {
         @returns void
     */
     function ClearPage(updateDate = true) {
-        if (GSStoryPage.IsValidStoryPage(this.IdleStoryPageID)) {
-            local elements = GSStoryPageElementList(this.IdleStoryPageID);
-            for (local el = elements.Begin(); !elements.IsEnd(); el = elements.Next()) {
-                GSStoryPage.RemoveElement(el);
-            }
-            if (updateDate) {
-                IdleUtil.SetPageDate(this.IdleStoryPageID);
-            }
-        }
+        IdleUtil.ClearPage(this.IdleStoryPageID, updateDate);
+        // if (GSStoryPage.IsValidStoryPage(this.IdleStoryPageID)) {
+        //     local elements = GSStoryPageElementList(this.IdleStoryPageID);
+        //     for (local el = elements.Begin(); !elements.IsEnd(); el = elements.Next()) {
+        //         GSStoryPage.RemoveElement(el);
+        //     }
+        //     if (updateDate) {
+        //         IdleUtil.SetPageDate(this.IdleStoryPageID);
+        //     }
+        // }
         this.ResetScreenVisibleFlags();
         this.ResetElementIDReferences();
 
@@ -522,13 +523,14 @@ class IdlePages {
                 }
 
                 this.AddPageTextElement(GSText(GSText.STR_STATS_GENERAL_INFO, GSText(GSText.STR_SCRIPT_NAME_GOLD), totalVehicles, idleMultiplierLabel, willEarn, amountInTime, minusMessage));
-
                 if (allVehicleStats != null) {
                     this.AddPageTextElement(GSText(GSText.STR_SECTION_TITLE_VEHICLE_STATS));
                     foreach (typeIndex, typeStats in allVehicleStats) {
                         this.RenderVehicleTypeStats(typeStats);
                     }
                 }
+
+                this.RenderRefreshButton();
                 this.RenderCloseStoryBookButton();
 
                 if (totalSeconds > 0 && totalAmount != 0) {
@@ -537,10 +539,11 @@ class IdlePages {
                 this.RenderLastIdleSummaryElements(totalAmount, totalSeconds);
             } else {
                 this.AddPageTextElement(GSText(GSText.STR_STATS_GENERAL_INFO_NO_VEHICLES, idleMultiplierLabel));
+                this.RenderRefreshButton();
                 this.RenderCloseStoryBookButton();
             }
             this.RenderHelpButton();
-            this.RenderRefreshButton();
+
 
             this._RenderDebugNavButtons();
             this.StatsScreenVisible = true;
@@ -577,14 +580,20 @@ class IdlePages {
         @returns void
     */
     function RenderHelpScreen() {
+        local hasHQ = IdleUtil.HasHQ(this.PlayerCompanyID);
         GSStoryPage.SetTitle(this.IdleStoryPageID, GSText(GSText.STR_PAGE_TITLE_HELP));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_INTRO, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
-        this.RenderRefreshButton(GSText(GSText.STR_BUTTON_TEXT_STATS), GSStoryPage.MakePushButtonReference(GSStoryPage.SPBC_YELLOW, GSStoryPage.SPBF_NONE));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_TEXT, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
+        if (hasHQ) {
+            this.RenderRefreshButton(GSText(GSText.STR_BUTTON_TEXT_STATS));
+        } else {
+            this.RenderCloseStoryBookButton();
+        }
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_NOTES, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
         this.AddPageTextElement(GSText(GSText.STR_HELP_PAGE_SETTINGS, GSText(GSText.STR_SCRIPT_NAME_GOLD)));
-
-        this.RenderCloseStoryBookButton();
+        if (hasHQ) {
+            this.RenderCloseStoryBookButton();
+        }
         this._RenderDebugNavButtons();
 
         this.HelpScreenVisible = true

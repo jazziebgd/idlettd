@@ -10,6 +10,7 @@ require("Logger.nut");
 
 /**
     @class MainClass
+    @hideinheritancegraph
     @brief IdleTTD GSController instance
     @details IdleTTD game script controller class that runs script main loop. Waits for valid company id first to set up an instance of #IdleStory 
 */ 
@@ -17,7 +18,7 @@ class MainClass extends GSController {
     
     /** 
         @name Persistent members
-        These members are used to store #ScriptSavedData with game save and are restored on load. They remain persistent through game sessopms.
+        These members are used to store #StructScriptSavedData with game save and are restored on load. They remain persistent through game sessopms.
         @{
     */
 
@@ -71,9 +72,9 @@ class MainClass extends GSController {
     /**
     @}
     */
-     /// \privatesection
+
     /** 
-        @name Internal referencess
+        @name Internal references
         Properties that are used internally to store and retrieve current script context/state
         @{
     */
@@ -93,21 +94,40 @@ class MainClass extends GSController {
     StartedIdle = false;
 
     /**
+        @property CloseAttempts
+        @brief Number of times report got reopened
+        @details Number of times user tried to close report without accepting idle balance, prompting it to reopen.
+        @see ScriptConfig.WarnAfterCloseAttempts
+    */
+    CloseAttempts = 0;
+
+
+    /**
+    @}
+    */
+       
+
+    /** 
+        @name References to class instances
+        Properties that store references to instances of the other classes.
+        @{
+    */
+
+
+    /**
         @property IdleStoryInstance
         @brief IdleStory instance reference
         @details Instance of current session IdleStory class (might be `null` in first few ticks)
     */
     IdleStoryInstance = null;
 
+
     /**
-        @property _CloseAttempts
-        @brief Number of times report got reopened
-        @details Number of times user tried to close report without accepting idle balance, prompting it to reopen
+    @}
     */
-    _CloseAttempts = 0;
 
-    /// @}
 
+    /// \privatesection
 
     /**
         @brief Constructor
@@ -217,19 +237,23 @@ class MainClass extends GSController {
         @returns void
     */
     function Start() {
+        GSController.Sleep(::ScriptConfig.ShortestSleepTime);
         if (this.SavedScriptVersion != 0 && this.SavedScriptVersion < SELF_VERSION) {
             this.UpgradeScriptVersion(this.SavedScriptVersion, SELF_VERSION);
         }
         if (GSGame.IsMultiplayer()) {
             Logger.Warning("IdleTTD game script is disabled because it does not support multiplayer.");
             this.Enabled = false;
+            while (true) {
+                GSController.Sleep(::ScriptConfig.MedSleepTime * 10);
+                Logger.Verbose("Skipping IdleTTD game script loop in multiplayer game.");
+            }
         } else {
-            GSController.Sleep(5);
             while (true) {
                 local loop_start_tick = GSController.GetTick();
                 local idleEnabled = GetSetting("idle_enabled");
                 local sleep_ticks = ::ScriptConfig.MinSleepTime;
-                local dayInterval = (74 * GetSetting("day_interval"));
+                local dayInterval = (::TicksPerGameDay * GetSetting("day_interval"));
                 local process = this.HandleEvents();
                 local companyExists = (this.PlayerCompanyID >= 0 && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID);
                 if (this.Enabled && idleEnabled) {
@@ -261,8 +285,8 @@ class MainClass extends GSController {
                                     sleep_ticks = ::ScriptConfig.ShortestSleepTime;
                                 } else {
                                     if (hasReport) {
-                                        this._CloseAttempts = this._CloseAttempts + 1;
-                                        if (this._CloseAttempts == ::ScriptConfig.WarnAfterCloseAttempts) {
+                                        this.CloseAttempts = this.CloseAttempts + 1;
+                                        if (this.CloseAttempts == ::ScriptConfig.WarnAfterCloseAttempts) {
                                             this.IdleStoryInstance.UpdateReportCloseWarning(true);
                                         }
                                         Logger.Debug("Reopening idle report story book page window.");
@@ -299,7 +323,7 @@ class MainClass extends GSController {
         @brief Stores script data with saves game
         @details Prepares data desribing current game script state and returns it for storing in saves games.
 
-        Returned data is a table in the format defined by #ScriptSavedData.
+        Returned data is a table in the format defined by #StructScriptSavedData.
 
         - `PlayerCompanyID` 				Id of current company
         - `IdleStoryPageID` 				Id of current idle story page
@@ -309,7 +333,7 @@ class MainClass extends GSController {
         - `PrevCurrentCash` 		        Amount of money company had at the beginning of current year
         - `SavedScriptVersion` 				IdleTTD version that game is being saved with
 
-        @returns ScriptSavedData Script state data for saving
+        @returns StructScriptSavedData Script state data for saving
     */
     function Save() {
         local lastActiveTime = GSDate.GetSystemTime();
@@ -352,8 +376,8 @@ class MainClass extends GSController {
         @details Called just before #Start, used to restore saved IdleTTD data.
         @note Values for `PlayerCompanyID` and `IdleStoryPageId` are always present, other two can be uninitialized if game has been saved within first couple of years after start.
 
-        @param version 	integer 		    Script version
-        @param tbl 		ScriptSavedData 	Stored data
+        @param version 	integer 		        Script version
+        @param tbl 		StructScriptSavedData 	Stored data
 
         @returns void
     */
@@ -402,7 +426,7 @@ class MainClass extends GSController {
     function UpgradeScriptVersion(fromVersion, toVersion) {
         local result = false;
         if (fromVersion < toVersion && fromVersion != 0 && toVersion != 0) {
-            Logger.Warning("IdleTTD version upgrade from " + fromVersion + " to " + toVersion);
+            Logger.Info("IdleTTD version upgrade from " + fromVersion + " to " + toVersion);
             result = true;
         }
         return result;

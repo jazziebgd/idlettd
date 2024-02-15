@@ -45,25 +45,25 @@ STR_DURATION_TEXT_YEARS                                :{ORANGE}{NUM}{SILVER} go
 
 
 # labels for intro page
-STR_PAGE_TITLE_INTRO            :IdleTTD | Osnovne informacije
-STR_PAGE_TITLE_REPORT           :IdleTTD | Izveštaj o pasivnoj zaradi
-STR_PAGE_TITLE_NOHQ             :IdleTTD | Nemate upravnu zgradu
-STR_PAGE_TITLE_HELP             :IdleTTD | Pomoć
-STR_PAGE_TITLE_STATS            :IdleTTD | Statistika
+STR_PAGE_TITLE_INTRO            :IdleTTD  |  Dobrodošli
+STR_PAGE_TITLE_REPORT           :IdleTTD  |  Izveštaj o pasivnoj zaradi
+STR_PAGE_TITLE_NOHQ             :IdleTTD  |  Nemate upravnu zgradu
+STR_PAGE_TITLE_HELP             :IdleTTD  |  Pomoć
+STR_PAGE_TITLE_STATS            :IdleTTD  |  Status
 
 
 
 
 
 STR_BUTTON_TEXT_REFRESH         :{BLACK}{MONO_FONT}OSVEŽI{NORMAL_FONT}
-STR_BUTTON_TEXT_FIND_HQ         :{BLACK}{MONO_FONT}NAĐI UPRAVNU ZGRADU{NORMAL_FONT}
-STR_BUTTON_TEXT_START           :{BLACK}{MONO_FONT}U REDU{NORMAL_FONT}
-STR_BUTTON_TEXT_CLOSE           :{BLACK}{MONO_FONT}ZATVORI{NORMAL_FONT}
+STR_BUTTON_TEXT_FIND_HQ         :{BLACK}{MONO_FONT}IMAM UPRAVNU ZGRADU{NORMAL_FONT}
+STR_BUTTON_TEXT_START           :{BLACK}{MONO_FONT}START{NORMAL_FONT}
+STR_BUTTON_TEXT_CLOSE           :{BLACK}{MONO_FONT}IZLAZ{NORMAL_FONT}
 STR_BUTTON_TEXT_HELP            :{BLACK}{MONO_FONT}POMOĆ{NORMAL_FONT}
-STR_BUTTON_TEXT_STATS           :{BLACK}{MONO_FONT}STATISTIKA{NORMAL_FONT}
+STR_BUTTON_TEXT_STATS           :{BLACK}{MONO_FONT}STATUS{NORMAL_FONT}
 
 STR_BUTTON_APPLY_IDLE_BALANCE   :{WHITE}{MONO_FONT}{STRING} {CURRENCY_LONG}{NORMAL_FONT}
-STR_BUTTON_TEXT_RECEIVE         :PRIMI
+STR_BUTTON_TEXT_RECEIVE         :ZARADI
 STR_BUTTON_TEXT_PAY             :PLATI
 
 
@@ -72,7 +72,7 @@ STR_BUTTON_TEXT_PAY             :PLATI
 
 
 STR_INTRO_TEXT      :{SILVER}Vaša kompanija može i bez vašeg nadzora da radi i zarađuje uz pomoć {STRING} skripte.{}{}Iznos pasivne zarade (ili gubitaka) zavisi od bilansa vaše kompanije u protekloj godini, vremena koje je proteklo od snimanja kao i od toga kako ste podesili {STRING} skriptu pre nego što ste započeli igranje.{}{}Kao preduslov je {WHITE}neophodno da izgradite upravnu zgradu{SILVER} pre nego što snimite poziciju. Po učitavanju snimljene igre dobićete izveštaj o pasivnim prihodima i rashodima koje je kompanija napravila u vašem odsustvu.{}
-STR_INTRO_NOTE      :{SILVER}{TINY_FONT}Možete isključiti pojavljivanje ovog prozora kroz {YELLOW}podešavanja skripte{SILVER}.{NORMAL_FONT}
+STR_INTRO_NOTE      :{}{SILVER}{TINY_FONT}Možete isključiti pojavljivanje ovog prozora kroz {YELLOW}podešavanja skripte{SILVER}.{NORMAL_FONT}
 
 
 
@@ -124,7 +124,7 @@ STR_NEWS_COMPLETE: {STRING} {STRING}
 
 # labels for missing hq screen
 
-STR_MISSING_HQ :{BIG_FONT}{RED}Nemate pasivnu zaradu{SILVER}{NORMAL_FONT}{}{}Ne zaboravite da je neophodno da imate {GOLD}upravnu zgradu{SILVER} da aktivirate {STRING}.{}{}Ukoliko ste je sagradili u međuvremenu kliknite dugme ispod da osvežite stranu.
+STR_MISSING_HQ :{SILVER}Ne zaboravite da je neophodno da imate {WHITE}upravnu zgradu{SILVER} da aktivirate {STRING}.{}{}Ukoliko ste je sagradili u međuvremenu kliknite dugme ispod da osvežite stranu.
 
 
 
@@ -148,15 +148,15 @@ STR_HELP_PAGE_SETTINGS :{WHITE}Podešavanja{}{STRING} može da se prilagodi potr
 
 
 
-STR_STATS_GENERAL_INFO                                 :{YELLOW}Aktivna sesija{SILVER}{TINY_FONT}{NBSP}{NBSP}{NBSP}*{NBSP}{NBSP}Prikazane vrednosti su približne.{NORMAL_FONT}{}{}Ako biste sada snimili poziciju, {STRING} i zaposleni u {WHITE}upravnoj zgradi{SILVER} vaše kompanije bi se pobrinuli da vaš{P 1 e a ih} {GOLD}{NUM} vozil{P o a a}{SILVER} nastav{P i e e} rad sa {GOLD}{STRING}{SILVER} kapaciteta {STRING} {STRING}.{}{STRING}
+STR_STATS_GENERAL_INFO                                 :{YELLOW}Aktivna sesija{SILVER}{TINY_FONT}{NBSP}{NBSP}{NBSP}*{NBSP}{NBSP}Prikazane vrednosti su približne.{NORMAL_FONT}{}{}Ako biste sada snimili poziciju, {STRING} i zaposleni u {WHITE}upravnoj zgradi{SILVER} vaše kompanije bi se pobrinuli da vaš{P 1 e a ih} {GOLD}{NUM} vozil{P o a a}{SILVER} nastav{P i e e} rad sa {GOLD}{STRING}{SILVER} kapaciteta {STRING} {STRING}.{STRING}
 STR_STATS_GENERAL_INFO_WILL_BE_EARNING :uz zaradu od oko
 STR_STATS_GENERAL_INFO_WILL_BE_LOSING :uz gubitak od oko
-STR_STATS_GENERAL_INFO_NO_VEHICLES               :{SILVER}Zaposleni u vašoj {WHITE}upravnoj zgradi{SILVER} bi radili sa {GOLD}{STRING}{SILVER} kapaciteta ali ni jedno vaše vozilo trenutno ne saobraća.
+STR_STATS_GENERAL_INFO_NO_VEHICLES               :{SILVER}Zaposleni u vašoj {WHITE}upravnoj zgradi{SILVER} bi radili sa {GOLD}{STRING}{SILVER} kapaciteta ali ni jedno vaše vozilo trenutno ne radi.
 
-STR_STATS_MINUS_NOTE    :{WHITE}Nije poželjno snimati poziciju dok ne izađete iz minusa.
+STR_STATS_MINUS_NOTE    :{}{}{YELLOW}PAŽNJA{}{WHITE}Nije poželjno snimati poziciju dok ne izađete iz minusa.
 
 STR_STATS_LAST_IDLE_SESSION_SUMMARY                           :{SILVER}Vaša kompanija je {STRING} {STRING} {STRING} {STRING}.
-STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Prethodna sesija{}{SILVER}Nije vas bilo {STRING}.
+STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Prethodna sesija{}{}{SILVER}Nije vas bilo {STRING}.
 
 STR_TOTAL_POSITIVE :i ukupno zaradila
 STR_TOTAL_NEGATIVE :i ukupno izgubila

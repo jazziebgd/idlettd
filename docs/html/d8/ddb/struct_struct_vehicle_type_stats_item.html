@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IdleTTD: SummaryVehicleStats Struct Reference</title>
+<title>IdleTTD: StructVehicleTypeStatsItem Struct Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">var page_layout=1;</script>
 <script type="text/javascript" src="../../jquery.js"></script>
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "../../search/",'.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('d1/df9/struct_summary_vehicle_stats.html','../../'); initResizable(); });
+$(function(){initNavTree('d8/ddb/struct_struct_vehicle_type_stats_item.html','../../'); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -101,79 +101,99 @@ $(function(){initNavTree('d1/df9/struct_summary_vehicle_stats.html','../../'); i
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="../../d3/d8a/struct_summary_vehicle_stats-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">SummaryVehicleStats Struct Reference</div></div>
+<a href="../../d6/d3f/struct_struct_vehicle_type_stats_item-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">StructVehicleTypeStatsItem Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>[STRUCT] Summary vehicle stats object  
+<p>[STRUCT] Vehicle type stats  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a5693a02e01631adcafbff436320d1fd3" id="r_a5693a02e01631adcafbff436320d1fd3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5693a02e01631adcafbff436320d1fd3">count</a></td></tr>
-<tr class="memdesc:a5693a02e01631adcafbff436320d1fd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of vehicles.  <br /></td></tr>
-<tr class="separator:a5693a02e01631adcafbff436320d1fd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f8c44416ec420667fdbd0f31446d8d7" id="r_a6f8c44416ec420667fdbd0f31446d8d7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f8c44416ec420667fdbd0f31446d8d7">idleBalance</a></td></tr>
-<tr class="memdesc:a6f8c44416ec420667fdbd0f31446d8d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total idle balance.  <br /></td></tr>
-<tr class="separator:a6f8c44416ec420667fdbd0f31446d8d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23deadabcec63969b57ea0ac29173dd6" id="r_a23deadabcec63969b57ea0ac29173dd6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23deadabcec63969b57ea0ac29173dd6">balance</a></td></tr>
-<tr class="memdesc:a23deadabcec63969b57ea0ac29173dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total vehicle balance.  <br /></td></tr>
-<tr class="separator:a23deadabcec63969b57ea0ac29173dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41700d23e58c8bf3777e04d2ffa17385" id="r_a41700d23e58c8bf3777e04d2ffa17385"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41700d23e58c8bf3777e04d2ffa17385">count</a></td></tr>
+<tr class="memdesc:a41700d23e58c8bf3777e04d2ffa17385"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of vehicles of given type.  <br /></td></tr>
+<tr class="separator:a41700d23e58c8bf3777e04d2ffa17385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9ffb3e961a3a865e82e66e55c3ac156" id="r_ac9ffb3e961a3a865e82e66e55c3ac156"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9ffb3e961a3a865e82e66e55c3ac156">idleBalance</a></td></tr>
+<tr class="memdesc:ac9ffb3e961a3a865e82e66e55c3ac156"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total idle balance of all vehicles of given type in last year.  <br /></td></tr>
+<tr class="separator:ac9ffb3e961a3a865e82e66e55c3ac156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8fb69ecae07e4b21f3179aaee7acf5c" id="r_ab8fb69ecae07e4b21f3179aaee7acf5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8fb69ecae07e4b21f3179aaee7acf5c">balance</a></td></tr>
+<tr class="memdesc:ab8fb69ecae07e4b21f3179aaee7acf5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total balance of all vehicles of given type in last year.  <br /></td></tr>
+<tr class="separator:ab8fb69ecae07e4b21f3179aaee7acf5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a575a1b8d45aa5651a928ce4cbf5effca" id="r_a575a1b8d45aa5651a928ce4cbf5effca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a575a1b8d45aa5651a928ce4cbf5effca">type</a></td></tr>
+<tr class="memdesc:a575a1b8d45aa5651a928ce4cbf5effca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vehicle type ID.  <br /></td></tr>
+<tr class="separator:a575a1b8d45aa5651a928ce4cbf5effca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>[STRUCT] Summary vehicle stats object </p>
-<p>Summary stats for all vehicles of all types for last year</p>
+<div class="textblock"><p>[STRUCT] Vehicle type stats </p>
+<p>Data structure used for vehicle stats of a particular vehicle type</p>
 <dl class="section attention"><dt>Attention</dt><dd>This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes. </dd></dl>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a5693a02e01631adcafbff436320d1fd3" name="a5693a02e01631adcafbff436320d1fd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5693a02e01631adcafbff436320d1fd3">&#9670;&#160;</a></span>count</h2>
+<a id="a41700d23e58c8bf3777e04d2ffa17385" name="a41700d23e58c8bf3777e04d2ffa17385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41700d23e58c8bf3777e04d2ffa17385">&#9670;&#160;</a></span>count</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SummaryVehicleStats::count</td>
+          <td class="memname">StructVehicleTypeStatsItem::count</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Total number of vehicles. </p>
-<p>Total number of (running) vehicles that the company has </p>
+<p>Total number of vehicles of given type. </p>
+<p>Value is for a particular vehicle type only, defined in <a class="el" href="#a575a1b8d45aa5651a928ce4cbf5effca">StructVehicleTypeStatsItem::type</a> </p>
 
 </div>
 </div>
-<a id="a6f8c44416ec420667fdbd0f31446d8d7" name="a6f8c44416ec420667fdbd0f31446d8d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f8c44416ec420667fdbd0f31446d8d7">&#9670;&#160;</a></span>idleBalance</h2>
+<a id="ac9ffb3e961a3a865e82e66e55c3ac156" name="ac9ffb3e961a3a865e82e66e55c3ac156"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9ffb3e961a3a865e82e66e55c3ac156">&#9670;&#160;</a></span>idleBalance</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SummaryVehicleStats::idleBalance</td>
+          <td class="memname">StructVehicleTypeStatsItem::idleBalance</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Total idle balance. </p>
-<p>Sum amount of money (profit - cost) that all running vehicles the company has would bring if they went idle for a year. In practice it is just the <a class="el" href="#a23deadabcec63969b57ea0ac29173dd6">SummaryVehicleStats::balance</a> multiplied by idle multiplier setting. </p>
+<p>Total idle balance of all vehicles of given type in last year. </p>
+<p>Value is for a particular vehicle type only, defined in <a class="el" href="#a575a1b8d45aa5651a928ce4cbf5effca">StructVehicleTypeStatsItem::type</a>. In practice it is just the <a class="el" href="#ab8fb69ecae07e4b21f3179aaee7acf5c">StructVehicleTypeStatsItem::balance</a> multiplied by idle multiplier setting. </p>
 
 </div>
 </div>
-<a id="a23deadabcec63969b57ea0ac29173dd6" name="a23deadabcec63969b57ea0ac29173dd6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23deadabcec63969b57ea0ac29173dd6">&#9670;&#160;</a></span>balance</h2>
+<a id="ab8fb69ecae07e4b21f3179aaee7acf5c" name="ab8fb69ecae07e4b21f3179aaee7acf5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8fb69ecae07e4b21f3179aaee7acf5c">&#9670;&#160;</a></span>balance</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SummaryVehicleStats::balance</td>
+          <td class="memname">StructVehicleTypeStatsItem::balance</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Total vehicle balance. </p>
-<p>Sum amount of money (profit - cost) that all running vehicles the company has have earned last year. </p>
+<p>Total balance of all vehicles of given type in last year. </p>
+<p>Value (<em>vehicles profit - vehicles cost</em>) stored here is for a particular vehicle type only, defined in <a class="el" href="#a575a1b8d45aa5651a928ce4cbf5effca">StructVehicleTypeStatsItem::type</a>. Used to recalculate <a class="el" href="#ac9ffb3e961a3a865e82e66e55c3ac156">StructVehicleTypeStatsItem::idleBalance</a> if needed. </p>
+
+</div>
+</div>
+<a id="a575a1b8d45aa5651a928ce4cbf5effca" name="a575a1b8d45aa5651a928ce4cbf5effca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a575a1b8d45aa5651a928ce4cbf5effca">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">StructVehicleTypeStatsItem::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vehicle type ID. </p>
+<p>OpenTTD vehicle type ID, corresponding to <code>VehicleType</code> enum from <a href="https://docs.openttd.org/gs-api/classGSVehicle" target="_blank">GSVehicle</a> class provided by GS API. </p>
 
 </div>
 </div>
@@ -182,7 +202,7 @@ Public Attributes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../d1/df9/struct_summary_vehicle_stats.html">SummaryVehicleStats</a></li>
+    <li class="navelem"><a class="el" href="../../d8/ddb/struct_struct_vehicle_type_stats_item.html">StructVehicleTypeStatsItem</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

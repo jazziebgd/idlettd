@@ -1,5 +1,7 @@
 /** \mainpage IdleTTD game script
 
+\tableofcontents
+
 \section intro_sec Introduction
 
 IdleTTD is a game script that converts _OpenTTD_ into an idle-like game without affecting core gameplay. Players can earn money even when the game is not running.
@@ -67,13 +69,36 @@ Player can review idle statistics at any moment by opening story book page for I
 
 
 \section doc_sec Documentation
-All files, classes and members in the script are documented with Doxygen.
+All files, classes and members in the script are documented with Doxygen. 
+You can dive right in by exploring <a href="annotated.html">class list</a> or <a href="files.html">file list</a>.
 
-You can dive right into the documentation by exploring <a href="annotated.html">class list</a> or <a href="files.html">file list</a> or check out main classes below.
+\subsection doc_general Script lifecycle
+
+The central hub that manages majority of the IdleTTD features is IdleStory class. Its instance is created by #MainClass which extends `GSController` class from NoGo API (<a target="_blank" href="https://docs.openttd.org/gs-api/classGSController">documentation</a>). Once game and all its data becomes available, IdleStory.Initialize() is called and IdleTTD starts working.
+
+IdleTTD "main" process is IdleStory.runIdleLoop() function that gets called repeatedly while the game is active.
+Depending on user actions, IdleStory.HandleButtonClick() might also be called at any time.
+
+Story pages are managed by IdlePages class that is created by IdleStory instance.
+
+\subsection doc_logging Logging
+IdleTTD comes with Logger class for all logging purposes. 
+Logging can be configured with @ref config_sec "log_level" game script setting. For info about all log levels available check out #ScriptLogLevels enum.
+
+Static class methods are available for each log level:
+- Logger.Verbose() - Lowest log level for least important or very frequest messages
+- Logger.Debug() - Logs debug (low priority) messages
+- Logger.Info() - Logs info (high priority) messages
+- Logger.Warning() - Logs warning messages
+- Logger.Error() - Logs error messages
+
+Please note that **all of the methods listed above expect a string** as an argument. Arrays and squirrel tables can be logged via Logger.Table() function which will recursively walk through and log all table members.
 
 
-\subsection doc_classes Class docs
-Below are the links to main classes used by IdleTTD.
+
+
+\subsection doc_classes IdleTTD classes
+Classes used by IdleTTD are listed below.
 
 \subsubsection doc_main MainClass
 GSController for IdleTTD game script. Initializes and/or loads necessary data and sets everything up. Runs script loop and passes game events along for handling.

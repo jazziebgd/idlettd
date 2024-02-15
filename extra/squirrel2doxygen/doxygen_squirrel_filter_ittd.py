@@ -49,6 +49,7 @@ class SquirelFilterIdleTTD(SquirrelFilter):
 	re_min_version_to_load = re.compile("^(ScriptMinVersionToLoad)");
 	re_last_update_date = re.compile("^(ScriptLastUpdateDate)");
 	re_seconds_per_day = re.compile("^(SecondsPerGameDay)");
+	re_ticks_per_day = re.compile("^(TicksPerGameDay)");
 
 	# "dumb" processing of particular function arguments
 	def process_function_param_types(self, part):
@@ -79,15 +80,15 @@ class SquirelFilterIdleTTD(SquirrelFilter):
 				elif re.match(r'^event', newVal):
 					newVal = "GSEventStoryPageButtonClick " + newVal;
 				elif re.match(r'^vehicleSummary', newVal):
-					newVal = "SummaryVehicleStats " + newVal;
+					newVal = "StructSummaryVehicleStats " + newVal;
 				elif re.match(r'^buttonReference', newVal):
 					newVal = "StoryPageButtonFormatting " + newVal;
 				elif re.match(r'^allVehicleStats', newVal):
-					newVal = "array< VehicleTypeStatsItem, 4> " + newVal;
+					newVal = "array< StructVehicleTypeStatsItem, 4> " + newVal;
 				elif re.match(r'^vehicleType', newVal):
 					newVal = "int " + newVal;
 				elif re.match(r'^tbl', newVal):
-					newVal = "ScriptSavedData " + newVal;
+					newVal = "StructScriptSavedData " + newVal;
 				elif re.match(r'^tableToLog', newVal):
 					newVal = "SQTable " + newVal;
 				elif re.match(r'^(balanceChange|lastYearBalance|secondToLastYearBalance|idleBalance|totalAmount)', newVal):
@@ -138,7 +139,7 @@ class SquirelFilterIdleTTD(SquirrelFilter):
 		output = part;
 		temp = self.re_configvar_struct.search(output);
 		if temp:
-			output = " GSConfig " + temp.group(2);
+			output = " StructGameScriptConfig " + temp.group(2);
 		return output;
 	
 	# processing of constants.nut file 
@@ -152,11 +153,14 @@ class SquirelFilterIdleTTD(SquirrelFilter):
 		temp = self.re_last_update_date.search(output);
 		if temp:
 			output = output[:temp.start(1)] + "string " + temp.group(1) +  output[temp.end(1):];
-	
 
 		temp = self.re_seconds_per_day.search(output);
 		if temp:
 			output = output[:temp.start(1)] + "float " + temp.group(1) +  output[temp.end(1):];
+		
+		temp = self.re_ticks_per_day.search(output);
+		if temp:
+			output = output[:temp.start(1)] + "int " + temp.group(1) +  output[temp.end(1):];
 		return output;
 
 	# Override that adds idlettd specific processing at the end. Basically a copy of superclass one with added idlettd transformations before adding result to output buffer.

@@ -11,7 +11,9 @@ var index =
       ] ]
     ] ],
     [ "Documentation", "index.html#doc_sec", [
-      [ "Class docs", "index.html#doc_classes", [
+      [ "Script lifecycle", "index.html#doc_general", null ],
+      [ "Logging", "index.html#doc_logging", null ],
+      [ "IdleTTD classes", "index.html#doc_classes", [
         [ "MainClass", "index.html#doc_main", null ],
         [ "IdleStory", "index.html#doc_story", null ],
         [ "IdlePages", "index.html#doc_pages", null ],

@@ -107,12 +107,6 @@ $(function(){initNavTree('d5/d5e/class_main_class.html','../../'); initResizable
 
 <p>IdleTTD GSController instance.  
  <a href="#details">More...</a></p>
-<div class="dynheader">
-Inheritance diagram for MainClass:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="../../d5/d5e/class_main_class.png" alt=""/>
- </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -134,9 +128,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0e9d0082e541fe9cf17562f2c99d8d2" id="r_ae0e9d0082e541fe9cf17562f2c99d8d2"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0e9d0082e541fe9cf17562f2c99d8d2">Save</a> ()</td></tr>
 <tr class="memdesc:ae0e9d0082e541fe9cf17562f2c99d8d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores script data with saves game.  <br /></td></tr>
 <tr class="separator:ae0e9d0082e541fe9cf17562f2c99d8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a181b21da25f355a260072bec6a7b5074" id="r_a181b21da25f355a260072bec6a7b5074"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a181b21da25f355a260072bec6a7b5074">Load</a> (int version, <a class="el" href="../../da/d55/struct_script_saved_data.html">ScriptSavedData</a> tbl)</td></tr>
-<tr class="memdesc:a181b21da25f355a260072bec6a7b5074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores saved script data on game load.  <br /></td></tr>
-<tr class="separator:a181b21da25f355a260072bec6a7b5074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f83a8f8448579c1da87be54d02efd8c" id="r_a0f83a8f8448579c1da87be54d02efd8c"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f83a8f8448579c1da87be54d02efd8c">Load</a> (int version, <a class="el" href="../../da/dbb/struct_struct_script_saved_data.html">StructScriptSavedData</a> tbl)</td></tr>
+<tr class="memdesc:a0f83a8f8448579c1da87be54d02efd8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restores saved script data on game load.  <br /></td></tr>
+<tr class="separator:a0f83a8f8448579c1da87be54d02efd8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a01f879c7889cde73e69012e767b012" id="r_a2a01f879c7889cde73e69012e767b012"><td class="memItemLeft" align="right" valign="top">function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a01f879c7889cde73e69012e767b012">UpgradeScriptVersion</a> (int fromVersion, int toVersion)</td></tr>
 <tr class="memdesc:a2a01f879c7889cde73e69012e767b012"><td class="mdescLeft">&#160;</td><td class="mdescRight">Upgrades data stored in saved games that ran an older version of IdleTTD.  <br /></td></tr>
 <tr class="separator:a2a01f879c7889cde73e69012e767b012"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,7 +138,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Persistent members</div></td></tr>
-<tr><td colspan="2"><div class="groupText"><p>These members are used to store <a class="el" href="../../da/d55/struct_script_saved_data.html" title="[STRUCT] Script saved data format">ScriptSavedData</a> with game save and are restored on load. They remain persistent through game sessopms. </p>
+<tr><td colspan="2"><div class="groupText"><p>These members are used to store <a class="el" href="../../da/dbb/struct_struct_script_saved_data.html" title="[STRUCT] Script saved data format">StructScriptSavedData</a> with game save and are restored on load. They remain persistent through game sessopms. </p>
 </div></td></tr>
 <tr class="memitem:a5dc1eb4d9435029b2e315379b4a6926c" id="r_a5dc1eb4d9435029b2e315379b4a6926c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dc1eb4d9435029b2e315379b4a6926c">PlayerCompanyID</a> = GSCompany.COMPANY_INVALID</td></tr>
 <tr class="memdesc:a5dc1eb4d9435029b2e315379b4a6926c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Company ID of the player.  <br /></td></tr>
@@ -167,6 +161,24 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a1bf866ad06cf3a80b876c583c5b1c945" id="r_a1bf866ad06cf3a80b876c583c5b1c945"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bf866ad06cf3a80b876c583c5b1c945">SavedScriptVersion</a> = 0</td></tr>
 <tr class="memdesc:a1bf866ad06cf3a80b876c583c5b1c945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Version of the script in saved game.  <br /></td></tr>
 <tr class="separator:a1bf866ad06cf3a80b876c583c5b1c945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Internal references</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Properties that are used internally to store and retrieve current script context/state </p>
+</div></td></tr>
+<tr class="memitem:ae6789224bee93e4387257cde02f78bae" id="r_ae6789224bee93e4387257cde02f78bae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6789224bee93e4387257cde02f78bae">Enabled</a> = true</td></tr>
+<tr class="memdesc:ae6789224bee93e4387257cde02f78bae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Idling enabled/disabled.  <br /></td></tr>
+<tr class="separator:ae6789224bee93e4387257cde02f78bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cfdf119c63e953b8776b6ee6a922a5a" id="r_a5cfdf119c63e953b8776b6ee6a922a5a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cfdf119c63e953b8776b6ee6a922a5a">StartedIdle</a> = false</td></tr>
+<tr class="memdesc:a5cfdf119c63e953b8776b6ee6a922a5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Has IdleTTD been started.  <br /></td></tr>
+<tr class="separator:a5cfdf119c63e953b8776b6ee6a922a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6c04de301eeadd377681b5880a06a1f" id="r_ac6c04de301eeadd377681b5880a06a1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac6c04de301eeadd377681b5880a06a1f">CloseAttempts</a> = 0</td></tr>
+<tr class="memdesc:ac6c04de301eeadd377681b5880a06a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of times report got reopened.  <br /></td></tr>
+<tr class="separator:ac6c04de301eeadd377681b5880a06a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">References to class instances</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Properties that store references to instances of the other classes. </p>
+</div></td></tr>
+<tr class="memitem:a34e3f86a10a4072964d247422af20f2a" id="r_a34e3f86a10a4072964d247422af20f2a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34e3f86a10a4072964d247422af20f2a">IdleStoryInstance</a> = null</td></tr>
+<tr class="memdesc:a34e3f86a10a4072964d247422af20f2a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d13/class_idle_story.html" title="Class that contains main IdleTTD code.">IdleStory</a> instance reference.  <br /></td></tr>
+<tr class="separator:a34e3f86a10a4072964d247422af20f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>IdleTTD GSController instance. </p>
@@ -273,7 +285,7 @@ Public Attributes</h2></td></tr>
 
 <p>Stores script data with saves game. </p>
 <p>Prepares data desribing current game script state and returns it for storing in saves games.</p>
-<p>Returned data is a table in the format defined by <a class="el" href="../../da/d55/struct_script_saved_data.html" title="[STRUCT] Script saved data format">ScriptSavedData</a>.</p>
+<p>Returned data is a table in the format defined by <a class="el" href="../../da/dbb/struct_struct_script_saved_data.html" title="[STRUCT] Script saved data format">StructScriptSavedData</a>.</p>
 <ul>
 <li><code>PlayerCompanyID</code> Id of current company</li>
 <li><code>IdleStoryPageID</code> Id of current idle story page</li>
@@ -283,12 +295,12 @@ Public Attributes</h2></td></tr>
 <li><code>PrevCurrentCash</code> Amount of money company had at the beginning of current year</li>
 <li><code>SavedScriptVersion</code> IdleTTD version that game is being saved with</li>
 </ul>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../da/d55/struct_script_saved_data.html" title="[STRUCT] Script saved data format">ScriptSavedData</a> Script state data for saving </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../da/dbb/struct_struct_script_saved_data.html" title="[STRUCT] Script saved data format">StructScriptSavedData</a> Script state data for saving </dd></dl>
 
 </div>
 </div>
-<a id="a181b21da25f355a260072bec6a7b5074" name="a181b21da25f355a260072bec6a7b5074"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a181b21da25f355a260072bec6a7b5074">&#9670;&#160;</a></span>Load()</h2>
+<a id="a0f83a8f8448579c1da87be54d02efd8c" name="a0f83a8f8448579c1da87be54d02efd8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f83a8f8448579c1da87be54d02efd8c">&#9670;&#160;</a></span>Load()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -301,7 +313,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../da/d55/struct_script_saved_data.html">ScriptSavedData</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="../../da/dbb/struct_struct_script_saved_data.html">StructScriptSavedData</a></td>          <td class="paramname"><span class="paramname"><em>tbl</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -311,7 +323,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">version</td><td>integer Script version </td></tr>
-    <tr><td class="paramname">tbl</td><td><a class="el" href="../../da/d55/struct_script_saved_data.html" title="[STRUCT] Script saved data format">ScriptSavedData</a> Stored data</td></tr>
+    <tr><td class="paramname">tbl</td><td><a class="el" href="../../da/dbb/struct_struct_script_saved_data.html" title="[STRUCT] Script saved data format">StructScriptSavedData</a> Stored data</td></tr>
   </table>
   </dd>
 </dl>
@@ -475,6 +487,74 @@ Public Attributes</h2></td></tr>
 
 <p>Version of the script in saved game. </p>
 <p>Version of the game script that is being loaded with saved game </p>
+
+</div>
+</div>
+<a id="ae6789224bee93e4387257cde02f78bae" name="ae6789224bee93e4387257cde02f78bae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6789224bee93e4387257cde02f78bae">&#9670;&#160;</a></span>Enabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainClass::Enabled = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Idling enabled/disabled. </p>
+<p>"Master" enabled flag, used to disable IdleTTD for multiplayer. </p>
+
+</div>
+</div>
+<a id="a5cfdf119c63e953b8776b6ee6a922a5a" name="a5cfdf119c63e953b8776b6ee6a922a5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cfdf119c63e953b8776b6ee6a922a5a">&#9670;&#160;</a></span>StartedIdle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainClass::StartedIdle = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Has IdleTTD been started. </p>
+<p>Flag that indicates whether <a class="el" href="../../d7/d13/class_idle_story.html" title="Class that contains main IdleTTD code.">IdleStory</a> instance for this session has been initialized and started up. </p>
+
+</div>
+</div>
+<a id="ac6c04de301eeadd377681b5880a06a1f" name="ac6c04de301eeadd377681b5880a06a1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6c04de301eeadd377681b5880a06a1f">&#9670;&#160;</a></span>CloseAttempts</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainClass::CloseAttempts = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of times report got reopened. </p>
+<p>Number of times user tried to close report without accepting idle balance, prompting it to reopen. </p><dl class="section see"><dt>See also</dt><dd>ScriptConfig.WarnAfterCloseAttempts </dd></dl>
+
+</div>
+</div>
+<a id="a34e3f86a10a4072964d247422af20f2a" name="a34e3f86a10a4072964d247422af20f2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34e3f86a10a4072964d247422af20f2a">&#9670;&#160;</a></span>IdleStoryInstance</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainClass::IdleStoryInstance = null</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d7/d13/class_idle_story.html" title="Class that contains main IdleTTD code.">IdleStory</a> instance reference. </p>
+<p>Instance of current session <a class="el" href="../../d7/d13/class_idle_story.html" title="Class that contains main IdleTTD code.">IdleStory</a> class (might be <code>null</code> in first few ticks) </p>
 
 </div>
 </div>

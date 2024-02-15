@@ -106,7 +106,7 @@ $(function(){initNavTree('d3/d42/class_logger.html','../../'); initResizable(); 
 </div><!--header-->
 <div class="contents">
 
-<p>Class that is used for all logging in IdleTTD.  
+<p>Class that handles all logging in IdleTTD.  
  <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
@@ -127,12 +127,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae7f07bc4e2e2c929458a9d835f127395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs error message.  <br /></td></tr>
 <tr class="separator:ae7f07bc4e2e2c929458a9d835f127395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad5c43a07d616a3f08ec0c50dab445f4" id="r_aad5c43a07d616a3f08ec0c50dab445f4"><td class="memItemLeft" align="right" valign="top">static function&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad5c43a07d616a3f08ec0c50dab445f4">Table</a> (SQTable tableToLog, string tableIdentifier, int logLevel, string prependText=null, bool skipIdentifer=false)</td></tr>
-<tr class="memdesc:aad5c43a07d616a3f08ec0c50dab445f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs tables.  <br /></td></tr>
+<tr class="memdesc:aad5c43a07d616a3f08ec0c50dab445f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Logs tables and arrays.  <br /></td></tr>
 <tr class="separator:aad5c43a07d616a3f08ec0c50dab445f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Class that is used for all logging in IdleTTD. </p>
-<p>Class contains static methods for logging messages of various log levels. Checks game script setting <a class="el" href="../../index.html#config_sec">log_level</a> to determine whether given log level is allowed. </p>
+<div class="textblock"><p>Class that handles all logging in IdleTTD. </p>
+<p>Class contains static methods for logging messages of various log levels. Checks game script setting <a class="el" href="../../index.html#config_sec">log_level</a> to determine whether given log level is allowed. For info about all log levels available check out <a class="el" href="../../d0/d68/constants_8nut.html#ad28c7b0f63def160057028c0eec9128a" title="Log levels for IdleTTD.">ScriptLogLevels</a> enum. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a536ea22257a5819ca8d1f86a3f4851e1" name="a536ea22257a5819ca8d1f86a3f4851e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a536ea22257a5819ca8d1f86a3f4851e1">&#9670;&#160;</a></span>Verbose()</h2>
@@ -158,10 +158,10 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Logs verbose message. </p>
-<p>If <code>log_level</code> game string setting permits, logs the message to the console</p>
+<p>If <a class="el" href="../../index.html#config_sec">log_level</a> game string setting is equal to or lower than <a class="el" href="../../d0/d68/constants_8nut.html#ad28c7b0f63def160057028c0eec9128aacc1c116227245afdcfa5fa4b7e105686">LOG_LEVEL_VERBOSE</a> message will be logged to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>string Message to log</td></tr>
+    <tr><td class="paramname">message</td><td>Message to log</td></tr>
   </table>
   </dd>
 </dl>
@@ -193,10 +193,10 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Logs debug message. </p>
-<p>If <code>log_level</code> game string setting permits, logs the message to the console</p>
+<p>If <a class="el" href="../../index.html#config_sec">log_level</a> game string setting is equal to or lower than <a class="el" href="../../d0/d68/constants_8nut.html#ad28c7b0f63def160057028c0eec9128aa538b2b6e011479d408ecd2be0f6d6177">LOG_LEVEL_DEBUG</a> message will be logged to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>string Message to log</td></tr>
+    <tr><td class="paramname">message</td><td>Message to log</td></tr>
   </table>
   </dd>
 </dl>
@@ -228,10 +228,10 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Logs info message. </p>
-<p>If <code>log_level</code> game string setting permits, logs the message to the console</p>
+<p>If <a class="el" href="../../index.html#config_sec">log_level</a> game string setting is equal to or lower than <a class="el" href="../../d0/d68/constants_8nut.html#ad28c7b0f63def160057028c0eec9128aaedee1e3159bfe7d918b6e29873c5aee4">LOG_LEVEL_INFO</a> message will be logged to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>string Message to log</td></tr>
+    <tr><td class="paramname">message</td><td>Message to log</td></tr>
   </table>
   </dd>
 </dl>
@@ -263,10 +263,10 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Logs warning message. </p>
-<p>If <code>log_level</code> game string setting permits, logs the message to the console</p>
+<p>If <a class="el" href="../../index.html#config_sec">log_level</a> game string setting is equal to or lower than <a class="el" href="../../d0/d68/constants_8nut.html#ad28c7b0f63def160057028c0eec9128aa5b4dd81b4dc7eefbc55ba03415c627ef">LOG_LEVEL_WARNING</a> message will be logged to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>string Message to log</td></tr>
+    <tr><td class="paramname">message</td><td>Message to log</td></tr>
   </table>
   </dd>
 </dl>
@@ -298,10 +298,10 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Logs error message. </p>
-<p>If <code>log_level</code> game string setting permits, logs the message to the console</p>
+<p>If <a class="el" href="../../index.html#config_sec">log_level</a> game string setting is equal to or lower than <a class="el" href="../../d0/d68/constants_8nut.html#ad28c7b0f63def160057028c0eec9128aa5b40f003febbc3b535649d63f4b8a44f">LOG_LEVEL_ERROR</a> message will be logged to the console.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">message</td><td>string Message to log</td></tr>
+    <tr><td class="paramname">message</td><td>Message to log</td></tr>
   </table>
   </dd>
 </dl>
@@ -351,15 +351,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Logs tables. </p>
-<p>Dumps table info message for each member of the table</p>
+<p>Logs tables and arrays. </p>
+<p>Dumps table or array recursively by logging a message for each of their members.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tableToLog</td><td>Table with data to log </td></tr>
+    <tr><td class="paramname">tableToLog</td><td>Table or array to log </td></tr>
     <tr><td class="paramname">tableIdentifier</td><td>Text used to identify table dump in the log </td></tr>
-    <tr><td class="paramname">logLevel</td><td>Log level </td></tr>
-    <tr><td class="paramname">prependText</td><td>String to prependText to log messages (indenting) </td></tr>
-    <tr><td class="paramname">skipIdentifer</td><td>Prevent logging of identifier START/STOP messages</td></tr>
+    <tr><td class="paramname">logLevel</td><td>Log level (see <a class="el" href="../../d0/d68/constants_8nut.html#ad28c7b0f63def160057028c0eec9128a" title="Log levels for IdleTTD.">ScriptLogLevels</a> for list) </td></tr>
+    <tr><td class="paramname">prependText</td><td>Optional string to prependText to log messages (indenting) </td></tr>
+    <tr><td class="paramname">skipIdentifer</td><td>Optional flag to prevent logging messages with identifier before and after dumping the data</td></tr>
   </table>
   </dd>
 </dl>

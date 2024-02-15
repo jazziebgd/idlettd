@@ -156,6 +156,9 @@ Variables</h2></td></tr>
 <tr class="memitem:ac3a984e7a00d51caa1650b5d4b083ed7" id="r_ac3a984e7a00d51caa1650b5d4b083ed7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3a984e7a00d51caa1650b5d4b083ed7">SecondsPerGameDay</a></td></tr>
 <tr class="memdesc:ac3a984e7a00d51caa1650b5d4b083ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number (float) of seconds per one game day.  <br /></td></tr>
 <tr class="separator:ac3a984e7a00d51caa1650b5d4b083ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0174cadff900da428d789df8e42d090f" id="r_a0174cadff900da428d789df8e42d090f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0174cadff900da428d789df8e42d090f">TicksPerGameDay</a></td></tr>
+<tr class="memdesc:a0174cadff900da428d789df8e42d090f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number (integer) of ticks per one game day.  <br /></td></tr>
+<tr class="separator:a0174cadff900da428d789df8e42d090f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c776fcaa69fa2a75e3fb1562ebc80ce" id="r_a0c776fcaa69fa2a75e3fb1562ebc80ce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c776fcaa69fa2a75e3fb1562ebc80ce">ScriptMinVersionToLoad</a></td></tr>
 <tr class="memdesc:a0c776fcaa69fa2a75e3fb1562ebc80ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum script version to load.  <br /></td></tr>
 <tr class="separator:a0c776fcaa69fa2a75e3fb1562ebc80ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,6 +273,23 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a0174cadff900da428d789df8e42d090f" name="a0174cadff900da428d789df8e42d090f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0174cadff900da428d789df8e42d090f">&#9670;&#160;</a></span>TicksPerGameDay</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TicksPerGameDay</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number (integer) of ticks per one game day. </p>
+<p>Predefined value (74) that represents a ratio between game ticks and one game day. </p>
+
+</div>
+</div>
 <a id="a0c776fcaa69fa2a75e3fb1562ebc80ce" name="a0c776fcaa69fa2a75e3fb1562ebc80ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c776fcaa69fa2a75e3fb1562ebc80ce">&#9670;&#160;</a></span>ScriptMinVersionToLoad</h2>
 
@@ -284,7 +304,7 @@ Variables</h2></td></tr>
 
 <p>Minimum script version to load. </p>
 <p>Script versions get stored in save games and upon loading the game, stored value is checked against this value.</p>
-<p>This value is returned from <a href="https://docs.openttd.org/gs-api/classGSInfo#a44f99f7837e3fcbb863faebef07589b6" target="_blank">GSInfo::MinVersionToLoad</a> in IdleTTD game script info file. </p>
+<p>This value is returned from <a class="el" href="../../d9/df7/class_f_main_class.html#a54c47b9ef29bbdcfaf5a1d39424784c0" title="Returns minimum game script version that can be loaded (relies on ScriptMinVersionToLoad from constan...">FMainClass.MinVersionToLoad()</a> in IdleTTD game script <a class="el" href="../../dd/d85/info_8nut.html">info.nut</a> file. </p>
 
 </div>
 </div>
@@ -302,7 +322,7 @@ Variables</h2></td></tr>
 
 <p>Last script update date. </p>
 <p>String (ISO) date marking the time the script was updated last time</p>
-<p>This value is used by and returned from (<a class="el" href="../../d9/df7/class_f_main_class.html#a2538e8e337871066eb9c2418396015fc" title="Returns game script last update date.">FMainClass.GetDate()</a>)[<a class="el" href="../../d9/df7/class_f_main_class.html#a2538e8e337871066eb9c2418396015fc" title="Returns game script last update date.">FMainClass.GetDate</a>] function. </p>
+<p>This value is used by and returned from (<a class="el" href="../../d9/df7/class_f_main_class.html#a2538e8e337871066eb9c2418396015fc" title="Returns game script last update date (relies on ScriptLastUpdateDate from constants....">FMainClass.GetDate()</a>)[<a class="el" href="../../d9/df7/class_f_main_class.html#a2538e8e337871066eb9c2418396015fc" title="Returns game script last update date (relies on ScriptLastUpdateDate from constants....">FMainClass.GetDate</a>] function. </p>
 
 </div>
 </div>

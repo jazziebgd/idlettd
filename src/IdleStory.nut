@@ -6,7 +6,6 @@ require("Logger.nut");
 require("IdleUtil.nut");
 require("IdlePages.nut");
 
-// require("../extra/ttd/Shortcuts.nut");
 /**
     @class IdleStory
     @brief Class that contains main IdleTTD code.
@@ -244,6 +243,8 @@ class IdleStory {
             if (this.LastActiveTime == 0) { // new game
                 if (GSController.GetSetting("show_intro")) {
                     this.IdlePagesInstance.ShowIntroScreen();
+                } else {
+                    this.IdlePagesInstance.RenderMissingHQScreen();
                 }
             } else { // loaded game without HQ built
                 this.IdlePagesInstance.ShowMissingHQScreen();
@@ -265,10 +266,10 @@ class IdleStory {
     */
     function runIdleLoop() {
         local date = GSDate.GetCurrentDate();
-        // Shortcuts.Process(this.PlayerCompanyID);
         if (GSDate.IsValidDate(date)) {
             local month = GSDate.GetMonth(date);
             local day = GSDate.GetDayOfMonth(date);
+            local year = GSDate.GetYear(date);
             if (month != this.PreviousMonth) {
                 if (this.PreviousMonth == 12) {
                     local newCash = this.GetCurrentCash();
@@ -276,9 +277,9 @@ class IdleStory {
                     this.CurrentCash = newCash;
                     local newBalance = this.CurrentCash - prevCash;
                     if (prevCash != 0) {
-                        Logger.Table({newCash = newCash, prevCash = prevCash, newBalance = newBalance}, "Updated yearly balance", ::ScriptLogLevels.LOG_LEVEL_DEBUG);
+                        Logger.Table({prevCash = prevCash, newCash = newCash, newBalance = newBalance}, "Year " + (year - 1) + " balance info", ::ScriptLogLevels.LOG_LEVEL_DEBUG);
                         this.SetLastYearBalance(newBalance);
-                        if (this.IsAnyScreenOpen() && this.IdlePagesInstance.StatsScreenVisible) {
+                        if (this.IdlePagesInstance.StatsScreenVisible) {
                             Logger.Verbose("Refreshing stats screen");
                             this.CacheVehicleStats(true);
                             this.IdlePagesInstance.ClearPage();
@@ -306,7 +307,7 @@ class IdleStory {
     function HandleButtonClick(buttonId, event) {
         if (GSStoryPage.IsValidStoryPageElement(buttonId)) {
             if (buttonId == this.IdlePagesInstance.IdleReportButtonID) {
-                Logger.Debug("Handling idle report button click.");
+                Logger.Verbose("Handling idle report button click.");
                 if (this.ChangeBankBalance(this.IdleBalance)) {
                     this.LastIdleBalance = this.IdleBalance;
                     this.IdleBalance = 0;
@@ -318,20 +319,20 @@ class IdleStory {
                     this.RenderStatsScreen();
                 }
             } else if (buttonId == this.IdlePagesInstance.RefreshButtonID) {
-                Logger.Debug("Handling refresh button click.");
+                Logger.Verbose("Handling refresh button click.");
                 this.CacheVehicleStats(true);
                 this.IdlePagesInstance.ClearPage();
                 this.RenderStatsScreen();
             } else if (buttonId == this.IdlePagesInstance.CloseButtonID) {
-                Logger.Debug("Handling close button click.");
+                Logger.Verbose("Handling close button click.");
                 IdleUtil.CloseStoryBookWindow(this.PlayerCompanyID);
                 this.IdlePagesInstance.ClearPage();
                 this.RenderStatsScreen();
             } else if (buttonId == this.IdlePagesInstance.ShowHelpButtonID) {
-                Logger.Debug("Handling help button click.");
+                Logger.Verbose("Handling help button click.");
                 this.IdlePagesInstance.ShowHelpScreen();
             } else if (buttonId == this.IdlePagesInstance.IntroButtonID) {
-                Logger.Debug("Handling intro button click.");
+                Logger.Verbose("Handling intro button click.");
                 IdleUtil.CloseStoryBookWindow(this.PlayerCompanyID);
                 this.IdlePagesInstance.ClearPage();
                 if (IdleUtil.HasHQ(this.PlayerCompanyID)) {
@@ -340,19 +341,19 @@ class IdleStory {
                     this.IdlePagesInstance.RenderMissingHQScreen();
                 }
             } else if (buttonId == this.IdlePagesInstance._NavButtonNoHQID) {
-                Logger.Debug("Handling (dev) nav noHQ button click.");
+                Logger.Verbose("Handling (dev) nav noHQ button click.");
                 this.IdlePagesInstance.ShowMissingHQScreen();
             } else if (buttonId == this.IdlePagesInstance._NavButtonStatsID) {
-                Logger.Debug("Handling (dev) nav stats button click.");
+                Logger.Verbose("Handling (dev) nav stats button click.");
                 this.ShowStatsScreen();
             } else if (buttonId == this.IdlePagesInstance._NavButtonIdleReportID) {
-                Logger.Debug("Handling (dev) nav idle report button click.");
+                Logger.Verbose("Handling (dev) nav idle report button click.");
                 this.ShowIdleReport();
             }  else if (buttonId == this.IdlePagesInstance._NavButtonIntroID) {
-                Logger.Debug("Handling (dev) nav intro button click.");
+                Logger.Verbose("Handling (dev) nav intro button click.");
                 this.IdlePagesInstance.ShowIntroScreen();
             }  else if (buttonId == this.IdlePagesInstance._NavButtonShowHelpID) {
-                Logger.Debug("Handling (dev) nav help button click.");
+                Logger.Verbose("Handling (dev) nav help button click.");
                 this.IdlePagesInstance.ShowHelpScreen();
             }
         }
@@ -384,12 +385,12 @@ class IdleStory {
                 local pageID = GSStoryPage.New(this.PlayerCompanyID, "");
                 if (GSStoryPage.IsValidStoryPage(pageID)) {
                     this.IdleStoryPageID = pageID;
-                    Logger.Verbose("Created new idle story book page " + this.IdleStoryPageID);
+                    Logger.Info("Created new idle story book page " + this.IdleStoryPageID);
                 } else {
                     Logger.Error("Failed creating idle story book page.");
                 }
             } else {
-                Logger.Verbose("Reusing idle story book page " + this.IdleStoryPageID);
+                Logger.Debug("Reusing idle story book page " + this.IdleStoryPageID);
             }
         }
         return this.IdleStoryPageID;
@@ -561,7 +562,6 @@ class IdleStory {
         local inactiveSeconds = (currentTime - this.LastActiveTime).tointeger();
         this.SetLastInactiveSeconds(inactiveSeconds);
 
-        // local passedDays = ((inactiveSeconds * 33.33) / 74).tointeger();
         local passedDays = (floor(inactiveSeconds.tofloat() / ::SecondsPerGameDay.tofloat())).tointeger();
         local idleBalance = (((this.LastYearBalance / 365.0) * passedDays) * idleMultiplier).tointeger();
         return idleBalance;
@@ -659,7 +659,7 @@ class IdleStory {
 
         @param boolForce Force refreshing cached stats
 
-        @returns std::array<#VehicleTypeStatsItem, 4> An array of summary tables for all four vehicle types
+        @returns array< StructVehicleTypeStatsItem, 4 > An array of summary tables for all four vehicle types
     */
     function GetAllVehicleTypeStats(boolForce = false) {
         if (this.PlayerCompanyID != GSCompany.COMPANY_INVALID && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID) {

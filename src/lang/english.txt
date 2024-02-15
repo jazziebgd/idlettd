@@ -56,7 +56,7 @@ STR_PAGE_TITLE_STATS            :IdleTTD  |  Statistics
 
 
 STR_BUTTON_TEXT_REFRESH         :{BLACK}{MONO_FONT}REFRESH{NORMAL_FONT}
-STR_BUTTON_TEXT_FIND_HQ         :{BLACK}{MONO_FONT}FIND COMPANY HQ{NORMAL_FONT}
+STR_BUTTON_TEXT_FIND_HQ         :{BLACK}{MONO_FONT}COMPANY HQ BUILT{NORMAL_FONT}
 STR_BUTTON_TEXT_START           :{BLACK}{MONO_FONT}START{NORMAL_FONT}
 STR_BUTTON_TEXT_CLOSE           :{BLACK}{MONO_FONT}CLOSE{NORMAL_FONT}
 STR_BUTTON_TEXT_HELP            :{BLACK}{MONO_FONT}HELP{NORMAL_FONT}
@@ -124,7 +124,7 @@ STR_NEWS_COMPLETE: {STRING1} {STRING2}
 
 # labels for missing hq screen
 
-STR_MISSING_HQ :{BIG_FONT}{RED}No HQ found{SILVER}{NORMAL_FONT}{}{}Don't forget to build {WHITE}Company HQ{SILVER} to activate idling with {STRING} game script.{}{}If you have built the HQ click the button below to update.
+STR_MISSING_HQ :{SILVER}Don't forget to build {WHITE}Company HQ{SILVER} to activate idling with {STRING} game script.{}{}If you have built the HQ click the button below to update.
 
 
 
@@ -148,15 +148,15 @@ STR_HELP_PAGE_SETTINGS :{YELLOW}Settings{}{STRING} can be configured to suit pla
 
 
 
-STR_STATS_GENERAL_INFO                                 :{YELLOW}Active session{SILVER}{TINY_FONT}{NBSP}{NBSP}{NBSP}*{NBSP}{NBSP}Values below are approximations.{NORMAL_FONT}{}{}If you were to save your game now, {STRING} and your employees in {WHITE}Company HQ{SILVER} would keep your {GOLD}{NUM}{SILVER} vehicle{P 1 "" s} running at {GOLD}{STRING}{SILVER} capacity and {STRING} {STRING3}.{}{STRING}
+STR_STATS_GENERAL_INFO                                 :{YELLOW}Active session{SILVER}{TINY_FONT}{NBSP}{NBSP}{NBSP}*{NBSP}{NBSP}Values below are approximations.{NORMAL_FONT}{}{}If you were to save your game now, {STRING} and your employees in {WHITE}Company HQ{SILVER} would keep your {GOLD}{NUM}{SILVER} vehicle{P 1 "" s} running at {GOLD}{STRING}{SILVER} capacity and {STRING} {STRING3}.{STRING}
 STR_STATS_GENERAL_INFO_WILL_BE_EARNING :would be earning approximately{GREEN}
 STR_STATS_GENERAL_INFO_WILL_BE_LOSING :would be losing approximately{RED}
 STR_STATS_GENERAL_INFO_NO_VEHICLES               :{SILVER}Employees in {WHITE}Company HQ{SILVER} would keep your vehicles running at {GOLD}{STRING}{SILVER} capacity but you seem to have no running vehicles at the moment.
 
-STR_STATS_MINUS_NOTE    :{WHITE}It is not recommended to save game while you're having losses.
+STR_STATS_MINUS_NOTE    :{}{}{YELLOW}WARNING{}{WHITE}It is not recommended to save game while you're having losses.
 
 STR_STATS_LAST_IDLE_SESSION_SUMMARY                           :{SILVER}Your company was {STRING} {STRING3} {STRING} {STRING1}{SILVER} while you were away.
-STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Previous session{}{SILVER}You were out for {STRING6}.
+STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Previous session{}{}{SILVER}You were out for {STRING6}.
 
 STR_TOTAL_POSITIVE :and made
 STR_TOTAL_NEGATIVE :and lost
