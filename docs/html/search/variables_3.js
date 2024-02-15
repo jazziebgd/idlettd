@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['helpscreenvisible_0',['HelpScreenVisible',['../da/db4/class_idle_pages.html#ac1876eef8e3400468c6c6ddcc6a5e575',1,'IdlePages']]]
+  ['enabled_0',['Enabled',['../d5/d5e/class_main_class.html#ae6789224bee93e4387257cde02f78bae',1,'MainClass']]]
 ];

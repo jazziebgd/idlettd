@@ -1,40 +1,41 @@
 /**
-    @file types.dox Contains quasi struct definitions that aren't used (squirrel has no structs). They are here just for resolving and documenting types in Doxygen.
+    @file types.dox Contains quasi struct and type definitions that aren't really used for anything other than resolving and documenting types in Doxygen.
+    
 */
 
  /**
-    @struct GSConfig
-    @brief Configuration structure
+    @struct StructGameScriptConfig
+    @brief [STRUCT] Configuration structure
     @details Data structure definition for IdleTTD configuration
 
-    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+    @attention This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes.
 
-    @var GSConfig::WarnAfterCloseAttempts
+    @var StructGameScriptConfig::WarnAfterCloseAttempts
     @brief Report close attempt limit
     @details Number of times report window will re-open before showing warning text.
 
-    @var GSConfig::ShowStatsAfterReport
-    @brief Close story book after accepting idle balance
-    @details False will show stats screen instead of closing story book
+    @var StructGameScriptConfig::ShowStatsAfterReport
+    @brief Close (or don't) story book after accepting idle balance 
+    @details False will show stats screen instead of closing story book.
 
-    @var GSConfig::MinSleepTime
+    @var StructGameScriptConfig::MinSleepTime
     @brief Minimum sleep time for immediate next loop iteration
     @details Smallest number of ticks that script loop can sleep for
 
-    @var GSConfig::ShortestSleepTime
+    @var StructGameScriptConfig::ShortestSleepTime
     @brief Shortest sleep time for initialization / starting
     @details Very small number of ticks that script loop can sleep for
 
-    @var GSConfig::ShortSleepTime
+    @var StructGameScriptConfig::ShortSleepTime
     @brief Short sleep time for listening to events
     @details Small number of ticks that script loop can sleep for
 
-    @var GSConfig::MedSleepTime
+    @var StructGameScriptConfig::MedSleepTime
     @brief Medium sleep time for misc processing
     @details Medium number of ticks that script loop can sleep for
 */
 
- struct GSConfig { 
+ struct StructGameScriptConfig { 
      int WarnAfterCloseAttempts;
      bool ShowStatsAfterReport;
 
@@ -45,30 +46,30 @@
 };
 
 /**
-    @struct VehicleTypeStatsItem
-    @brief Typedef for vehicle type stats
-    @details Typedef for vehicle stats for one vehicle type
+    @struct StructVehicleTypeStatsItem
+    @brief [STRUCT] Vehicle type stats
+    @details Data structure used for vehicle stats of a particular vehicle type
 
-    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+    @attention This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes.
 
-    @var VehicleTypeStatsItem::count
+    @var StructVehicleTypeStatsItem::count
     @brief Total number of vehicles of given type
-    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type)
+    @details Value is for a particular vehicle type only, defined in [StructVehicleTypeStatsItem::type](#StructVehicleTypeStatsItem.type)
 
-    @var VehicleTypeStatsItem::idleBalance
+    @var StructVehicleTypeStatsItem::idleBalance
     @brief Total idle balance of all vehicles of given type in last year
-    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type)
+    @details Value is for a particular vehicle type only, defined in [StructVehicleTypeStatsItem::type](#StructVehicleTypeStatsItem.type). In practice it is just the [StructVehicleTypeStatsItem::balance](#StructVehicleTypeStatsItem.balance) multiplied by idle multiplier setting.
 
-    @var VehicleTypeStatsItem::balance
+    @var StructVehicleTypeStatsItem::balance
     @brief Total balance of all vehicles of given type in last year
-    @details Value is for a particular vehicle type only, defined in [VehicleTypeStatsItem::type](#VehicleTypeStatsItem.type)
+    @details Value (_vehicles profit - vehicles cost_) stored here is for a particular vehicle type only, defined in [StructVehicleTypeStatsItem::type](#StructVehicleTypeStatsItem.type).  Used to recalculate [StructVehicleTypeStatsItem::idleBalance](#StructVehicleTypeStatsItem.idleBalance) if needed.
 
-    @var VehicleTypeStatsItem::type
-    @brief Vehicles type ID
-    @details OpenTTD vehicle type ID
+    @var StructVehicleTypeStatsItem::type
+    @brief Vehicle type ID 
+    @details OpenTTD vehicle type ID, corresponding to `VehicleType` enum from <a target="_blank" href="https://docs.openttd.org/gs-api/classGSVehicle">GSVehicle</a> class provided by GS API.
 */
 
- struct VehicleTypeStatsItem { 
+ struct StructVehicleTypeStatsItem { 
      int count;
      int idleBalance;
      int balance;
@@ -76,68 +77,68 @@
 };
 
 /**
-    @struct SummaryVehicleStats
-    @brief Typedef for summary vehicle stats object 
+    @struct StructSummaryVehicleStats
+    @brief [STRUCT] Summary vehicle stats object 
     @details Summary stats for all vehicles of all types for last year
 
-    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+    @attention This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes.
 
-    @var SummaryVehicleStats::count
+    @var StructSummaryVehicleStats::count
     @brief Total number of vehicles
-    @details All types of vehicles are included
+    @details Total number of (running) vehicles that the company has
 
-    @var SummaryVehicleStats::idleBalance
+    @var StructSummaryVehicleStats::idleBalance
     @brief Total idle balance
-    @details All types of vehicles are included
+    @details Sum amount of money (profit - cost) that all running vehicles the company has would bring if they went idle for a year. In practice it is just the [StructSummaryVehicleStats::balance](#StructSummaryVehicleStats.balance) multiplied by idle multiplier setting.
 
-    @var SummaryVehicleStats::balance
-    @brief Total balance
-    @details All types of vehicles are included
+    @var StructSummaryVehicleStats::balance
+    @brief Total vehicle balance
+    @details Sum amount of money (profit - cost) that all running vehicles the company has have earned last year.
 */
 
- struct SummaryVehicleStats { 
+ struct StructSummaryVehicleStats { 
      int count;
      int idleBalance;
      int balance;
 };
 
 /**
-    @struct ScriptSavedData
-    @brief Script saved data format
+    @struct StructScriptSavedData
+    @brief [STRUCT] Script saved data format
     @details Format of the table that gets saved with games
 
-    @note This "struct" is not used, squirrel has no structs as such. It is here just for documentation purposes.
+    @attention This "struct" is not really used since Squirrel language has no structs as such. It's here solely for documentation purposes.
 
-    @var ScriptSavedData::PlayerCompanyID
+    @var StructScriptSavedData::PlayerCompanyID
     @brief Company ID
     @details Company ID of the player
 
-    @var ScriptSavedData::IdleStoryPageID
+    @var StructScriptSavedData::IdleStoryPageID
     @brief Idle story page
-    @details Id of current idle story page
+    @details Id of company idle story page (it is created once, when game starts, gets saved with games and should be reused on load)
 
-    @var ScriptSavedData::LastActiveTime
+    @var StructScriptSavedData::LastActiveTime
     @brief Last save time
     @details Unix timestamp that stores exact save game time
 
-    @var ScriptSavedData::LastYearBalance
+    @var StructScriptSavedData::LastYearBalance
     @brief Last year bank balance
     @details Amount of money company earned or lost last year
 
-    @var ScriptSavedData::SecondToLastYearBalance
+    @var StructScriptSavedData::SecondToLastYearBalance
     @brief Second to last year bank balance
     @details Amount of money company earned or lost in second to last year
 
-    @var ScriptSavedData::PrevCurrentCash
+    @var StructScriptSavedData::PrevCurrentCash
     @brief Company balance at the end of previous year
     @details Amount of money company had at the beginning of the current year
 
-    @var ScriptSavedData::SavedScriptVersion
+    @var StructScriptSavedData::SavedScriptVersion
     @brief Saved script version
     @details IdleTTD version that game is being saved with
 */
 
- struct ScriptSavedData { 
+ struct StructScriptSavedData { 
      int PlayerCompanyID;
      int IdleStoryPageID;
      int LastActiveTime;
@@ -147,8 +148,38 @@
      int SavedScriptVersion;
 };
 
-/** @typedef Money
-@brief OpenTTD Money (signed int 64) 
-@details Custom type for OpenTTD Money type values
+
+/** 
+    @typedef StoryPageButtonFormatting
+    @brief OpenTTD StoryPageButtonFormatting type. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSStoryPage">GSStoryPage.StoryPageButtonFormatting</a> for details.
+    @details Internal custom type reflecting the `StoryPageButtonFormatting` type from <a target="_blank" href="https://docs.openttd.org/gs-api/classGSStoryPage">GSStoryPage</a> class in OpenTTD GS API.
 */
-typedef signed long long int Money;
+typedef unknown StoryPageButtonFormatting;
+
+/** 
+    @typedef GSDate
+    @brief OpenTTD date. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSDate">GSDate.Date</a> for details.
+    @details Internal custom type representing the `GSDate.Date` type from <a target="_blank" href="https://docs.openttd.org/gs-api/classGSDate">GSDate</a> class in OpenTTD GS API.
+*/
+typedef unknown GSDate;
+
+/** 
+    @typedef GSText
+    @brief OpenTTD GSText instance. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSText">GSText</a> for details.
+    @details Internal custom type defining the instance of <a target="_blank" href="https://docs.openttd.org/gs-api/classGSText">GSText</a> class in OpenTTD GS API.
+*/
+typedef unknown GSText;
+
+/** 
+    @typedef GSEventStoryPageButtonClick
+    @brief OpenTTD GSEventStoryPageButtonClick instance. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSEventStoryPageButtonClick">GSEventStoryPageButtonClick</a> for details.
+    @details Internal custom type defining the instance of <a target="_blank" href="https://docs.openttd.org/gs-api/classGSEventStoryPageButtonClick">GSEventStoryPageButtonClick</a> class in OpenTTD GS API.
+*/
+typedef unknown GSEventStoryPageButtonClick;
+
+/** 
+    @typedef GSList
+    @brief OpenTTD GSList instance. Check out <a target="_blank" href="https://docs.openttd.org/gs-api/classGSList">GSList</a> for details.
+    @details Internal custom type defining the instance of <a target="_blank" href="https://docs.openttd.org/gs-api/classGSList">GSList</a> class in OpenTTD GS API.
+*/
+typedef unknown GSList;

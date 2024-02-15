@@ -17,7 +17,6 @@ Download __IdleTTD__ game script using OpenTTD online content interface.
 | __idle_multiplier__   | 1 - 10        | __2__         | Multiplier used to calculate idle balance | _Integer value is multiplied by 0.001 (0.1%) to get actual value_ |
 | __show_intro__        | `bool`        | __true__      | Enables or disables intro popups          | _Does not affect other story windows._ |
 | __show_news__         | `bool`        | __true__      | Enables or disables idle balance news     |  |
-| __show_save_warning__ | `bool`        | __true__      | Enables or disables save warnings         |  |
 | __day_interval__      | 1 - 7         | __1__         | Days to wait before running again         | _For eventual performance tuning._ |
 
 ### Running IdleTTD
@@ -48,8 +47,6 @@ Once player confirms with the button, their bank balance gets updated.
 ### In-game usage
 
 Player can open closed IdleTTD story book page using the toolbar at any time. All story book pages expect report contain "Help" button that opens help screen with detailed information and help text about IdleTTD.
-
-When player saves the game with negative balance IdleTTD will warn them about losing money upon next game load.
 
 If player haven't met one of prerequisites for IdleTTD, they will be informed accordingly.
 

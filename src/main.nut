@@ -10,6 +10,7 @@ require("Logger.nut");
 
 /**
     @class MainClass
+    @hideinheritancegraph
     @brief IdleTTD GSController instance
     @details IdleTTD game script controller class that runs script main loop. Waits for valid company id first to set up an instance of #IdleStory 
 */ 
@@ -17,7 +18,7 @@ class MainClass extends GSController {
     
     /** 
         @name Persistent members
-        These members are used to store #ScriptSavedData with game save and are restored on load. They remain persistent through game sessopms.
+        These members are used to store #StructScriptSavedData with game save and are restored on load. They remain persistent through game sessopms.
         @{
     */
 
@@ -71,9 +72,9 @@ class MainClass extends GSController {
     /**
     @}
     */
-     /// \privatesection
+
     /** 
-        @name Internal referencess
+        @name Internal references
         Properties that are used internally to store and retrieve current script context/state
         @{
     */
@@ -93,28 +94,40 @@ class MainClass extends GSController {
     StartedIdle = false;
 
     /**
+        @property CloseAttempts
+        @brief Number of times report got reopened
+        @details Number of times user tried to close report without accepting idle balance, prompting it to reopen.
+        @see ScriptConfig.WarnAfterCloseAttempts
+    */
+    CloseAttempts = 0;
+
+
+    /**
+    @}
+    */
+       
+
+    /** 
+        @name References to class instances
+        Properties that store references to instances of the other classes.
+        @{
+    */
+
+
+    /**
         @property IdleStoryInstance
         @brief IdleStory instance reference
         @details Instance of current session IdleStory class (might be `null` in first few ticks)
     */
     IdleStoryInstance = null;
 
-    /**
-        @property SavedDate
-        @brief In-game date of the last save
-        @details Used to determine type of save (manual / auto)
-    */
-    SavedDate = null;
 
     /**
-        @property _CloseAttempts
-        @brief Number of times report got reopened
-        @details Number of times user tried to close report without accepting idle balance, prompting it to reopen
+    @}
     */
-    _CloseAttempts = 0;
 
-    /// @}
 
+    /// \privatesection
 
     /**
         @brief Constructor
@@ -131,7 +144,6 @@ class MainClass extends GSController {
         this.IdleStoryInstance = null;
         this.SavedScriptVersion = 0;
         
-        this.SavedDate = 0;
     }
     /// \publicsection
 
@@ -156,6 +168,7 @@ class MainClass extends GSController {
         @retval true  Script loop should be processed normally
     */
     function HandleEvents() {
+        local result = true;
         while (GSEventController.IsEventWaiting()) {
             local ev = GSEventController.GetNextEvent();
             local ev_type = ev.GetEventType();
@@ -165,18 +178,18 @@ class MainClass extends GSController {
                 if (GSStoryPage.IsValidStoryPage(pageId) && pageId == this.IdleStoryInstance.GetPageID()) {
                     local buttonId = event.GetElementID();
                     this.IdleStoryInstance.HandleButtonClick(buttonId, event);
-                    return false;
+                    result = false;
                 }
             } else if (ev_type == GSEvent.ET_COMPANY_NEW) {
                 local company_event = GSEventCompanyNew.Convert(ev);
                 local company_id = company_event.GetCompanyID();
                 if (this.PlayerCompanyID == GSCompany.COMPANY_INVALID && company_id != GSCompany.COMPANY_INVALID) {
                     this.PlayerCompanyID = company_id;
-                    return false;
+                    result = false;
                 }
             }
         }
-        return true;
+        return result;
     }
 
     /**
@@ -224,19 +237,23 @@ class MainClass extends GSController {
         @returns void
     */
     function Start() {
+        GSController.Sleep(::ScriptConfig.ShortestSleepTime);
         if (this.SavedScriptVersion != 0 && this.SavedScriptVersion < SELF_VERSION) {
             this.UpgradeScriptVersion(this.SavedScriptVersion, SELF_VERSION);
         }
         if (GSGame.IsMultiplayer()) {
             Logger.Warning("IdleTTD game script is disabled because it does not support multiplayer.");
             this.Enabled = false;
+            while (true) {
+                GSController.Sleep(::ScriptConfig.MedSleepTime * 10);
+                Logger.Verbose("Skipping IdleTTD game script loop in multiplayer game.");
+            }
         } else {
-            GSController.Sleep(5);
             while (true) {
                 local loop_start_tick = GSController.GetTick();
                 local idleEnabled = GetSetting("idle_enabled");
                 local sleep_ticks = ::ScriptConfig.MinSleepTime;
-                local dayInterval = (74 * GetSetting("day_interval"));
+                local dayInterval = (::TicksPerGameDay * GetSetting("day_interval"));
                 local process = this.HandleEvents();
                 local companyExists = (this.PlayerCompanyID >= 0 && GSCompany.ResolveCompanyID(this.PlayerCompanyID) == this.PlayerCompanyID);
                 if (this.Enabled && idleEnabled) {
@@ -254,33 +271,11 @@ class MainClass extends GSController {
                                     }
                                 }
 
-                                if (this.SavedDate != null) {
-                                    local date = this.SavedDate;
-                                    this.SavedDate = null;
-                                    if (GSController.GetSetting("show_save_warning")) {
-                                        if (this.IdleStoryInstance != null && this.IdleStoryInstance.IdlePagesInstance != null && this.IdleStoryInstance._LastYearBalance < 0) {
-                                            if (IdleUtil.HasHQ(this.PlayerCompanyID)) {
-                                                local isAuto = IdleUtil.IsAutosaveDate(date);
-                                                if (!isAuto) {
-                                                    Logger.Debug("Negative balance detected on save, setting the flag.");
-                                                    this.IdleStoryInstance.IdlePagesInstance.SavedWithNegativeBalance = true;
-                                                    this.IdleStoryInstance._SaveWarningViewed = false;
-                                                } else {
-                                                    Logger.Debug("Negative balance detected on save but not setting the flag due to possible autosave.");
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
                                 sleep_ticks = dayInterval;
                             }
                             if (this.IdleStoryInstance != null && this.IdleStoryInstance.IdlePagesInstance != null) {
                                 local hasReport = this.IdleStoryInstance.IsIdleReportVisible();
                                 local idlePageOpen = this.IdleStoryInstance.IsAnyScreenOpen();
-                                
-                                local saveWarningVisible = this.IdleStoryInstance.IsSaveWarningScreenVisible();
-                                local saveTextDisplayed = this.IdleStoryInstance.IsSaveWarningTextDisplayed();
-                                local showSaveWarning = this.IdleStoryInstance.GameSavedWithNegativeBalance();
                                 
                                 if (hasReport) {
                                     this.IdleStoryInstance.ScrollToCompanyHQ();
@@ -288,35 +283,16 @@ class MainClass extends GSController {
 
                                 if (idlePageOpen) {
                                     sleep_ticks = ::ScriptConfig.ShortestSleepTime;
-                                    if (!hasReport) {
-                                        sleep_ticks = ::ScriptConfig.ShortSleepTime;
-                                        if (showSaveWarning && !saveWarningVisible) {
-                                            Logger.Debug("Rendering save warning screen");
-                                            this.IdleStoryInstance.ShowSaveWarningScreen();
-                                        }
-                                    } else {
-                                        if (showSaveWarning && !saveTextDisplayed) {
-                                            Logger.Debug("Showing report save warning text");
-                                            this.IdleStoryInstance.UpdateReportSaveWarning(true);
-                                        }
-                                    }
                                 } else {
                                     if (hasReport) {
-                                        this._CloseAttempts = this._CloseAttempts + 1;
-                                        if (this._CloseAttempts == ::ScriptConfig.WarnAfterCloseAttempts) {
+                                        this.CloseAttempts = this.CloseAttempts + 1;
+                                        if (this.CloseAttempts == ::ScriptConfig.WarnAfterCloseAttempts) {
                                             this.IdleStoryInstance.UpdateReportCloseWarning(true);
-                                        }
-                                        if (showSaveWarning && !saveTextDisplayed) {
-                                            Logger.Debug("Adding report save warning text");
-                                            this.IdleStoryInstance.UpdateReportSaveWarning(true);
                                         }
                                         Logger.Debug("Reopening idle report story book page window.");
                                         IdleUtil.DisplayPage(this.IdleStoryInstance.IdleStoryPageID);
                                         GSController.Sleep(::ScriptConfig.MinSleepTime);
                                         continue;
-                                    } else if (showSaveWarning && !saveWarningVisible) {
-                                        Logger.Debug("Showing save warning screen");
-                                        this.IdleStoryInstance.ShowSaveWarningScreen();
                                     }
                                         
                                 }
@@ -347,7 +323,7 @@ class MainClass extends GSController {
         @brief Stores script data with saves game
         @details Prepares data desribing current game script state and returns it for storing in saves games.
 
-        Returned data is a table in the format defined by #ScriptSavedData.
+        Returned data is a table in the format defined by #StructScriptSavedData.
 
         - `PlayerCompanyID` 				Id of current company
         - `IdleStoryPageID` 				Id of current idle story page
@@ -357,14 +333,10 @@ class MainClass extends GSController {
         - `PrevCurrentCash` 		        Amount of money company had at the beginning of current year
         - `SavedScriptVersion` 				IdleTTD version that game is being saved with
 
-        @note Function sets SavedDate property that is used when determining whether the save was autosave or manual one.
-
-        @returns ScriptSavedData Script state data for saving
+        @returns StructScriptSavedData Script state data for saving
     */
     function Save() {
-        local date = GSDate.GetCurrentDate();
         local lastActiveTime = GSDate.GetSystemTime();
-        this.SavedDate = date;
         local pageId = this.IdleStoryPageID;
         local lastYearBalance = 0;
         local currentCash = 0;
@@ -372,8 +344,8 @@ class MainClass extends GSController {
 
         if (this.IdleStoryInstance != null) {
             pageId = this.IdleStoryInstance.GetPageID();
-            lastYearBalance = this.IdleStoryInstance._LastYearBalance;
-            secondToLastYearBalance = this.IdleStoryInstance._SecondToLastYearBalance;
+            lastYearBalance = this.IdleStoryInstance.LastYearBalance;
+            secondToLastYearBalance = this.IdleStoryInstance.SecondToLastYearBalance;
             currentCash = this.IdleStoryInstance.CurrentCash;
             /* 
                 prevent players from overriding previous idle balances by saving and reloading the game
@@ -404,8 +376,8 @@ class MainClass extends GSController {
         @details Called just before #Start, used to restore saved IdleTTD data.
         @note Values for `PlayerCompanyID` and `IdleStoryPageId` are always present, other two can be uninitialized if game has been saved within first couple of years after start.
 
-        @param version 	integer 		Script version
-        @param tbl 		SquirrelTable 	Stored data
+        @param version 	integer 		        Script version
+        @param tbl 		StructScriptSavedData 	Stored data
 
         @returns void
     */
@@ -454,7 +426,7 @@ class MainClass extends GSController {
     function UpgradeScriptVersion(fromVersion, toVersion) {
         local result = false;
         if (fromVersion < toVersion && fromVersion != 0 && toVersion != 0) {
-            Logger.Warning("IdleTTD version upgrade from " + fromVersion + " to " + toVersion);
+            Logger.Info("IdleTTD version upgrade from " + fromVersion + " to " + toVersion);
             result = true;
         }
         return result;

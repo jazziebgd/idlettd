@@ -7,15 +7,6 @@ STR_COMMA_SPACE                                     :,{NBSP}
 STR_WORD_AND                                        :i
 STR_WORD_AND_SPACE                                  :{NBSP}i{NBSP}
 
-
-STR_SCRIPT_NAME_GOLD :{LTBROWN}IdleTTD{SILVER}
-
-STR_NUMBER_OF_SECONDS                              :{ORANGE}{NUM}{SILVER} sekund{P u e i}
-STR_NUMBER_OF_MINUTES                              :{ORANGE}{NUM}{SILVER} minut{P "" a a}
-STR_NUMBER_OF_HOURS                                :{ORANGE}{NUM}{SILVER} sat{P "" a i}
-STR_NUMBER_OF_YEARS                                :{ORANGE}{NUM}{SILVER} godin{P u e a}
-STR_NUMBER_OF_DAYS                                 :{ORANGE}{NUM}{SILVER} dan{P "" a a}
-
 ######## range for multiplier labels starts
 STR_MULTIPLIER_LABEL_1 :0.1%
 STR_MULTIPLIER_LABEL_2 :0.2%
@@ -35,69 +26,84 @@ STR_CURRENCY_NEGATIVE                               :{RED}{CURRENCY_LONG}{SILVER
 STR_REPORT_PAGE_NAME                 :IdleTTD
 
 
-STR_PAGE_TITLE_INTRO           :IdleTTD | Osnovne informacije
-STR_PAGE_TITLE_REPORT          :IdleTTD | Izveštaj o pasivnoj zaradi
-STR_PAGE_TITLE_NOHQ            :IdleTTD | Nemate upravnu zgradu
-STR_PAGE_TITLE_HELP            :IdleTTD | Pomoć
-STR_PAGE_TITLE_STATS           :IdleTTD | Statistika
-STR_PAGE_TITLE_SAVE_WARNING    :IdleTTD  | Igra snimljena sa gubicima
 
+STR_SCRIPT_NAME_GOLD :{LTBROWN}IdleTTD{SILVER}
 
+# $XXX [earned OR lost] in x days, x hours, x minutes and x seconds (only two largest are used)
+STR_EARN_IN_TIME :{STRING}{SILVER}{STRING}
 
-STR_BUTTON_TEXT_START                          :{BLACK}{MONO_FONT}U REDU{NORMAL_FONT}
-STR_BUTTON_TEXT_CLOSE                          :{BLACK}{MONO_FONT}ZATVORI{NORMAL_FONT}
-STR_BUTTON_TEXT_HELP :{BLACK}{MONO_FONT}POMOĆ{NORMAL_FONT}
-STR_BUTTON_TEXT_REFRESH                          :{BLACK}{MONO_FONT}OSVEŽI{NORMAL_FONT}
-STR_BUTTON_TEXT_FIND_HQ                          :{BLACK}{MONO_FONT}NAĐI UPRAVNU ZGRADU{NORMAL_FONT}
+# x days, x hours, x minutes and x seconds
+STR_DURATION_HUMAN :{STRING}{STRING}
 
-#STR_BUTTON_APPLY_IDLE_BALANCE                   :{WHITE}{MONO_FONT}{STRING} {CURRENCY_LONG}{NORMAL_FONT}
-STR_BUTTON_TEXT_RECEIVE                         :PRIMI
-STR_BUTTON_TEXT_PAY                             :PLATI
-
-
-
-
-
-
-
-
-STR_EARN_IN_TIME :{STRING}{SILVER}{STRING}{STRING}
-
-
-
-
-STR_DURATION_TEXT :{STRING}{STRING}{STRING}{STRING}{STRING}{STRING}{STRING}
-
-
+STR_DURATION_TEXT_SECONDS                              :{ORANGE}{NUM}{SILVER} sekund{P u e i}{STRING}
+STR_DURATION_TEXT_MINUTES                              :{ORANGE}{NUM}{SILVER} minut{P "" a a}{STRING}
+STR_DURATION_TEXT_HOURS                                :{ORANGE}{NUM}{SILVER} sat{P "" a i}{STRING}
+STR_DURATION_TEXT_DAYS                                 :{ORANGE}{NUM}{SILVER} dan{P "" a a}{STRING}
+STR_DURATION_TEXT_YEARS                                :{ORANGE}{NUM}{SILVER} godin{P u e a}{STRING}
 
 
 
 
 # labels for intro page
-STR_INTRO_TEXT :{SILVER}Vaša kompanija može i bez vašeg nadzora da radi i zarađuje uz pomoć {STRING} skripte.{}{}Iznos pasivne zarade (ili gubitaka) zavisi od bilansa vaše kompanije u protekloj godini, vremena koje je proteklo od snimanja kao i od toga kako ste podesili {STRING} skriptu pre nego što ste započeli igranje.{}{}Kao preduslov je {WHITE}neophodno da izgradite upravnu zgradu{SILVER} pre nego što snimite poziciju. Po učitavanju snimljene igre dobićete izveštaj o pasivnim prihodima i rashodima koje je kompanija napravila u vašem odsustvu.{}
+STR_PAGE_TITLE_INTRO            :IdleTTD  |  Dobrodošli
+STR_PAGE_TITLE_REPORT           :IdleTTD  |  Izveštaj o pasivnoj zaradi
+STR_PAGE_TITLE_NOHQ             :IdleTTD  |  Nemate upravnu zgradu
+STR_PAGE_TITLE_HELP             :IdleTTD  |  Pomoć
+STR_PAGE_TITLE_STATS            :IdleTTD  |  Status
 
-STR_INTRO_NOTE                          :{SILVER}{TINY_FONT}Možete isključiti pojavljivanje ovog prozora kroz {YELLOW}podešavanja skripte{SILVER}.{NORMAL_FONT}
+
+
+
+
+STR_BUTTON_TEXT_REFRESH         :{BLACK}{MONO_FONT}OSVEŽI{NORMAL_FONT}
+STR_BUTTON_TEXT_FIND_HQ         :{BLACK}{MONO_FONT}IMAM UPRAVNU ZGRADU{NORMAL_FONT}
+STR_BUTTON_TEXT_START           :{BLACK}{MONO_FONT}START{NORMAL_FONT}
+STR_BUTTON_TEXT_CLOSE           :{BLACK}{MONO_FONT}IZLAZ{NORMAL_FONT}
+STR_BUTTON_TEXT_HELP            :{BLACK}{MONO_FONT}POMOĆ{NORMAL_FONT}
+STR_BUTTON_TEXT_STATS           :{BLACK}{MONO_FONT}STATUS{NORMAL_FONT}
+
+STR_BUTTON_APPLY_IDLE_BALANCE   :{WHITE}{MONO_FONT}{STRING} {CURRENCY_LONG}{NORMAL_FONT}
+STR_BUTTON_TEXT_RECEIVE         :ZARADI
+STR_BUTTON_TEXT_PAY             :PLATI
+
+
+
+
+
+
+STR_INTRO_TEXT      :{SILVER}Vaša kompanija može i bez vašeg nadzora da radi i zarađuje uz pomoć {STRING} skripte.{}{}Iznos pasivne zarade (ili gubitaka) zavisi od bilansa vaše kompanije u protekloj godini, vremena koje je proteklo od snimanja kao i od toga kako ste podesili {STRING} skriptu pre nego što ste započeli igranje.{}{}Kao preduslov je {WHITE}neophodno da izgradite upravnu zgradu{SILVER} pre nego što snimite poziciju. Po učitavanju snimljene igre dobićete izveštaj o pasivnim prihodima i rashodima koje je kompanija napravila u vašem odsustvu.{}
+STR_INTRO_NOTE      :{}{SILVER}{TINY_FONT}Možete isključiti pojavljivanje ovog prozora kroz {YELLOW}podešavanja skripte{SILVER}.{NORMAL_FONT}
+
+
+
+
+
 
 
 
 # labels for idle report page
 
-
 STR_WELCOME_MAN :Dobrodošao
 STR_WELCOME_WOMAN :Dobrodošla
 STR_REPORT_TITLE :{BIG_FONT}{SILVER}{STRING}, {WHITE}{PRESIDENT_NAME}{SILVER}.{NORMAL_FONT}
 STR_REPORT_ABSENCE :{SILVER}Bili ste odsutni {STRING}.
-STR_REPORT_SUMMARY :{WHITE}{COMPANY}{SILVER} je uz pomoć {STRING} nastavila rad sa {GOLD}{STRING}{SILVER} kapaciteta i za {STRING}{STRING}{STRING}, koliko je prošlo u igri. je {STRING}{CURRENCY_LONG}{SILVER}.
-
+STR_REPORT_SUMMARY :{WHITE}{COMPANY}{SILVER} je uz pomoć {STRING} nastavila rad sa {GOLD}{STRING}{SILVER} kapaciteta i za {STRING}{STRING}, koliko je prošlo u igri, kompanija je {STRING}{CURRENCY_LONG}{SILVER}.
 
 
 STR_REPORT_AVERAGE                    :{SILVER}Vaš{P 0 e a ih} {GOLD}{NUM}{SILVER} vozil{P "o je" "a su" "a su"} u proseku {STRING} po {STRING}{STRING}.
+
+
+
+
 
 STR_REPORT_WAIT_WARNING                 :{YELLOW}{BIG_FONT}Pažnja{NORMAL_FONT}{}{WHITE}Moći ćete da zatvorite ovaj prozor tek kada kliknete na dugme.
 
 
 STR_IDLE_REPORT_EARNED                          :zaradila {GREEN}
 STR_IDLE_REPORT_LOST                            :izgubila {RED}
+
+
+
 
 
 
@@ -117,35 +123,40 @@ STR_NEWS_COMPLETE: {STRING} {STRING}
 
 
 # labels for missing hq screen
-STR_MISSING_HQ :{BIG_FONT}{RED}Nemate pasivnu zaradu{SILVER}{NORMAL_FONT}{}{}Ne zaboravite da je neophodno da imate {GOLD}upravnu zgradu{SILVER} da aktivirate {STRING}.{}{}Ukoliko ste je sagradili u međuvremenu kliknite dugme ispod da osvežite stranu.
+
+STR_MISSING_HQ :{SILVER}Ne zaboravite da je neophodno da imate {WHITE}upravnu zgradu{SILVER} da aktivirate {STRING}.{}{}Ukoliko ste je sagradili u međuvremenu kliknite dugme ispod da osvežite stranu.
+
 
 
 
 # labels for help screen
 
 
+
+
 STR_HELP_PAGE_INTRO :{STRING} je skripta namenjena onima koji dele autorovu ljubav za OpenTTD i tzv. idle igre. Srž igre je ostala nepromenjena, "magija" počinje kada izađete iz igre.
 STR_HELP_PAGE_TEXT :{WHITE}Info{}{SILVER}Kada snimite poziciju, {STRING} će upamtiti prošlogodišnji saldo vaše kompanije i datum i vreme snimanja. Po učitavanju pozicije skripta će znati koliko bi godina, meseci i dana u igri prošlo od snimanja. Taj podatak uz saldo od prošle godine će biti dovoljan da skripta izračuna vašu pasivnu zaradu. Dobićete izveštaj sa detaljima na uvid pre nego što pasivnu zaradu prenesete na račun.
+
+
 STR_HELP_PAGE_NOTES :{WHITE}Važno{}{SILVER}{SILVER}{NBSP}{NBSP}-{NBSP}Pasivna zarada {WHITE}će biti u minusu{SILVER} ukoliko ste prethodnu godinu završili sa gubicima.{}{NBSP}{NBSP}-{NBSP}Prozor sa izveštajem {WHITE}ne može da se zatvori{SILVER} ni na jedan drugi način osim {WHITE}prihvatanjem pasivne zarade{SILVER}.{}{NBSP}{NBSP}-{NBSP}Neophodno je da imate {WHITE}upravnu zgradu{SILVER} i {WHITE}barem jedno vozilo bilo kog tipa u pokretu{SILVER}. Takođe, {WHITE}barem tri godine{SILVER} moraju u igri da prođu od pokretanja nove igre da bi {STRING} mogao da funkcioniše.{}{}
+
+
 STR_HELP_PAGE_SETTINGS :{WHITE}Podešavanja{}{STRING} može da se prilagodi potrebama igrača putem podešavanja za skriptu. Lista podešavanja uz kratke opise:{}{NBSP}{NBSP}{GOLD}Množilac pasivne zarade {SILVER}({LTBLUE}{MONO_FONT}idle_multiplier{SILVER}){NORMAL_FONT}{}Ova vrednost utiče na iznos vaše pasivne zarade i ne može se menjati kad započnete igru.{}{NBSP}{NBSP}{GOLD}Prikaži uvodni ekran {SILVER}({LTBLUE}{MONO_FONT}show_intro{SILVER}){NORMAL_FONT}{}Prikaz prozora sa uvodom pri pokretanju nove igre{}{NBSP}{NBSP}{GOLD}Prikaži vesti {SILVER}({LTBLUE}{MONO_FONT}show_news{SILVER}){NORMAL_FONT}{}Vesti sa detaljima se prikazuju kada prihvatite pasivnu zaradu.{}{NBSP}{NBSP}{GOLD}Interval {SILVER}({LTBLUE}{MONO_FONT}day_interval{SILVER}){NORMAL_FONT}{}Podešavanje koje može ubrzati igru na slabijim računarima.
-
-
-
-
-
 
 # labels for stats screen
 
 
-STR_STATS_GENERAL_INFO                                 :{YELLOW}Aktivna sesija{SILVER}{TINY_FONT}{NBSP}{NBSP}{NBSP}*{NBSP}{NBSP}Prikazane vrednosti su približne.{NORMAL_FONT}{}{}Ako biste sada snimili poziciju, {STRING} i zaposleni u {WHITE}upravnoj zgradi{SILVER} vaše kompanije bi se pobrinuli da vaš{P 1 e a ih} {GOLD}{NUM} vozil{P o a a}{SILVER} nastav{P i e e} rad sa {GOLD}{STRING}{SILVER} kapaciteta {STRING} {STRING}.{}{STRING}
+
+
+STR_STATS_GENERAL_INFO                                 :{YELLOW}Aktivna sesija{SILVER}{TINY_FONT}{NBSP}{NBSP}{NBSP}*{NBSP}{NBSP}Prikazane vrednosti su približne.{NORMAL_FONT}{}{}Ako biste sada snimili poziciju, {STRING} i zaposleni u {WHITE}upravnoj zgradi{SILVER} vaše kompanije bi se pobrinuli da vaš{P 1 e a ih} {GOLD}{NUM} vozil{P o a a}{SILVER} nastav{P i e e} rad sa {GOLD}{STRING}{SILVER} kapaciteta {STRING} {STRING}.{STRING}
 STR_STATS_GENERAL_INFO_WILL_BE_EARNING :uz zaradu od oko
 STR_STATS_GENERAL_INFO_WILL_BE_LOSING :uz gubitak od oko
-STR_STATS_GENERAL_INFO_NO_VEHICLES               :{SILVER}Zaposleni u vašoj {WHITE}upravnoj zgradi{SILVER} bi radili sa {GOLD}{STRING}{SILVER} kapaciteta ali ni jedno vaše vozilo trenutno ne saobraća.
+STR_STATS_GENERAL_INFO_NO_VEHICLES               :{SILVER}Zaposleni u vašoj {WHITE}upravnoj zgradi{SILVER} bi radili sa {GOLD}{STRING}{SILVER} kapaciteta ali ni jedno vaše vozilo trenutno ne radi.
 
-STR_STATS_MINUS_NOTE    :{WHITE}Nije poželjno snimati poziciju dok ne izađete iz minusa.
+STR_STATS_MINUS_NOTE    :{}{}{YELLOW}PAŽNJA{}{WHITE}Nije poželjno snimati poziciju dok ne izađete iz minusa.
 
-STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Prethodna sesija{}{SILVER}Nije vas bilo {STRING}.
 STR_STATS_LAST_IDLE_SESSION_SUMMARY                           :{SILVER}Vaša kompanija je {STRING} {STRING} {STRING} {STRING}.
+STR_STATS_LAST_IDLE_SESSION_TEXT                           :{YELLOW}Prethodna sesija{}{}{SILVER}Nije vas bilo {STRING}.
 
 STR_TOTAL_POSITIVE :i ukupno zaradila
 STR_TOTAL_NEGATIVE :i ukupno izgubila
@@ -155,31 +166,29 @@ STR_STATS_LAST_IDLE_SESSION_SUMMARY_EARNING :zarađivala
 STR_STATS_LAST_IDLE_SESSION_SUMMARY_LOSING :gubila
 
 
+
+
 STR_SECTION_TITLE_VEHICLE_STATS  :{YELLOW}Vozila{SILVER}
 
-STR_VEHICLE_INFO_ROW :{STRING}{STRING}{STRING} {STRING}.
 
+STR_VEHICLE_INFO_ROW :{STRING}, {STRING} {STRING}.
 
 STR_VEHICLE_COUNT_RAIL :{GOLD}{TRAIN} {SILVER}Aktiv{P 0 "an je" "na su" "no je"} {GOLD}{NUM}{SILVER} voz{P "" a ova}
-
 STR_VEHICLE_COUNT_ROAD :{GOLD}{BUS} {SILVER}Aktiv{P 0 "no je" "na su" "no je"} {GOLD}{NUM}{SILVER} drumsk{P o a ih} vozil{P 0 o a a}
-
 STR_VEHICLE_COUNT_AIR :{GOLD}{PLANE} {SILVER}Aktiv{P 0 "an je" "na su" "no je"} {GOLD}{NUM}{SILVER} avion{P "" a a}
-
 STR_VEHICLE_COUNT_WATER :{GOLD}{SHIP} {SILVER}Aktiv{P 0 "an je" "na su" "no je"} {GOLD}{NUM}{SILVER} brod{P "" a ova}
 
-#STR_VEHICLE_INFO_BALANCE :{STRING} {CURRENCY_LONG}{SILVER} {STRING}.
 
-STR_VEHICLE_INFO_ZERO_BALANCE                            : {WHITE}bez pasivne zarade{SILVER}
-
+STR_VEHICLE_INFO_ZERO_BALANCE                            :{WHITE}bez pasivne zarade{STRING}{STRING}{STRING}{SILVER}
 
 
 
 
 
 
-STR_VEHICLE_INFO_EARNING_BALANCE                         : čija zarada iznosi
-STR_VEHICLE_INFO_LOSING_BALANCE                          : čiji gubici su
+
+STR_VEHICLE_INFO_EARNING_BALANCE                         :čija zarada iznosi
+STR_VEHICLE_INFO_LOSING_BALANCE                          :čiji gubici su
 
 STR_PER_SECOND: po sekundi
 STR_PER_MINUTE: po minutu
@@ -187,8 +196,13 @@ STR_PER_HOUR: na sat
 STR_PER_DAY: dnevno
 
 
-STR_REPORT_SAVE_WARNING :{}{YELLOW}Pažnja!{}{WHITE}Deluje da ste snimili poziciju sa gubicima u prošloj godini. Da ne biste izgubili novac kada učitate poziciju, igrajte igru i snimite kada završite godinu u plusu.{}
-STR_SAVE_WARNING_TEXT :{SILVER}Deluje da ste snimili poziciju a da ste u prošloj godini imali gubitak.{}{}{}{WHITE}IZGUBIĆETE NOVAC KADA UČITATE POZICIJU SLEDEĆI PUT!{}{}{}{SILVER}U najvećem broju slučajeva uzrok gubitaka su jednokratni troškovi poput gradnje infrastrukture ili kupovine novih vozila. Nastavite sa igranjem pa snimite poziciju kada završite godinu u plusu da biste izbegli gubitke pri učitavanju.{}{}
+
+
+
+
+
+
+
 
 
 # developer labels
@@ -199,4 +213,3 @@ STR_NAV_BUTTON_NO_HQ                :No HQ
 STR_NAV_BUTTON_STATS                :Stats
 STR_NAV_BUTTON_REPORT               :Report
 STR_NAV_BUTTON_HELP                 :Help
-STR_NAV_BUTTON_SAVE_WARNING         :Save warning

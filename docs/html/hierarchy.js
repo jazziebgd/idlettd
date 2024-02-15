@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "GSConfig", "d5/db3/struct_g_s_config.html", null ],
     [ "GSController", null, [
       [ "MainClass", "d5/d5e/class_main_class.html", null ]
     ] ],
@@ -11,7 +10,8 @@ var hierarchy =
     [ "IdleStory", "d7/d13/class_idle_story.html", null ],
     [ "IdleUtil", "d2/de2/class_idle_util.html", null ],
     [ "Logger", "d3/d42/class_logger.html", null ],
-    [ "ScriptSavedData", "da/d55/struct_script_saved_data.html", null ],
-    [ "SummaryVehicleStats", "d1/df9/struct_summary_vehicle_stats.html", null ],
-    [ "VehicleTypeStatsItem", "d4/d7e/struct_vehicle_type_stats_item.html", null ]
+    [ "StructGameScriptConfig", "d9/d10/struct_struct_game_script_config.html", null ],
+    [ "StructScriptSavedData", "da/dbb/struct_struct_script_saved_data.html", null ],
+    [ "StructSummaryVehicleStats", "d6/d09/struct_struct_summary_vehicle_stats.html", null ],
+    [ "StructVehicleTypeStatsItem", "d8/ddb/struct_struct_vehicle_type_stats_item.html", null ]
 ];

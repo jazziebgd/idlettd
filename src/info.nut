@@ -6,70 +6,103 @@ require("version.nut");
 require("constants.nut");
 
 /**
-	@class FMainClass 
-	@brief IdleTTD game script info class - check out <a href="https://docs.openttd.org/gs-api/classGSInfo" target="_blank">GSInfo</a> superclass docs.
-	@details GSInfo instance for IdleTTD game script
-
-	
+	@class FMainClass
+	@hideinheritancegraph
+	@brief IdleTTD game script info class.
+	@details GSInfo instance for IdleTTD game script. Check out <a href="https://docs.openttd.org/gs-api/classGSInfo" target="_blank">GSInfo</a> docs for more details.
 */
 class FMainClass extends GSInfo {
+
 	/**
 		@brief Returns author name
-	 	@returns std::string containing game script author name
+	 	@returns string
 	 */
-	function GetAuthor() { 
-		return "jazziettd"; 
+	function GetAuthor() {
+		return "jazziettd";
 	}
+
 	/**
 		@brief Returns game script name
-		@returns std::string containing game script name
+		@returns string
 	 */
-	function GetName()			{ return "IdleTTD"; }
+	function GetName() {
+		return "IdleTTD";
+	}
+
 	/**
 		@brief Returns game script description
-		@returns std::string containing game script description
+		@returns string
 	 */
-	function GetDescription() 	{ return "Enables your company to earn money while you sleep."; }
+	function GetDescription() {
+		return "Enables your company to earn money while you sleep.";
+	}
+
 	/**
 		@brief Returns game script version
-		@returns int Game script version
+		@see SELF_VERSION
+		@returns int     Game script version
+
 	 */
-	function GetVersion()		{ return SELF_VERSION; }
+	function GetVersion() {
+		return SELF_VERSION;
+	}
+
 	/**
-		@brief Returns minimum game script version that can be loaded
-		@returns int Min game script version
+		@brief Returns minimum game script version that can be loaded (relies on #ScriptMinVersionToLoad from constants.nut file)
+		@see ScriptMinVersionToLoad
+		@returns int     Min game script version
 	 */
-	function MinVersionToLoad()		{ return ::ScriptMinVersionToLoad; }
+	function MinVersionToLoad() {
+		return ::ScriptMinVersionToLoad;
+	}
 	/**
-		@brief Returns game script last update date
-		@returns std::string containing game script last update date
+		@brief Returns game script last update date (relies on #ScriptLastUpdateDate from constants.nut file)
+		@see ScriptLastUpdateDate
+		@returns string
 	 */
-	function GetDate()			{ return "2023-01-28"; }
+	function GetDate() {
+		return ::ScriptLastUpdateDate;
+	}
+
 	/**
 		@brief Checks if script is developer only
 		@returns bool
 	 */
-	 function IsDeveloperOnly()			{ return false; }
+	 function IsDeveloperOnly() {
+		return false;
+	}
+
 	/**
 		@brief Returns game script main class name
-		@returns std::string containing game script main class name
+		@returns string
 	 */
-	function CreateInstance()	{ return "MainClass"; }
+	function CreateInstance() {
+		return "MainClass";
+	}
+
 	/**
 		@brief Returns game script short name
-		@returns std::string containing game script short name
+		@returns string
 	 */
-	function GetShortName()		{ return "idle"; } // Replace this with your own unique 4 letter string
+	 function GetShortName() {
+		return "idle";
+	}
+
 	/**
 		@brief Returns game script compatible API version
-		@returns std::string containing game script compatible API version
+		@returns string
 	 */
-	function GetAPIVersion()	{ return "13"; }
+	function GetAPIVersion() {
+		return "13";
+	}
+
 	/**
 		@brief Returns game script home page URL
-		@returns std::string containing game script home page URL
+		@returns string
 	 */
-	function GetURL()			{ return "https://github.com/jazziebgd/idlettd"; }
+	function GetURL() {
+		return "https://github.com/jazziebgd/idlettd";
+	}
 
 	/**
 		@brief Initializes game script settings:
@@ -114,13 +147,7 @@ class FMainClass extends GSInfo {
 			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
 			flags = CONFIG_NONE | CONFIG_BOOLEAN
 		});
-		AddSetting({
-			name = "show_save_warning",
-			description = "Show warning when saving with losses",
-			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
-			flags = CONFIG_NONE | CONFIG_BOOLEAN
-		});
-		
+
 		AddSetting({
 			name = "day_interval",
 		 	// description = "Tune script performance by delaying each iteratn by",
@@ -142,7 +169,7 @@ class FMainClass extends GSInfo {
 			_4 = "every 4 days",
 			_5 = "every 5 days",
 			_6 = "every 6 days",
-			_7 = "weekly (fastest)",
+			_7 = "weekly (best performance, worst experience)",
 		});
 
 
@@ -182,7 +209,7 @@ class FMainClass extends GSInfo {
 			}
 		);
 
-		AddLabels("log_level", 
+		AddLabels("log_level",
 			{
 				_0 = "None",
 				_1 = "Error",
@@ -192,14 +219,9 @@ class FMainClass extends GSInfo {
 				_5 = "Verbose",
 			}
 		);
-
-		
 	}
 }
-/**
-	@privatesection
-*/
+
+/// \privatesection
 RegisterGS(FMainClass());
-/**
-@publicsection
-*/
+/// \publicsection

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['warnaftercloseattempts_0',['WarnAfterCloseAttempts',['../d5/db3/struct_g_s_config.html#ac8d476a24c41f1e56950803634f136fa',1,'GSConfig']]]
+  ['tickspergameday_0',['TicksPerGameDay',['../d0/d68/constants_8nut.html#a0174cadff900da428d789df8e42d090f',1,'constants.nut']]],
+  ['type_1',['type',['../d8/ddb/struct_struct_vehicle_type_stats_item.html#a575a1b8d45aa5651a928ce4cbf5effca',1,'StructVehicleTypeStatsItem']]]
 ];
